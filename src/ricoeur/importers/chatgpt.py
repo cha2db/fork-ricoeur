@@ -67,17 +67,32 @@ def _iter_conversations(path: Path):
 
 
 def _iter_conversations_with_progress(path: Path):
-    """Stream JSON/ZIP and report fraction of uncompressed bytes consumed."""
-    if path.suffix == ".zip":
+    """Stream every conversation JSON member of an official ChatGPT export.
+
+    Progress is measured over the total uncompressed size of conversation
+    members, not over unrelated account assets in the ZIP.
+    """
+    if path.suffix.lower() == ".zip":
         with zipfile.ZipFile(path) as zf:
-            names = [n for n in zf.namelist() if n.endswith("conversations.json")]
-            if not names:
-                raise FileNotFoundError("No conversations.json found in zip")
-            name = names[0]
-            total = zf.getinfo(name).file_size
-            with zf.open(name) as binary:
-                with io.TextIOWrapper(binary, encoding="utf-8") as stream:
-                    yield from _parse_json_array(stream, total)
+            import re
+            members = [
+                info for info in zf.infolist()
+                if not info.is_dir()
+                and re.fullmatch(r"conversations(?:[-_]\\d+)?\\.json",
+                                 Path(info.filename).name, re.IGNORECASE)
+            ]
+            if not members:
+                raise FileNotFoundError("No conversations.json or numbered conversation JSON found in ZIP")
+            # Stable ordering and no extraction to disk.
+            members.sort(key=lambda info: info.filename)
+            total = sum(info.file_size for info in members)
+            done = 0
+            for info in members:
+                with zf.open(info) as binary:
+                    with io.TextIOWrapper(binary, encoding="utf-8") as stream:
+                        for conv, fraction in _parse_json_array(stream, info.file_size):
+                            yield conv, ((done + fraction * info.file_size) / total if total else 1.0)
+                done += info.file_size
     else:
         total = path.stat().st_size
         with path.open(encoding="utf-8") as stream:
