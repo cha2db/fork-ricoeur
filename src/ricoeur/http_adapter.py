@@ -27,6 +27,40 @@ def search(q: str, limit: int = Query(20, ge=1, le=200),
     finally:
         conn.close()
 
+
+@app.get("/api/search/simple")
+def simple_search(q: str, limit: int = Query(100, ge=1, le=200),
+                  platform: Optional[str] = None):
+    """Literal substring search, independent of FTS query syntax/index health."""
+    term = q.strip()
+    if not term:
+        raise HTTPException(status_code=400, detail="Informe uma palavra ou frase")
+    if len(term) > 200:
+        raise HTTPException(status_code=400, detail="Consulta muito longa")
+    # Escape LIKE wildcards so users search for literal text.
+    pattern = "%" + term.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
+    conn = get_connection()
+    try:
+        sql = """SELECT m.id, m.conv_id, m.role, m.content, m.timestamp,
+                        c.title, c.platform
+                 FROM messages m JOIN conversations c ON c.id=m.conv_id
+                 WHERE (m.content LIKE ? ESCAPE '\\' COLLATE NOCASE
+                        OR c.title LIKE ? ESCAPE '\\' COLLATE NOCASE)"""
+        args = [pattern, pattern]
+        if platform:
+            sql += " AND c.platform=?"
+            args.append(platform)
+        sql += " ORDER BY m.rowid DESC LIMIT ?"
+        args.append(limit)
+        rows = conn.execute(sql, args).fetchall()
+        hits = [{"message": {k: row[k] for k in ("id", "conv_id", "role", "content", "timestamp")},
+                 "conversation": {"id": row["conv_id"], "title": row["title"], "platform": row["platform"]}}
+                for row in rows]
+        return {"query": term, "count": len(hits), "hits": hits, "mode": "literal",
+                "limited": len(hits) == limit}
+    finally:
+        conn.close()
+
 @app.get("/api/messages/{message_id}")
 def message(message_id: str, context: int = Query(2, ge=0, le=20)):
     conn = get_connection()
