@@ -7,6 +7,7 @@ import importlib.metadata
 import json
 import math
 import re
+import sqlite3
 import statistics
 import tempfile
 import time
@@ -52,6 +53,7 @@ def main():
     ap.add_argument("--conversations",type=int,default=1000)
     ap.add_argument("--messages",type=int,default=40)
     ap.add_argument("--output",default="_dev/results/prior-art.json")
+    ap.add_argument("--db-path",default=None)
     a=ap.parse_args()
     if a.conversations<100 or a.conversations%10 or a.messages<12:
         ap.error("conversations >=100 and multiple of 10, messages >=12")
@@ -67,7 +69,12 @@ def main():
                          "rank-bm25":version("rank-bm25"),"networkx":version("networkx")},
             "queries":[],"summary":{}}
     with tempfile.TemporaryDirectory(prefix="cha2db-prior-art-") as tmp:
-        conn=init_db(Path(tmp));populate(conn,a.conversations,a.messages)
+        if a.db_path:
+            conn=sqlite3.connect(str(Path(a.db_path).resolve()))
+            conn.row_factory=sqlite3.Row
+            report["corpus"]["snapshot"]=a.db_path
+        else:
+            conn=init_db(Path(tmp));populate(conn,a.conversations,a.messages)
         rows=conn.execute("SELECT id,conv_id,content FROM messages WHERE id LIKE ? ORDER BY rowid",
                           (PREFIX+"m%-0000",)).fetchall()
         ids=[r["id"] for r in rows]
