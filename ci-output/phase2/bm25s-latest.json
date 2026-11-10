@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "candidate": "bm25s",
+  "input_snapshot": "_dev/results/prior-base.sqlite",
+  "comparison": "same 1000 representative messages from existing synthetic 40k SQLite fixture",
+  "queries": [
+    {
+      "query": "regressão guiada",
+      "topic_id": 0,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000000-0000",
+        "fixture-cha2db-v1-m000120-0000",
+        "fixture-cha2db-v1-m000860-0000",
+        "fixture-cha2db-v1-m000370-0000",
+        "fixture-cha2db-v1-m000590-0000",
+        "fixture-cha2db-v1-m000130-0000",
+        "fixture-cha2db-v1-m000850-0000",
+        "fixture-cha2db-v1-m000140-0000",
+        "fixture-cha2db-v1-m000600-0000",
+        "fixture-cha2db-v1-m000580-0000"
+      ],
+      "latency_ms": 0.348
+    },
+    {
+      "query": "contrato declarativo",
+      "topic_id": 1,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000001-0000",
+        "fixture-cha2db-v1-m000371-0000",
+        "fixture-cha2db-v1-m000541-0000",
+        "fixture-cha2db-v1-m000121-0000",
+        "fixture-cha2db-v1-m000841-0000",
+        "fixture-cha2db-v1-m000361-0000",
+        "fixture-cha2db-v1-m000131-0000",
+        "fixture-cha2db-v1-m000551-0000",
+        "fixture-cha2db-v1-m000831-0000",
+        "fixture-cha2db-v1-m000141-0000"
+      ],
+      "latency_ms": 0.139
+    },
+    {
+      "query": "busca cruzada",
+      "topic_id": 2,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000002-0000",
+        "fixture-cha2db-v1-m000882-0000",
+        "fixture-cha2db-v1-m000192-0000",
+        "fixture-cha2db-v1-m000102-0000",
+        "fixture-cha2db-v1-m000392-0000",
+        "fixture-cha2db-v1-m000782-0000",
+        "fixture-cha2db-v1-m000562-0000",
+        "fixture-cha2db-v1-m000892-0000",
+        "fixture-cha2db-v1-m000652-0000",
+        "fixture-cha2db-v1-m000312-0000"
+      ],
+      "latency_ms": 0.077
+    },
+    {
+      "query": "pipeline Jenkins",
+      "topic_id": 3,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000003-0000",
+        "fixture-cha2db-v1-m000583-0000",
+        "fixture-cha2db-v1-m000123-0000",
+        "fixture-cha2db-v1-m000863-0000",
+        "fixture-cha2db-v1-m000373-0000",
+        "fixture-cha2db-v1-m000133-0000",
+        "fixture-cha2db-v1-m000853-0000",
+        "fixture-cha2db-v1-m000363-0000",
+        "fixture-cha2db-v1-m000843-0000",
+        "fixture-cha2db-v1-m000623-0000"
+      ],
+      "latency_ms": 0.064
+    },
+    {
+      "query": "índice B-tree",
+      "topic_id": 4,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000004-0000",
+        "fixture-cha2db-v1-m000184-0000",
+        "fixture-cha2db-v1-m000794-0000",
+        "fixture-cha2db-v1-m000784-0000",
+        "fixture-cha2db-v1-m000194-0000",
+        "fixture-cha2db-v1-m000774-0000",
+        "fixture-cha2db-v1-m000204-0000",
+        "fixture-cha2db-v1-m000764-0000",
+        "fixture-cha2db-v1-m000214-0000",
+        "fixture-cha2db-v1-m000754-0000"
+      ],
+      "latency_ms": 0.066
+    },
+    {
+      "query": "conexão SSH",
+      "topic_id": 5,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000005-0000",
+        "fixture-cha2db-v1-m000375-0000",
+        "fixture-cha2db-v1-m000585-0000",
+        "fixture-cha2db-v1-m000125-0000",
+        "fixture-cha2db-v1-m000855-0000",
+        "fixture-cha2db-v1-m000135-0000",
+        "fixture-cha2db-v1-m000595-0000",
+        "fixture-cha2db-v1-m000365-0000",
+        "fixture-cha2db-v1-m000845-0000",
+        "fixture-cha2db-v1-m000865-0000"
+      ],
+      "latency_ms": 0.062
+    },
+    {
+      "query": "Android Studio",
+      "topic_id": 6,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000006-0000",
+        "fixture-cha2db-v1-m000546-0000",
+        "fixture-cha2db-v1-m000636-0000",
+        "fixture-cha2db-v1-m000766-0000",
+        "fixture-cha2db-v1-m000076-0000",
+        "fixture-cha2db-v1-m000586-0000",
+        "fixture-cha2db-v1-m000916-0000",
+        "fixture-cha2db-v1-m000126-0000",
+        "fixture-cha2db-v1-m000666-0000",
+        "fixture-cha2db-v1-m000416-0000"
+      ],
+      "latency_ms": 0.06
+    },
+    {
+      "query": "menor privilégio",
+      "topic_id": 7,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000007-0000",
+        "fixture-cha2db-v1-m000417-0000",
+        "fixture-cha2db-v1-m000857-0000",
+        "fixture-cha2db-v1-m000067-0000",
+        "fixture-cha2db-v1-m000217-0000",
+        "fixture-cha2db-v1-m000927-0000",
+        "fixture-cha2db-v1-m000297-0000",
+        "fixture-cha2db-v1-m000757-0000",
+        "fixture-cha2db-v1-m000097-0000",
+        "fixture-cha2db-v1-m000197-0000"
+      ],
+      "latency_ms": 0.059
+    },
+    {
+      "query": "avaliação formativa",
+      "topic_id": 8,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000008-0000",
+        "fixture-cha2db-v1-m000118-0000",
+        "fixture-cha2db-v1-m000868-0000",
+        "fixture-cha2db-v1-m000588-0000",
+        "fixture-cha2db-v1-m000858-0000",
+        "fixture-cha2db-v1-m000128-0000",
+        "fixture-cha2db-v1-m000848-0000",
+        "fixture-cha2db-v1-m000598-0000",
+        "fixture-cha2db-v1-m000138-0000",
+        "fixture-cha2db-v1-m000378-0000"
+      ],
+      "latency_ms": 0.059
+    },
+    {
+      "query": "API REST",
+      "topic_id": 9,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000009-0000",
+        "fixture-cha2db-v1-m000789-0000",
+        "fixture-cha2db-v1-m000319-0000",
+        "fixture-cha2db-v1-m000569-0000",
+        "fixture-cha2db-v1-m000389-0000",
+        "fixture-cha2db-v1-m000649-0000",
+        "fixture-cha2db-v1-m000889-0000",
+        "fixture-cha2db-v1-m000099-0000",
+        "fixture-cha2db-v1-m000779-0000",
+        "fixture-cha2db-v1-m000559-0000"
+      ],
+      "latency_ms": 0.059
+    }
+  ],
+  "synthetic": true,
+  "human_gold": false,
+  "build_seconds": 0.041,
+  "engine": "bm25s",
+  "package": "0.3.16",
+  "mean_p10": 1.0,
+  "median_latency_ms": 0.063,
+  "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
+  "limitations": [
+    "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
+    "One representative message per conversation, not a full-text 40k-message ranking index.",
+    "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
+    "No candidate integrated into production core; no MCP or GUI tests performed here."
+  ],
+  "run_id": "42917546195",
+  "commit": "958cd8b467e477cdeb4d9fa5087569068bb6510a",
+  "logs": {
+    "phase2-bm25s.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"bm25s\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.041,\n  \"engine\": \"bm25s\",\n  \"package\": \"0.3.16\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 0.063,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
+    "phase2-bm25s-install.log": "Collecting bm25s<1,>=0.2\n  Downloading bm25s-0.3.16-py3-none-any.whl.metadata (29 kB)\nCollecting numpy (from bm25s<1,>=0.2)\n  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nDownloading bm25s-0.3.16-py3-none-any.whl (76 kB)\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 100.9 MB/s  0:00:00\nInstalling collected packages: numpy, bm25s\n\nSuccessfully installed bm25s-0.3.16 numpy-2.5.4\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-bm25s-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
+  }
+}
