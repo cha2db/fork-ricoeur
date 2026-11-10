@@ -1,0 +1,238 @@
+Obtaining file:///home/runner/work/fork-ricoeur/fork-ricoeur
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting click>=8.1 (from ricoeur==0.4.4)
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting rich>=13.0 (from ricoeur==0.4.4)
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting tomli-w>=1.0 (from ricoeur==0.4.4)
+  Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.0->ricoeur==0.4.4)
+  Downloading markdown_it_py-4.3.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.0->ricoeur==0.4.4)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.0->ricoeur==0.4.4)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 97.5 MB/s  0:00:00
+Downloading markdown_it_py-4.3.0-py3-none-any.whl (96 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Building wheels for collected packages: ricoeur
+  Building editable for ricoeur (pyproject.toml): started
+  Building editable for ricoeur (pyproject.toml): finished with status 'done'
+  Created wheel for ricoeur: filename=ricoeur-0.4.4-py3-none-any.whl size=6268 sha256=c7647965277a398eea6af8c015a73ea0546c32dc3f2ba11a9276859d11829f82
+  Stored in directory: /tmp/pip-ephem-wheel-cache-sassfl66/wheels/b8/34/ef/ae92ec1a88daaf4824edccc74f706eb3bb67e2951e3d7ad770
+Successfully built ricoeur
+Installing collected packages: tomli-w, pygments, mdurl, click, markdown-it-py, rich, ricoeur
+
+Successfully installed click-8.5.1 markdown-it-py-4.3.0 mdurl-0.1.2 pygments-2.21.0 rich-15.0.0 ricoeur-0.4.4 tomli-w-1.2.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Looking in indexes: https://download.pytorch.org/whl/cpu
+Collecting torch
+  Downloading torch-2.15.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (35 kB)
+Collecting filelock (from torch)
+  Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.13.0 (from torch)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Requirement already satisfied: setuptools>=77.0.3 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from torch) (79.0.1)
+Collecting sympy>=1.13.3 (from torch)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch)
+  Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Downloading torch-2.15.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl (209.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 209.5/209.5 MB 108.9 MB/s  0:00:01
+Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 65.7 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 104.8 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 52.7 MB/s  0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Installing collected packages: mpmath, typing-extensions, sympy, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+
+Successfully installed MarkupSafe-3.0.3 filelock-4.2.4 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 sympy-1.14.0 torch-2.15.0+cpu typing-extensions-4.16.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Collecting sentence-transformers<6,>=3
+  Downloading sentence_transformers-5.7.0-py3-none-any.whl.metadata (18 kB)
+Collecting bertopic<1,>=0.16
+  Downloading bertopic-0.17.4-py3-none-any.whl.metadata (24 kB)
+Collecting transformers<6.0.0,>=4.41.0 (from sentence-transformers<6,>=3)
+  Downloading transformers-5.22.2-py3-none-any.whl.metadata (31 kB)
+Collecting tokenizers>=0.19 (from sentence-transformers<6,>=3)
+  Downloading tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.8 kB)
+Collecting huggingface-hub>=0.23.0 (from sentence-transformers<6,>=3)
+  Downloading huggingface_hub-2.4.0-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: torch>=1.11.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from sentence-transformers<6,>=3) (2.15.0+cpu)
+Collecting numpy>=1.20.0 (from sentence-transformers<6,>=3)
+  Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scikit-learn>=0.22.0 (from sentence-transformers<6,>=3)
+  Downloading scikit_learn-1.9.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting scipy>=1.0.0 (from sentence-transformers<6,>=3)
+  Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: typing_extensions>=4.5.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from sentence-transformers<6,>=3) (4.16.0)
+Collecting tqdm>=4.0.0 (from sentence-transformers<6,>=3)
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting hdbscan>=0.8.29 (from bertopic<1,>=0.16)
+  Downloading hdbscan-0.8.44-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (15 kB)
+Collecting umap-learn>=0.5.0 (from bertopic<1,>=0.16)
+  Downloading umap_learn-0.6.0-py3-none-any.whl.metadata (24 kB)
+Collecting pandas>=1.1.5 (from bertopic<1,>=0.16)
+  Downloading pandas-3.1.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (16 kB)
+Collecting plotly>=4.7.0 (from bertopic<1,>=0.16)
+  Downloading plotly-7.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting llvmlite>0.36.0 (from bertopic<1,>=0.16)
+  Downloading llvmlite-0.50.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+Collecting packaging>=20.0 (from transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting regex>=2025.10.22 (from transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading regex-2026.11.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting typer (from transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading typer-0.29.0-py3-none-any.whl.metadata (16 kB)
+Collecting safetensors>=0.8.0 (from transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Requirement already satisfied: click<9.0.0,>=8.4.2 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from huggingface-hub>=0.23.0->sentence-transformers<6,>=3) (8.5.1)
+Requirement already satisfied: filelock>=3.10.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from huggingface-hub>=0.23.0->sentence-transformers<6,>=3) (4.2.4)
+Requirement already satisfied: fsspec>=2023.5.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from huggingface-hub>=0.23.0->sentence-transformers<6,>=3) (2026.9.0)
+Collecting hf-xet<2.0.0,>=1.6.0 (from huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting httpx2<3,>=2.0.0 (from huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting anyio>=4.10 (from httpx2<3,>=2.0.0->huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting httpcore2==2.16.0 (from httpx2<3,>=2.0.0->huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting idna>=3.18 (from httpx2<3,>=2.0.0->huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting truststore>=0.10 (from httpx2<3,>=2.0.0->huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2<3,>=2.0.0->huggingface-hub>=0.23.0->sentence-transformers<6,>=3)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting joblib>=1.0 (from hdbscan>=0.8.29->bertopic<1,>=0.16)
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.0->hdbscan>=0.8.29->bertopic<1,>=0.16)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting python-dateutil>=2.9.0 (from pandas>=1.1.5->bertopic<1,>=0.16)
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting narwhals>=1.15.1 (from plotly>=4.7.0->bertopic<1,>=0.16)
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Collecting tzdata (from python-dateutil>=2.9.0->pandas>=1.1.5->bertopic<1,>=0.16)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn>=0.22.0->sentence-transformers<6,>=3)
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Requirement already satisfied: setuptools>=77.0.3 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from torch>=1.11.0->sentence-transformers<6,>=3) (79.0.1)
+Requirement already satisfied: sympy>=1.13.3 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from torch>=1.11.0->sentence-transformers<6,>=3) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from torch>=1.11.0->sentence-transformers<6,>=3) (3.6.1)
+Requirement already satisfied: jinja2 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from torch>=1.11.0->sentence-transformers<6,>=3) (3.1.6)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers<6,>=3) (1.3.0)
+Collecting numba>=0.60 (from umap-learn>=0.5.0->bertopic<1,>=0.16)
+  Downloading numba-0.68.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (2.8 kB)
+Collecting pynndescent>=0.7 (from umap-learn>=0.5.0->bertopic<1,>=0.16)
+  Downloading pynndescent-0.7.0-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from jinja2->torch>=1.11.0->sentence-transformers<6,>=3) (3.0.3)
+Collecting pydantic>=2.5.3 (from typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)
+Collecting shellingham>=1.3.0 (from typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: rich>=13.8.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3) (15.0.0)
+Collecting annotated-doc>=0.0.2 (from typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading annotated_doc-0.0.6-py3-none-any.whl.metadata (6.5 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.5.3->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.4 (from pydantic>=2.5.3->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading pydantic_core-2.50.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.6 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic>=2.5.3->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3)
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from rich>=13.8.0->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3) (4.3.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from rich>=13.8.0->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3) (2.21.0)
+Requirement already satisfied: mdurl~=0.1 in /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers<6.0.0,>=4.41.0->sentence-transformers<6,>=3) (0.1.2)
+Downloading sentence_transformers-5.7.0-py3-none-any.whl (611 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 611.3/611.3 kB 60.4 MB/s  0:00:00
+Downloading bertopic-0.17.4-py3-none-any.whl (154 kB)
+Downloading transformers-5.22.2-py3-none-any.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 124.0 MB/s  0:00:00
+Downloading huggingface_hub-2.4.0-py3-none-any.whl (857 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 857.0/857.0 kB 83.5 MB/s  0:00:00
+Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 69.8 MB/s  0:00:00
+Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Downloading tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 132.8 MB/s  0:00:00
+Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading hdbscan-0.8.44-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (5.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 100.5 MB/s  0:00:00
+Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 109.5 MB/s  0:00:00
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading llvmlite-0.50.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (59.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.7/59.7 MB 112.1 MB/s  0:00:00
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pandas-3.1.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 129.9 MB/s  0:00:00
+Downloading plotly-7.1.0-py3-none-any.whl (9.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 97.1 MB/s  0:00:00
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 81.5 MB/s  0:00:00
+Downloading regex-2026.11.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (805 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.0/806.0 kB 78.5 MB/s  0:00:00
+Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
+Downloading scikit_learn-1.9.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 125.7 MB/s  0:00:00
+Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 118.0 MB/s  0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading umap_learn-0.6.0-py3-none-any.whl (136 kB)
+Downloading numba-0.68.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 107.3 MB/s  0:00:00
+Downloading pynndescent-0.7.0-py3-none-any.whl (112 kB)
+Downloading typer-0.29.0-py3-none-any.whl (121 kB)
+Downloading annotated_doc-0.0.6-py3-none-any.whl (5.3 kB)
+Downloading pydantic-2.14.3-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 112.3 MB/s  0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: tzdata, typing-inspection, truststore, tqdm, threadpoolctl, shellingham, safetensors, regex, pyyaml, pydantic-core, packaging, numpy, narwhals, llvmlite, idna, hf-xet, h11, cloudpickle, annotated-types, annotated-doc, scipy, python-dateutil, pydantic, plotly, numba, joblib, httpcore2, anyio, typer, scikit-learn, pandas, httpx2, pynndescent, huggingface-hub, hdbscan, umap-learn, tokenizers, transformers, sentence-transformers, bertopic
+
+Successfully installed annotated-doc-0.0.6 annotated-types-0.8.0 anyio-4.16.0 bertopic-0.17.4 cloudpickle-3.1.2 h11-0.16.0 hdbscan-0.8.44 hf-xet-1.8.0 httpcore2-2.16.0 httpx2-2.16.0 huggingface-hub-2.4.0 idna-3.20 joblib-1.6.0 llvmlite-0.50.0 narwhals-2.28.0 numba-0.68.1 numpy-2.4.6 packaging-26.3 pandas-3.1.1 plotly-7.1.0 pydantic-2.14.3 pydantic-core-2.50.4 pynndescent-0.7.0 python-dateutil-4.0.0 pyyaml-6.0.3 regex-2026.11.9 safetensors-0.8.0 scikit-learn-1.9.1 scipy-1.17.1 sentence-transformers-5.7.0 shellingham-1.5.4 threadpoolctl-3.8.0 tokenizers-0.23.3 tqdm-4.70.1 transformers-5.22.2 truststore-0.10.5 typer-0.29.0 typing-inspection-0.4.5 tzdata-2026.6 umap-learn-0.6.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
