@@ -1,0 +1,13 @@
+Collecting bm25s<1,>=0.2
+  Downloading bm25s-0.3.16-py3-none-any.whl.metadata (29 kB)
+Collecting numpy (from bm25s<1,>=0.2)
+  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Downloading bm25s-0.3.16-py3-none-any.whl (76 kB)
+Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 185.1 MB/s  0:00:00
+Installing collected packages: numpy, bm25s
+
+Successfully installed bm25s-0.3.16 numpy-2.5.4
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip

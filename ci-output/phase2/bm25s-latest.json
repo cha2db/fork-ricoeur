@@ -20,7 +20,7 @@
         "fixture-cha2db-v1-m000920-0000",
         "fixture-cha2db-v1-m000370-0000"
       ],
-      "latency_ms": 0.28
+      "latency_ms": 0.235
     },
     {
       "query": "contrato declarativo",
@@ -38,7 +38,7 @@
         "fixture-cha2db-v1-m000231-0000",
         "fixture-cha2db-v1-m000251-0000"
       ],
-      "latency_ms": 0.136
+      "latency_ms": 0.131
     },
     {
       "query": "busca cruzada",
@@ -56,7 +56,7 @@
         "fixture-cha2db-v1-m000562-0000",
         "fixture-cha2db-v1-m000312-0000"
       ],
-      "latency_ms": 0.122
+      "latency_ms": 0.116
     },
     {
       "query": "pipeline Jenkins",
@@ -74,7 +74,7 @@
         "fixture-cha2db-v1-m000843-0000",
         "fixture-cha2db-v1-m000623-0000"
       ],
-      "latency_ms": 0.113
+      "latency_ms": 0.109
     },
     {
       "query": "índice B-tree",
@@ -92,7 +92,7 @@
         "fixture-cha2db-v1-m000214-0000",
         "fixture-cha2db-v1-m000634-0000"
       ],
-      "latency_ms": 0.14
+      "latency_ms": 0.109
     },
     {
       "query": "conexão SSH",
@@ -110,7 +110,7 @@
         "fixture-cha2db-v1-m000215-0000",
         "fixture-cha2db-v1-m000755-0000"
       ],
-      "latency_ms": 0.108
+      "latency_ms": 0.102
     },
     {
       "query": "Android Studio",
@@ -128,7 +128,7 @@
         "fixture-cha2db-v1-m000666-0000",
         "fixture-cha2db-v1-m000416-0000"
       ],
-      "latency_ms": 0.104
+      "latency_ms": 0.128
     },
     {
       "query": "menor privilégio",
@@ -146,7 +146,7 @@
         "fixture-cha2db-v1-m000097-0000",
         "fixture-cha2db-v1-m000197-0000"
       ],
-      "latency_ms": 0.107
+      "latency_ms": 0.106
     },
     {
       "query": "avaliação formativa",
@@ -182,16 +182,16 @@
         "fixture-cha2db-v1-m000089-0000",
         "fixture-cha2db-v1-m000109-0000"
       ],
-      "latency_ms": 0.085
+      "latency_ms": 0.084
     }
   ],
   "synthetic": true,
   "human_gold": false,
-  "build_seconds": 0.056,
+  "build_seconds": 0.058,
   "engine": "bm25s",
   "package": "0.3.16",
   "mean_p10": 1.0,
-  "median_latency_ms": 0.111,
+  "median_latency_ms": 0.109,
   "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
   "limitations": [
     "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
@@ -199,11 +199,11 @@
     "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
     "No candidate integrated into production core; no MCP or GUI tests performed here."
   ],
-  "run_id": "42918377189",
-  "commit": "73f4a1fa7c60b9b8d4e45a3cfc8e059ab9d24ce5",
+  "run_id": "42919776443",
+  "commit": "cd7e052ba350ac1ef6dae19eb9fffd0917e65182",
   "logs": {
-    "phase2-bm25s.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"bm25s\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.056,\n  \"engine\": \"bm25s\",\n  \"package\": \"0.3.16\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 0.111,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
-    "phase2-bm25s-install.log": "Collecting bm25s<1,>=0.2\n  Downloading bm25s-0.3.16-py3-none-any.whl.metadata (29 kB)\nCollecting numpy (from bm25s<1,>=0.2)\n  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nDownloading bm25s-0.3.16-py3-none-any.whl (76 kB)\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 120.6 MB/s  0:00:00\nInstalling collected packages: numpy, bm25s\n\nSuccessfully installed bm25s-0.3.16 numpy-2.5.4\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-bm25s.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"bm25s\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.058,\n  \"engine\": \"bm25s\",\n  \"package\": \"0.3.16\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 0.109,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
+    "phase2-bm25s-install.log": "Collecting bm25s<1,>=0.2\n  Downloading bm25s-0.3.16-py3-none-any.whl.metadata (29 kB)\nCollecting numpy (from bm25s<1,>=0.2)\n  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nDownloading bm25s-0.3.16-py3-none-any.whl (76 kB)\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 185.1 MB/s  0:00:00\nInstalling collected packages: numpy, bm25s\n\nSuccessfully installed bm25s-0.3.16 numpy-2.5.4\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
     "phase2-bm25s-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
