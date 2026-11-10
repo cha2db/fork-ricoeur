@@ -1,5 +1,5 @@
 """Read-only local HTTP adapter over the same retrieval contract as MCP."""
-import html
+from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
@@ -38,47 +38,41 @@ def message(message_id: str, context: int = Query(2, ge=0, le=20)):
     finally:
         conn.close()
 
+
+@app.get("/api/conversations")
+def conversations(limit: int = Query(100, ge=1, le=500)):
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            """SELECT id, title, platform, created_at, updated_at
+               FROM conversations ORDER BY COALESCE(updated_at, created_at, '') DESC, rowid DESC
+               LIMIT ?""", (limit,)).fetchall()
+        return {"conversations": [dict(row) for row in rows]}
+    finally:
+        conn.close()
+
+
+@app.get("/api/conversations/{conversation_id}")
+def conversation(conversation_id: str, limit: int = Query(500, ge=1, le=2000)):
+    conn = get_connection()
+    try:
+        conv = conn.execute(
+            "SELECT id,title,platform FROM conversations WHERE id=?", (conversation_id,)
+        ).fetchone()
+        if conv is None:
+            raise HTTPException(status_code=404, detail="conversation not found")
+        rows = conn.execute(
+            """SELECT id,conv_id,role,content,timestamp FROM messages
+               WHERE conv_id=? ORDER BY timestamp,rowid LIMIT ?""",
+            (conversation_id, limit + 1)
+        ).fetchall()
+        return {"conversation": dict(conv),
+                "messages": [dict(row) for row in rows[:limit]],
+                "truncated": len(rows) > limit}
+    finally:
+        conn.close()
+
+
 @app.get("/", response_class=HTMLResponse)
 def index():
-    return """<!doctype html><html lang="pt-BR"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cha2db · Busca local</title>
-<style>
-body{font:16px system-ui;background:#111827;color:#e5e7eb;max-width:850px;margin:auto;padding:18px}
-input,button{font:inherit;padding:12px;border-radius:8px;border:1px solid #64748b}
-input{background:#1f2937;color:white;width:min(75%,520px)}
-button{background:#2563eb;color:white;cursor:pointer}
-article{padding:14px;margin:12px 0;background:#1f2937;border-radius:10px}
-small{color:#9ca3af}pre{white-space:pre-wrap;overflow-wrap:anywhere}
-</style><h1>Cha2db · Busca local</h1>
-<p>Busca por mensagens em múltiplas conversas. Sem LLM.</p>
-<form id="form"><input id="q" placeholder="Consulta FTS5" required>
-<button>Buscar</button></form><p id="status"></p><div id="results"></div>
-<script>
-const q=document.querySelector('#q'),status=document.querySelector('#status'),
-results=document.querySelector('#results');
-function el(tag,text){const n=document.createElement(tag);n.textContent=text??'';return n}
-function showMessage(x){const a=el('article');a.append(el('small',x.role+' · '+x.id),el('pre',x.content));return a}
-document.querySelector('#form').addEventListener('submit',async e=>{
- e.preventDefault();results.replaceChildren();status.textContent='Buscando...';
- try{
- const r=await fetch('/api/search?'+new URLSearchParams({q:q.value,context:'1'}));
- const data=await r.json();if(!r.ok)throw Error(data.detail||r.status);
- status.textContent=data.count+' mensagem(ns) encontrada(s)';
- for(const hit of data.hits){
-  const a=el('article');a.append(el('h3',hit.conversation.title||hit.conversation.id),
-  el('small',hit.conversation.platform+' · '+hit.conversation.id),showMessage(hit.message));
-  const b=el('button','Mostrar contexto');
-  b.addEventListener('click',async()=>{
-   b.disabled=true;
-   try{const r=await fetch('/api/messages/'+encodeURIComponent(hit.message.id)+'?context=3');
-   if(!r.ok)throw Error(r.status);const data=await r.json();
-   const d=el('div');d.append(el('h4','Antes'));
-   data.before.forEach(m=>d.append(showMessage(m)));
-   d.append(el('h4','Depois'));data.after.forEach(m=>d.append(showMessage(m)));
-   b.replaceWith(d)}catch(err){b.disabled=false;status.textContent=String(err)}
-  });a.append(b);results.append(a)
- }
- }catch(err){status.textContent='Erro: '+err.message}
-});
-</script></html>"""
+    return (Path(__file__).with_name("chat_ui.html")).read_text(encoding="utf-8")
