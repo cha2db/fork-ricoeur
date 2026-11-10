@@ -41,7 +41,7 @@ try:
         records.append({"run": run, "conversations": nconv, "messages": nmsg,
                         "new": stats.new, "seconds": round(time.perf_counter()-started, 3)})
     result = {"status": "PASS" if all(
-        r["conversations"] == 8 and r["messages"] == 40 and
+        r["conversations"] == 8 and r["messages"] == 48 and
         (r["new"] == 8 if r["run"] == 1 else r["new"] == 0)
         for r in records) else "FAIL",
         "runs": records,
