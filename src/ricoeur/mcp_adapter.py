@@ -3,7 +3,7 @@
 Uses the official MCP Python SDK FastMCP adapter when installed.
 The core retrieval contract has no MCP dependency.
 """
-from __future__ import annotations
+from typing import Optional
 
 from .db import get_connection
 from .retrieval import search_messages, get_message_context
@@ -15,7 +15,7 @@ def build_server():
 
     @server.tool()
     def search_chat_messages(query: str, limit: int = 20,
-                             context: int = 1, platform: str | None = None) -> dict:
+                             context: int = 1, platform: Optional[str] = None) -> dict:
         """Search individual chat messages across conversations and providers."""
         conn = get_connection()
         try:
