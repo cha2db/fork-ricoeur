@@ -1,0 +1,6 @@
+{
+  "status": "UNAVAILABLE_ON_STOCK_RUNNER",
+  "candidate": "SQLite official vec1",
+  "detail": "no such module: vec1",
+  "note": "Requires an external compiled extension; not bundled into stock SQLite."
+}
