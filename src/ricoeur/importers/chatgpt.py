@@ -201,8 +201,12 @@ def _extract_model(conv: dict[str, Any]) -> Optional[str]:
     # Walk messages looking for model_slug in metadata
     mapping = conv.get("mapping", {})
     for node in mapping.values():
-        msg = node.get("message", {})
-        meta = msg.get("metadata", {})
+        msg = node.get("message")
+        if not isinstance(msg, dict):
+            continue  # ChatGPT exports may contain a root node with message=null
+        meta = msg.get("metadata")
+        if not isinstance(meta, dict):
+            continue
         slug = meta.get("model_slug")
         if slug:
             return slug
