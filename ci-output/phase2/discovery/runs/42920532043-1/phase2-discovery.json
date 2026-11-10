@@ -1,0 +1,3458 @@
+{
+  "status": "PASS",
+  "timestamp_utc": "2026-11-10T23:07:09.629724+00:00",
+  "inventory_version": "R08",
+  "inventory_count": 134,
+  "github_repo_count": 114,
+  "queries": {
+    "archives": {
+      "query": "chatgpt claude conversation archive in:readme archived:false",
+      "total_count": 9788,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "mcp": {
+      "query": "conversation history mcp sqlite in:readme archived:false",
+      "total_count": 27182,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "agent-history": {
+      "query": "coding agent sessions search sqlite in:readme archived:false",
+      "total_count": 57024,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "provenance": {
+      "query": "conversation provenance memory audit in:readme archived:false",
+      "total_count": 16382,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "memory": {
+      "query": "local-first ai memory chat in:readme archived:false",
+      "total_count": 28463,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "graph": {
+      "query": "temporal graph rag memory in:readme archived:false",
+      "total_count": 8808,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "lexical": {
+      "query": "embedded full text search rust bm25 in:readme archived:false",
+      "total_count": 5010,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "hybrid": {
+      "query": "hybrid search vector bm25 embedded in:readme archived:false",
+      "total_count": 73443,
+      "sampled": 40,
+      "incomplete_results": false
+    },
+    "import": {
+      "query": "chatgpt claude import sqlite in:readme archived:false",
+      "total_count": 10843,
+      "sampled": 40,
+      "incomplete_results": false
+    }
+  },
+  "query_errors": {},
+  "unique_hits": 287,
+  "new_review_candidates": 90,
+  "potential_repositories": [
+    {
+      "name": "HelpCode-ai/anythingmcp",
+      "url": "https://github.com/HelpCode-ai/anythingmcp",
+      "description": "Enterprise Agent Harness & MCP Gateway: connect APIs, databases, file servers and 600+ connectors (SAP, Odoo, Etsy…) to Claude, ChatGPT, Microsoft Copilot and your agents. Memory, skills, knowledge graph, SSO/RBAC, audit log and governance built in. Your AI company brain.",
+      "license_spdx": "AGPL-3.0",
+      "stars": 773,
+      "pushed_at": "2026-11-10T19:57:35Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-governance",
+        "agent-harness",
+        "ai-governance",
+        "audit-log",
+        "code-execution",
+        "company-brain",
+        "enterprise-ai",
+        "enterprise-search",
+        "file-search",
+        "harness-engineering",
+        "mcp-gateway",
+        "mcp-proxy",
+        "mcp-security",
+        "model-context-protocol",
+        "odata",
+        "odoo",
+        "openapi-to-mcp",
+        "sap",
+        "scim",
+        "soap"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 19,
+      "matched_terms": [
+        "audit",
+        "chat",
+        "chatgpt",
+        "claude",
+        "graph",
+        "mcp",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "basicmachines-co/basic-memory",
+      "url": "https://github.com/basicmachines-co/basic-memory",
+      "description": "AI conversations that actually remember. Never re-explain your project to your AI again. Join our Discord: https://discord.gg/tyvKNccgqN",
+      "license_spdx": "AGPL-3.0",
+      "stars": 4548,
+      "pushed_at": "2026-11-10T20:38:38Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "claude",
+        "knowledge-management",
+        "knowlege-graph",
+        "llm",
+        "local-first",
+        "markdown",
+        "mcp",
+        "obsidian",
+        "obsidian-md",
+        "open-source",
+        "privacy-first",
+        "privacy-first-ai",
+        "productivity",
+        "python"
+      ],
+      "query_groups": [
+        "mcp",
+        "import"
+      ],
+      "heuristic_score": 16,
+      "matched_terms": [
+        "claude",
+        "conversation",
+        "graph",
+        "local",
+        "mcp",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Nwflower/dsh-chat-import",
+      "url": "https://github.com/Nwflower/dsh-chat-import",
+      "description": "Import conversation history from 25+ AI coding agents into DeepSeek Harness as resumable sessions — tool calls, reasoning and results kept intact, with reverse export and sync. | 把 25+ AI 编程 Agent 的聊天记录导入 DeepSeek Harness 继续对话，保留工具调用、推理与结果，支持反向导出与同步。",
+      "license_spdx": "MIT",
+      "stars": 304,
+      "pushed_at": "2026-11-10T06:36:36Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "ai-agents",
+        "automation",
+        "chatgpt",
+        "claude-code",
+        "codex",
+        "cursor",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "gemini",
+        "import",
+        "jsonl",
+        "migration",
+        "openai",
+        "plugin",
+        "sessions",
+        "transcript"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 16,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "conversation",
+        "history",
+        "import"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "doobidoo/mcp-memory-service",
+      "url": "https://github.com/doobidoo/mcp-memory-service",
+      "description": "Open-source persistent memory for AI agent pipelines (LangGraph, CrewAI, AutoGen) and Claude. REST API + knowledge graph + autonomous consolidation.",
+      "license_spdx": "Apache-2.0",
+      "stars": 2111,
+      "pushed_at": "2026-11-10T21:16:14Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "agentic-ai",
+        "ai-agents",
+        "autogen",
+        "claude",
+        "crewai",
+        "knowledge-graph",
+        "langgraph",
+        "long-term-memory",
+        "mcp",
+        "mcp-server",
+        "memory",
+        "model-context-protocol",
+        "multi-agent",
+        "open-source",
+        "rag",
+        "semantic-search",
+        "sqlite-vec",
+        "vector-database",
+        "vector-storage"
+      ],
+      "query_groups": [
+        "archives",
+        "mcp",
+        "agent-history",
+        "memory",
+        "import"
+      ],
+      "heuristic_score": 15,
+      "matched_terms": [
+        "claude",
+        "graph",
+        "mcp",
+        "memory",
+        "search",
+        "source",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Marker-Inc-Korea/AutoRAG",
+      "url": "https://github.com/Marker-Inc-Korea/AutoRAG",
+      "description": "Your Personal Librarian Agent. Ask anything on your computer, organize files, remember important info and files.",
+      "license_spdx": "Apache-2.0",
+      "stars": 5640,
+      "pushed_at": "2026-11-10T18:40:51Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agentic-rag",
+        "ai-agents",
+        "document-parser",
+        "embeddings",
+        "hybrid-search",
+        "knowledge-base",
+        "librarian",
+        "llm",
+        "local-first",
+        "mcp",
+        "mcp-server",
+        "memory",
+        "open-source",
+        "rag",
+        "retrieval-augmented-generation",
+        "second-brain",
+        "semantic-search"
+      ],
+      "query_groups": [
+        "lexical",
+        "hybrid"
+      ],
+      "heuristic_score": 15,
+      "matched_terms": [
+        "hybrid",
+        "import",
+        "local",
+        "mcp",
+        "memory",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Laumss/loominary",
+      "url": "https://github.com/Laumss/loominary",
+      "description": "Conversations shouldn't just live in a scroll bar. Loominary gives your Claude and SillyTavern conversations a home — a local archive of every conversation, yours to keep. Coming soon... ",
+      "license_spdx": "MIT",
+      "stars": 457,
+      "pushed_at": "2026-10-31T10:16:42Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "chat-export",
+        "chat-manager",
+        "chatgpt",
+        "claude",
+        "conversation-export",
+        "gemini",
+        "grok",
+        "notebooklm",
+        "sillytavern"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 15,
+      "matched_terms": [
+        "archive",
+        "chat",
+        "chatgpt",
+        "claude",
+        "conversation",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "jhlee0409/claude-code-history-viewer",
+      "url": "https://github.com/jhlee0409/claude-code-history-viewer",
+      "description": "Desktop app and web server to browse, search and analyze your AI coding assistant history — Claude Code, Codex CLI, GitHub Copilot, Gemini CLI, Cursor, OpenCode and more. 100% offline.",
+      "license_spdx": "MIT",
+      "stars": 2309,
+      "pushed_at": "2026-11-10T21:13:39Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-coding-assistant",
+        "chat-history",
+        "claude",
+        "claude-code",
+        "codex",
+        "conversation-history",
+        "copilot-cli",
+        "cursor",
+        "desktop-app",
+        "developer-tools",
+        "gemini-cli",
+        "github-copilot",
+        "offline-first",
+        "opencode",
+        "react",
+        "rust",
+        "session-viewer",
+        "tauri"
+      ],
+      "query_groups": [
+        "mcp",
+        "agent-history"
+      ],
+      "heuristic_score": 14,
+      "matched_terms": [
+        "chat",
+        "claude",
+        "conversation",
+        "history",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "CodeBendKit/codeseek",
+      "url": "https://github.com/CodeBendKit/codeseek",
+      "description": "Rust-powered code intelligence CLI for AI coding agents. Builds call graphs and hybrid semantic search indexes (Dense + Sparse + RRF + Reranker) across 7 languages. Ships as native MCP tools for Claude Code and Codex CLI.",
+      "license_spdx": "MIT",
+      "stars": 760,
+      "pushed_at": "2026-08-02T00:38:12Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-tools",
+        "ai-development-tools",
+        "ai-tools",
+        "bm25",
+        "call-graph",
+        "claude-code",
+        "cli",
+        "code-analysis",
+        "code-intelligence",
+        "cross-encoder",
+        "embedding",
+        "hybrid-search",
+        "lancedb",
+        "mcp",
+        "reranker",
+        "rust",
+        "semantic-search",
+        "tree-sitter"
+      ],
+      "query_groups": [
+        "lexical",
+        "hybrid"
+      ],
+      "heuristic_score": 14,
+      "matched_terms": [
+        "bm25",
+        "claude",
+        "graph",
+        "hybrid",
+        "mcp",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "DeusData/codebase-memory-mcp",
+      "url": "https://github.com/DeusData/codebase-memory-mcp",
+      "description": "Local code intelligence for developers and AI agents. Connect code, docs and infrastructure in a persistent graph, with CBM Lens, MCP tools, agent integrations and change-aware test selection.",
+      "license_spdx": "MIT",
+      "stars": 48459,
+      "pushed_at": "2026-11-10T21:44:29Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "aider",
+        "ast",
+        "claude-code",
+        "code-analysis",
+        "code-intelligence",
+        "codex",
+        "cursor",
+        "cypher",
+        "developer-tools",
+        "gemini-cli",
+        "graph-visualization",
+        "kilocode",
+        "knowledge-graph",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "opencode",
+        "sqlite",
+        "tree-sitter",
+        "windsurf"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 14,
+      "matched_terms": [
+        "claude",
+        "graph",
+        "local",
+        "mcp",
+        "memory",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "EXXETA/exxperts",
+      "url": "https://github.com/EXXETA/exxperts",
+      "description": "A free, open-source desktop app for getting work done with AI. It shows you what it would remember before it saves anything.",
+      "license_spdx": "Apache-2.0",
+      "stars": 460,
+      "pushed_at": "2026-11-07T01:40:29Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "ai",
+        "ai-agents",
+        "ai-assistant",
+        "ai-memory",
+        "chatgpt",
+        "claude",
+        "desktop-app",
+        "electron",
+        "github-copilot",
+        "human-in-the-loop",
+        "llm",
+        "local-first",
+        "long-term-memory",
+        "macos",
+        "mcp",
+        "memory",
+        "openai",
+        "productivity",
+        "windows"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 14,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "local",
+        "mcp",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "limelit-co/open",
+      "url": "https://github.com/limelit-co/open",
+      "description": "Self-hosted AI visibility tracking (AEO / GEO / LLMO). Track how ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews mention and cite your brand. One Go binary, SQLite, MCP-first, bring your own keys.",
+      "license_spdx": "Apache-2.0",
+      "stars": 439,
+      "pushed_at": "2026-11-08T16:46:32Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "aeo",
+        "ai-search-optimization",
+        "ai-seo",
+        "ai-visibility",
+        "ai-visibility-tracker",
+        "answer-engine-optimization",
+        "brand-monitoring",
+        "chatgpt",
+        "generative-engine-optimization",
+        "geo",
+        "golang",
+        "llmo",
+        "mcp",
+        "perplexity",
+        "self-hosted"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 14,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "mcp",
+        "search",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "yvgude/lean-ctx",
+      "url": "https://github.com/yvgude/lean-ctx",
+      "description": "LeanCTX is the Context Gateway for AI Systems. Select task-relevant context, apply supported controls, connect local knowledge and inspect recorded evidence. Open-source Engine: CLI, MCP, hooks and supported proxy paths.",
+      "license_spdx": "Apache-2.0",
+      "stars": 3941,
+      "pushed_at": "2026-11-10T21:34:44Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agentic-coding",
+        "ai",
+        "ai-agents",
+        "ai-coding",
+        "ai-governance",
+        "ai-security",
+        "audit-trail",
+        "claude-code",
+        "context-engineering",
+        "context-gateway",
+        "copilot",
+        "cursor",
+        "data-governance",
+        "developer-tools",
+        "gemini-cli",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "rust"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 13,
+      "matched_terms": [
+        "audit",
+        "claude",
+        "local",
+        "mcp",
+        "rust",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "giancarloerra/SocratiCode",
+      "url": "https://github.com/giancarloerra/SocratiCode",
+      "description": "Enterprise-grade (40m+ LOC) codebase intelligence, zero-setup, local & private Plugin/Skill/Extension or MCP: hybrid semantic search, polyglot dependency graphs, symbol-level impact analysis & call-flow, interactive HTML viewer, cross-project & branch-aware search, DB/API/infra knowledge. 61% less tokens, 84% fewer calls, 37x faster. Cloud in beta.",
+      "license_spdx": "AGPL-3.0",
+      "stars": 3368,
+      "pushed_at": "2026-11-05T23:16:34Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-assistant",
+        "ast",
+        "claude",
+        "claude-code",
+        "code-graph",
+        "codebase-intelligence",
+        "context-engine",
+        "docker",
+        "embeddings",
+        "gemini",
+        "gemini-cli-extension",
+        "mcp",
+        "openai",
+        "qdrant",
+        "semantic",
+        "semantic-search",
+        "vector-database",
+        "vector-embeddings",
+        "vector-search"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 13,
+      "matched_terms": [
+        "claude",
+        "graph",
+        "hybrid",
+        "local",
+        "mcp",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "mohamed-chs/convoviz",
+      "url": "https://github.com/mohamed-chs/convoviz",
+      "description": "Export your ChatGPT history to Markdown: readable notes for Obsidian, plus private charts and word clouds of how you use ChatGPT. Runs locally.",
+      "license_spdx": "MIT",
+      "stars": 893,
+      "pushed_at": "2026-11-10T22:03:16Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "backup",
+        "chatgpt",
+        "chatgpt-export",
+        "cli",
+        "conversations",
+        "data-visualization",
+        "export",
+        "markdown",
+        "markdown-converter",
+        "obsidian",
+        "obsidian-md",
+        "openai",
+        "personal-knowledge-management",
+        "wordcloud"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 13,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "conversation",
+        "history",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "description": "Free, local plugin that keeps tool output out of your coding agent's context window. Sandbox and SQLite FTS5 search, 99% fewer bytes in context. Works with Claude Code, Codex, Pi, OpenCode, Gemini CLI, Copilot CLI and 4 more agents. Zero telemetry.",
+      "license_spdx": "NOASSERTION",
+      "stars": 33811,
+      "pushed_at": "2026-11-10T03:23:18Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "antigravity",
+        "claude",
+        "claude-code",
+        "claude-code-hooks",
+        "claude-code-plugins",
+        "claude-code-skill",
+        "codex",
+        "codex-cli",
+        "context-mode",
+        "copilot",
+        "cursor-plugin",
+        "kiro",
+        "mcp",
+        "mcp-server",
+        "mcp-tools",
+        "openclaw",
+        "opencode",
+        "pi-agent",
+        "skills",
+        "zed-extension"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 12,
+      "matched_terms": [
+        "claude",
+        "local",
+        "mcp",
+        "search",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "holaboss-ai/holaOS",
+      "url": "https://github.com/holaboss-ai/holaOS",
+      "description": "Open-source agentic workspace enterprises can make their own. Connect the systems you already run — 100+ integrations, MCP, chat tools, apps, browser, local files — with shared memory. Any agent (Claude Code, Codex), any model, or BYOK. Set up in clicks, not months. Local-first: your data never leaves your machines.",
+      "license_spdx": "NOASSERTION",
+      "stars": 11440,
+      "pushed_at": "2026-11-10T17:26:35Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "agent-harness",
+        "agent-os",
+        "agentic",
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "artificial-intelligence",
+        "claude-code",
+        "codex",
+        "electron",
+        "holaboss",
+        "holaos",
+        "llm",
+        "mcp",
+        "memory",
+        "model-context-protocol",
+        "runtime",
+        "typescript",
+        "workspace"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 12,
+      "matched_terms": [
+        "chat",
+        "claude",
+        "local",
+        "mcp",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "yetanotherchris/openwebui-importer",
+      "url": "https://github.com/yetanotherchris/openwebui-importer",
+      "description": "Import Grok, Claude, ChatGPT chats into Open-WebUI",
+      "license_spdx": "MIT",
+      "stars": 87,
+      "pushed_at": "2026-08-31T10:49:34Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "chatgpt",
+        "claude-ai",
+        "grok",
+        "openwebui",
+        "python",
+        "sql",
+        "sqlite3"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 12,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "import",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "semantica-agi/semantica",
+      "url": "https://github.com/semantica-agi/semantica",
+      "description": "Graph-Native Infrastructure for Context and Accountable AI Systems",
+      "license_spdx": "MIT",
+      "stars": 14523,
+      "pushed_at": "2026-11-09T09:12:46Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "ai",
+        "ai-governance",
+        "ai-infrastructure",
+        "artificial-intelligence",
+        "context-engineering",
+        "context-graphs",
+        "data-engineering",
+        "decision-intelligence",
+        "developer-tools",
+        "explainable-ai",
+        "generative-ai",
+        "graph-rag",
+        "knowledge-graph",
+        "llm",
+        "ontology",
+        "provenance",
+        "python",
+        "reasoning",
+        "semantic-search"
+      ],
+      "query_groups": [
+        "provenance",
+        "graph"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "graph",
+        "memory",
+        "provenance",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "hashgraph-online/awesome-ai-plugins",
+      "url": "https://github.com/hashgraph-online/awesome-ai-plugins",
+      "description": "A curated list of the best awesome AI plugins for AI assistants including Claude Code, OpenAI Codex / ChatGPT, Gemini, Antigravity, Pi / Oh My Pi, Grok, OpenCodek DSH, Kimi and More. https://hol.org/plugins",
+      "license_spdx": "Apache-2.0",
+      "stars": 1021,
+      "pushed_at": "2026-11-10T18:17:01Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-assistant",
+        "ai-plugin",
+        "awesome",
+        "awesome-list",
+        "best-ai-plugins",
+        "best-antigravity-plugins",
+        "best-claude-plugins",
+        "best-codex-plugins",
+        "best-dsh-plugins",
+        "best-grok-plugins",
+        "best-kimi-plugins",
+        "best-opencode-plugins",
+        "best-zcode-plugins",
+        "chatgpt",
+        "claude-code",
+        "codex",
+        "extensions",
+        "grok",
+        "mcp",
+        "skills"
+      ],
+      "query_groups": [
+        "agent-history",
+        "provenance"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "graph",
+        "mcp"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "isair/jarvis",
+      "url": "https://github.com/isair/jarvis",
+      "description": "Private local AI assistant for your desktop. Voice and text chat, personal memory, dictation and MCP tools. Runs offline with Ollama or OpenAI-compatible servers on macOS, Windows and Linux.",
+      "license_spdx": "NOASSERTION",
+      "stars": 2216,
+      "pushed_at": "2026-10-20T23:46:25Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-assistant",
+        "assistant",
+        "health",
+        "local-ai",
+        "machine-learning",
+        "mcp",
+        "nutrition",
+        "privacy",
+        "private",
+        "search",
+        "searching",
+        "voice",
+        "voice-assistant"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "chat",
+        "local",
+        "mcp",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "DasterProkio/awesome-ai-companion",
+      "url": "https://github.com/DasterProkio/awesome-ai-companion",
+      "description": "Open-source AI companions, desktop pets, long-term memory & proactive chat. 人机恋开源项目大全。让你的家机能够脱离官端自主存在，拥有记忆和主动性。",
+      "license_spdx": "CC-BY-4.0",
+      "stars": 1197,
+      "pushed_at": "2026-11-07T11:54:52Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "ai-companion",
+        "ai-girlfriend",
+        "awesome",
+        "awesome-list",
+        "character-ai",
+        "chatbot",
+        "companion-ai",
+        "conversational-ai",
+        "desktop-pet",
+        "live2d",
+        "llm",
+        "local-llm",
+        "long-term-memory",
+        "memory",
+        "open-source",
+        "personal-assistant",
+        "self-hosted",
+        "sillytavern",
+        "virtual-companion"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "chat",
+        "conversation",
+        "local",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "askimo-ai/askimo",
+      "url": "https://github.com/askimo-ai/askimo",
+      "description": "AI desktop app for chat, RAG, Skills, MCP tools, and agents. Support multiple LLMs (Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM, Gemini, OpenRouter)",
+      "license_spdx": "AGPL-3.0",
+      "stars": 542,
+      "pushed_at": "2026-11-10T06:23:53Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-assistant",
+        "chat-client",
+        "chatgpt",
+        "claude-code",
+        "gemini",
+        "gemini-client",
+        "gpt",
+        "grok",
+        "llm",
+        "localai",
+        "modelcontextprotocol",
+        "ollama-gui",
+        "openai-gui",
+        "openrouter",
+        "rag",
+        "retrieval-augmented-generation",
+        "whisper-cpp"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "local",
+        "mcp"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Dicklesworthstone/meta_skill",
+      "url": "https://github.com/Dicklesworthstone/meta_skill",
+      "description": "Local-first skill management platform for AI coding agents: dual SQLite+Git persistence, semantic search, bandit-optimized suggestions, and MCP integration",
+      "license_spdx": "NOASSERTION",
+      "stars": 212,
+      "pushed_at": "2026-11-06T18:00:01Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "cli",
+        "developer-tools",
+        "mcp",
+        "rust"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 11,
+      "matched_terms": [
+        "local",
+        "mcp",
+        "rust",
+        "search",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "screenpipe/screenpipe",
+      "url": "https://github.com/screenpipe/screenpipe",
+      "description": "YC (S26) | Open Computer History | Continuously record your company computer work, map your workflows, help you find work worth automating, and power your agents' context",
+      "license_spdx": "NOASSERTION",
+      "stars": 22341,
+      "pushed_at": "2026-11-10T19:48:59Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agents",
+        "agi",
+        "ai",
+        "ai-memory",
+        "audio-recording",
+        "computer-vision",
+        "hermes",
+        "hermes-agent",
+        "llm",
+        "local-ai",
+        "local-first",
+        "machine-learning",
+        "mcp",
+        "multimodal",
+        "openclaw",
+        "privacy",
+        "rewind",
+        "screen-recording",
+        "speech-to-text",
+        "ycombinator"
+      ],
+      "query_groups": [
+        "mcp",
+        "import"
+      ],
+      "heuristic_score": 10,
+      "matched_terms": [
+        "history",
+        "local",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "yyjeqhc/webcodex",
+      "url": "https://github.com/yyjeqhc/webcodex",
+      "description": "Give cloud AI agents a real development environment on your own machines.",
+      "license_spdx": "Apache-2.0",
+      "stars": 2503,
+      "pushed_at": "2026-11-10T11:07:49Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "chatgpt",
+        "claude",
+        "claude-code",
+        "codex",
+        "developer-tools",
+        "gemini",
+        "gpt-actions",
+        "grok",
+        "mcp",
+        "rust",
+        "self-hosted"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 10,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "mcp",
+        "rust"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "ai4s-research/open-science",
+      "url": "https://github.com/ai4s-research/open-science",
+      "description": "Open Science Desktop — local-first, model-agnostic AI research workbench for macOS, Windows & Linux. Open-source Claude Science desktop alternative built on Tauri + MCP + agent skills.",
+      "license_spdx": "NOASSERTION",
+      "stars": 2087,
+      "pushed_at": "2026-11-09T12:10:04Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agent",
+        "ai-for-science",
+        "ai-scientist",
+        "ai4s",
+        "claude-science",
+        "claude-science-alternative",
+        "claude-science-desktop-alternative",
+        "desktop-app",
+        "linux",
+        "local-first",
+        "macos",
+        "mcp",
+        "open-science",
+        "open-science-desktop",
+        "reproducible-research",
+        "research-tools",
+        "research-workbench",
+        "scientific-research",
+        "tauri",
+        "windows"
+      ],
+      "query_groups": [
+        "provenance"
+      ],
+      "heuristic_score": 10,
+      "matched_terms": [
+        "claude",
+        "local",
+        "mcp",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "weiwill88/Local_Pdf_Chat_RAG",
+      "url": "https://github.com/weiwill88/Local_Pdf_Chat_RAG",
+      "description": "Transparent Python RAG reference with FAISS + BM25 hybrid retrieval, reranking, Gradio UI, and FastAPI.",
+      "license_spdx": "MIT",
+      "stars": 961,
+      "pushed_at": "2026-08-31T10:05:50Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "bm25",
+        "chinese-nlp",
+        "deepseek",
+        "document-qa",
+        "faiss",
+        "fastapi",
+        "gradio",
+        "hybrid-search",
+        "ollama",
+        "python",
+        "rag",
+        "retrieval-augmented-generation"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 10,
+      "matched_terms": [
+        "bm25",
+        "chat",
+        "hybrid",
+        "local",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "alibaba/zvec",
+      "url": "https://github.com/alibaba/zvec",
+      "description": "A lightweight, lightning-fast, in-process vector database",
+      "license_spdx": "Apache-2.0",
+      "stars": 16224,
+      "pushed_at": "2026-11-09T01:43:35Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-skills",
+        "db",
+        "embedded",
+        "faiss",
+        "fts",
+        "fulltext-search",
+        "hnsw",
+        "llm-memory",
+        "local",
+        "rag",
+        "search-engine",
+        "semantic-search",
+        "similarity-search",
+        "vector-database",
+        "vector-db"
+      ],
+      "query_groups": [
+        "lexical",
+        "hybrid"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "embedded",
+        "local",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "EverMind-AI/EverOS",
+      "url": "https://github.com/EverMind-AI/EverOS",
+      "description": "One portable memory layer for every AI agent: local-first, Markdown-native, user-owned, and self-evolving across apps, tools, and workflows.",
+      "license_spdx": "Apache-2.0",
+      "stars": 13869,
+      "pushed_at": "2026-11-10T22:25:45Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "agentic-ai",
+        "ai",
+        "chats",
+        "clawdbot",
+        "clawdbot-skill",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "llm",
+        "long-term-memory",
+        "mcp",
+        "memory",
+        "memory-management",
+        "python3",
+        "rag",
+        "skills"
+      ],
+      "query_groups": [
+        "agent-history",
+        "memory"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "local",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "taishi-i/awesome-ChatGPT-repositories",
+      "url": "https://github.com/taishi-i/awesome-ChatGPT-repositories",
+      "description": "A curated list of open source GitHub repositories related to ChatGPT, the OpenAI API, and Codex. Searchable via Claude Code  and Codex skills.",
+      "license_spdx": "CC0-1.0",
+      "stars": 3366,
+      "pushed_at": "2026-11-08T17:31:29Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "agent-skills",
+        "ai",
+        "awesome",
+        "awesome-list",
+        "chatgpt",
+        "codex",
+        "gpt-5",
+        "llm",
+        "openai",
+        "skills"
+      ],
+      "query_groups": [
+        "archives",
+        "import"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "license_spdx": "MIT",
+      "stars": 300773,
+      "pushed_at": "2026-11-09T04:56:24Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "productivity"
+      ],
+      "query_groups": [
+        "provenance"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "memvid/memvid",
+      "url": "https://github.com/memvid/memvid",
+      "description": "Memory layer for AI Agents. Replace complex RAG pipelines with a serverless, single-file memory layer. Give your agents instant retrieval and long-term memory.",
+      "license_spdx": "Apache-2.0",
+      "stars": 17393,
+      "pushed_at": "2026-07-14T14:39:07Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "context",
+        "embedded",
+        "faiss",
+        "knowledge-base",
+        "knowledge-graph",
+        "llm",
+        "machine-learning",
+        "memory",
+        "memvid",
+        "mv2",
+        "nlp",
+        "offline-first",
+        "opencv",
+        "python",
+        "rag",
+        "retrieval-augmented-generation",
+        "semantic-search",
+        "vector-database",
+        "video-processing"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "embedded",
+        "graph",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "JerryZLiu/Dayflow",
+      "url": "https://github.com/JerryZLiu/Dayflow",
+      "description": "The automatic work journal/time tracker. Privately turns your screen into a timeline of what you actually accomplished. Open-source and local-first.",
+      "license_spdx": "MIT",
+      "stars": 7423,
+      "pushed_at": "2026-11-10T11:29:42Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "chatgpt",
+        "claude",
+        "gemini",
+        "llm",
+        "lmstudio",
+        "local-first",
+        "macos",
+        "ollama",
+        "productivity",
+        "productivity-tools",
+        "screen-recording",
+        "swift",
+        "time",
+        "time-tracker",
+        "time-tracking",
+        "timeline",
+        "work-journal"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "local",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "FlowElement-xinliuyuansu/m_flow",
+      "url": "https://github.com/FlowElement-xinliuyuansu/m_flow",
+      "description": "A bio-inspired cognitive memory engine — a new paradigm for Graph RAG.",
+      "license_spdx": "Apache-2.0",
+      "stars": 4510,
+      "pushed_at": "2026-09-01T22:13:08Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "agentic-ai",
+        "ai-reasoning",
+        "episodic-memory",
+        "graph-database",
+        "knowledge-graph",
+        "llm",
+        "long-term-memory",
+        "mcp",
+        "memory-engine",
+        "python",
+        "rag",
+        "semantic-memory",
+        "vector-search"
+      ],
+      "query_groups": [
+        "graph"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "graph",
+        "mcp",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "codedogQBY/ReadAny",
+      "url": "https://github.com/codedogQBY/ReadAny",
+      "description": "AI-powered cross-platform e-book reader with semantic search, RAG chat, local vector store, notes, TTS, and WebDAV sync.",
+      "license_spdx": "NOASSERTION",
+      "stars": 2966,
+      "pushed_at": "2026-11-02T02:55:43Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "anthropic",
+        "ebook-reader",
+        "embeddings",
+        "epub-reader",
+        "expo",
+        "knowledge-management",
+        "llm",
+        "local-first",
+        "ollama",
+        "openai",
+        "rag",
+        "react",
+        "react-native",
+        "semantic-search",
+        "sqlite",
+        "tauri",
+        "tts",
+        "typescript",
+        "vector-search"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "local",
+        "search",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "ShenSeanChen/waku-agent",
+      "url": "https://github.com/ShenSeanChen/waku-agent",
+      "description": "Waku Waku! Waku Agent is a local-first AI agent harness you actually own, including loop, memory, eval, all in code built to stay legible as it grows.",
+      "license_spdx": "MIT",
+      "stars": 2158,
+      "pushed_at": "2026-10-23T18:49:21Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-framework",
+        "ai-agent",
+        "ai-assistant",
+        "claude",
+        "evals",
+        "llm",
+        "llmops",
+        "local-first",
+        "openai",
+        "personal-assistant",
+        "python",
+        "sqlite"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "claude",
+        "local",
+        "memory",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "silverstein/minutes",
+      "url": "https://github.com/silverstein/minutes",
+      "description": "Open-source, local-first Granola/Otter alternative that Claude Code, Codex, Cursor, and any MCP client can query. Meetings, calls, and voice memos transcribed on-device into markdown you own.",
+      "license_spdx": "MIT",
+      "stars": 1596,
+      "pushed_at": "2026-11-10T17:27:05Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-skills",
+        "ai",
+        "claude",
+        "mcp",
+        "meeting-notes",
+        "meetings",
+        "parakeet",
+        "privacy",
+        "rust",
+        "speech-to-text",
+        "transcription",
+        "voice-memo",
+        "whisper"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "claude",
+        "local",
+        "mcp",
+        "rust",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "moyangzhan/langchain4j-aideepin",
+      "url": "https://github.com/moyangzhan/langchain4j-aideepin",
+      "description": "AI 应用平台（聊天、绘画、知识库、工作流、 MCP服务市场、语音输入输出、长期记忆） | AI application platform (Chat,Draw,RAG,Workflow,MCP marketplace, ASR,TTS, Long-term memory etc)",
+      "license_spdx": "MIT",
+      "stars": 1399,
+      "pushed_at": "2026-11-09T11:06:10Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agent",
+        "ai-workflow",
+        "graphrag",
+        "knowlege-base",
+        "langchain4j",
+        "langgraph4j",
+        "mcp",
+        "rag"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "graph",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Zen4-bit/Proxima",
+      "url": "https://github.com/Zen4-bit/Proxima",
+      "description": "Multi-AI MCP Server - Connect ChatGPT, Claude, Gemini & Perplexity to your coding tools without any API",
+      "license_spdx": "NOASSERTION",
+      "stars": 1208,
+      "pushed_at": "2026-10-16T16:59:17Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "agents",
+        "ai-agents",
+        "ai-tools",
+        "byok",
+        "chatgpt",
+        "claude",
+        "devloper-tools",
+        "electron",
+        "gemini",
+        "llm-agent",
+        "llm-tools",
+        "llms",
+        "mcp",
+        "mcp-server",
+        "mcp-servers",
+        "mcp-tools",
+        "multi-agent",
+        "multimodal",
+        "perplexity"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "mcp"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "GrafeoDB/grafeo",
+      "url": "https://github.com/GrafeoDB/grafeo",
+      "description": "Grafeo is a pure-Rust, high-performance graph database that can be embedded as a library or run as a standalone database, with optional in-memory or persistent storage. Grafeo supports both LPG and RDF and all major query languages.",
+      "license_spdx": "Apache-2.0",
+      "stars": 843,
+      "pushed_at": "2026-11-09T06:35:47Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "cypher",
+        "gql",
+        "grafeo",
+        "grafeodb",
+        "graph-algorithms",
+        "graph-analytics",
+        "graph-database",
+        "graphchallenge",
+        "graphql",
+        "gremlin",
+        "in-memory-database",
+        "knowledge-graph",
+        "labeled-property-graph",
+        "lpg",
+        "python",
+        "rdf",
+        "resource-description-framework",
+        "sparql"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 9,
+      "matched_terms": [
+        "embedded",
+        "graph",
+        "memory",
+        "rust",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "NateBJones-Projects/OB1",
+      "url": "https://github.com/NateBJones-Projects/OB1",
+      "description": "Open Brain — The infrastructure layer for your thinking. One database, one AI gateway, one chat channel — any AI plugs in. No middleware, no SaaS.",
+      "license_spdx": "NOASSERTION",
+      "stars": 4771,
+      "pushed_at": "2026-11-10T09:21:58Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "mcp",
+        "memory-layer",
+        "memory-layer-for-ai",
+        "open-brain",
+        "open-source",
+        "personal-knowledge",
+        "personal-knowledge-management",
+        "supabase"
+      ],
+      "query_groups": [
+        "archives",
+        "provenance"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "mcp",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "description": "Your lightweight open-source personal agent.",
+      "license_spdx": "MIT",
+      "stars": 49996,
+      "pushed_at": "2026-11-10T15:47:24Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-framework",
+        "ai-agent",
+        "ai-agents",
+        "chatbot",
+        "chatops",
+        "discord-bot",
+        "llm-agents",
+        "llms",
+        "local-llm",
+        "mcp",
+        "model-context-protocol",
+        "multi-agent",
+        "openai-compatible",
+        "openclaw",
+        "personal-ai-assistant",
+        "python",
+        "self-hosted",
+        "telegram-bot-ai-assistant",
+        "webui",
+        "workflow-automation"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "local",
+        "mcp",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "deeplethe/utopia",
+      "url": "https://github.com/deeplethe/utopia",
+      "description": "World's first open-source enterprise world model.",
+      "license_spdx": "Apache-2.0",
+      "stars": 8700,
+      "pushed_at": "2026-11-10T16:19:47Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "bitemporal",
+        "graphrag",
+        "knowledge-base",
+        "knowledge-graph",
+        "llm",
+        "ontology",
+        "pgvector",
+        "postgresql",
+        "rag",
+        "rust",
+        "self-hosted",
+        "semantic-search",
+        "temporal-knowledge-graph",
+        "world-model"
+      ],
+      "query_groups": [
+        "graph"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "graph",
+        "memory",
+        "rust",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "OpenCoworkAI/open-codesign",
+      "url": "https://github.com/OpenCoworkAI/open-codesign",
+      "description": "Open-source Claude Design alternative. One-click import your Claude Code / Codex API key. Prompt → prototype / slides / PDF. Multi-model (Claude, GPT, Gemini, Kimi, GLM, Ollama). BYOK, local-first, MIT.",
+      "license_spdx": "MIT",
+      "stars": 8197,
+      "pushed_at": "2026-11-10T07:45:31Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-design",
+        "anthropic",
+        "byok",
+        "claude",
+        "claude-code",
+        "claude-design",
+        "claude-design-alternative",
+        "deepseek",
+        "design-to-code",
+        "desktop-app",
+        "electron",
+        "figma-alternative",
+        "gemini",
+        "local-first",
+        "multi-model",
+        "ollama",
+        "openai",
+        "openrouter",
+        "typescript",
+        "ui-generator"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "claude",
+        "import",
+        "local",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Gentleman-Programming/engram",
+      "url": "https://github.com/Gentleman-Programming/engram",
+      "description": "Persistent memory system for AI coding agents. Agent-agnostic Go binary with SQLite + FTS5, MCP server, HTTP API, CLI, and TUI.",
+      "license_spdx": "MIT",
+      "stars": 7898,
+      "pushed_at": "2026-11-10T19:41:13Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "gentle-shell-package"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "mcp",
+        "memory",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "2FastLabs/agent-squad",
+      "url": "https://github.com/2FastLabs/agent-squad",
+      "description": "Flexible and powerful framework for managing multiple AI agents and handling complex conversations",
+      "license_spdx": "Apache-2.0",
+      "stars": 7804,
+      "pushed_at": "2026-10-08T09:03:31Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai-agents",
+        "ai-agents-framework",
+        "anthropic",
+        "anthropic-claude",
+        "aws",
+        "aws-bedrock",
+        "aws-cdk",
+        "aws-lambda",
+        "chatbot",
+        "framework",
+        "generative-ai",
+        "machine-learning",
+        "openai",
+        "openaiapi",
+        "orchestrator",
+        "python",
+        "serverless",
+        "typescript"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "claude",
+        "conversation"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "netease-youdao/LobsterAI",
+      "url": "https://github.com/netease-youdao/LobsterAI",
+      "description": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real desktop and takes commands from your phone via WeChat, Feishu, DingTalk & Telegram.",
+      "license_spdx": "MIT",
+      "stars": 6175,
+      "pushed_at": "2026-11-10T16:51:59Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "ai-agent",
+        "ai-assistant",
+        "automation",
+        "autonomous-agents",
+        "chatbot",
+        "copilot",
+        "cross-platform",
+        "desktop-app",
+        "electron",
+        "llm",
+        "mcp",
+        "office-automation",
+        "openclaw",
+        "productivity",
+        "react",
+        "tyepscript"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "mcp",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "0xNyk/awesome-hermes-agent",
+      "url": "https://github.com/0xNyk/awesome-hermes-agent",
+      "description": "Independent directory of useful skills, plugins, memory providers, tools, surfaces, and guides for Nous Research's open-source Hermes Agent.",
+      "license_spdx": "NOASSERTION",
+      "stars": 5996,
+      "pushed_at": "2026-10-27T14:12:42Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "ai-tools",
+        "awesome",
+        "awesome-list",
+        "hermes-agent",
+        "mcp",
+        "memory",
+        "nous-research",
+        "skills"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "mcp",
+        "memory",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "u14app/neo-chat",
+      "url": "https://github.com/u14app/neo-chat",
+      "description": "A local-first AI chat workspace for models, agents, skills, plugins, search, RAG, voice, memory, and artifacts.",
+      "license_spdx": "MIT",
+      "stars": 1882,
+      "pushed_at": "2026-11-01T04:05:45Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-chat",
+        "gemini",
+        "openai",
+        "skills"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "local",
+        "memory",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "ChesterRa/cccc",
+      "url": "https://github.com/ChesterRa/cccc",
+      "description": "Coordinate your coding agents like a group chat — read receipts, delivery tracking, and remote ops from your phone. One pip install, zero infrastructure. A production‑minded orchestrator for 24/7 workflow",
+      "license_spdx": "Apache-2.0",
+      "stars": 1306,
+      "pushed_at": "2026-11-10T16:29:20Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "antigravity",
+        "chatgpt",
+        "claude-code",
+        "codex-cli",
+        "group-chat",
+        "llm-orchestration",
+        "local-first",
+        "multi-agent",
+        "opencode",
+        "zero-infra"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "NirDiamant/Agent_Memory_Techniques",
+      "url": "https://github.com/NirDiamant/Agent_Memory_Techniques",
+      "description": "Agent memory for LLMs: 30 runnable Jupyter notebooks covering conversation buffers, vector stores, knowledge graphs, episodic and semantic memory, MemGPT, Mem0, Letta, Zep, Graphiti, LoCoMo benchmarks, and production patterns.",
+      "license_spdx": "Apache-2.0",
+      "stars": 1139,
+      "pushed_at": "2026-11-01T13:57:49Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "ai-agents",
+        "anthropic",
+        "episodic-memory",
+        "generative-ai",
+        "graphiti",
+        "knowledge-graph",
+        "langchain",
+        "letta",
+        "llm",
+        "llm-agents",
+        "llm-memory",
+        "mem0",
+        "memgpt",
+        "openai",
+        "python",
+        "rag",
+        "semantic-memory",
+        "vector-database",
+        "zep"
+      ],
+      "query_groups": [
+        "graph"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "conversation",
+        "graph",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "sgasser/pasteguard",
+      "url": "https://github.com/sgasser/pasteguard",
+      "description": "AI gets the context. Not your private data. Local-first privacy proxy for browser chat, AI APIs, and coding agents.",
+      "license_spdx": "Apache-2.0",
+      "stars": 824,
+      "pushed_at": "2026-11-08T10:31:37Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "anthropic",
+        "browser-extension",
+        "chatgpt",
+        "claude",
+        "codex",
+        "data-protection",
+        "llm",
+        "llm-privacy",
+        "local-first",
+        "openai",
+        "pii",
+        "pii-detection",
+        "privacy",
+        "privacy-proxy",
+        "secret-scanning",
+        "secrets",
+        "security",
+        "self-hosted"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "ThinkfleetAI/memmesh",
+      "url": "https://github.com/ThinkfleetAI/memmesh",
+      "description": "Persistent, self-improving memory for AI agents. Local-first Rust memory engine with MCP support.",
+      "license_spdx": "Apache-2.0",
+      "stars": 358,
+      "pushed_at": "2026-08-25T16:50:04Z",
+      "archived": false,
+      "fork": false,
+      "topics": [],
+      "query_groups": [
+        "provenance"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "local",
+        "mcp",
+        "memory",
+        "rust"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Helweg/open-codebase-index",
+      "url": "https://github.com/Helweg/open-codebase-index",
+      "description": "Semantic codebase indexing and search for OpenCode, Claude, Codex, Pi, Jcode, and MCP hosts. Powered by Rust and tree-sitter.",
+      "license_spdx": "MIT",
+      "stars": 230,
+      "pushed_at": "2026-11-10T08:58:39Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "claude-code",
+        "code-search",
+        "codebase-indexing",
+        "codex",
+        "embeddings",
+        "mcp",
+        "opencode",
+        "rust",
+        "semantic-search",
+        "tree-sitter"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 8,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "description": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+      "license_spdx": "Apache-2.0",
+      "stars": 115796,
+      "pushed_at": "2026-11-10T23:01:40Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "query_groups": [
+        "mcp",
+        "agent-history"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "memory",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "sickn33/agentic-awesome-skills",
+      "url": "https://github.com/sickn33/agentic-awesome-skills",
+      "description": "2,955+ reusable AI agent skills for Claude Code, Codex, Cursor and Gemini CLI. AAS Core adds local catalog discovery, agent-owned selection and plan preview. CLI, MCP and plugins.",
+      "license_spdx": "MIT",
+      "stars": 49497,
+      "pushed_at": "2026-11-10T09:23:39Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-skills",
+        "agentic-skills",
+        "ai-agent-skills",
+        "ai-agents",
+        "ai-coding",
+        "ai-workflows",
+        "antigravity",
+        "antigravity-skills",
+        "claude-code",
+        "claude-code-skills",
+        "codex-cli",
+        "codex-skills",
+        "cursor",
+        "cursor-skills",
+        "developer-tools",
+        "gemini-cli",
+        "gemini-skills",
+        "kiro",
+        "mcp",
+        "skill-library"
+      ],
+      "query_groups": [
+        "archives",
+        "provenance"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "local",
+        "mcp"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "huohuoer/wechat-cli",
+      "url": "https://github.com/huohuoer/wechat-cli",
+      "description": "A CLI tool to query your local WeChat data — chat history, contacts, sessions, favorites, and more. Designed for LLM integration.",
+      "license_spdx": "Apache-2.0",
+      "stars": 2743,
+      "pushed_at": "2026-04-06T01:52:04Z",
+      "archived": false,
+      "fork": false,
+      "topics": [],
+      "query_groups": [
+        "mcp",
+        "agent-history"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "chat",
+        "history",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "harshkedia177/axon",
+      "url": "https://github.com/harshkedia177/axon",
+      "description": "Graph-powered code intelligence engine — indexes codebases into a knowledge graph, exposed via MCP tools for AI agents and a CLI for developers.",
+      "license_spdx": null,
+      "stars": 817,
+      "pushed_at": "2026-08-03T11:51:21Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "claude-code",
+        "code-analysis",
+        "code-intelligence",
+        "dead-code-detection",
+        "knowledge-graph",
+        "mcp",
+        "python",
+        "static-analysis",
+        "tree-sitter",
+        "typescript"
+      ],
+      "query_groups": [
+        "lexical",
+        "hybrid"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "graph",
+        "mcp"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "farion1231/cc-switch",
+      "url": "https://github.com/farion1231/cc-switch",
+      "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode,DeepSeek Harness and more. Only official website: ccswitch.io",
+      "license_spdx": "MIT",
+      "stars": 153331,
+      "pushed_at": "2026-11-10T15:10:05Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "codex",
+        "deepseek-harness",
+        "desktop-app",
+        "grok",
+        "grokbuild",
+        "hermes",
+        "kimi-code",
+        "mcp",
+        "open-source",
+        "opencode",
+        "pi",
+        "provider-management",
+        "rust",
+        "skills",
+        "skills-management",
+        "tauri",
+        "wsl-support"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "rust",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "NevaMind-AI/memU",
+      "url": "https://github.com/NevaMind-AI/memU",
+      "description": "Personal memory across agents",
+      "license_spdx": "NOASSERTION",
+      "stars": 14613,
+      "pushed_at": "2026-11-10T12:22:11Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-memory",
+        "claude-skills",
+        "harness",
+        "loop-engineering",
+        "mcp",
+        "memory",
+        "openclaw",
+        "openclaw-skills",
+        "sandbox",
+        "skills"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "zilliztech/claude-context",
+      "url": "https://github.com/zilliztech/claude-context",
+      "description": "Code search MCP for Claude Code. Make entire codebase the context for any coding agent.",
+      "license_spdx": "MIT",
+      "stars": 12686,
+      "pushed_at": "2026-07-14T12:00:38Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "agentic-rag",
+        "ai-coding",
+        "claude-code",
+        "code-generation",
+        "code-search",
+        "cursor",
+        "embedding",
+        "gemini-cli",
+        "mcp",
+        "merkle-tree",
+        "nodejs",
+        "openai",
+        "rag",
+        "semantic-search",
+        "typescript",
+        "vector-database",
+        "vibe-coding",
+        "voyage-ai",
+        "vscode-extension"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "ChatLab/ChatLab",
+      "url": "https://github.com/ChatLab/ChatLab",
+      "description": "Local-first chat history analyzer with AI. | 本地优先的 AI 聊天记录分析工具",
+      "license_spdx": "AGPL-3.0",
+      "stars": 7635,
+      "pushed_at": "2026-11-04T02:05:24Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agent",
+        "chat-analyzer",
+        "chat-history",
+        "data-analysis",
+        "data-visualization",
+        "harness"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "chat",
+        "history",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "aldinokemal/go-whatsapp-web-multidevice",
+      "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice",
+      "description": "GOWA - WhatsApp REST API with support for UI, Multi Account, Webhooks, and MCP, and Chatwoot. Built with Golang for efficient memory use. ",
+      "license_spdx": "MIT",
+      "stars": 5020,
+      "pushed_at": "2026-11-10T07:28:30Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "bot",
+        "go",
+        "golang",
+        "golang-whatsapp",
+        "golang-whatsapp-api",
+        "rest",
+        "rest-api",
+        "whatsapp",
+        "whatsapp-api",
+        "whatsapp-api-go",
+        "whatsapp-multi-device",
+        "whatsapp-web-multi-device"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "chat",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "claraverse-space/ClaraVerse",
+      "url": "https://github.com/claraverse-space/ClaraVerse",
+      "description": "Claraverse is a opesource privacy focused ecosystem to replace ChatGPT, Claude, N8N, ImageGen with your own hosted llm, keys and compute. With desktop, IOS, Android Apps.",
+      "license_spdx": "NOASSERTION",
+      "stars": 3902,
+      "pushed_at": "2026-08-03T16:56:59Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "hacktoberfest",
+        "llm",
+        "ollama",
+        "opensourcellms",
+        "webui"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "mnemosyne-oss/mnemosyne",
+      "url": "https://github.com/mnemosyne-oss/mnemosyne",
+      "description": "Zero-cloud AI memory that works everywhere. SQLite-backed. One pure-Python dependency.",
+      "license_spdx": "MIT",
+      "stars": 3619,
+      "pushed_at": "2026-11-10T19:59:13Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agents",
+        "ai",
+        "hermes",
+        "hermes-agent",
+        "ml",
+        "nousresearch"
+      ],
+      "query_groups": [
+        "graph"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "memory",
+        "search",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "Bitterbot-AI/bitterbot-desktop",
+      "url": "https://github.com/Bitterbot-AI/bitterbot-desktop",
+      "description": "Bitterbot - a mesh of agents that turns shared experience into collective capability.",
+      "license_spdx": "MIT",
+      "stars": 2484,
+      "pushed_at": "2026-11-08T20:49:51Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "a2a-protocol",
+        "agent-economy",
+        "agent-memory",
+        "ai-agent",
+        "chatbot",
+        "cognitive-architecture",
+        "decentralized-ai",
+        "desktop-app",
+        "dream-engine",
+        "local-first",
+        "multi-channel",
+        "open-source",
+        "p2p",
+        "personal-ai",
+        "skills-marketplace",
+        "typescript",
+        "x402"
+      ],
+      "query_groups": [
+        "provenance"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "chat",
+        "local",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "SeekStorm/SeekStorm",
+      "url": "https://github.com/SeekStorm/SeekStorm",
+      "description": "SeekStorm: vector & lexical search - in-process library & multi-tenancy server, in Rust.",
+      "license_spdx": "Apache-2.0",
+      "stars": 1938,
+      "pushed_at": "2026-11-06T17:19:21Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-search",
+        "bm25",
+        "dense-retrieval",
+        "enterprise-search",
+        "faceting",
+        "full-text-search",
+        "geosearch",
+        "hybrid-search",
+        "lexical-search",
+        "neural-search",
+        "realtime",
+        "search",
+        "search-engine",
+        "search-server",
+        "search-service",
+        "semantic-search",
+        "sparse-retrieval",
+        "vector-database",
+        "vector-search",
+        "vector-search-engine"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "bm25",
+        "hybrid",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "codeaholicguy/ai-devkit",
+      "url": "https://github.com/codeaholicguy/ai-devkit",
+      "description": "The control plane for AI coding agents.",
+      "license_spdx": "Apache-2.0",
+      "stars": 1662,
+      "pushed_at": "2026-11-09T18:12:32Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-framework",
+        "agent-skills",
+        "ai",
+        "ai-agents",
+        "ai-coding",
+        "antigravity",
+        "claude-code",
+        "cli",
+        "codex-cli",
+        "coding-agents",
+        "cursor-ai",
+        "developer-tools",
+        "gemini-cli",
+        "mcp",
+        "memory",
+        "opencode",
+        "pi",
+        "software-engineering",
+        "workflow-automation"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "jeffhajewski/latticedb",
+      "url": "https://github.com/jeffhajewski/latticedb",
+      "description": "Embedded single-file knowledge graph database with vector search and full-text search for AI/RAG apps",
+      "license_spdx": "MIT",
+      "stars": 750,
+      "pushed_at": "2026-10-27T19:17:06Z",
+      "archived": false,
+      "fork": false,
+      "topics": [],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "embedded",
+        "graph",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "f/agentlytics",
+      "url": "https://github.com/f/agentlytics",
+      "description": "Comprehensive analytics dashboard for AI coding agents — Cursor, Windsurf, Claude Code, VS Code Copilot, Zed, Antigravity, OpenCode, Command Code",
+      "license_spdx": null,
+      "stars": 595,
+      "pushed_at": "2026-08-03T12:43:08Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agentlytics",
+        "ai-coding-assistant",
+        "analytics",
+        "claude-code",
+        "cursor",
+        "dashboard",
+        "local-first",
+        "macos",
+        "nodejs",
+        "opencode",
+        "react",
+        "sqlite",
+        "vscode-copilot",
+        "windsurf",
+        "zed"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "claude",
+        "local",
+        "sqlite"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "automataIA/graphrag-rs",
+      "url": "https://github.com/automataIA/graphrag-rs",
+      "description": "GraphRAG-rs is a high-performance, state-of-the-art Rust implementation of GraphRAG (Graph-based Retrieval Augmented Generation) that builds knowledge graphs from documents and enables natural language querying with configurable entity extraction and local LLM integration",
+      "license_spdx": "MIT",
+      "stars": 539,
+      "pushed_at": "2026-06-02T20:02:47Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "embeddings",
+        "entity-extraction",
+        "graphrag",
+        "knowledge-graph",
+        "llama-cpp",
+        "llm",
+        "nlp",
+        "ollama-api",
+        "retrieval-augmented-generation",
+        "rust",
+        "rust-crate",
+        "semantic-search",
+        "vector-search"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 7,
+      "matched_terms": [
+        "graph",
+        "local",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "CaviraOSS/LongMemory",
+      "url": "https://github.com/CaviraOSS/LongMemory",
+      "description": "Local persistent memory store for LLM applications including claude desktop, github copilot, codex, antigravity, etc.",
+      "license_spdx": "Apache-2.0",
+      "stars": 4572,
+      "pushed_at": "2026-11-10T05:24:25Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-infrastructure",
+        "ai-memory",
+        "artificial-intelligence",
+        "cognitive-architecture",
+        "embeddings",
+        "gemini",
+        "llm",
+        "long-term-memory",
+        "longmemory",
+        "memory",
+        "memory-engine",
+        "memory-retrieval",
+        "ollama",
+        "one-line",
+        "openai",
+        "rag",
+        "supermemory",
+        "vector-database"
+      ],
+      "query_groups": [
+        "mcp",
+        "provenance",
+        "memory",
+        "graph",
+        "import"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "local",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "kenn-io/agentsview",
+      "url": "https://github.com/kenn-io/agentsview",
+      "description": "Local-first session search, analytics, insights, and token use statistics for coding agents, supporting Claude Code, Codex, and more than 50 other agents. ",
+      "license_spdx": "MIT",
+      "stars": 6422,
+      "pushed_at": "2026-11-10T23:06:00Z",
+      "archived": false,
+      "fork": false,
+      "topics": [],
+      "query_groups": [
+        "archives",
+        "agent-history",
+        "import"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "local",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "MemPalace/mempalace",
+      "url": "https://github.com/MemPalace/mempalace",
+      "description": "The best-benchmarked open-source AI memory system. And it's free.",
+      "license_spdx": "MIT",
+      "stars": 60509,
+      "pushed_at": "2026-11-10T22:42:26Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "chromadb",
+        "llm",
+        "mcp",
+        "memory",
+        "python"
+      ],
+      "query_groups": [
+        "mcp",
+        "agent-history"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "mcp",
+        "memory",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "license_spdx": "MIT",
+      "stars": 449839,
+      "pushed_at": "2026-11-10T23:06:37Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent-skills",
+        "ai",
+        "android",
+        "claude-code",
+        "cli",
+        "cpp",
+        "dsh-plugin",
+        "html",
+        "java",
+        "javascript",
+        "linux",
+        "mcp",
+        "nodejs",
+        "python",
+        "rea",
+        "react",
+        "rust",
+        "security",
+        "touhou",
+        "typescript"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "rust"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "description": "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes Agent — fewer tokens, fewer tool calls, 100% local",
+      "license_spdx": "MIT",
+      "stars": 77304,
+      "pushed_at": "2026-11-01T17:36:07Z",
+      "archived": false,
+      "fork": false,
+      "topics": [],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "graph",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "router-for-me/CLIProxyAPI",
+      "url": "https://github.com/router-for-me/CLIProxyAPI",
+      "description": "Wrap Antigravity, ChatGPT Codex, Claude Code, Grok Build, Muse Code, Devin as an OpenAI/Gemini/Claude/Codex compatible API service, allowing you to enjoy the free Gemini Series, GPT Series, Grok Series, Claude model through API",
+      "license_spdx": "MIT",
+      "stars": 58189,
+      "pushed_at": "2026-11-10T18:44:06Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "antigravity",
+        "claude-code",
+        "cluade",
+        "codex",
+        "devin",
+        "gemini",
+        "muse",
+        "openai"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "mudler/LocalAI",
+      "url": "https://github.com/mudler/LocalAI",
+      "description": "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
+      "license_spdx": "MIT",
+      "stars": 50297,
+      "pushed_at": "2026-11-10T22:12:59Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agents",
+        "ai",
+        "api",
+        "audio-generation",
+        "decentralized",
+        "distributed",
+        "image-generation",
+        "libp2p",
+        "llama",
+        "llm",
+        "mamba",
+        "mcp",
+        "musicgen",
+        "object-detection",
+        "rerank",
+        "stable-diffusion",
+        "text-generation",
+        "tts"
+      ],
+      "query_groups": [
+        "memory"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "local",
+        "mcp",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "can1357/oh-my-pi",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "description": "⌥ Coding agent with the IDE wired in. Built by Stencil Labs.",
+      "license_spdx": "MIT",
+      "stars": 38568,
+      "pushed_at": "2026-11-10T23:02:47Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agent",
+        "ai-coding-agent",
+        "anthropic",
+        "bun",
+        "claude",
+        "cli",
+        "coding-assistant",
+        "llm",
+        "mcp",
+        "multi-provider",
+        "openai",
+        "rust",
+        "terminal",
+        "tui",
+        "typescript"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "rust"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "yusufkaraaslan/Skill_Seekers",
+      "url": "https://github.com/yusufkaraaslan/Skill_Seekers",
+      "description": "Convert documentation websites, GitHub repositories, and PDFs into Claude AI skills with automatic conflict detection",
+      "license_spdx": "MIT",
+      "stars": 15296,
+      "pushed_at": "2026-09-30T18:49:17Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-tools",
+        "ast-parser",
+        "automation",
+        "claude-ai",
+        "claude-skills",
+        "code-analysis",
+        "conflict-detection",
+        "documentation",
+        "documentation-generator",
+        "github",
+        "github-scraper",
+        "mcp",
+        "mcp-server",
+        "multi-source",
+        "ocr",
+        "pdf",
+        "python",
+        "web-scraping"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "tryatlas/atlas",
+      "url": "https://github.com/tryatlas/atlas",
+      "description": "Source control for agents. Use multiple coding agents, track their changes and query them in one place",
+      "license_spdx": "Apache-2.0",
+      "stars": 9384,
+      "pushed_at": "2026-11-10T21:02:08Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-coding-assistant",
+        "claude-code",
+        "codex",
+        "coding-agents",
+        "git",
+        "gitops",
+        "kilo-code",
+        "mcp",
+        "mcp-client",
+        "opencode",
+        "opencode-ai",
+        "opencode-skills",
+        "self-hosted",
+        "skills"
+      ],
+      "query_groups": [
+        "agent-history"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "gptme/gptme",
+      "url": "https://github.com/gptme/gptme",
+      "description": "Your agent in your terminal, equipped with local tools: writes code, uses the terminal, browses the web. Make your own persistent autonomous agent on top!",
+      "license_spdx": "MIT",
+      "stars": 4470,
+      "pushed_at": "2026-11-10T22:33:00Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agent",
+        "agents",
+        "ai-agents",
+        "ai-assistant",
+        "anthropic",
+        "autonomous-agents",
+        "chatbot",
+        "chatgpt",
+        "cli",
+        "code-generation",
+        "deepseek",
+        "llm",
+        "llm-agent",
+        "llm-apps",
+        "local-first",
+        "openai",
+        "openrouter",
+        "python",
+        "rag",
+        "terminal"
+      ],
+      "query_groups": [
+        "archives"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "local"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "CortexReach/memory-lancedb-pro",
+      "url": "https://github.com/CortexReach/memory-lancedb-pro",
+      "description": "Enhanced LanceDB memory plugin for OpenClaw — Hybrid Retrieval (Vector + BM25), Cross-Encoder Rerank, Multi-Scope Isolation, Management CLI",
+      "license_spdx": null,
+      "stars": 4449,
+      "pushed_at": "2026-11-07T13:10:32Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "lancedb",
+        "memory",
+        "openclaw",
+        "openclaw-agent",
+        "openclaw-plugin",
+        "rag"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "bm25",
+        "hybrid",
+        "memory"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "RManLuo/Awesome-LLM-KG",
+      "url": "https://github.com/RManLuo/Awesome-LLM-KG",
+      "description": "Awesome papers about unifying LLMs and KGs",
+      "license_spdx": null,
+      "stars": 2620,
+      "pushed_at": "2025-05-02T02:00:45Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "awsome",
+        "chatgpt",
+        "gpt-4",
+        "kg",
+        "knowledge-graph",
+        "language-model",
+        "large-language-model",
+        "llm",
+        "survey"
+      ],
+      "query_groups": [
+        "graph"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "graph"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "darrenburns/elia",
+      "url": "https://github.com/darrenburns/elia",
+      "description": "A snappy, keyboard-centric terminal user interface for interacting with large language models. Chat with ChatGPT, Claude, Llama 3, Phi 3, Mistral, Gemma and more.",
+      "license_spdx": "Apache-2.0",
+      "stars": 2481,
+      "pushed_at": "2024-10-10T19:12:52Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "chatgpt",
+        "claude",
+        "gemma",
+        "gpt",
+        "large-language-models",
+        "llama",
+        "llama3",
+        "llm",
+        "mistral",
+        "mistral-ai",
+        "mixtral",
+        "ollama",
+        "ollama-client",
+        "ollama-interface",
+        "phi-3",
+        "python",
+        "terminal",
+        "tui"
+      ],
+      "query_groups": [
+        "import"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "claude"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "vmoranv/jshookmcp",
+      "url": "https://github.com/vmoranv/jshookmcp",
+      "description": "A search-first, profile-aware reverse-engineering workspace for AI agents — 735 tools across 36 domains in one MCP server.",
+      "license_spdx": "AGPL-3.0",
+      "stars": 2108,
+      "pushed_at": "2026-11-10T12:20:14Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai-agents",
+        "anti-detection",
+        "browser-automation",
+        "chrome-devtools-protocol",
+        "debugging",
+        "deobfuscation",
+        "frida",
+        "javascript",
+        "js-reverse",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "network-analysis",
+        "reverse-engineering",
+        "security-analysis",
+        "source-maps",
+        "typescript",
+        "wasm",
+        "web-security"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "mcp",
+        "search",
+        "source"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "lorryjovens-hub/claude-code-rust",
+      "url": "https://github.com/lorryjovens-hub/claude-code-rust",
+      "description": "🚀 Rust 全量重构的 Claude Code - 性能提升 2.5x，体积减少 97% | High-performance Rust implementation of Claude Code with 2.5x faster startup and 97% smaller binary",
+      "license_spdx": null,
+      "stars": 1668,
+      "pushed_at": "2026-05-30T07:05:37Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "claude",
+        "cli",
+        "mcp",
+        "performance",
+        "repl",
+        "rust"
+      ],
+      "query_groups": [
+        "mcp"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "claude",
+        "mcp",
+        "rust"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "pguso/rag-from-scratch",
+      "url": "https://github.com/pguso/rag-from-scratch",
+      "description": "Demystify RAG by building it from scratch. Local LLMs, no black boxes - real understanding of embeddings, vector search, retrieval, and context-augmented generation.",
+      "license_spdx": "MIT",
+      "stars": 1651,
+      "pushed_at": "2026-03-11T11:44:33Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "agents",
+        "ai-agents",
+        "educational",
+        "llm",
+        "node-llama-cpp",
+        "nodejs",
+        "rag",
+        "rag-chatbot",
+        "rag-pipeline",
+        "tutorial"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "local",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "elastic/elastic-labs",
+      "url": "https://github.com/elastic/elastic-labs",
+      "description": "Notebooks & Example Apps for Search, Observability, and Security with Elasticsearch",
+      "license_spdx": "Apache-2.0",
+      "stars": 1141,
+      "pushed_at": "2026-11-03T15:56:14Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "applications",
+        "chatgpt",
+        "chatlog",
+        "elastic",
+        "elasticsearch",
+        "genai",
+        "genaistack",
+        "langchain",
+        "langchain-python",
+        "openai",
+        "openai-chatgpt",
+        "python",
+        "search",
+        "vector",
+        "vectordatabase"
+      ],
+      "query_groups": [
+        "hybrid"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "chat",
+        "chatgpt",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "name": "probelabs/probe",
+      "url": "https://github.com/probelabs/probe",
+      "description": "AI-friendly semantic code search engine for large codebases. Combines ripgrep speed with tree-sitter AST parsing. Powers AI coding assistants with precise, context-aware code understanding.",
+      "license_spdx": "Apache-2.0",
+      "stars": 739,
+      "pushed_at": "2026-11-06T08:03:19Z",
+      "archived": false,
+      "fork": false,
+      "topics": [
+        "ai",
+        "ai-coder",
+        "ast",
+        "cli",
+        "code-search",
+        "mcp",
+        "nodejs-sdk",
+        "ripgrep",
+        "rust",
+        "search-engine",
+        "semantic-search",
+        "tree-sitter"
+      ],
+      "query_groups": [
+        "lexical"
+      ],
+      "heuristic_score": 6,
+      "matched_terms": [
+        "mcp",
+        "rust",
+        "search"
+      ],
+      "status": "NEEDS_HUMAN_REVIEW"
+    }
+  ],
+  "unreviewed": true,
+  "limits": [
+    "GitHub search is not exhaustive and can be incomplete or rate limited.",
+    "Heuristic text score is NOT a correctness, quality, novelty or license verdict.",
+    "Novel repo names must be inspected and deduplicated before entering validated inventory.",
+    "Unreviewed candidates cannot close the Phase-2 exhaustion gate."
+  ]
+}
