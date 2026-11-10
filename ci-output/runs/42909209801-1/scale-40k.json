@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "dataset": {
+    "conversations": 1000,
+    "messages": 40000,
+    "import_seconds": 1.041,
+    "db_bytes": 10686464
+  },
+  "integrity": "PASS",
+  "queries": [
+    {
+      "query": "SSH",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.622,
+        "min_ms": 0.597,
+        "max_ms": 1.31
+      },
+      "literal": {
+        "median_ms": 0.137,
+        "min_ms": 0.131,
+        "max_ms": 0.181
+      }
+    },
+    {
+      "query": "PostgreSQL",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.629,
+        "min_ms": 0.612,
+        "max_ms": 0.921
+      },
+      "literal": {
+        "median_ms": 0.123,
+        "min_ms": 0.119,
+        "max_ms": 0.163
+      }
+    },
+    {
+      "query": "Jenkins",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.608,
+        "min_ms": 0.589,
+        "max_ms": 0.917
+      },
+      "literal": {
+        "median_ms": 0.121,
+        "min_ms": 0.116,
+        "max_ms": 0.157
+      }
+    },
+    {
+      "query": "AUoK",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.61,
+        "min_ms": 0.6,
+        "max_ms": 0.907
+      },
+      "literal": {
+        "median_ms": 0.155,
+        "min_ms": 0.153,
+        "max_ms": 0.193
+      }
+    },
+    {
+      "query": "MCP",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.602,
+        "min_ms": 0.587,
+        "max_ms": 0.882
+      },
+      "literal": {
+        "median_ms": 0.139,
+        "min_ms": 0.136,
+        "max_ms": 0.198
+      }
+    },
+    {
+      "query": "Android",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.605,
+        "min_ms": 0.594,
+        "max_ms": 0.856
+      },
+      "literal": {
+        "median_ms": 0.169,
+        "min_ms": 0.164,
+        "max_ms": 0.202
+      }
+    },
+    {
+      "query": "segurança",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.608,
+        "min_ms": 0.595,
+        "max_ms": 0.888
+      },
+      "literal": {
+        "median_ms": 0.165,
+        "min_ms": 0.159,
+        "max_ms": 0.204
+      }
+    },
+    {
+      "query": "REST",
+      "fts_count": 5000,
+      "literal_count": 5000,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.609,
+        "min_ms": 0.6,
+        "max_ms": 0.899
+      },
+      "literal": {
+        "median_ms": 0.167,
+        "min_ms": 0.16,
+        "max_ms": 0.203
+      }
+    },
+    {
+      "query": "marcadorunico2026",
+      "fts_count": 1,
+      "literal_count": 1,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.021,
+        "min_ms": 0.019,
+        "max_ms": 0.045
+      },
+      "literal": {
+        "median_ms": 5.346,
+        "min_ms": 5.32,
+        "max_ms": 5.391
+      }
+    },
+    {
+      "query": "termoausente999",
+      "fts_count": 0,
+      "literal_count": 0,
+      "top100_equivalent": true,
+      "equivalent": true,
+      "fts": {
+        "median_ms": 0.021,
+        "min_ms": 0.017,
+        "max_ms": 0.045
+      },
+      "literal": {
+        "median_ms": 5.219,
+        "min_ms": 5.202,
+        "max_ms": 5.329
+      }
+    }
+  ],
+  "notes": [
+    "Both timed queries return IDs only, order by rowid, and limit to 100.",
+    "FTS token search and LIKE substring search are only equivalent for selected corpus terms.",
+    "Timing is local; cross-run comparisons require controlled hardware."
+  ]
+}
