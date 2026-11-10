@@ -1,0 +1,6218 @@
+[
+  {
+    "id": "lab-multichat-01",
+    "title": "Laboratório 01 — SQLite e FTS5",
+    "create_time": 1760000000,
+    "update_time": 1760000024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c1-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 1. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c1-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 2. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c1-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 3. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c1-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 4. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c1-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 5. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c1-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 6. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c1-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 7. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c1-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 8. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c1-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 9. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c1-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 10. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c1-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 11. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c1-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 12. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c1-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 13. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c1-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 14. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c1-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 15. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c1-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 16. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c1-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 17. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c1-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 18. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c1-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 19. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c1-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 20. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador agulha-sqlite."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c1-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 21. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c1-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 22. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c1-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 23. Tema SQLite e FTS5. Pergunta prática para verificar a experiência de uso. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c1-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 1, mensagem 24. Tema SQLite e FTS5. Explicação técnica com exemplos e critérios de validação. Marcador grupo-1."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-02",
+    "title": "Laboratório 02 — Linux Termux",
+    "create_time": 1760001000,
+    "update_time": 1760001024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c2-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 1. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c2-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 2. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c2-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 3. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c2-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 4. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c2-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 5. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c2-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 6. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c2-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 7. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c2-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 8. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c2-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 9. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c2-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 10. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c2-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 11. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c2-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 12. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c2-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 13. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c2-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 14. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c2-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 15. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c2-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 16. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c2-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 17. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c2-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 18. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c2-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 19. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c2-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 20. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c2-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 21. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c2-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 22. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c2-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760001022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 23. Tema Linux Termux. Pergunta prática para verificar a experiência de uso. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c2-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760001023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 2, mensagem 24. Tema Linux Termux. Explicação técnica com exemplos e critérios de validação. Marcador grupo-2."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-03",
+    "title": "Laboratório 03 — Importação JSON",
+    "create_time": 1760002000,
+    "update_time": 1760002024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c3-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 1. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c3-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 2. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c3-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 3. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c3-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 4. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c3-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 5. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c3-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 6. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c3-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 7. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c3-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 8. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c3-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 9. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c3-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 10. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c3-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 11. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c3-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 12. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c3-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 13. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c3-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 14. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c3-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 15. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c3-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 16. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c3-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 17. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c3-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 18. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c3-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 19. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c3-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 20. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c3-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 21. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c3-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 22. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c3-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760002022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 23. Tema Importação JSON. Pergunta prática para verificar a experiência de uso. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c3-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760002023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 3, mensagem 24. Tema Importação JSON. Explicação técnica com exemplos e critérios de validação. Marcador grupo-3."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-04",
+    "title": "Laboratório 04 — Persistência",
+    "create_time": 1760003000,
+    "update_time": 1760003024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c4-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 1. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c4-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 2. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c4-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 3. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c4-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 4. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c4-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 5. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c4-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 6. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c4-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 7. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c4-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 8. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c4-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 9. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c4-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 10. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c4-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 11. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c4-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 12. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c4-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 13. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c4-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 14. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c4-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 15. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c4-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 16. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c4-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 17. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c4-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 18. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c4-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 19. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c4-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 20. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c4-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 21. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c4-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 22. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c4-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760003022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 23. Tema Persistência. Pergunta prática para verificar a experiência de uso. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c4-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760003023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 4, mensagem 24. Tema Persistência. Explicação técnica com exemplos e critérios de validação. Marcador grupo-4."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-05",
+    "title": "Laboratório 05 — Pesquisa textual",
+    "create_time": 1760004000,
+    "update_time": 1760004024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c5-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 1. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c5-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 2. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c5-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 3. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c5-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 4. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c5-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 5. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c5-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 6. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c5-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 7. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c5-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 8. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c5-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 9. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c5-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 10. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c5-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 11. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c5-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 12. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c5-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 13. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c5-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 14. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c5-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 15. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c5-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 16. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c5-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 17. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c5-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 18. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c5-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 19. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c5-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 20. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c5-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 21. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c5-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 22. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c5-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760004022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 23. Tema Pesquisa textual. Pergunta prática para verificar a experiência de uso. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c5-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760004023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 5, mensagem 24. Tema Pesquisa textual. Explicação técnica com exemplos e critérios de validação. Marcador grupo-5."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-06",
+    "title": "Laboratório 06 — Histórico de mensagens",
+    "create_time": 1760005000,
+    "update_time": 1760005024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c6-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 1. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c6-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 2. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c6-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 3. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c6-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 4. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c6-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 5. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c6-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 6. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c6-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 7. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c6-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 8. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c6-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 9. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c6-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 10. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c6-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 11. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c6-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 12. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c6-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 13. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c6-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 14. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c6-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 15. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c6-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 16. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c6-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 17. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c6-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 18. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c6-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 19. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c6-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 20. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c6-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 21. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c6-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 22. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c6-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760005022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 23. Tema Histórico de mensagens. Pergunta prática para verificar a experiência de uso. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c6-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760005023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 6, mensagem 24. Tema Histórico de mensagens. Explicação técnica com exemplos e critérios de validação. Marcador grupo-6."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-07",
+    "title": "Laboratório 07 — Contexto da IDE",
+    "create_time": 1760006000,
+    "update_time": 1760006024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c7-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 1. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c7-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 2. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c7-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 3. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c7-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 4. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c7-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 5. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c7-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 6. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c7-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 7. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c7-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 8. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c7-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 9. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c7-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 10. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c7-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 11. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c7-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 12. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c7-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 13. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c7-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 14. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c7-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 15. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c7-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 16. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c7-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 17. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c7-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 18. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador agulha-contexto-ide."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c7-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 19. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c7-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 20. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c7-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 21. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c7-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 22. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c7-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760006022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 23. Tema Contexto da IDE. Pergunta prática para verificar a experiência de uso. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c7-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760006023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 7, mensagem 24. Tema Contexto da IDE. Explicação técnica com exemplos e critérios de validação. Marcador grupo-7."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-08",
+    "title": "Laboratório 08 — Controle de acesso",
+    "create_time": 1760007000,
+    "update_time": 1760007024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c8-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 1. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c8-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 2. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c8-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 3. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c8-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 4. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c8-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 5. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c8-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 6. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c8-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 7. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c8-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 8. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c8-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 9. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c8-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 10. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c8-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 11. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c8-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 12. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c8-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 13. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c8-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 14. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c8-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 15. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c8-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 16. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c8-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 17. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c8-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 18. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c8-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 19. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c8-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 20. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c8-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 21. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c8-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 22. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c8-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760007022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 23. Tema Controle de acesso. Pergunta prática para verificar a experiência de uso. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c8-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760007023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 8, mensagem 24. Tema Controle de acesso. Explicação técnica com exemplos e critérios de validação. Marcador grupo-8."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-09",
+    "title": "Laboratório 09 — Rastreabilidade",
+    "create_time": 1760008000,
+    "update_time": 1760008024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c9-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 1. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c9-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 2. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c9-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 3. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c9-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 4. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c9-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 5. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c9-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 6. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c9-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 7. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c9-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 8. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c9-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 9. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c9-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 10. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c9-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 11. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c9-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 12. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c9-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 13. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c9-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 14. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c9-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 15. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c9-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 16. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c9-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 17. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c9-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 18. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c9-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 19. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c9-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 20. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c9-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 21. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c9-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 22. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c9-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760008022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 23. Tema Rastreabilidade. Pergunta prática para verificar a experiência de uso. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c9-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760008023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 9, mensagem 24. Tema Rastreabilidade. Explicação técnica com exemplos e critérios de validação. Marcador grupo-9."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-10",
+    "title": "Laboratório 10 — Exportação",
+    "create_time": 1760009000,
+    "update_time": 1760009024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c10-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 1. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c10-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 2. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c10-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 3. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c10-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 4. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c10-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 5. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c10-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 6. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c10-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 7. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c10-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 8. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c10-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 9. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c10-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 10. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c10-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 11. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c10-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 12. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c10-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 13. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c10-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 14. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c10-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 15. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c10-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 16. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c10-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 17. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c10-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 18. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c10-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 19. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c10-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 20. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c10-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 21. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c10-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 22. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c10-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760009022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 23. Tema Exportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c10-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760009023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 10, mensagem 24. Tema Exportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-10."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-11",
+    "title": "Laboratório 11 — Reimportação",
+    "create_time": 1760010000,
+    "update_time": 1760010024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c11-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 1. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c11-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 2. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c11-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 3. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c11-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 4. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c11-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 5. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c11-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 6. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c11-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 7. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c11-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 8. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c11-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 9. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c11-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 10. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c11-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 11. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c11-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 12. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c11-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 13. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c11-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 14. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c11-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 15. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c11-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 16. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c11-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 17. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c11-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 18. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c11-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 19. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c11-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 20. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c11-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 21. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c11-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 22. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c11-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760010022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 23. Tema Reimportação. Pergunta prática para verificar a experiência de uso. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c11-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760010023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 11, mensagem 24. Tema Reimportação. Explicação técnica com exemplos e critérios de validação. Marcador grupo-11."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "lab-multichat-12",
+    "title": "Laboratório 12 — Backup",
+    "create_time": 1760011000,
+    "update_time": 1760011024,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "n0"
+        ],
+        "message": null
+      },
+      "n0": {
+        "id": "n0",
+        "parent": "root",
+        "children": [
+          "n1"
+        ],
+        "message": {
+          "id": "lab-c12-m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 1. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "lab-c12-m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 2. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "lab-c12-m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 3. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "lab-c12-m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011003,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 4. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "lab-c12-m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011004,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 5. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [
+          "n6"
+        ],
+        "message": {
+          "id": "lab-c12-m6",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011005,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 6. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n6": {
+        "id": "n6",
+        "parent": "n5",
+        "children": [
+          "n7"
+        ],
+        "message": {
+          "id": "lab-c12-m7",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011006,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 7. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n7": {
+        "id": "n7",
+        "parent": "n6",
+        "children": [
+          "n8"
+        ],
+        "message": {
+          "id": "lab-c12-m8",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011007,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 8. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n8": {
+        "id": "n8",
+        "parent": "n7",
+        "children": [
+          "n9"
+        ],
+        "message": {
+          "id": "lab-c12-m9",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011008,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 9. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n9": {
+        "id": "n9",
+        "parent": "n8",
+        "children": [
+          "n10"
+        ],
+        "message": {
+          "id": "lab-c12-m10",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011009,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 10. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n10": {
+        "id": "n10",
+        "parent": "n9",
+        "children": [
+          "n11"
+        ],
+        "message": {
+          "id": "lab-c12-m11",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011010,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 11. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n11": {
+        "id": "n11",
+        "parent": "n10",
+        "children": [
+          "n12"
+        ],
+        "message": {
+          "id": "lab-c12-m12",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011011,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 12. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n12": {
+        "id": "n12",
+        "parent": "n11",
+        "children": [
+          "n13"
+        ],
+        "message": {
+          "id": "lab-c12-m13",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011012,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 13. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n13": {
+        "id": "n13",
+        "parent": "n12",
+        "children": [
+          "n14"
+        ],
+        "message": {
+          "id": "lab-c12-m14",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011013,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 14. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n14": {
+        "id": "n14",
+        "parent": "n13",
+        "children": [
+          "n15"
+        ],
+        "message": {
+          "id": "lab-c12-m15",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011014,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 15. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n15": {
+        "id": "n15",
+        "parent": "n14",
+        "children": [
+          "n16"
+        ],
+        "message": {
+          "id": "lab-c12-m16",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011015,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 16. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n16": {
+        "id": "n16",
+        "parent": "n15",
+        "children": [
+          "n17"
+        ],
+        "message": {
+          "id": "lab-c12-m17",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011016,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 17. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n17": {
+        "id": "n17",
+        "parent": "n16",
+        "children": [
+          "n18"
+        ],
+        "message": {
+          "id": "lab-c12-m18",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011017,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 18. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n18": {
+        "id": "n18",
+        "parent": "n17",
+        "children": [
+          "n19"
+        ],
+        "message": {
+          "id": "lab-c12-m19",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011018,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 19. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n19": {
+        "id": "n19",
+        "parent": "n18",
+        "children": [
+          "n20"
+        ],
+        "message": {
+          "id": "lab-c12-m20",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011019,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 20. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n20": {
+        "id": "n20",
+        "parent": "n19",
+        "children": [
+          "n21"
+        ],
+        "message": {
+          "id": "lab-c12-m21",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011020,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 21. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n21": {
+        "id": "n21",
+        "parent": "n20",
+        "children": [
+          "n22"
+        ],
+        "message": {
+          "id": "lab-c12-m22",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011021,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 22. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n22": {
+        "id": "n22",
+        "parent": "n21",
+        "children": [
+          "n23"
+        ],
+        "message": {
+          "id": "lab-c12-m23",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760011022,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 23. Tema Backup. Pergunta prática para verificar a experiência de uso. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n23": {
+        "id": "n23",
+        "parent": "n22",
+        "children": [],
+        "message": {
+          "id": "lab-c12-m24",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760011023,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Conversa 12, mensagem 24. Tema Backup. Explicação técnica com exemplos e critérios de validação. Marcador grupo-12."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  }
+]
