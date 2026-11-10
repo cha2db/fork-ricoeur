@@ -14,7 +14,7 @@ on:
         required: false
         default: "40"
 concurrency:
-  group: cha2db-search-main
+  group: cha2db-search-${{ github.ref }}
   cancel-in-progress: true
 permissions:
   contents: write
