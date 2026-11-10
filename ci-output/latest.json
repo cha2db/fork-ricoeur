@@ -1,9 +1,9 @@
 {
   "repository": "cha2db/fork-ricoeur",
-  "commit": "8bfef7fac30d486194530df796ddd1a42ab95555",
-  "run_id": "42916285552",
+  "commit": "04b6f8310c77c7ccb5ca09c4445af87f103fb26c",
+  "run_id": "42918974333",
   "run_attempt": "1",
-  "report_directory": "ci-output/runs/42916285552-1",
+  "report_directory": "ci-output/runs/42918974333-1",
   "autoscale": {
     "status": "PASS",
     "environment": {
@@ -14,8 +14,8 @@
       {
         "messages": 40000,
         "conversations": 1000,
-        "import_seconds": 1.326,
-        "stage_seconds": 1.449,
+        "import_seconds": 0.866,
+        "stage_seconds": 0.939,
         "db_bytes": 10649600,
         "checks": {
           "count": true,
@@ -44,14 +44,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.075,
-              "min_ms": 0.069,
-              "max_ms": 0.189
+              "median_ms": 0.041,
+              "min_ms": 0.035,
+              "max_ms": 0.123
             },
             "literal": {
-              "median_ms": 0.148,
-              "min_ms": 0.144,
-              "max_ms": 0.187
+              "median_ms": 0.088,
+              "min_ms": 0.08,
+              "max_ms": 0.115
             }
           },
           {
@@ -60,14 +60,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.074,
-              "min_ms": 0.068,
-              "max_ms": 0.101
+              "median_ms": 0.036,
+              "min_ms": 0.035,
+              "max_ms": 0.06
             },
             "literal": {
-              "median_ms": 0.122,
-              "min_ms": 0.117,
-              "max_ms": 0.152
+              "median_ms": 0.062,
+              "min_ms": 0.062,
+              "max_ms": 0.088
             }
           },
           {
@@ -76,14 +76,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.073,
-              "min_ms": 0.068,
-              "max_ms": 0.121
+              "median_ms": 0.036,
+              "min_ms": 0.034,
+              "max_ms": 0.053
             },
             "literal": {
-              "median_ms": 0.117,
-              "min_ms": 0.114,
-              "max_ms": 0.146
+              "median_ms": 0.06,
+              "min_ms": 0.059,
+              "max_ms": 0.077
             }
           },
           {
@@ -92,14 +92,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.069,
-              "min_ms": 0.066,
-              "max_ms": 0.095
+              "median_ms": 0.035,
+              "min_ms": 0.034,
+              "max_ms": 0.053
             },
             "literal": {
-              "median_ms": 0.151,
-              "min_ms": 0.139,
-              "max_ms": 0.17
+              "median_ms": 0.074,
+              "min_ms": 0.073,
+              "max_ms": 0.095
             }
           },
           {
@@ -108,14 +108,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.071,
-              "min_ms": 0.067,
-              "max_ms": 0.107
+              "median_ms": 0.035,
+              "min_ms": 0.034,
+              "max_ms": 0.053
             },
             "literal": {
-              "median_ms": 0.13,
-              "min_ms": 0.126,
-              "max_ms": 0.162
+              "median_ms": 0.068,
+              "min_ms": 0.067,
+              "max_ms": 0.09
             }
           },
           {
@@ -124,14 +124,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.067,
-              "min_ms": 0.065,
-              "max_ms": 0.092
+              "median_ms": 0.034,
+              "min_ms": 0.033,
+              "max_ms": 0.051
             },
             "literal": {
-              "median_ms": 0.152,
-              "min_ms": 0.15,
-              "max_ms": 0.204
+              "median_ms": 0.079,
+              "min_ms": 0.076,
+              "max_ms": 0.105
             }
           },
           {
@@ -140,14 +140,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.069,
-              "min_ms": 0.067,
-              "max_ms": 0.098
+              "median_ms": 0.035,
+              "min_ms": 0.034,
+              "max_ms": 0.052
             },
             "literal": {
-              "median_ms": 0.183,
-              "min_ms": 0.175,
-              "max_ms": 0.213
+              "median_ms": 0.116,
+              "min_ms": 0.095,
+              "max_ms": 0.134
             }
           },
           {
@@ -156,14 +156,14 @@
             "literal_matches": 5000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.085,
-              "min_ms": 0.07,
-              "max_ms": 0.093
+              "median_ms": 0.033,
+              "min_ms": 0.033,
+              "max_ms": 0.052
             },
             "literal": {
-              "median_ms": 0.147,
-              "min_ms": 0.144,
-              "max_ms": 0.183
+              "median_ms": 0.076,
+              "min_ms": 0.076,
+              "max_ms": 0.102
             }
           },
           {
@@ -172,14 +172,14 @@
             "literal_matches": 1,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.025,
-              "min_ms": 0.014,
-              "max_ms": 0.032
+              "median_ms": 0.007,
+              "min_ms": 0.006,
+              "max_ms": 0.02
             },
             "literal": {
-              "median_ms": 4.906,
-              "min_ms": 4.898,
-              "max_ms": 4.91
+              "median_ms": 2.999,
+              "min_ms": 2.988,
+              "max_ms": 3.009
             }
           },
           {
@@ -188,14 +188,14 @@
             "literal_matches": 0,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.012,
-              "min_ms": 0.011,
-              "max_ms": 0.027
+              "median_ms": 0.007,
+              "min_ms": 0.006,
+              "max_ms": 0.022
             },
             "literal": {
-              "median_ms": 5.331,
-              "min_ms": 5.314,
-              "max_ms": 5.375
+              "median_ms": 3.181,
+              "min_ms": 3.164,
+              "max_ms": 3.19
             }
           }
         ]
@@ -203,8 +203,8 @@
       {
         "messages": 100000,
         "conversations": 2500,
-        "import_seconds": 2.384,
-        "stage_seconds": 2.689,
+        "import_seconds": 1.627,
+        "stage_seconds": 1.813,
         "db_bytes": 26755072,
         "checks": {
           "count": true,
@@ -233,14 +233,14 @@
             "literal_matches": 12520,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.084,
-              "min_ms": 0.077,
-              "max_ms": 0.116
+              "median_ms": 0.048,
+              "min_ms": 0.04,
+              "max_ms": 0.1
             },
             "literal": {
-              "median_ms": 0.173,
-              "min_ms": 0.15,
-              "max_ms": 0.186
+              "median_ms": 0.082,
+              "min_ms": 0.078,
+              "max_ms": 0.142
             }
           },
           {
@@ -249,14 +249,14 @@
             "literal_matches": 12520,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.083,
-              "min_ms": 0.077,
-              "max_ms": 0.13
+              "median_ms": 0.04,
+              "min_ms": 0.038,
+              "max_ms": 0.077
             },
             "literal": {
-              "median_ms": 0.127,
-              "min_ms": 0.119,
-              "max_ms": 0.191
+              "median_ms": 0.062,
+              "min_ms": 0.062,
+              "max_ms": 0.089
             }
           },
           {
@@ -265,14 +265,14 @@
             "literal_matches": 12520,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.09,
-              "min_ms": 0.08,
-              "max_ms": 0.121
+              "median_ms": 0.041,
+              "min_ms": 0.039,
+              "max_ms": 0.087
             },
             "literal": {
-              "median_ms": 0.117,
-              "min_ms": 0.114,
-              "max_ms": 0.146
+              "median_ms": 0.061,
+              "min_ms": 0.058,
+              "max_ms": 0.093
             }
           },
           {
@@ -281,14 +281,14 @@
             "literal_matches": 12520,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.092,
-              "min_ms": 0.078,
-              "max_ms": 0.125
+              "median_ms": 0.04,
+              "min_ms": 0.039,
+              "max_ms": 0.083
             },
             "literal": {
-              "median_ms": 0.142,
-              "min_ms": 0.137,
-              "max_ms": 0.176
+              "median_ms": 0.074,
+              "min_ms": 0.072,
+              "max_ms": 0.109
             }
           },
           {
@@ -297,14 +297,14 @@
             "literal_matches": 12480,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.08,
-              "min_ms": 0.075,
-              "max_ms": 0.122
+              "median_ms": 0.04,
+              "min_ms": 0.038,
+              "max_ms": 0.086
             },
             "literal": {
-              "median_ms": 0.143,
-              "min_ms": 0.131,
-              "max_ms": 0.164
+              "median_ms": 0.067,
+              "min_ms": 0.067,
+              "max_ms": 0.109
             }
           },
           {
@@ -313,14 +313,14 @@
             "literal_matches": 12480,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.078,
-              "min_ms": 0.075,
-              "max_ms": 0.115
+              "median_ms": 0.041,
+              "min_ms": 0.039,
+              "max_ms": 0.081
             },
             "literal": {
-              "median_ms": 0.154,
-              "min_ms": 0.145,
-              "max_ms": 0.178
+              "median_ms": 0.088,
+              "min_ms": 0.077,
+              "max_ms": 0.114
             }
           },
           {
@@ -329,14 +329,14 @@
             "literal_matches": 12480,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.081,
-              "min_ms": 0.077,
-              "max_ms": 0.124
+              "median_ms": 0.041,
+              "min_ms": 0.039,
+              "max_ms": 0.081
             },
             "literal": {
-              "median_ms": 0.191,
-              "min_ms": 0.18,
-              "max_ms": 0.213
+              "median_ms": 0.096,
+              "min_ms": 0.096,
+              "max_ms": 0.133
             }
           },
           {
@@ -345,14 +345,14 @@
             "literal_matches": 12480,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.078,
-              "min_ms": 0.075,
-              "max_ms": 0.118
+              "median_ms": 0.039,
+              "min_ms": 0.038,
+              "max_ms": 0.078
             },
             "literal": {
-              "median_ms": 0.161,
-              "min_ms": 0.145,
-              "max_ms": 0.201
+              "median_ms": 0.086,
+              "min_ms": 0.077,
+              "max_ms": 0.116
             }
           },
           {
@@ -361,14 +361,14 @@
             "literal_matches": 1,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.024,
-              "min_ms": 0.021,
-              "max_ms": 0.066
+              "median_ms": 0.012,
+              "min_ms": 0.011,
+              "max_ms": 0.043
             },
             "literal": {
-              "median_ms": 12.468,
-              "min_ms": 12.457,
-              "max_ms": 14.266
+              "median_ms": 7.86,
+              "min_ms": 7.774,
+              "max_ms": 7.997
             }
           },
           {
@@ -377,14 +377,14 @@
             "literal_matches": 0,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.023,
-              "min_ms": 0.019,
-              "max_ms": 0.056
+              "median_ms": 0.011,
+              "min_ms": 0.01,
+              "max_ms": 0.058
             },
             "literal": {
-              "median_ms": 13.591,
-              "min_ms": 13.534,
-              "max_ms": 13.628
+              "median_ms": 8.723,
+              "min_ms": 8.708,
+              "max_ms": 8.753
             }
           }
         ]
@@ -392,8 +392,8 @@
       {
         "messages": 400000,
         "conversations": 10000,
-        "import_seconds": 12.174,
-        "stage_seconds": 13.423,
+        "import_seconds": 8.29,
+        "stage_seconds": 9.018,
         "db_bytes": 107089920,
         "checks": {
           "count": true,
@@ -422,14 +422,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.094,
-              "min_ms": 0.081,
-              "max_ms": 0.166
+              "median_ms": 0.051,
+              "min_ms": 0.042,
+              "max_ms": 0.137
             },
             "literal": {
-              "median_ms": 0.165,
-              "min_ms": 0.147,
-              "max_ms": 0.22
+              "median_ms": 0.085,
+              "min_ms": 0.077,
+              "max_ms": 0.152
             }
           },
           {
@@ -438,14 +438,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.087,
-              "min_ms": 0.08,
-              "max_ms": 0.198
+              "median_ms": 0.045,
+              "min_ms": 0.039,
+              "max_ms": 0.151
             },
             "literal": {
-              "median_ms": 0.123,
-              "min_ms": 0.117,
-              "max_ms": 0.186
+              "median_ms": 0.072,
+              "min_ms": 0.062,
+              "max_ms": 0.133
             }
           },
           {
@@ -454,14 +454,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.085,
-              "min_ms": 0.081,
-              "max_ms": 0.179
+              "median_ms": 0.043,
+              "min_ms": 0.039,
+              "max_ms": 0.136
             },
             "literal": {
-              "median_ms": 0.118,
-              "min_ms": 0.114,
-              "max_ms": 0.183
+              "median_ms": 0.06,
+              "min_ms": 0.057,
+              "max_ms": 0.117
             }
           },
           {
@@ -470,14 +470,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.084,
-              "min_ms": 0.079,
-              "max_ms": 0.177
+              "median_ms": 0.041,
+              "min_ms": 0.039,
+              "max_ms": 0.122
             },
             "literal": {
-              "median_ms": 0.143,
-              "min_ms": 0.139,
-              "max_ms": 0.227
+              "median_ms": 0.073,
+              "min_ms": 0.072,
+              "max_ms": 0.129
             }
           },
           {
@@ -486,14 +486,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.095,
-              "min_ms": 0.085,
-              "max_ms": 0.176
+              "median_ms": 0.044,
+              "min_ms": 0.041,
+              "max_ms": 0.133
             },
             "literal": {
-              "median_ms": 0.139,
-              "min_ms": 0.129,
-              "max_ms": 0.2
+              "median_ms": 0.068,
+              "min_ms": 0.068,
+              "max_ms": 0.127
             }
           },
           {
@@ -502,14 +502,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.085,
-              "min_ms": 0.079,
-              "max_ms": 0.168
+              "median_ms": 0.043,
+              "min_ms": 0.04,
+              "max_ms": 0.133
             },
             "literal": {
-              "median_ms": 0.15,
-              "min_ms": 0.145,
-              "max_ms": 0.215
+              "median_ms": 0.079,
+              "min_ms": 0.076,
+              "max_ms": 0.145
             }
           },
           {
@@ -518,14 +518,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.085,
-              "min_ms": 0.08,
-              "max_ms": 0.171
+              "median_ms": 0.042,
+              "min_ms": 0.039,
+              "max_ms": 0.132
             },
             "literal": {
-              "median_ms": 0.197,
-              "min_ms": 0.178,
-              "max_ms": 0.244
+              "median_ms": 0.095,
+              "min_ms": 0.094,
+              "max_ms": 0.151
             }
           },
           {
@@ -534,14 +534,14 @@
             "literal_matches": 50000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.084,
-              "min_ms": 0.079,
-              "max_ms": 0.179
+              "median_ms": 0.042,
+              "min_ms": 0.039,
+              "max_ms": 0.124
             },
             "literal": {
-              "median_ms": 0.157,
-              "min_ms": 0.148,
-              "max_ms": 0.219
+              "median_ms": 0.082,
+              "min_ms": 0.077,
+              "max_ms": 0.145
             }
           },
           {
@@ -550,14 +550,14 @@
             "literal_matches": 1,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.026,
-              "min_ms": 0.022,
-              "max_ms": 0.091
+              "median_ms": 0.021,
+              "min_ms": 0.011,
+              "max_ms": 0.071
             },
             "literal": {
-              "median_ms": 52.017,
-              "min_ms": 51.916,
-              "max_ms": 52.178
+              "median_ms": 31.747,
+              "min_ms": 31.672,
+              "max_ms": 32.333
             }
           },
           {
@@ -566,14 +566,14 @@
             "literal_matches": 0,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.023,
-              "min_ms": 0.02,
-              "max_ms": 0.087
+              "median_ms": 0.013,
+              "min_ms": 0.011,
+              "max_ms": 0.079
             },
             "literal": {
-              "median_ms": 57.448,
-              "min_ms": 56.507,
-              "max_ms": 57.613
+              "median_ms": 34.314,
+              "min_ms": 34.167,
+              "max_ms": 34.434
             }
           }
         ]
@@ -581,8 +581,8 @@
       {
         "messages": 1000000,
         "conversations": 25000,
-        "import_seconds": 25.041,
-        "stage_seconds": 28.081,
+        "import_seconds": 17.007,
+        "stage_seconds": 18.862,
         "db_bytes": 268419072,
         "checks": {
           "count": true,
@@ -611,14 +611,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.087,
-              "min_ms": 0.076,
-              "max_ms": 0.151
+              "median_ms": 0.052,
+              "min_ms": 0.038,
+              "max_ms": 0.132
             },
             "literal": {
-              "median_ms": 0.151,
-              "min_ms": 0.145,
-              "max_ms": 0.208
+              "median_ms": 0.089,
+              "min_ms": 0.078,
+              "max_ms": 0.153
             }
           },
           {
@@ -627,14 +627,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.083,
-              "min_ms": 0.076,
-              "max_ms": 0.175
+              "median_ms": 0.042,
+              "min_ms": 0.038,
+              "max_ms": 0.137
             },
             "literal": {
-              "median_ms": 0.128,
-              "min_ms": 0.118,
-              "max_ms": 0.181
+              "median_ms": 0.065,
+              "min_ms": 0.062,
+              "max_ms": 0.144
             }
           },
           {
@@ -643,14 +643,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.082,
-              "min_ms": 0.077,
-              "max_ms": 0.164
+              "median_ms": 0.042,
+              "min_ms": 0.038,
+              "max_ms": 0.13
             },
             "literal": {
-              "median_ms": 0.122,
-              "min_ms": 0.118,
-              "max_ms": 0.182
+              "median_ms": 0.061,
+              "min_ms": 0.058,
+              "max_ms": 0.116
             }
           },
           {
@@ -659,14 +659,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.08,
-              "min_ms": 0.074,
-              "max_ms": 0.159
+              "median_ms": 0.042,
+              "min_ms": 0.037,
+              "max_ms": 0.127
             },
             "literal": {
-              "median_ms": 0.144,
-              "min_ms": 0.139,
-              "max_ms": 0.217
+              "median_ms": 0.074,
+              "min_ms": 0.072,
+              "max_ms": 0.134
             }
           },
           {
@@ -675,14 +675,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.094,
-              "min_ms": 0.075,
-              "max_ms": 0.169
+              "median_ms": 0.041,
+              "min_ms": 0.038,
+              "max_ms": 0.129
             },
             "literal": {
-              "median_ms": 0.133,
-              "min_ms": 0.129,
-              "max_ms": 0.193
+              "median_ms": 0.069,
+              "min_ms": 0.068,
+              "max_ms": 0.137
             }
           },
           {
@@ -691,14 +691,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.09,
-              "min_ms": 0.078,
-              "max_ms": 0.166
+              "median_ms": 0.04,
+              "min_ms": 0.037,
+              "max_ms": 0.128
             },
             "literal": {
-              "median_ms": 0.149,
-              "min_ms": 0.147,
-              "max_ms": 0.212
+              "median_ms": 0.082,
+              "min_ms": 0.076,
+              "max_ms": 0.147
             }
           },
           {
@@ -707,14 +707,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.082,
-              "min_ms": 0.076,
-              "max_ms": 0.172
+              "median_ms": 0.04,
+              "min_ms": 0.037,
+              "max_ms": 0.131
             },
             "literal": {
-              "median_ms": 0.243,
-              "min_ms": 0.185,
-              "max_ms": 0.271
+              "median_ms": 0.102,
+              "min_ms": 0.095,
+              "max_ms": 0.171
             }
           },
           {
@@ -723,14 +723,14 @@
             "literal_matches": 125000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.093,
-              "min_ms": 0.077,
-              "max_ms": 0.164
+              "median_ms": 0.04,
+              "min_ms": 0.038,
+              "max_ms": 0.133
             },
             "literal": {
-              "median_ms": 0.162,
-              "min_ms": 0.146,
-              "max_ms": 0.218
+              "median_ms": 0.079,
+              "min_ms": 0.077,
+              "max_ms": 0.143
             }
           },
           {
@@ -739,14 +739,14 @@
             "literal_matches": 1,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.023,
-              "min_ms": 0.018,
-              "max_ms": 0.085
+              "median_ms": 0.011,
+              "min_ms": 0.01,
+              "max_ms": 0.074
             },
             "literal": {
-              "median_ms": 129.764,
-              "min_ms": 129.229,
-              "max_ms": 130.44
+              "median_ms": 81.606,
+              "min_ms": 81.575,
+              "max_ms": 81.662
             }
           },
           {
@@ -755,14 +755,14 @@
             "literal_matches": 0,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.02,
-              "min_ms": 0.017,
-              "max_ms": 0.079
+              "median_ms": 0.01,
+              "min_ms": 0.009,
+              "max_ms": 0.077
             },
             "literal": {
-              "median_ms": 140.701,
-              "min_ms": 140.396,
-              "max_ms": 141.953
+              "median_ms": 87.877,
+              "min_ms": 87.767,
+              "max_ms": 89.34
             }
           }
         ]
@@ -770,8 +770,8 @@
       {
         "messages": 2000000,
         "conversations": 50000,
-        "import_seconds": 42.954,
-        "stage_seconds": 49.057,
+        "import_seconds": 28.8,
+        "stage_seconds": 32.519,
         "db_bytes": 537468928,
         "checks": {
           "count": true,
@@ -800,14 +800,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.089,
-              "min_ms": 0.085,
-              "max_ms": 0.154
+              "median_ms": 0.049,
+              "min_ms": 0.038,
+              "max_ms": 0.132
             },
             "literal": {
-              "median_ms": 0.151,
-              "min_ms": 0.144,
-              "max_ms": 0.217
+              "median_ms": 0.085,
+              "min_ms": 0.079,
+              "max_ms": 0.167
             }
           },
           {
@@ -816,14 +816,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.077,
-              "min_ms": 0.071,
-              "max_ms": 0.155
+              "median_ms": 0.039,
+              "min_ms": 0.036,
+              "max_ms": 0.119
             },
             "literal": {
-              "median_ms": 0.124,
-              "min_ms": 0.118,
-              "max_ms": 0.182
+              "median_ms": 0.063,
+              "min_ms": 0.061,
+              "max_ms": 0.128
             }
           },
           {
@@ -832,14 +832,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.077,
-              "min_ms": 0.072,
-              "max_ms": 0.156
+              "median_ms": 0.041,
+              "min_ms": 0.036,
+              "max_ms": 0.13
             },
             "literal": {
-              "median_ms": 0.12,
-              "min_ms": 0.116,
-              "max_ms": 0.178
+              "median_ms": 0.063,
+              "min_ms": 0.06,
+              "max_ms": 0.129
             }
           },
           {
@@ -848,14 +848,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.076,
-              "min_ms": 0.071,
-              "max_ms": 0.152
+              "median_ms": 0.039,
+              "min_ms": 0.036,
+              "max_ms": 0.126
             },
             "literal": {
-              "median_ms": 0.154,
-              "min_ms": 0.142,
-              "max_ms": 0.206
+              "median_ms": 0.077,
+              "min_ms": 0.073,
+              "max_ms": 0.142
             }
           },
           {
@@ -864,14 +864,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.076,
-              "min_ms": 0.07,
-              "max_ms": 0.151
+              "median_ms": 0.039,
+              "min_ms": 0.035,
+              "max_ms": 0.115
             },
             "literal": {
-              "median_ms": 0.158,
-              "min_ms": 0.129,
-              "max_ms": 0.2
+              "median_ms": 0.068,
+              "min_ms": 0.067,
+              "max_ms": 0.133
             }
           },
           {
@@ -880,14 +880,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.077,
-              "min_ms": 0.072,
-              "max_ms": 0.16
+              "median_ms": 0.038,
+              "min_ms": 0.036,
+              "max_ms": 0.109
             },
             "literal": {
-              "median_ms": 0.151,
-              "min_ms": 0.145,
-              "max_ms": 0.213
+              "median_ms": 0.081,
+              "min_ms": 0.078,
+              "max_ms": 0.142
             }
           },
           {
@@ -896,14 +896,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.075,
-              "min_ms": 0.071,
-              "max_ms": 0.15
+              "median_ms": 0.038,
+              "min_ms": 0.035,
+              "max_ms": 0.111
             },
             "literal": {
-              "median_ms": 0.182,
-              "min_ms": 0.176,
-              "max_ms": 0.261
+              "median_ms": 0.1,
+              "min_ms": 0.096,
+              "max_ms": 0.17
             }
           },
           {
@@ -912,14 +912,14 @@
             "literal_matches": 250000,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.075,
-              "min_ms": 0.071,
-              "max_ms": 0.152
+              "median_ms": 0.04,
+              "min_ms": 0.036,
+              "max_ms": 0.123
             },
             "literal": {
-              "median_ms": 0.15,
-              "min_ms": 0.145,
-              "max_ms": 0.218
+              "median_ms": 0.08,
+              "min_ms": 0.077,
+              "max_ms": 0.155
             }
           },
           {
@@ -928,14 +928,14 @@
             "literal_matches": 1,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.02,
-              "min_ms": 0.015,
-              "max_ms": 0.075
+              "median_ms": 0.009,
+              "min_ms": 0.008,
+              "max_ms": 0.067
             },
             "literal": {
-              "median_ms": 260.27,
-              "min_ms": 260.242,
-              "max_ms": 260.437
+              "median_ms": 164.622,
+              "min_ms": 164.026,
+              "max_ms": 165.043
             }
           },
           {
@@ -944,21 +944,21 @@
             "literal_matches": 0,
             "same_first_100": true,
             "fts": {
-              "median_ms": 0.027,
-              "min_ms": 0.015,
-              "max_ms": 0.067
+              "median_ms": 0.009,
+              "min_ms": 0.007,
+              "max_ms": 0.062
             },
             "literal": {
-              "median_ms": 283.14,
-              "min_ms": 283.059,
-              "max_ms": 283.322
+              "median_ms": 180.794,
+              "min_ms": 179.855,
+              "max_ms": 180.847
             }
           }
         ]
       }
     ],
     "verdict": "max_planned_volume_passed_not_physical_limit",
-    "duration_seconds": 94.849
+    "duration_seconds": 63.292
   },
   "mcp": {
     "status": "PASS",
