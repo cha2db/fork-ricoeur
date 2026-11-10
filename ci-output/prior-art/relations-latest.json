@@ -2,7 +2,7 @@
   "status": "PASS",
   "dataset": {
     "base": "_dev/corpus.py",
-    "base_messages": 1200,
+    "base_messages": 40000,
     "explicit_relation_cases": 7,
     "synthetic": true
   },
