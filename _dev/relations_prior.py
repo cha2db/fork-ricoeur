@@ -2,6 +2,8 @@
 import argparse
 import json
 import re
+import sqlite3
+import shutil
 import tempfile
 from pathlib import Path
 import networkx as nx
@@ -27,9 +29,14 @@ ID=re.compile(r'\b(DEC-\d+)\s*:')
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",default="_dev/results/relations.json")
+    p.add_argument("--db-path",default=None)
     args=p.parse_args()
     with tempfile.TemporaryDirectory(prefix="cha2db-relations-") as tmp:
-        conn=init_db(Path(tmp));populate(conn,100,12)
+        if args.db_path:
+            clone=Path(tmp)/"ricoeur.db";shutil.copy2(args.db_path,clone)
+            conn=sqlite3.connect(str(clone));conn.row_factory=sqlite3.Row
+        else:
+            conn=init_db(Path(tmp));populate(conn,100,12)
         for i,(mid,cid,platform,content) in enumerate(EXAMPLES):
             conn.execute("INSERT INTO conversations(id,title,platform) VALUES(?,?,?)",
                          (cid,"Relação documental "+mid,platform))
@@ -60,7 +67,7 @@ def main():
             "supersedes_acyclic":nx.is_directed_acyclic_graph(nx.DiGraph(
                 [(a,b) for a,b,t in links if t=="supersedes"]))}
         report={"status":"PASS" if all(checks.values()) else "FAIL",
-                "dataset":{"base":"_dev/corpus.py","base_messages":1200,
+                "dataset":{"base":"_dev/corpus.py","base_messages":conn.execute("SELECT count(*) FROM messages").fetchone()[0]-len(EXAMPLES),
                            "explicit_relation_cases":len(EXAMPLES),"synthetic":True},
                 "checks":checks,"precision":round(len(links&GOLD)/max(1,len(links)),4),
                 "recall":round(len(links&GOLD)/len(GOLD),4),
