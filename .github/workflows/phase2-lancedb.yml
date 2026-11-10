@@ -1,0 +1,51 @@
+name: Cha2db Phase-2 LanceDB hybrid gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_lancedb.py'
+      - '_dev/phase2_export.py'
+      - '_dev/build_prior_base.py'
+      - '.github/workflows/phase2-lancedb.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-lancedb-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  lancedb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install existing engine and dependencies
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          python -m pip install 'lancedb>=0.28,<2' 'scikit-learn>=1.5,<2' > _dev/results/phase2-lancedb-install.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-lancedb-install.log; exit 1
+          }
+      - name: Generate common 40k synthetic database and representative fixed corpus
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-lancedb-base.log 2>&1
+          python _dev/phase2_export.py --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-input.json
+      - name: Probe BM25 vector and hybrid
+        run: |
+          python -u _dev/phase2_lancedb.py --fixture _dev/results/phase2-input.json --output _dev/results/phase2-lancedb.json > _dev/results/phase2-lancedb.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-lancedb.log; exit 1
+          }
+          cat _dev/results/phase2-lancedb.json
+      - name: Upload evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-lancedb-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable verdict
+        if: always()
+        run: bash _dev/publish_phase2.sh lancedb
