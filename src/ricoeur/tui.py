@@ -85,10 +85,11 @@ class ConversationScreen(Screen):
         Binding("k,up", "scroll_up", "Up", show=False),
     ]
 
-    def __init__(self, conn: sqlite3.Connection, conv_id: str) -> None:
+    def __init__(self, conn: sqlite3.Connection, conv_id: str, query: str = "") -> None:
         super().__init__()
         self._conn = conn
         self._conv_id = conv_id
+        self._query = query
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -110,11 +111,14 @@ class ConversationScreen(Screen):
         meta += f" · {date}"
 
         lines = [f"# {conv['title'] or 'Untitled'}", "", meta, ""]
+        if self._query:
+            lines.extend([f"**Search term:** `{self._query}`", ""])
         for msg in _messages(self._conn, self._conv_id):
             who = "🧑 You" if msg["role"] == "user" else "🤖 Assistant"
             ts = (msg["timestamp"] or "")[:16]
             lines.append("---")
-            lines.append(f"### {who}  ·  {ts}")
+            matched = bool(self._query and self._query.casefold() in (msg["content"] or "").casefold())
+            lines.append(f"### {who}  ·  {ts}" + ("  ·  🔎 MATCH" if matched else ""))
             lines.append("")
             lines.append(msg["content"] or "*(empty)*")
             lines.append("")
@@ -332,6 +336,7 @@ class RicoeurApp(App):
         self._device = embed_cfg.get("device", "auto")
         # Maps the visible row index → conversation id
         self._row_ids: list[str] = []
+        self._active_query = ""
         # Show the opening animation only for real interactive terminals
         # (so it never disrupts piped output or the headless test pilot),
         # unless explicitly overridden or disabled via RICOEUR_NO_SPLASH.
@@ -386,6 +391,7 @@ class RicoeurApp(App):
             self._set_status("No conversations yet — import an export with `ricoeur import`.")
             return
 
+        self._active_query = ""
         self._populate(
             [
                 ((r["created_at"] or "?")[:10], r["platform"], str(r["message_count"] or 0), r["title"] or "Untitled")
@@ -413,18 +419,22 @@ class RicoeurApp(App):
             self._set_status(f"[red]Search error:[/red] {exc}")
             return
 
+        self._active_query = query
         self._populate(
             [
-                ((r.created_at or "?")[:10], r.platform, "", r.title or "Untitled")
+                ((r.created_at or "?")[:10], r.platform, r.title or "Untitled",
+                 (r.snippet or "No message excerpt available").replace(">>>", "⟦").replace("<<<", "⟧"))
                 for r in results
             ],
             [r.conv_id for r in results],
+            columns=("Date", "Platform", "Conversation", "Matching message"),
         )
         self._set_status(f'{len(results)} result(s) for "{query}" ({mode})')
 
-    def _populate(self, rows: list[tuple], ids: list[str]) -> None:
+    def _populate(self, rows: list[tuple], ids: list[str], columns: tuple[str, ...] = ("Date", "Platform", "Msgs", "Title")) -> None:
         table = self._table()
-        table.clear()
+        table.clear(columns=True)
+        table.add_columns(*columns)
         self._row_ids = ids
         for row in rows:
             table.add_row(*row)
@@ -456,7 +466,7 @@ class RicoeurApp(App):
 
     def _open_row(self, row_index: int) -> None:
         if 0 <= row_index < len(self._row_ids):
-            self.push_screen(ConversationScreen(self._conn, self._row_ids[row_index]))
+            self.push_screen(ConversationScreen(self._conn, self._row_ids[row_index], self._active_query))
 
     def on_unmount(self) -> None:
         self._conn.close()
