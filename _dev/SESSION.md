@@ -65,3 +65,10 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - PASS visual: 3 ocorrências por mensagem, 2 provedores, IDs estáveis, vizinhança, filtro por provedor e JSON estruturado.
 - MCP ainda não testado; corrigida importação do SDK para mcp.server.fastmcp.FastMCP (antes MCPServer incorreto).
 - Veredicto: recuperar por mensagem usando SQLite/FTS5; não reimplementar motor. Próximo gate: cliente MCP real.
+
+## Teste 7 — MCP real
+- Cliente e servidor reais sobre stdio, usando SDK oficial MCP v1 com API FastMCP.
+- Usa uv com Python 3.12 isolado para não modificar o ambiente Python 3.10 do Termux.
+- Avalia descoberta de tools, busca por mensagens, IDs e contexto em chamadas MCP.
+- Estado: scripts publicados, não executados no Android. O uv pode não disponibilizar Python 3.12 no Termux; nesse caso registrar bloqueio de plataforma e usar host Linux compatível, sem confundir com falha de arquitetura.
+- SDK v2 possui API distinta; migração de adapter deve ser feita separadamente.
