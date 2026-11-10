@@ -219,7 +219,21 @@ def _import_one(
         stats.skipped += 1
         return
 
-    # Walk message tree and insert messages
+    # Preserve the original tree, including non-selected branches and null roots.
+    conn.execute("""CREATE TABLE IF NOT EXISTS chatgpt_nodes (
+        conv_id TEXT NOT NULL, node_id TEXT NOT NULL, parent_id TEXT,
+        children_json TEXT NOT NULL, message_json TEXT,
+        PRIMARY KEY (conv_id, node_id)
+    )""")
+    for node_id, node in (conv.get("mapping") or {}).items():
+        conn.execute("""INSERT OR IGNORE INTO chatgpt_nodes
+            (conv_id, node_id, parent_id, children_json, message_json)
+            VALUES (?, ?, ?, ?, ?)""",
+            (conv_id, node_id, node.get("parent"),
+             json.dumps(node.get("children", []), ensure_ascii=False),
+             json.dumps(node.get("message"), ensure_ascii=False)))
+
+    # Keep the selected path searchable, including empty messages.
     messages = _walk_messages(conv)
     for i, msg in enumerate(messages):
         msg_id = msg.get("id") or make_message_id(conv_id, i)
@@ -227,15 +241,11 @@ def _import_one(
         content = _extract_content(msg)
         timestamp = _ts_to_iso(msg.get("create_time")) if msg.get("create_time") else created_at
 
-        if content:
-            insert_message(
-                conn,
-                id=msg_id,
-                conv_id=conv_id,
-                role=role,
-                content=content,
-                timestamp=timestamp,
-            )
+        inserted, _ = insert_message(
+            conn, id=msg_id, conv_id=conv_id, role=role,
+            content=content, timestamp=timestamp,
+        )
+        if inserted:
             stats.messages += 1
 
 
