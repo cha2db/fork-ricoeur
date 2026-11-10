@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '_dev/PHASE2_MARKET_UNIVERSE_R09.json'
+      - '_dev/PHASE2_MARKET_UNIVERSE_R10.json'
       - '_dev/phase2_discovery.py'
       - '_dev/publish_phase2_discovery.sh'
       - '.github/workflows/phase2-discovery.yml'
