@@ -1,0 +1,17 @@
+{
+  "candidate": "DuckDB FTS",
+  "source": "_dev/results/phase2-input.json",
+  "sha256": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "status": "PASS",
+  "documents": 1000,
+  "build_seconds": 0.051,
+  "mean_p10": 1.0,
+  "median_latency_ms": 7.456,
+  "version": "1.5.6",
+  "verdict": "FUNCTIONAL_ONLY_INCREMENTAL_UPDATES_NOT_VERIFIED",
+  "limitations": [
+    "Extension downloads in CI; offline portability not established",
+    "Only 1000 representative docs, not the complete 40k ranked",
+    "Synthetic topic labels; no human relevance evidence"
+  ]
+}
