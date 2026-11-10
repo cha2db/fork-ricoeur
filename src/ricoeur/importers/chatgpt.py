@@ -170,8 +170,11 @@ def _walk_messages(conv: dict[str, Any]) -> list[dict[str, Any]]:
                 messages.append({**msg, "role": role})
 
         # Add children to stack (reversed so first child is processed first)
-        kids = children_map.get(node_id, [])
-        # Pick the default (last) branch
+        # Prefer the explicit children order from the export. Mapping insertion
+        # order is not a reliable indicator of the selected/default branch.
+        kids = node.get("children")
+        if not isinstance(kids, list):
+            kids = children_map.get(node_id, [])
         if kids:
             stack.append(kids[-1])
 
