@@ -84,3 +84,11 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Hipótese: dependências Pydantic instaladas com versões incompatíveis/incompletas. Ainda não confirmado.
 - Script atualizado: resolver Pydantic e MCP juntos em uma transação, verificar imports antes de iniciar cliente/servidor.
 - Estado: correção publicada, teste pendente no tablet.
+
+## Teste 7 — PASS confirmado no Termux (10/11/2026)
+- Evidência visual do usuário: MCP SDK v1, transporte stdio, status PASS, saída 0.
+- tools_discovered=true; search_over_mcp=true; ids_over_mcp=true; context_over_mcp=true.
+- Ferramentas: search_chat_messages e read_chat_message.
+- Versões utilizadas no script: MCP 1.9.4, Pydantic 2.10.6, pydantic-core 2.27.2; Python 3.13 Termux.
+- Veredicto: contrato de busca por mensagem e adapter MCP funcional no cenário sintético. Não equivale a integração validada com cliente externo nem base real heterogênea.
+- Próximo gate: uso do adapter por cliente MCP externo sobre base real, verificando IDs, filtros, contexto e segurança de acesso.
