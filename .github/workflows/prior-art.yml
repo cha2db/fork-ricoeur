@@ -6,6 +6,7 @@ on:
       - '_dev/prior_art_bench.py'
       - '_dev/vector_prior.py'
       - '_dev/relations_prior.py'
+      - '_dev/build_prior_base.py'
       - '_dev/corpus.py'
       - '_dev/publish_prior_art.sh'
       - '.github/workflows/prior-art.yml'
@@ -36,10 +37,15 @@ jobs:
           db.execute('CREATE VIRTUAL TABLE t USING fts5(body)')
           print('SQLite FTS5 PASS',sqlite3.sqlite_version)
           PY
-      - name: Rebuild existing corpus and compare algorithms
+      - name: Materialize one shared 40k SQLite corpus
         run: |
           mkdir -p _dev/results
-          python -u _dev/prior_art_bench.py --conversations 1000 --messages 40 --output _dev/results/prior-art.json > _dev/results/prior-art.log 2>&1 || {
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/prior-base.log 2>&1
+          cat _dev/results/prior-base.manifest.json
+      - name: Compare algorithms on shared SQLite corpus
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/prior_art_bench.py --db-path _dev/results/prior-base.sqlite --conversations 1000 --messages 40 --output _dev/results/prior-art.json > _dev/results/prior-art.log 2>&1 || {
             tail -n 100 _dev/results/prior-art.log
             exit 1
           }
@@ -47,14 +53,14 @@ jobs:
       - name: Compare sqlite-vec against brute-force nearest neighbors
         run: |
           python -m pip install 'sqlite-vec==0.1.9'
-          python -u _dev/vector_prior.py --conversations 1000 --output _dev/results/sqlite-vec.json > _dev/results/sqlite-vec.log 2>&1 || {
+          python -u _dev/vector_prior.py --db-path _dev/results/prior-base.sqlite --conversations 1000 --output _dev/results/sqlite-vec.json > _dev/results/sqlite-vec.log 2>&1 || {
             tail -n 100 _dev/results/sqlite-vec.log
             exit 1
           }
           tail -n 40 _dev/results/sqlite-vec.log
       - name: Evaluate cross-chat explicit provenance graph
         run: |
-          python -u _dev/relations_prior.py --output _dev/results/relations.json > _dev/results/relations.log 2>&1 || {
+          python -u _dev/relations_prior.py --db-path _dev/results/prior-base.sqlite --output _dev/results/relations.json > _dev/results/relations.log 2>&1 || {
             tail -n 80 _dev/results/relations.log
             exit 1
           }
