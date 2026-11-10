@@ -12,7 +12,7 @@ permissions:
   contents: write
 concurrency:
   group: cha2db-semantic-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   semantic:
     runs-on: ubuntu-latest
