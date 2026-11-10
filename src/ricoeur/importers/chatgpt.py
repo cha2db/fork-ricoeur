@@ -36,50 +36,66 @@ def import_chatgpt(
 ) -> ImportStats:
     """Import conversations from a ChatGPT export."""
     stats = ImportStats()
-    task = progress.add_task("Importing ChatGPT...", total=None) if progress else None
+    # Progress is based on uncompressed JSON bytes, so no costly pre-scan.
+    task = progress.add_task("Importing ChatGPT...", total=100) if progress else None
 
     # Stream individual conversations: never materialize the entire export.
     # Commit at bounded intervals so long imports do not accumulate one huge
     # transaction. Reimport remains idempotent through existing IDs.
-    for conv_raw in _iter_conversations(path):
+    for conv_raw, fraction in _iter_conversations_with_progress(path):
         stats.parsed += 1
         _import_one(conn, conv_raw, stats, update=update, since=since, dry_run=dry_run)
         if not dry_run and stats.parsed % 25 == 0:
             conn.commit()
         if progress and task is not None:
-            progress.advance(task)
+            progress.update(task, completed=min(99.9, fraction * 100),
+                            description=f"ChatGPT: {stats.parsed:,} conversations · {fraction * 100:.1f}%")
 
     if not dry_run:
         update_conversation_counts(conn)
         conn.commit()
+    if progress and task is not None:
+        progress.update(task, completed=100, description=f"ChatGPT: {stats.parsed:,} conversations · 100%")
 
     return stats
 
 
 def _iter_conversations(path: Path):
-    """Yield one JSON-array item at a time from a .json or ChatGPT .zip export.
+    """Compatibility iterator returning only conversation objects."""
+    for conv, _fraction in _iter_conversations_with_progress(path):
+        yield conv
 
-    Uses the standard library only. Memory scales with the largest individual
-    conversation, not the full export. Malformed JSON raises ValueError.
-    """
+
+def _iter_conversations_with_progress(path: Path):
+    """Stream JSON/ZIP and report fraction of uncompressed bytes consumed."""
     if path.suffix == ".zip":
         with zipfile.ZipFile(path) as zf:
             names = [n for n in zf.namelist() if n.endswith("conversations.json")]
             if not names:
                 raise FileNotFoundError("No conversations.json found in zip")
-            with zf.open(names[0]) as binary:
+            name = names[0]
+            total = zf.getinfo(name).file_size
+            with zf.open(name) as binary:
                 with io.TextIOWrapper(binary, encoding="utf-8") as stream:
-                    yield from _parse_json_array(stream)
+                    yield from _parse_json_array(stream, total)
     else:
+        total = path.stat().st_size
         with path.open(encoding="utf-8") as stream:
-            yield from _parse_json_array(stream)
+            yield from _parse_json_array(stream, total)
 
 
-def _parse_json_array(stream):
+def _parse_json_array(stream, total_bytes: int):
     decoder = json.JSONDecoder()
     buffer = ""
     position = 0
     eof = False
+    bytes_read = 0
+
+    def read_chunk():
+        nonlocal bytes_read
+        chunk = stream.read(65536)
+        bytes_read += len(chunk.encode("utf-8"))
+        return chunk
 
     def skip_space():
         nonlocal buffer, position, eof
@@ -90,7 +106,7 @@ def _parse_json_array(stream):
                 return
             buffer = ""
             position = 0
-            chunk = stream.read(65536)
+            chunk = read_chunk()
             if chunk:
                 buffer = chunk
             else:
@@ -126,16 +142,17 @@ def _parse_json_array(stream):
                 position = consumed
                 if not isinstance(item, dict):
                     raise ValueError("Expected conversation object")
-                yield item
+                # Subtract buffered, not-yet-consumed UTF-8 bytes. This is
+                # accurate for multibyte Unicode and ZIP uncompressed sizes.
+                consumed_bytes = bytes_read - len(buffer[position:].encode("utf-8"))
+                yield item, (consumed_bytes / total_bytes if total_bytes else 1.0)
                 buffer = buffer[position:]
                 position = 0
                 break
             except json.JSONDecodeError as exc:
                 if eof:
                     raise ValueError("Invalid conversation JSON") from exc
-                # A JSON string may span multiple chunks; keep only the
-                # current conversation in memory while extending the buffer.
-                chunk = stream.read(65536)
+                chunk = read_chunk()
                 if chunk:
                     buffer += chunk
                 else:
