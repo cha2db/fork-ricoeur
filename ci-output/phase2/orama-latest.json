@@ -10,7 +10,7 @@
       "query": "regressão guiada",
       "topic": 0,
       "p10": 1,
-      "latency_ms": 4.184,
+      "latency_ms": 3.36,
       "hits": [
         "fixture-cha2db-v1-m000000-0000",
         "fixture-cha2db-v1-m000010-0000",
@@ -28,7 +28,7 @@
       "query": "contrato declarativo",
       "topic": 1,
       "p10": 1,
-      "latency_ms": 0.701,
+      "latency_ms": 0.362,
       "hits": [
         "fixture-cha2db-v1-m000001-0000",
         "fixture-cha2db-v1-m000011-0000",
@@ -46,7 +46,7 @@
       "query": "busca cruzada",
       "topic": 2,
       "p10": 1,
-      "latency_ms": 0.315,
+      "latency_ms": 0.163,
       "hits": [
         "fixture-cha2db-v1-m000002-0000",
         "fixture-cha2db-v1-m000012-0000",
@@ -64,7 +64,7 @@
       "query": "pipeline Jenkins",
       "topic": 3,
       "p10": 1,
-      "latency_ms": 0.415,
+      "latency_ms": 0.208,
       "hits": [
         "fixture-cha2db-v1-m000003-0000",
         "fixture-cha2db-v1-m000013-0000",
@@ -82,7 +82,7 @@
       "query": "índice B-tree",
       "topic": 4,
       "p10": 1,
-      "latency_ms": 0.381,
+      "latency_ms": 0.27,
       "hits": [
         "fixture-cha2db-v1-m000004-0000",
         "fixture-cha2db-v1-m000014-0000",
@@ -100,7 +100,7 @@
       "query": "conexão SSH",
       "topic": 5,
       "p10": 1,
-      "latency_ms": 2.794,
+      "latency_ms": 2.053,
       "hits": [
         "fixture-cha2db-v1-m000005-0000",
         "fixture-cha2db-v1-m000015-0000",
@@ -118,7 +118,7 @@
       "query": "Android Studio",
       "topic": 6,
       "p10": 1,
-      "latency_ms": 0.262,
+      "latency_ms": 0.219,
       "hits": [
         "fixture-cha2db-v1-m000006-0000",
         "fixture-cha2db-v1-m000016-0000",
@@ -136,7 +136,7 @@
       "query": "menor privilégio",
       "topic": 7,
       "p10": 1,
-      "latency_ms": 0.523,
+      "latency_ms": 0.228,
       "hits": [
         "fixture-cha2db-v1-m000007-0000",
         "fixture-cha2db-v1-m000017-0000",
@@ -154,7 +154,7 @@
       "query": "avaliação formativa",
       "topic": 8,
       "p10": 1,
-      "latency_ms": 2.423,
+      "latency_ms": 2.102,
       "hits": [
         "fixture-cha2db-v1-m000008-0000",
         "fixture-cha2db-v1-m000018-0000",
@@ -172,7 +172,7 @@
       "query": "API REST",
       "topic": 9,
       "p10": 1,
-      "latency_ms": 0.399,
+      "latency_ms": 0.281,
       "hits": [
         "fixture-cha2db-v1-m000009-0000",
         "fixture-cha2db-v1-m000019-0000",
@@ -187,8 +187,8 @@
       ]
     }
   ],
-  "build_seconds": 0.107,
-  "median_latency_ms": 0.469,
+  "build_seconds": 0.081,
+  "median_latency_ms": 0.275,
   "mean_p10": 1,
   "verdict": "TECHNICAL_EXECUTION_ONLY_NO_HUMAN_GOLD",
   "limitations": [
@@ -196,11 +196,11 @@
     "No HTTP/MCP, semantic model or production integration",
     "Index persistence, update costs and browser memory not measured"
   ],
-  "run_id": "42918094984",
-  "commit": "f68927c89ffa8d0fc0ecf5c5382cb0ce464e9b0d",
+  "run_id": "42918377340",
+  "commit": "73f4a1fa7c60b9b8d4e45a3cfc8e059ab9d24ce5",
   "logs": {
-    "phase2-orama.log": "{\n  \"status\": \"PASS\",\n  \"mean_p10\": 1,\n  \"build_seconds\": 0.107,\n  \"median_latency_ms\": 0.469\n}\n",
-    "phase2-orama-install.log": "\nadded 1 package in 960ms\n",
+    "phase2-orama.log": "{\n  \"status\": \"PASS\",\n  \"mean_p10\": 1,\n  \"build_seconds\": 0.081,\n  \"median_latency_ms\": 0.275\n}\n",
+    "phase2-orama-install.log": "\nadded 1 package in 733ms\n",
     "phase2-orama-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
