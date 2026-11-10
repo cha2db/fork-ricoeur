@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "candidate": "bm25s",
+  "input_snapshot": "_dev/results/prior-base.sqlite",
+  "comparison": "same 1000 representative messages from existing synthetic 40k SQLite fixture",
+  "synthetic": true,
+  "human_gold": false,
+  "build_seconds": 0.056,
+  "engine": "bm25s",
+  "package": "0.3.16",
+  "mean_p10": 1.0,
+  "median_latency_ms": 0.111,
+  "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
+  "limitations": [
+    "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
+    "One representative message per conversation, not a full-text 40k-message ranking index.",
+    "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
+    "No candidate integrated into production core; no MCP or GUI tests performed here."
+  ]
+}
