@@ -78,3 +78,9 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Script alterado para reutilizar Python existente (.venv ou python), instalar SDK MCP 1.x (<1.10) se necessário e executar cliente/servidor reais via stdio.
 - Evita exigir uv e Python 3.12. Instalação do SDK em Termux ainda pode falhar por dependências nativas; não validado até retorno do tablet.
 - Não confundir falha de instalação com falha do protocolo.
+
+## Teste 7 — erro de compatibilidade Pydantic
+- Evidência Android: Python 3.13, MCP SDK instalado, import falhou em pydantic._internal._typing_extra.eval_type_backport.
+- Hipótese: dependências Pydantic instaladas com versões incompatíveis/incompletas. Ainda não confirmado.
+- Script atualizado: resolver Pydantic e MCP juntos em uma transação, verificar imports antes de iniciar cliente/servidor.
+- Estado: correção publicada, teste pendente no tablet.
