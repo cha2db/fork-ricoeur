@@ -11,10 +11,15 @@ git worktree add --detach "$TMP" FETCH_HEAD
 mkdir -p "$TMP/$DIR" "$TMP/ci-output/prior-art"
 cp _dev/results/prior-art.json "$TMP/$DIR/prior-art.json" 2>/dev/null || true
 cp _dev/results/prior-art.log "$TMP/$DIR/prior-art.log" 2>/dev/null || true
+cp _dev/results/sqlite-vec.json "$TMP/$DIR/sqlite-vec.json" 2>/dev/null || true
+cp _dev/results/sqlite-vec.log "$TMP/$DIR/sqlite-vec.log" 2>/dev/null || true
 if [[ -f _dev/results/prior-art.json ]]; then
   cp _dev/results/prior-art.json "$TMP/ci-output/prior-art/latest.json"
 else
   printf '{"status":"FAIL","reason":"prior-art report missing"}\n' > "$TMP/ci-output/prior-art/latest.json"
+fi
+if [[ -f _dev/results/sqlite-vec.json ]]; then
+  cp _dev/results/sqlite-vec.json "$TMP/ci-output/prior-art/vector-latest.json"
 fi
 git -C "$TMP" add ci-output/prior-art
 git -C "$TMP" -c user.name=cha2db-ci -c user.email=ci@users.noreply.github.com commit -m "ci: archive prior art run ${GITHUB_RUN_ID}" >/dev/null
