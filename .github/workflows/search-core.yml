@@ -1,0 +1,54 @@
+name: Cha2db headless search gates
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      conversations:
+        description: "Benchmark conversations (1..10000)"
+        required: false
+        default: "300"
+      messages:
+        description: "Messages per conversation (4..100)"
+        required: false
+        default: "40"
+permissions:
+  contents: read
+jobs:
+  search-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install project (core only)
+        run: python -m pip install -e .
+      - name: Check SQLite FTS5
+        run: |
+          python - <<'PY'
+          import sqlite3
+          c=sqlite3.connect(":memory:")
+          c.execute("CREATE VIRTUAL TABLE x USING fts5(content)")
+          print("SQLite",sqlite3.sqlite_version,"FTS5 OK")
+          PY
+      - name: Execute independent retrieval and search gates
+        env:
+          CONVERSATIONS: ${{ github.event.inputs.conversations || '300' }}
+          MESSAGES: ${{ github.event.inputs.messages || '40' }}
+        run: |
+          mkdir -p _dev/results
+          bash _dev/busca.sh
+      - name: Upload logs and benchmark reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: search-reports-py${{ matrix.python-version }}
+          path: _dev/results/
+          retention-days: 30
