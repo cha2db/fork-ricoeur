@@ -1,0 +1,9 @@
+{
+  "status": "BLOCKED",
+  "candidate": "sqlite-vector",
+  "reason": "install or runtime failed; see log tails",
+  "logs": {
+    "sqlite-vector-install.log": "Collecting sqlite-vector\n  Downloading sqlite_vector-0.0.1a6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux1_x86_64.whl.metadata (511 bytes)\nDownloading sqlite_vector-0.0.1a6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux1_x86_64.whl (66 kB)\nInstalling collected packages: sqlite-vector\nSuccessfully installed sqlite-vector-0.0.1a6\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "sqlite-vector.log": "sqlite-vector version v0.0.1 functions ['vector0', 'vector_debug', 'vector_from_blob', 'vector_from_json', 'vector_from_raw', 'vector_length', 'vector_to_blob', 'vector_to_json', 'vector_to_raw', 'vector_value_at', 'vector_version']\nTraceback (most recent call last):\n  File \"/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py\", line 99, in <module>\n    if __name__==\"__main__\":main()\n                            ~~~~^^\n  File \"/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py\", line 55, in main\n    db.execute(\"SELECT vector_init('vector_candidates','embedding','dimension=32,type=FLOAT32,distance=L2')\")\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsqlite3.OperationalError: no such function: vector_init\n"
+  }
+}

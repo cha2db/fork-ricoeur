@@ -9,7 +9,7 @@
     "synthetic": true
   },
   "embedding": "TruncatedSVD32 of TF-IDF (not semantic embeddings)",
-  "index_seconds": 0.017,
+  "index_seconds": 0.0151,
   "queries": [
     {
       "index": 0,
@@ -22,7 +22,7 @@
     {
       "index": 7,
       "query_id": "fixture-cha2db-v1-m000007-0000",
-      "latency_ms": 0.082,
+      "latency_ms": 0.091,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -30,7 +30,7 @@
     {
       "index": 25,
       "query_id": "fixture-cha2db-v1-m000025-0000",
-      "latency_ms": 0.076,
+      "latency_ms": 0.077,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -46,7 +46,7 @@
     {
       "index": 125,
       "query_id": "fixture-cha2db-v1-m000125-0000",
-      "latency_ms": 0.072,
+      "latency_ms": 0.077,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -54,7 +54,7 @@
     {
       "index": 500,
       "query_id": "fixture-cha2db-v1-m000500-0000",
-      "latency_ms": 0.078,
+      "latency_ms": 0.073,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true

@@ -54,12 +54,12 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.476,
-        "tfidf_word": 1.246,
-        "tfidf_char": 1.994,
-        "rank_bm25": 0.652,
-        "rapidfuzz": 0.035,
-        "rapidfuzz_fts": 2.103,
+        "fts5": 2.601,
+        "tfidf_word": 1.22,
+        "tfidf_char": 2.015,
+        "rank_bm25": 0.654,
+        "rapidfuzz": 0.037,
+        "rapidfuzz_fts": 2.259,
         "rrf": 0.021
       },
       "correction": "regressão guiada",
@@ -134,13 +134,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.135,
-        "tfidf_word": 0.963,
-        "tfidf_char": 1.957,
-        "rank_bm25": 0.551,
-        "rapidfuzz": 0.02,
-        "rapidfuzz_fts": 2.117,
-        "rrf": 0.015
+        "fts5": 2.29,
+        "tfidf_word": 0.989,
+        "tfidf_char": 1.978,
+        "rank_bm25": 0.579,
+        "rapidfuzz": 0.025,
+        "rapidfuzz_fts": 2.251,
+        "rrf": 0.017
       },
       "correction": "contrato declarativo",
       "top3": {
@@ -214,12 +214,12 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.136,
-        "tfidf_word": 0.934,
-        "tfidf_char": 1.942,
-        "rank_bm25": 0.679,
-        "rapidfuzz": 0.021,
-        "rapidfuzz_fts": 2.039,
+        "fts5": 2.287,
+        "tfidf_word": 0.959,
+        "tfidf_char": 2.012,
+        "rank_bm25": 0.721,
+        "rapidfuzz": 0.024,
+        "rapidfuzz_fts": 2.215,
         "rrf": 0.015
       },
       "correction": "busca cruzada",
@@ -294,12 +294,12 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.035,
-        "tfidf_word": 0.919,
-        "tfidf_char": 1.918,
-        "rank_bm25": 0.596,
-        "rapidfuzz": 0.011,
-        "rapidfuzz_fts": 1.991,
+        "fts5": 2.177,
+        "tfidf_word": 0.958,
+        "tfidf_char": 1.913,
+        "rank_bm25": 0.741,
+        "rapidfuzz": 0.013,
+        "rapidfuzz_fts": 2.123,
         "rrf": 0.014
       },
       "correction": "pipeline Jenkins",
@@ -374,13 +374,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.269,
-        "tfidf_word": 0.944,
-        "tfidf_char": 1.915,
-        "rank_bm25": 0.663,
-        "rapidfuzz": 0.018,
-        "rapidfuzz_fts": 2.213,
-        "rrf": 0.015
+        "fts5": 2.436,
+        "tfidf_word": 0.964,
+        "tfidf_char": 1.945,
+        "rank_bm25": 0.689,
+        "rapidfuzz": 0.016,
+        "rapidfuzz_fts": 2.36,
+        "rrf": 0.016
       },
       "correction": "índice B-tree",
       "top3": {
@@ -454,12 +454,12 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.123,
-        "tfidf_word": 0.956,
-        "tfidf_char": 1.921,
-        "rank_bm25": 0.589,
+        "fts5": 2.253,
+        "tfidf_word": 0.959,
+        "tfidf_char": 1.929,
+        "rank_bm25": 0.611,
         "rapidfuzz": 0.017,
-        "rapidfuzz_fts": 2.075,
+        "rapidfuzz_fts": 2.202,
         "rrf": 0.016
       },
       "correction": "conexão SSH",
@@ -534,13 +534,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.074,
-        "tfidf_word": 0.938,
-        "tfidf_char": 1.905,
-        "rank_bm25": 0.515,
-        "rapidfuzz": 0.014,
-        "rapidfuzz_fts": 1.998,
-        "rrf": 0.014
+        "fts5": 2.194,
+        "tfidf_word": 0.96,
+        "tfidf_char": 2.003,
+        "rank_bm25": 0.885,
+        "rapidfuzz": 0.018,
+        "rapidfuzz_fts": 2.264,
+        "rrf": 0.017
       },
       "correction": "Android Studio",
       "top3": {
@@ -614,13 +614,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.007,
-        "tfidf_word": 0.919,
-        "tfidf_char": 1.945,
-        "rank_bm25": 0.855,
-        "rapidfuzz": 0.015,
-        "rapidfuzz_fts": 1.932,
-        "rrf": 0.015
+        "fts5": 2.188,
+        "tfidf_word": 1.066,
+        "tfidf_char": 1.992,
+        "rank_bm25": 0.644,
+        "rapidfuzz": 0.019,
+        "rapidfuzz_fts": 2.23,
+        "rrf": 0.014
       },
       "correction": "menor privilégio",
       "top3": {
@@ -694,13 +694,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.127,
-        "tfidf_word": 0.941,
-        "tfidf_char": 1.987,
-        "rank_bm25": 0.55,
-        "rapidfuzz": 0.017,
-        "rapidfuzz_fts": 2.051,
-        "rrf": 0.016
+        "fts5": 2.27,
+        "tfidf_word": 0.985,
+        "tfidf_char": 2.043,
+        "rank_bm25": 0.901,
+        "rapidfuzz": 0.026,
+        "rapidfuzz_fts": 2.385,
+        "rrf": 0.017
       },
       "correction": "avaliação formativa",
       "top3": {
@@ -774,13 +774,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.03,
-        "tfidf_word": 0.945,
-        "tfidf_char": 1.909,
-        "rank_bm25": 0.613,
-        "rapidfuzz": 0.023,
-        "rapidfuzz_fts": 1.962,
-        "rrf": 0.014
+        "fts5": 2.25,
+        "tfidf_word": 0.99,
+        "tfidf_char": 1.93,
+        "rank_bm25": 0.711,
+        "rapidfuzz": 0.027,
+        "rapidfuzz_fts": 2.243,
+        "rrf": 0.015
       },
       "correction": "API REST",
       "top3": {
@@ -854,13 +854,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.124,
-        "tfidf_word": 0.96,
-        "tfidf_char": 1.932,
-        "rank_bm25": 0.613,
-        "rapidfuzz": 0.027,
-        "rapidfuzz_fts": 2.072,
-        "rrf": 0.015
+        "fts5": 2.299,
+        "tfidf_word": 0.963,
+        "tfidf_char": 1.957,
+        "rank_bm25": 0.678,
+        "rapidfuzz": 0.03,
+        "rapidfuzz_fts": 2.214,
+        "rrf": 0.016
       },
       "correction": "conexão SSH",
       "top3": {
@@ -934,13 +934,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 0.071,
-        "tfidf_word": 0.925,
-        "tfidf_char": 1.962,
-        "rank_bm25": 0.568,
-        "rapidfuzz": 0.011,
-        "rapidfuzz_fts": 2.22,
-        "rrf": 0.015
+        "fts5": 0.072,
+        "tfidf_word": 0.931,
+        "tfidf_char": 1.948,
+        "rank_bm25": 0.598,
+        "rapidfuzz": 0.01,
+        "rapidfuzz_fts": 2.278,
+        "rrf": 0.013
       },
       "correction": "contrato declarativo",
       "top3": {
@@ -1010,13 +1010,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 0.116,
-        "tfidf_word": 0.947,
-        "tfidf_char": 1.919,
-        "rank_bm25": 0.707,
+        "fts5": 0.094,
+        "tfidf_word": 0.923,
+        "tfidf_char": 1.927,
+        "rank_bm25": 0.921,
         "rapidfuzz": 0.017,
-        "rapidfuzz_fts": 2.098,
-        "rrf": 0.013
+        "rapidfuzz_fts": 2.253,
+        "rrf": 0.012
       },
       "correction": "avaliação formativa",
       "top3": {
