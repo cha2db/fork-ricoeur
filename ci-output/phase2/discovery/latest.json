@@ -1,25 +1,25 @@
 {
   "status": "PASS",
-  "timestamp_utc": "2026-11-10T23:07:09.629724+00:00",
+  "timestamp_utc": "2026-11-10T23:10:31.914163+00:00",
   "inventory_version": "R08",
   "inventory_count": 134,
   "github_repo_count": 114,
   "queries": {
     "archives": {
       "query": "chatgpt claude conversation archive in:readme archived:false",
-      "total_count": 9788,
+      "total_count": 9790,
       "sampled": 40,
       "incomplete_results": false
     },
     "mcp": {
       "query": "conversation history mcp sqlite in:readme archived:false",
-      "total_count": 27182,
+      "total_count": 27183,
       "sampled": 40,
       "incomplete_results": false
     },
     "agent-history": {
       "query": "coding agent sessions search sqlite in:readme archived:false",
-      "total_count": 57024,
+      "total_count": 57026,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -37,7 +37,7 @@
     },
     "graph": {
       "query": "temporal graph rag memory in:readme archived:false",
-      "total_count": 8808,
+      "total_count": 8807,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -1316,7 +1316,7 @@
       "url": "https://github.com/affaan-m/ECC",
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
       "license_spdx": "MIT",
-      "stars": 300773,
+      "stars": 300775,
       "pushed_at": "2026-11-09T04:56:24Z",
       "archived": false,
       "fork": false,
@@ -1815,7 +1815,7 @@
       "url": "https://github.com/OpenCoworkAI/open-codesign",
       "description": "Open-source Claude Design alternative. One-click import your Claude Code / Codex API key. Prompt → prototype / slides / PDF. Multi-model (Claude, GPT, Gemini, Kimi, GLM, Ollama). BYOK, local-first, MIT.",
       "license_spdx": "MIT",
-      "stars": 8197,
+      "stars": 8198,
       "pushed_at": "2026-11-10T07:45:31Z",
       "archived": false,
       "fork": false,
@@ -2888,8 +2888,8 @@
       "url": "https://github.com/morluto/rea",
       "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
       "license_spdx": "MIT",
-      "stars": 449839,
-      "pushed_at": "2026-11-10T23:06:37Z",
+      "stars": 449841,
+      "pushed_at": "2026-11-10T23:07:22Z",
       "archived": false,
       "fork": false,
       "topics": [
@@ -2930,7 +2930,7 @@
       "url": "https://github.com/colbymchenry/codegraph",
       "description": "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes Agent — fewer tokens, fewer tool calls, 100% local",
       "license_spdx": "MIT",
-      "stars": 77304,
+      "stars": 77305,
       "pushed_at": "2026-11-01T17:36:07Z",
       "archived": false,
       "fork": false,
@@ -2951,7 +2951,7 @@
       "url": "https://github.com/router-for-me/CLIProxyAPI",
       "description": "Wrap Antigravity, ChatGPT Codex, Claude Code, Grok Build, Muse Code, Devin as an OpenAI/Gemini/Claude/Codex compatible API service, allowing you to enjoy the free Gemini Series, GPT Series, Grok Series, Claude model through API",
       "license_spdx": "MIT",
-      "stars": 58189,
+      "stars": 58190,
       "pushed_at": "2026-11-10T18:44:06Z",
       "archived": false,
       "fork": false,
@@ -3022,7 +3022,7 @@
       "description": "⌥ Coding agent with the IDE wired in. Built by Stencil Labs.",
       "license_spdx": "MIT",
       "stars": 38568,
-      "pushed_at": "2026-11-10T23:02:47Z",
+      "pushed_at": "2026-11-10T23:08:19Z",
       "archived": false,
       "fork": false,
       "topics": [
