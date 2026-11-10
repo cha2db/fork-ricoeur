@@ -41,7 +41,7 @@ def fetch(name,token):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R08.json")
+    ap.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R09.json")
     ap.add_argument("--output",default="_dev/results/phase2-repo-audit.json")
     a=ap.parse_args()
     src=json.loads(Path(a.inventory).read_text())
