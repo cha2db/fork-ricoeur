@@ -31,7 +31,16 @@ def main():
         word=TfidfVectorizer(strip_accents="unicode",ngram_range=(1,2),max_features=10000)
         encoded=word.fit_transform(texts)
         vectors=normalize(TruncatedSVD(n_components=32,random_state=2026).fit_transform(encoded))
-        ext=str(importlib.resources.files("sqlite_vector.binaries")/"vector")
+        try:
+            ext=str(importlib.resources.files("sqlite_vector.binaries")/"vector")
+        except ModuleNotFoundError:
+            distribution=importlib.metadata.distribution("sqlite-vector")
+            binaries=[distribution.locate_file(f) for f in (distribution.files or [])
+                      if str(f).endswith((".so",".dylib",".dll")) and "vector" in str(f).lower()]
+            if not binaries:
+                raise RuntimeError("No extension found; package files="+
+                                   str([str(f) for f in distribution.files or []][:35]))
+            ext=str(binaries[0])
         db.enable_load_extension(True)
         try:db.load_extension(ext)
         finally:db.enable_load_extension(False)
