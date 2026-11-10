@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '_dev/semantic_prior.py'
+      - '_dev/build_prior_base.py'
       - '_dev/publish_semantic.sh'
       - '.github/workflows/semantic-prior.yml'
   workflow_dispatch:
@@ -36,10 +37,15 @@ jobs:
             tail -n 100 _dev/results/semantic-install.log
             exit 1
           }
+      - name: Rebuild shared deterministic 40k corpus and fingerprint
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/prior-base.log 2>&1
+          cat _dev/results/prior-base.manifest.json
       - name: Execute reproducible PT/EN semantic experiments
         run: |
           set +e
-          timeout 660s python -u _dev/semantic_prior.py --conversations 1000 --output _dev/results/semantic.json > _dev/results/semantic.log 2>&1
+          timeout 660s python -u _dev/semantic_prior.py --db-path _dev/results/prior-base.sqlite --conversations 1000 --output _dev/results/semantic.json > _dev/results/semantic.log 2>&1
           status=$?
           set -e
           if [ "$status" -eq 124 ]; then
