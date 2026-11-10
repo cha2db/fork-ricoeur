@@ -51,7 +51,8 @@ def generate(nconv: int, nmsg: int, size: int, seed: int):
                 text += f" FIRE-NEEDLE-{ci:06d} "
             if mi % 41 == 0:
                 text += " repeated-token" * 8
-            text = (text + " " + ("x" * max(0, size - len(text))))[:max(size, len(text))]
+            # Preserve search marker and original content; only pad to requested size.
+            text = text + " " + ("x" * max(0, size - len(text)))
             if mi % 97 == 96:
                 text = ""  # deliberately empty message, not persisted by current importer
             mapping[nid] = {
