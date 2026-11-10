@@ -13,10 +13,10 @@ fi
 mkdir -p stress-results
 STAMP="$(date +%Y%m%d-%H%M%S)"
 REPORT="stress-results/fire-${STAMP}.log"
-echo "== Fire test: 1000 conversations x 100 messages x 2048 chars =="
+echo "== Fire test: 2000 conversations x 100 messages x 2048 chars =="
 echo "== Log: $REPORT =="
 set +e
-"$PYTHON" tests/stress_fire.py --conversations 1000 --messages 100 --size 2048 2>&1 | tee "$REPORT"
+"$PYTHON" tests/stress_fire.py --conversations 2000 --messages 100 --size 2048 2>&1 | tee "$REPORT"
 STATUS=${PIPESTATUS[0]}
 set -e
 echo "== Exit code: $STATUS; saved: $REPORT =="
