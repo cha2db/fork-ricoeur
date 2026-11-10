@@ -72,3 +72,9 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Avalia descoberta de tools, busca por mensagens, IDs e contexto em chamadas MCP.
 - Estado: scripts publicados, não executados no Android. O uv pode não disponibilizar Python 3.12 no Termux; nesse caso registrar bloqueio de plataforma e usar host Linux compatível, sem confundir com falha de arquitetura.
 - SDK v2 possui API distinta; migração de adapter deve ser feita separadamente.
+
+## Teste 7 — correção Termux (10/11/2026)
+- Execução Android bloqueada ANTES do MCP: uv não encontrou Python 3.12.
+- Script alterado para reutilizar Python existente (.venv ou python), instalar SDK MCP 1.x (<1.10) se necessário e executar cliente/servidor reais via stdio.
+- Evita exigir uv e Python 3.12. Instalação do SDK em Termux ainda pode falhar por dependências nativas; não validado até retorno do tablet.
+- Não confundir falha de instalação com falha do protocolo.
