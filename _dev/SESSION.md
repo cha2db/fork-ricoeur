@@ -45,3 +45,10 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Evidência local: _dev/results/teste3.json
 - Status: publicado; execução pendente no Android.
 \n## Atualização — Teste 3\n- Evidência visual Android: PASS; quatro importações no mesmo banco, 8 conversas e 40 mensagens estáveis, novas = 8/0/0/0.\n- Após esse resultado, importador alterado para persistir mensagens vazias e árvore completa em chatgpt_nodes.\n- Teste 3 atualizado para novo comportamento esperado (48 mensagens); exige revalidação.\n- Teste 4 criado para verificar 48 mensagens, 8 vazias, 57 nós e ramo alternativo, inclusive reimportação.\n- Anexos ainda não resolvidos; nenhum PASS de fidelidade integral.\n\n## Atualização — decisão de adoção e Teste 5\n- Teste 4: PASS visual Android: 8 conversas, 48 mensagens (8 vazias), 57 nós, 1 ramo alternativo, reimportação sem duplicação.\n- Decisão humana: priorizar testes que possam alterar adoção; evitar novos testes de fidelidade e carga sem impacto decisório.\n- Veredicto provisório: SQLite, FTS5 e importação incremental são candidatos de adoção; contratos por mensagem, navegação e MCP ainda em avaliação.\n- Teste 5: diagnóstico funcional de busca cruzada, granularidade por mensagem, IDs/contexto e evidência preliminar de MCP.\n- Gate: distinguir API pública de acesso SQL direto; ausência de servidor MCP não reprova núcleo se adapter for barato.\n
+## Teste 5 — evidência Android (10/11/2026)
+- Diagnóstico executado: 2 conversas e 4 mensagens coincidentes.
+- PASS: busca cruzada, snippets, consulta SQL por mensagem e contexto estruturado.
+- Lacunas da API de busca: agrupa por conversa, não expõe todos os hits nem IDs de mensagem.
+- MCP: nenhum arquivo de servidor identificado pelo teste heurístico; integração real ainda não testada.
+- Decisão provisória: manter SQLite/FTS5 e busca como candidatos de adoção; avaliar adapter MCP fino, sem substituir motor.
+- Próximo gate: teste 6, contrato de busca por mensagem com IDs, vizinhança e múltiplas ocorrências.
