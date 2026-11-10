@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '_dev/PHASE2_MARKET_UNIVERSE_R05.json'
+      - '_dev/PHASE2_MARKET_UNIVERSE_R06.json'
       - '_dev/phase2_repo_audit.py'
       - '_dev/publish_phase2_audit.sh'
       - '.github/workflows/phase2-market-audit.yml'
