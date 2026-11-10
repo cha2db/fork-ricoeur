@@ -1,0 +1,30 @@
+{
+  "candidate": "LanceDB",
+  "status": "PASS",
+  "fixture_sha256": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "synthetic": true,
+  "documents": 1000,
+  "version": "0.41.0",
+  "build_seconds": 0.087,
+  "verdict": "CANDIDATE_ONLY_NOT_PRODUCTION_ADOPTION",
+  "modes": {
+    "fts": {
+      "status": "PASS",
+      "mean_p10": 1.0,
+      "median_latency_ms": 2.62,
+      "error_count": 0
+    },
+    "vector": {
+      "status": "PASS",
+      "mean_p10": 1.0,
+      "median_latency_ms": 3.037,
+      "error_count": 0
+    },
+    "hybrid": {
+      "status": "PASS",
+      "mean_p10": 1.0,
+      "median_latency_ms": 5.501,
+      "error_count": 0
+    }
+  }
+}
