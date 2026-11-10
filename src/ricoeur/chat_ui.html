@@ -3,7 +3,7 @@
 <title>Cha2db · Conversas</title><style>
 :root{color-scheme:dark;font:15px system-ui}*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e5e7eb}
 header{padding:14px 18px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center}
-h1{font-size:19px;margin:0}small,.muted{color:#94a3b8}.layout{display:grid;grid-template-columns:320px minmax(0,1fr);height:calc(100dvh - 60px)}
+h1{font-size:19px;margin:0}small,.muted{color:#94a3b8}.layout{display:grid;grid-template-columns:320px minmax(0,1fr);height:calc(100dvh - 113px)}
 aside{border-right:1px solid #334155;overflow:auto;padding:12px}.main{min-width:0;display:flex;flex-direction:column}
 input,select,button{font:inherit;border:1px solid #475569;border-radius:9px;padding:10px;background:#172337;color:#f8fafc}
 button{cursor:pointer}button:hover,.selected{background:#334155}input{width:100%}.controls{display:grid;gap:8px}
@@ -13,24 +13,24 @@ button{cursor:pointer}button:hover,.selected{background:#334155}input{width:100%
 .bubble.user{align-self:flex-end;background:#1d4ed8}.bubble.assistant{align-self:flex-start}.bubble.other{align-self:flex-start;background:#334155}
 .bubble.focus{outline:2px solid #38bdf8}.bubble small{display:block;margin-bottom:7px;color:#cbd5e1}
 #status{padding:9px 16px;border-top:1px solid #334155;min-height:38px}
-#results{max-height:38vh;overflow:auto;border-top:1px solid #334155;padding:8px 16px;display:none}
+#results{overflow:auto;flex:1;padding:16px;display:none}
 .result{width:100%;text-align:left;display:block;margin:6px 0;white-space:normal;overflow-wrap:anywhere}
 @media(max-width:700px){.layout{grid-template-columns:135px minmax(0,1fr)}aside{padding:7px}.bubble{max-width:100%}header{padding:10px}}
-</style></head><body>
+ .tabs{display:flex;gap:8px;padding:10px 14px;border-bottom:1px solid #334155}.tabs button{flex:1}.searchbar{display:flex;gap:8px;padding:14px;flex-wrap:wrap}.searchbar input{flex:1;min-width:150px}.searchbar select{width:auto}.searchview{display:none;flex-direction:column;flex:1;min-height:0}.hint{padding:0 14px;color:#94a3b8}</style></head><body>
 <header><h1>Cha2db <small>· Conversas</small></h1><small>Local · somente leitura</small></header>
-<div class="layout"><aside><div class="controls"><input id="q" placeholder="Buscar em todos os chats" aria-label="Busca">
-<button id="search">Buscar mensagens</button><button id="recent">Conversas recentes</button></div>
+<div class="tabs"><button id="tabChats" class="selected">Conversas</button><button id="tabSearch">Busca</button></div><div class="layout"><aside><div class="controls"><button id="recent">Atualizar conversas</button></div>
 <div id="list"></div></aside><section class="main"><div id="threadTitle">Selecione uma conversa</div>
-<div id="thread"></div><div id="results"></div><div id="status">Pronto</div></section></div>
+<div id="thread"></div><div id="searchView" class="searchview"><div class="searchbar"><input id="q" placeholder="Palavra ou frase" aria-label="Busca"><select id="mode"><option value="simple">Texto literal</option><option value="fts">FTS5 avançada</option><option value="semantic" disabled>Semântica (futuro)</option></select><button id="search">Pesquisar</button></div><div class="hint">Texto literal busca palavras e trechos em todas as mensagens, sem sintaxe especial. FTS5 permite operadores avançados.</div><div id="results"></div></div><div id="status">Pronto</div></section></div>
 <script>
 const $=s=>document.querySelector(s),list=$('#list'),thread=$('#thread'),results=$('#results'),status=$('#status');
-let active=null;
+let active=null;let view='chats';
+function switchView(next){view=next;const search=next==='search';$('#searchView').style.display=search?'flex':'none';$('#thread').style.display=search?'none':'flex';$('#threadTitle').style.display=search?'none':'block';$('#tabChats').classList.toggle('selected',!search);$('#tabSearch').classList.toggle('selected',search);if(search)results.style.display='block';}
 function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}
 async function api(url){const r=await fetch(url);const j=await r.json();if(!r.ok)throw Error(j.detail||r.status);return j}
 function error(e){status.textContent='Erro: '+e.message}
 function bubble(m,focus){const n=node('div',undefined,'bubble '+(m.role==='user'?'user':m.role==='assistant'?'assistant':'other')+(focus?' focus':''));
 n.append(node('small',(m.role||'mensagem')+' · '+(m.timestamp||'')),node('div',m.content||'[mensagem vazia]'));n.dataset.id=m.id;return n}
-async function openConversation(id,focus){try{active=id;results.style.display='none';results.replaceChildren();status.textContent='Carregando conversa...';
+async function openConversation(id,focus){try{active=id;switchView('chats');status.textContent='Carregando conversa...';
 const d=await api('/api/conversations/'+encodeURIComponent(id)+'?limit=500');
 $('#threadTitle').textContent=(d.conversation.title||id)+' · '+d.conversation.platform;
 thread.replaceChildren();for(const m of d.messages)thread.append(bubble(m,m.id===focus));
@@ -42,13 +42,14 @@ async function recent(){try{status.textContent='Carregando...';const d=await api
 list.replaceChildren();for(const c of d.conversations){const b=node('button',(c.title||c.id)+'\n'+c.platform,'item');b.addEventListener('click',()=>openConversation(c.id));list.append(b)}
 status.textContent=d.conversations.length+' conversas';if(!d.conversations.length)status.textContent='Nenhuma conversa importada nesta base';
 }catch(e){error(e)}}
-async function search(){const q=$('#q').value.trim();if(!q)return;try{status.textContent='Pesquisando...';
-const d=await api('/api/search?'+new URLSearchParams({q,limit:100,context:0}));
-results.replaceChildren();results.style.display='block';
+async function search(){const q=$('#q').value.trim();if(!q){status.textContent='Digite uma palavra ou frase';return}switchView('search');try{status.textContent='Pesquisando...';
+const path=$('#mode').value==='fts'?'/api/search':'/api/search/simple';
+const d=await api(path+'?'+new URLSearchParams({q,limit:100,context:0}));
+results.replaceChildren();
 for(const h of d.hits){const b=node('button',(h.conversation.title||h.conversation.id)+' · '+h.message.role+'\n'+(h.message.content||'').slice(0,220),'result');
 b.addEventListener('click',()=>openConversation(h.conversation.id,h.message.id));results.append(b)}
-status.textContent=d.count+' resultados (máximo 100)';if(!d.count)results.append(node('p','Nenhuma mensagem encontrada'));
+status.textContent=d.count+' resultados exibidos (máximo 100)';if(!d.count)results.append(node('p','Nenhuma mensagem encontrada'));
 }catch(e){error(e)}}
-$('#recent').addEventListener('click',recent);$('#search').addEventListener('click',search);
+$('#tabChats').addEventListener('click',()=>switchView('chats'));$('#tabSearch').addEventListener('click',()=>switchView('search'));$('#recent').addEventListener('click',recent);$('#search').addEventListener('click',search);
 $('#q').addEventListener('keydown',e=>{if(e.key==='Enter')search()});recent();
 </script></body></html>
