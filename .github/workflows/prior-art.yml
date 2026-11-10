@@ -7,6 +7,8 @@ on:
       - '_dev/vector_prior.py'
       - '_dev/relations_prior.py'
       - '_dev/build_prior_base.py'
+      - '_dev/trigram_prior.py'
+      - '_dev/sqlite_vector_prior.py'
       - '_dev/corpus.py'
       - '_dev/publish_prior_art.sh'
       - '.github/workflows/prior-art.yml'
@@ -65,6 +67,56 @@ jobs:
             exit 1
           }
           cat _dev/results/relations.json
+      - name: Compare FTS5 trigram substrings to literal LIKE
+        run: |
+          python -u _dev/trigram_prior.py --db-path _dev/results/prior-base.sqlite --output _dev/results/trigram.json > _dev/results/trigram.log 2>&1 || {
+            tail -n 100 _dev/results/trigram.log
+            exit 1
+          }
+          cat _dev/results/trigram.json
+      - name: Probe SQLite-Vector extension and quantized search
+        run: |
+          set +e
+          python -m pip install 'sqlite-vector' > _dev/results/sqlite-vector-install.log 2>&1
+          install_status=$?
+          if [ "$install_status" -eq 0 ]; then
+            python -u _dev/sqlite_vector_prior.py --db-path _dev/results/prior-base.sqlite --output _dev/results/sqlite-vector.json > _dev/results/sqlite-vector.log 2>&1
+            test_status=$?
+          else
+            test_status=$install_status
+          fi
+          set -e
+          if [ "$test_status" -ne 0 ]; then
+            python - <<'PY'
+          import json,pathlib
+          logs={}
+          for name in ('sqlite-vector-install.log','sqlite-vector.log'):
+              p=pathlib.Path('_dev/results')/name
+              if p.exists():logs[name]=p.read_text(errors='replace')[-3000:]
+          pathlib.Path('_dev/results/sqlite-vector.json').write_text(json.dumps({
+              'status':'BLOCKED','candidate':'sqlite-vector',
+              'reason':'install or runtime failed; see log tails','logs':logs},indent=2))
+          PY
+          fi
+          cat _dev/results/sqlite-vector.json
+      - name: Probe availability of official SQLite vec1 extension
+        run: |
+          python - <<'PY'
+          import json,sqlite3,pathlib
+          c=sqlite3.connect(':memory:')
+          try:
+              c.execute('CREATE VIRTUAL TABLE vec1_probe USING vec1(vector)')
+              status='AVAILABLE'
+          except sqlite3.OperationalError as error:
+              status='UNAVAILABLE_ON_STOCK_RUNNER'
+              detail=str(error)
+          report={'status':status,'candidate':'SQLite official vec1',
+                  'detail':detail if status!='AVAILABLE' else 'vec1 module loaded',
+                  'note':'Requires an external compiled extension; not bundled into stock SQLite.'}
+          p=pathlib.Path('_dev/results/vec1-probe.json')
+          p.write_text(json.dumps(report,indent=2))
+          print(json.dumps(report,indent=2))
+          PY
       - name: Upload reproducible logs
         if: always()
         uses: actions/upload-artifact@v4
