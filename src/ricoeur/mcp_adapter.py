@@ -1,7 +1,7 @@
 """Optional MCP adapter for the read-only retrieval contract.
 
-Requires Python >=3.11 and the official MCP SDK v2 (pip install mcp>=2).
-The core retrieval contract has no MCP dependency and works on Termux 3.10.
+Uses the official MCP Python SDK FastMCP adapter when installed.
+The core retrieval contract has no MCP dependency.
 """
 from __future__ import annotations
 
@@ -10,8 +10,8 @@ from .retrieval import search_messages, get_message_context
 
 
 def build_server():
-    from mcp.server import MCPServer
-    server = MCPServer("cha2db-ricoeur")
+    from mcp.server.fastmcp import FastMCP
+    server = FastMCP("cha2db-ricoeur")
 
     @server.tool()
     def search_chat_messages(query: str, limit: int = 20,
