@@ -92,3 +92,10 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Versões utilizadas no script: MCP 1.9.4, Pydantic 2.10.6, pydantic-core 2.27.2; Python 3.13 Termux.
 - Veredicto: contrato de busca por mensagem e adapter MCP funcional no cenário sintético. Não equivale a integração validada com cliente externo nem base real heterogênea.
 - Próximo gate: uso do adapter por cliente MCP externo sobre base real, verificando IDs, filtros, contexto e segurança de acesso.
+
+## Capacidade remota Termux — SSH/MCP (10/11/2026)
+- Publicado _dev/remote.sh (setup/start/check/serve) e _dev/REMOTE.md.
+- Decisão: reutilizar MCP stdio validado no Teste 7, com SSH autenticado como transporte remoto; sem endpoint HTTP público nem túnel aberto.
+- Setup instala OpenSSH no Termux; autenticação por chave pública precisa ser configurada pelo usuário no cliente externo.
+- Próximo gate: executar setup/check/start no tablet e testar um cliente MCP externo por SSH na LAN. Estado: publicado, NÃO validado no tablet.
+- Acesso fora da LAN por VPN privada fica para etapa posterior; não abrir porta no roteador.
