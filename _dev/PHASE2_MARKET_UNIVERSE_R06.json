@@ -1,0 +1,1126 @@
+{
+  "project": "cha2db/fork-ricoeur",
+  "phase": 2,
+  "revision": "R06",
+  "date": "2026-11-10",
+  "kind": "market-universe-not-benchmark",
+  "license_rule": "Verify upstream source, edition, dependencies and model weights before adoption",
+  "exhaustion_rule": "category coverage + reference check + at least two independent candidates per high-priority port + saturated discovery in 2 consecutive surveys; not all software in existence",
+  "total": 110,
+  "families": {
+    "lexical-embedded": 18,
+    "search-servers": 14,
+    "vectors": 17,
+    "semantic-ranking": 13,
+    "topic-graph": 14,
+    "graph-memory-products": 23,
+    "quality-and-input": 11
+  },
+  "candidates": [
+    {
+      "id": "C001",
+      "family": "lexical-embedded",
+      "name": "SQLite FTS5",
+      "url": "https://www.sqlite.org/fts5.html",
+      "status": "KEEP",
+      "reason": "núcleo atual; benchmark já aprovado",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C002",
+      "family": "lexical-embedded",
+      "name": "SQLite FTS5 trigram",
+      "url": "https://www.sqlite.org/fts5.html#the_trigram_tokenizer",
+      "status": "OPTIONAL",
+      "reason": "substring, custo de índice elevado",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C003",
+      "family": "lexical-embedded",
+      "name": "Tantivy / tantivy-py",
+      "url": "https://github.com/quickwit-oss/tantivy-py",
+      "status": "TEST",
+      "reason": "motor BM25 Rust embutível",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C004",
+      "family": "lexical-embedded",
+      "name": "BM25S",
+      "url": "https://github.com/xhluca/bm25s",
+      "status": "TEST",
+      "reason": "BM25 esparso, CLI e MCP próprios",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C005",
+      "family": "lexical-embedded",
+      "name": "rank-bm25",
+      "url": "https://github.com/dorianbrown/rank_bm25",
+      "status": "TESTED",
+      "reason": "baseline anterior",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C006",
+      "family": "lexical-embedded",
+      "name": "Whoosh",
+      "url": "https://github.com/mchaput/whoosh",
+      "status": "REVIEW",
+      "reason": "motor Python de baixo acoplamento",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C007",
+      "family": "lexical-embedded",
+      "name": "Xapian",
+      "url": "https://xapian.org/",
+      "status": "REVIEW",
+      "reason": "motor lexical e stemming, bindings",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C008",
+      "family": "lexical-embedded",
+      "name": "DuckDB FTS",
+      "url": "https://duckdb.org/docs/stable/core_extensions/full_text_search.html",
+      "status": "REVIEW",
+      "reason": "alternativa analítica embedded",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C009",
+      "family": "lexical-embedded",
+      "name": "Orama",
+      "url": "https://github.com/oramasearch/orama",
+      "status": "TEST",
+      "reason": "indexação JS/TS embutível",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C010",
+      "family": "lexical-embedded",
+      "name": "MiniSearch",
+      "url": "https://github.com/lucaong/minisearch",
+      "status": "REVIEW",
+      "reason": "JS embedded",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C011",
+      "family": "lexical-embedded",
+      "name": "FlexSearch",
+      "url": "https://github.com/nextapps-de/flexsearch",
+      "status": "REVIEW",
+      "reason": "JS/WASM",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C012",
+      "family": "lexical-embedded",
+      "name": "Lucene",
+      "url": "https://lucene.apache.org/",
+      "status": "REFERENCE",
+      "reason": "base das buscas distribuídas, Java",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C013",
+      "family": "lexical-embedded",
+      "name": "Sonic",
+      "url": "https://github.com/valeriansaliou/sonic",
+      "status": "REVIEW",
+      "reason": "servidor de busca leve",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C014",
+      "family": "search-servers",
+      "name": "Meilisearch CE",
+      "url": "https://github.com/meilisearch/meilisearch",
+      "status": "COMPARE",
+      "reason": "busca híbrida, serviço externo; CE MIT",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C015",
+      "family": "search-servers",
+      "name": "Typesense",
+      "url": "https://github.com/typesense/typesense",
+      "status": "COMPARE",
+      "reason": "fuzzy, filtros, vetor; GPL-3",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C016",
+      "family": "search-servers",
+      "name": "OpenSearch",
+      "url": "https://github.com/opensearch-project/OpenSearch",
+      "status": "COMPARE",
+      "reason": "híbrida, escala; serviço pesado",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C017",
+      "family": "search-servers",
+      "name": "Apache Solr",
+      "url": "https://github.com/apache/solr",
+      "status": "COMPARE",
+      "reason": "Lucene distribuído",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C018",
+      "family": "search-servers",
+      "name": "Manticore Search",
+      "url": "https://github.com/manticoresoftware/manticoresearch",
+      "status": "COMPARE",
+      "reason": "SQL, texto e vetores; GPLv3",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C019",
+      "family": "search-servers",
+      "name": "Quickwit",
+      "url": "https://github.com/quickwit-oss/quickwit",
+      "status": "COMPARE",
+      "reason": "objetos/arquivos imutáveis e analytics",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C020",
+      "family": "search-servers",
+      "name": "Vespa",
+      "url": "https://github.com/vespa-engine/vespa",
+      "status": "COMPARE",
+      "reason": "ranking e retrieval híbrido escalável",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C021",
+      "family": "search-servers",
+      "name": "ParadeDB",
+      "url": "https://github.com/paradedb/paradedb",
+      "status": "COMPARE",
+      "reason": "Postgres BM25; licença por componente",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C022",
+      "family": "search-servers",
+      "name": "PostgreSQL FTS",
+      "url": "https://www.postgresql.org/docs/current/textsearch.html",
+      "status": "COMPARE",
+      "reason": "índice TSearch/BM25 distinto",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C023",
+      "family": "search-servers",
+      "name": "pg_trgm",
+      "url": "https://www.postgresql.org/docs/current/pgtrgm.html",
+      "status": "COMPARE",
+      "reason": "substring e similaridade trigram",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C024",
+      "family": "search-servers",
+      "name": "ZincSearch",
+      "url": "https://github.com/zincsearch/zincsearch",
+      "status": "REVIEW",
+      "reason": "API Elasticsearch compatível",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C025",
+      "family": "search-servers",
+      "name": "Elasticsearch",
+      "url": "https://github.com/elastic/elasticsearch",
+      "status": "LICENSE_REVIEW",
+      "reason": "múltiplas licenças; escopo versão",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C026",
+      "family": "search-servers",
+      "name": "Azure AI Search",
+      "url": "https://learn.microsoft.com/en-us/azure/search/",
+      "status": "REFERENCE",
+      "reason": "SaaS proprietário",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C027",
+      "family": "search-servers",
+      "name": "Algolia",
+      "url": "https://www.algolia.com/",
+      "status": "REFERENCE",
+      "reason": "SaaS proprietário",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C028",
+      "family": "vectors",
+      "name": "sqlite-vec",
+      "url": "https://github.com/asg017/sqlite-vec",
+      "status": "TESTED",
+      "reason": "índice opcional local no SQLite",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C029",
+      "family": "vectors",
+      "name": "SQLite vec1",
+      "url": "https://sqlite.org/vec1.html",
+      "status": "BUILD_REQUIRED",
+      "reason": "extensão externa ainda não compilada",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C030",
+      "family": "vectors",
+      "name": "SQLite-Vector PyPI",
+      "url": "https://pypi.org/project/sqlite-vector/",
+      "status": "BLOCKED",
+      "reason": "incompatibilidade de API na versão disponível",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C031",
+      "family": "vectors",
+      "name": "USearch",
+      "url": "https://github.com/unum-cloud/USearch",
+      "status": "TEST",
+      "reason": "indexador ANN portátil/WASM",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C032",
+      "family": "vectors",
+      "name": "hnswlib",
+      "url": "https://github.com/nmslib/hnswlib",
+      "status": "REVIEW",
+      "reason": "ANN de referência",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C033",
+      "family": "vectors",
+      "name": "FAISS",
+      "url": "https://github.com/facebookresearch/faiss",
+      "status": "REVIEW",
+      "reason": "ANN alto desempenho; C++",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C034",
+      "family": "vectors",
+      "name": "Annoy",
+      "url": "https://github.com/spotify/annoy",
+      "status": "REVIEW",
+      "reason": "ANN arquivos mmapped",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C035",
+      "family": "vectors",
+      "name": "LanceDB",
+      "url": "https://github.com/lancedb/lancedb",
+      "status": "REVIEW",
+      "reason": "embedded híbrido, metadados",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C036",
+      "family": "vectors",
+      "name": "DuckDB VSS",
+      "url": "https://duckdb.org/docs/stable/core_extensions/vss.html",
+      "status": "REVIEW",
+      "reason": "HNSW experimental",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C037",
+      "family": "vectors",
+      "name": "Chroma",
+      "url": "https://github.com/chroma-core/chroma",
+      "status": "REVIEW",
+      "reason": "embedded e servidor",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C038",
+      "family": "vectors",
+      "name": "pgvector",
+      "url": "https://github.com/pgvector/pgvector",
+      "status": "COMPARE",
+      "reason": "índices SQL em PostgreSQL",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C039",
+      "family": "vectors",
+      "name": "Qdrant",
+      "url": "https://github.com/qdrant/qdrant",
+      "status": "COMPARE",
+      "reason": "servidor vetorial com sparse/híbrido",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C040",
+      "family": "vectors",
+      "name": "Milvus",
+      "url": "https://github.com/milvus-io/milvus",
+      "status": "COMPARE",
+      "reason": "vetorial distribuído",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C041",
+      "family": "vectors",
+      "name": "Weaviate",
+      "url": "https://github.com/weaviate/weaviate",
+      "status": "COMPARE",
+      "reason": "híbrido servido",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C042",
+      "family": "vectors",
+      "name": "Redis vector search",
+      "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
+      "status": "COMPARE",
+      "reason": "servidor com filtros e ANN",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C043",
+      "family": "vectors",
+      "name": "Vald",
+      "url": "https://github.com/vdaas/vald",
+      "status": "DEFER",
+      "reason": "Kubernetes distribuído",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C044",
+      "family": "vectors",
+      "name": "Vearch",
+      "url": "https://github.com/vearch/vearch",
+      "status": "DEFER",
+      "reason": "vetorial distribuído",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C045",
+      "family": "semantic-ranking",
+      "name": "Sentence Transformers",
+      "url": "https://github.com/UKPLab/sentence-transformers",
+      "status": "TESTED",
+      "reason": "paráfrases PT/EN, modelo licença separada",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C046",
+      "family": "semantic-ranking",
+      "name": "FastEmbed",
+      "url": "https://github.com/qdrant/fastembed",
+      "status": "TEST",
+      "reason": "ONNX e modelos leves offline",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C047",
+      "family": "semantic-ranking",
+      "name": "BGE-M3",
+      "url": "https://huggingface.co/BAAI/bge-m3",
+      "status": "REVIEW",
+      "reason": "multilíngue, híbrido dense+sparse+multi-vector",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C048",
+      "family": "semantic-ranking",
+      "name": "multilingual E5",
+      "url": "https://huggingface.co/intfloat/multilingual-e5-base",
+      "status": "REVIEW",
+      "reason": "embeddings multilíngues",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C049",
+      "family": "semantic-ranking",
+      "name": "PyLate",
+      "url": "https://github.com/lightonai/pylate",
+      "status": "REVIEW",
+      "reason": "ColBERT late interaction",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C050",
+      "family": "semantic-ranking",
+      "name": "ColBERT",
+      "url": "https://github.com/stanford-futuredata/ColBERT",
+      "status": "REVIEW",
+      "reason": "late interaction",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C051",
+      "family": "semantic-ranking",
+      "name": "SPLADE",
+      "url": "https://github.com/naver/splade",
+      "status": "REVIEW",
+      "reason": "sparse neural retrieval",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C052",
+      "family": "semantic-ranking",
+      "name": "CrossEncoder",
+      "url": "https://www.sbert.net/docs/cross_encoder/usage/usage.html",
+      "status": "TESTED",
+      "reason": "reranking anterior não mostrou ganho constante",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C053",
+      "family": "semantic-ranking",
+      "name": "FlashRank",
+      "url": "https://github.com/PrithivirajDamodaran/FlashRank",
+      "status": "REVIEW",
+      "reason": "reranker leve",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C054",
+      "family": "semantic-ranking",
+      "name": "llama.cpp embeddings",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "status": "REVIEW",
+      "reason": "embeddings locais opcionais",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C055",
+      "family": "semantic-ranking",
+      "name": "GLiNER",
+      "url": "https://github.com/urchade/GLiNER",
+      "status": "REVIEW",
+      "reason": "entidades não estruturadas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C056",
+      "family": "semantic-ranking",
+      "name": "spaCy",
+      "url": "https://github.com/explosion/spaCy",
+      "status": "REVIEW",
+      "reason": "NER e tokenização",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C057",
+      "family": "semantic-ranking",
+      "name": "RapidFuzz",
+      "url": "https://github.com/rapidfuzz/RapidFuzz",
+      "status": "TESTED",
+      "reason": "correção de consultas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C058",
+      "family": "topic-graph",
+      "name": "NetworkX",
+      "url": "https://github.com/networkx/networkx",
+      "status": "TESTED",
+      "reason": "grafo simples auditável",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C059",
+      "family": "topic-graph",
+      "name": "BERTopic",
+      "url": "https://github.com/MaartenGr/BERTopic",
+      "status": "TESTED",
+      "reason": "agrupamento temático",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C060",
+      "family": "topic-graph",
+      "name": "KeyBERT",
+      "url": "https://github.com/MaartenGr/KeyBERT",
+      "status": "REVIEW",
+      "reason": "palavras-chaves e extração",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C061",
+      "family": "topic-graph",
+      "name": "Top2Vec",
+      "url": "https://github.com/ddangelov/Top2Vec",
+      "status": "REVIEW",
+      "reason": "modelagem tópicos",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C062",
+      "family": "topic-graph",
+      "name": "HDBSCAN",
+      "url": "https://github.com/scikit-learn-contrib/hdbscan",
+      "status": "REVIEW",
+      "reason": "cluster sem número fixo",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C063",
+      "family": "topic-graph",
+      "name": "Leidenalg",
+      "url": "https://github.com/vtraag/leidenalg",
+      "status": "REVIEW",
+      "reason": "comunidades robustas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C064",
+      "family": "topic-graph",
+      "name": "igraph",
+      "url": "https://github.com/igraph/python-igraph",
+      "status": "REVIEW",
+      "reason": "grafos maiores que NetworkX",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C065",
+      "family": "topic-graph",
+      "name": "RDFLib",
+      "url": "https://github.com/RDFLib/rdflib",
+      "status": "REVIEW",
+      "reason": "triples RDF, proveniência",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C066",
+      "family": "topic-graph",
+      "name": "ArcadeDB",
+      "url": "https://github.com/ArcadeData/arcadedb",
+      "status": "REVIEW",
+      "reason": "multi-modelo local/servidor",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C067",
+      "family": "topic-graph",
+      "name": "Neo4j Community",
+      "url": "https://github.com/neo4j/neo4j",
+      "status": "LICENSE_REVIEW",
+      "reason": "grafo servidor, implicações GPL",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C068",
+      "family": "topic-graph",
+      "name": "Apache AGE",
+      "url": "https://github.com/apache/age",
+      "status": "REVIEW",
+      "reason": "grafo em PostgreSQL",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C069",
+      "family": "topic-graph",
+      "name": "FalkorDB",
+      "url": "https://github.com/FalkorDB/FalkorDB",
+      "status": "LICENSE_REVIEW",
+      "reason": "grafo com obrigações de licença",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C070",
+      "family": "topic-graph",
+      "name": "Memgraph",
+      "url": "https://github.com/memgraph/memgraph",
+      "status": "LICENSE_REVIEW",
+      "reason": "temporal/streaming, obrigações",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C071",
+      "family": "topic-graph",
+      "name": "Kùzu",
+      "url": "https://github.com/kuzudb/kuzu",
+      "status": "ARCHIVED",
+      "reason": "projeto arquivado, não adotar novo",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C072",
+      "family": "graph-memory-products",
+      "name": "Graphiti",
+      "url": "https://github.com/getzep/graphiti",
+      "status": "CRITICAL",
+      "reason": "grafo temporal + proveniência, alto overlap",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C073",
+      "family": "graph-memory-products",
+      "name": "Cognee",
+      "url": "https://github.com/topoteretes/cognee",
+      "status": "CRITICAL",
+      "reason": "memória conversas/decisões local human/LLM",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C074",
+      "family": "graph-memory-products",
+      "name": "Mem0",
+      "url": "https://github.com/mem0ai/mem0",
+      "status": "CRITICAL",
+      "reason": "memória temporal e por sessão",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C075",
+      "family": "graph-memory-products",
+      "name": "HippoRAG 2",
+      "url": "https://github.com/OSU-NLP-Group/HippoRAG",
+      "status": "CRITICAL",
+      "reason": "PageRank multi-hop; MCP",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C076",
+      "family": "graph-memory-products",
+      "name": "LightRAG",
+      "url": "https://github.com/HKUDS/LightRAG",
+      "status": "CRITICAL",
+      "reason": "RAG com grafo + vetores",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C077",
+      "family": "graph-memory-products",
+      "name": "Microsoft GraphRAG",
+      "url": "https://github.com/microsoft/graphrag",
+      "status": "MAINTENANCE",
+      "reason": "pesquisa de referência, manutenção apenas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C078",
+      "family": "graph-memory-products",
+      "name": "Letta",
+      "url": "https://github.com/letta-ai/letta",
+      "status": "REVIEW",
+      "reason": "memória para agentes",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C079",
+      "family": "graph-memory-products",
+      "name": "Zep",
+      "url": "https://www.getzep.com/",
+      "status": "LICENSE_REVIEW",
+      "reason": "produto gerenciado + Graphiti OSS",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C080",
+      "family": "graph-memory-products",
+      "name": "Open WebUI",
+      "url": "https://github.com/open-webui/open-webui",
+      "status": "COMPARE",
+      "reason": "busca em histórico, filtros e exportação",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C081",
+      "family": "graph-memory-products",
+      "name": "Onyx CE",
+      "url": "https://github.com/onyx-dot-app/onyx",
+      "status": "COMPARE",
+      "reason": "busca corporativa e conectores; CE MIT",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C082",
+      "family": "graph-memory-products",
+      "name": "Khoj",
+      "url": "https://github.com/ai-khoj/khoj",
+      "status": "COMPARE",
+      "reason": "second brain e busca semântica",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C083",
+      "family": "graph-memory-products",
+      "name": "AnythingLLM",
+      "url": "https://github.com/Mintplex-Labs/anything-llm",
+      "status": "COMPARE",
+      "reason": "documentos e conversas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C084",
+      "family": "graph-memory-products",
+      "name": "Reor",
+      "url": "https://github.com/reorproject/reor",
+      "status": "REVIEW",
+      "reason": "notas semânticas locais",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C085",
+      "family": "graph-memory-products",
+      "name": "Microsoft semantic-kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "status": "REFERENCE",
+      "reason": "orquestração com memória e plugins",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C086",
+      "family": "graph-memory-products",
+      "name": "Haystack",
+      "url": "https://github.com/deepset-ai/haystack",
+      "status": "REVIEW",
+      "reason": "pipelines retriever/reranker",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C087",
+      "family": "graph-memory-products",
+      "name": "LlamaIndex",
+      "url": "https://github.com/run-llama/llama_index",
+      "status": "REVIEW",
+      "reason": "retrieval adapters e metadata",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C088",
+      "family": "graph-memory-products",
+      "name": "txtai",
+      "url": "https://github.com/neuml/txtai",
+      "status": "REVIEW",
+      "reason": "motor semântico e graphs",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C089",
+      "family": "graph-memory-products",
+      "name": "Matrix Seshat",
+      "url": "https://github.com/matrix-org/seshat",
+      "status": "REVIEW",
+      "reason": "prior art indexação de conversas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C090",
+      "family": "quality-and-input",
+      "name": "ir-measures",
+      "url": "https://github.com/terrierteam/ir_measures",
+      "status": "TEST",
+      "reason": "métricas IR canônicas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C091",
+      "family": "quality-and-input",
+      "name": "ranx",
+      "url": "https://github.com/AmenRa/ranx",
+      "status": "TEST",
+      "reason": "comparação estatística IR",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C092",
+      "family": "quality-and-input",
+      "name": "BEIR",
+      "url": "https://github.com/beir-cellar/beir",
+      "status": "BENCHMARK",
+      "reason": "corpus gold público, idiomas variáveis",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C093",
+      "family": "quality-and-input",
+      "name": "MTEB",
+      "url": "https://github.com/embeddings-benchmark/mteb",
+      "status": "BENCHMARK",
+      "reason": "embeddings, idiomas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C094",
+      "family": "quality-and-input",
+      "name": "RAGAS",
+      "url": "https://github.com/explodinggradients/ragas",
+      "status": "REVIEW",
+      "reason": "avaliação, juiz LLM opcional",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C095",
+      "family": "quality-and-input",
+      "name": "Label Studio",
+      "url": "https://github.com/HumanSignal/label-studio",
+      "status": "REVIEW",
+      "reason": "rótulos humanos",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C096",
+      "family": "quality-and-input",
+      "name": "Argilla",
+      "url": "https://github.com/argilla-io/argilla",
+      "status": "REVIEW",
+      "reason": "anotação humana de pares",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C097",
+      "family": "quality-and-input",
+      "name": "Splink",
+      "url": "https://github.com/moj-analytical-services/splink",
+      "status": "REVIEW",
+      "reason": "resolução de identidades",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C098",
+      "family": "quality-and-input",
+      "name": "dedupe",
+      "url": "https://github.com/dedupeio/dedupe",
+      "status": "REVIEW",
+      "reason": "deduplicação conversas",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C099",
+      "family": "quality-and-input",
+      "name": "Apache Tika",
+      "url": "https://github.com/apache/tika",
+      "status": "REFERENCE",
+      "reason": "extração de conteúdo em ingestão",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C100",
+      "family": "quality-and-input",
+      "name": "Docling",
+      "url": "https://github.com/docling-project/docling",
+      "status": "REFERENCE",
+      "reason": "estruturação documental",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C101",
+      "family": "graph-memory-products",
+      "name": "Reweave",
+      "url": "https://github.com/seolbbb/reweave",
+      "status": "CRITICAL",
+      "reason": "ChatGPT/Claude local, cited decisions, corrections, undo, linked spaces; direct comparator",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C102",
+      "family": "lexical-embedded",
+      "name": "Summa 2 / SpaceFrontiers",
+      "url": "https://github.com/SpaceFrontiers/summa",
+      "status": "TEST",
+      "reason": "embedded Rust BM25 sparse dense hybrid, gRPC/WASM, dedup/upserts",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C103",
+      "family": "lexical-embedded",
+      "name": "XERJ",
+      "url": "https://github.com/xerj-org/xerj",
+      "status": "TEST",
+      "reason": "one Rust binary: full text vectors hybrid and MCP client tools",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C104",
+      "family": "lexical-embedded",
+      "name": "OramaCore",
+      "url": "https://github.com/oramasearch/oramacore",
+      "status": "LICENSE_REVIEW",
+      "reason": "AGPL-3.0 server is distinct from Apache-2.0 JS library",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C105",
+      "family": "graph-memory-products",
+      "name": "Synorive",
+      "url": "https://github.com/Aevorine/Synorive",
+      "status": "REVIEW",
+      "reason": "offline local hybrid evidence and MCP tools",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C106",
+      "family": "graph-memory-products",
+      "name": "reactor semantic",
+      "url": "https://github.com/reactor-team/semantic",
+      "status": "REVIEW",
+      "reason": "local ONNX/SQLite retrieval plus duplicate, broken-link cleanup",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C107",
+      "family": "graph-memory-products",
+      "name": "Soma offline",
+      "url": "https://github.com/AwesomeDog/soma",
+      "status": "REVIEW",
+      "reason": "single-binary local hybrid docs, media and citations",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C108",
+      "family": "graph-memory-products",
+      "name": "Ricoeur upstream",
+      "url": "https://ricoeur.cc/",
+      "status": "BASELINE",
+      "reason": "original fork supports search/import/filters; compare code and roadmap",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C109",
+      "family": "lexical-embedded",
+      "name": "Summa original (archived)",
+      "url": "https://github.com/izihawa/summa",
+      "status": "ARCHIVED",
+      "reason": "historical project; successor SpaceFrontiers Summa 2",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    },
+    {
+      "id": "C110",
+      "family": "lexical-embedded",
+      "name": "Bichon email archive",
+      "url": "https://github.com/rustmailer/bichon",
+      "status": "REFERENCE",
+      "reason": "Tantivy-backed message search in another domain",
+      "license": "verify_per_version",
+      "execution": "NOT_TESTED_IN_THIS_ROUND"
+    }
+  ],
+  "delta": {
+    "since": "R05",
+    "new": 10,
+    "reason": "Second discovery pass exposed direct competitor Reweave, Rust engines Summa2/XERJ and licensing distinction Orama JS vs OramaCore"
+  }
+}
