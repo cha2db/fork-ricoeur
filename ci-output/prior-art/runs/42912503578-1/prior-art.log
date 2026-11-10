@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "corpus": {
+    "source": "_dev/corpus.py",
+    "synthetic": true,
+    "human_gold": false,
+    "conversations": 1000,
+    "messages": 40000,
+    "candidate_documents": 1000
+  },
+  "summary": {
+    "fts5": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 0.3333,
+        "mrr": 0.3333,
+        "ndcg10": 0.3333
+      }
+    },
+    "rank_bm25": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "rapidfuzz_fts": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "rrf": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "tfidf_char": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "tfidf_word": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    }
+  },
+  "graph": {
+    "library": "networkx",
+    "algorithm": "greedy_modularity_communities",
+    "nodes": 100,
+    "candidate_edges": 0,
+    "communities": 100,
+    "ari_against_fixture_topics": 0.0,
+    "relation_claims": "none; similarity does not prove follows_up/contradicts/supersedes"
+  },
+  "checks": {
+    "all_13_queries": true,
+    "fts_exact_gold": true,
+    "stable_message_ids": true,
+    "no_claimed_semantic_relations": true
+  }
+}
