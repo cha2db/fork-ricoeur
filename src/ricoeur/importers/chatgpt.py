@@ -78,7 +78,7 @@ def _iter_conversations_with_progress(path: Path):
             members = [
                 info for info in zf.infolist()
                 if not info.is_dir()
-                and re.fullmatch(r"conversations(?:[-_]\\d+)?\\.json",
+                and re.fullmatch(r"conversations(?:[-_]\d+)?\.json",
                                  Path(info.filename).name, re.IGNORECASE)
             ]
             if not members:
