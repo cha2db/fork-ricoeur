@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "candidate": "SQLite built-in FTS5 trigram",
+  "data_source": "_dev/results/prior-base.sqlite",
+  "index_seconds": 2.014,
+  "database_growth_bytes": 44568576,
+  "queries": [
+    {
+      "query": "agulha-mcp-2026",
+      "equal_first100": true,
+      "count": 100,
+      "equal_count": true,
+      "trigram_ms": 1.02,
+      "like_ms": 16.259
+    },
+    {
+      "query": "orquidea-violeta-2026",
+      "equal_first100": true,
+      "count": 100,
+      "equal_count": true,
+      "trigram_ms": 1.555,
+      "like_ms": 13.181
+    },
+    {
+      "query": "atômica",
+      "equal_first100": true,
+      "count": 4000,
+      "equal_count": true,
+      "trigram_ms": 0.356,
+      "like_ms": 0.346
+    },
+    {
+      "query": "gres",
+      "equal_first100": true,
+      "count": 12000,
+      "equal_count": true,
+      "trigram_ms": 0.244,
+      "like_ms": 0.106
+    },
+    {
+      "query": "FTS5",
+      "equal_first100": true,
+      "count": 0,
+      "equal_count": true,
+      "trigram_ms": 0.094,
+      "like_ms": 9.856
+    },
+    {
+      "query": "contrato",
+      "equal_first100": true,
+      "count": 8000,
+      "equal_count": true,
+      "trigram_ms": 0.4,
+      "like_ms": 0.161
+    },
+    {
+      "query": "rastreabilidade",
+      "equal_first100": true,
+      "count": 4000,
+      "equal_count": true,
+      "trigram_ms": 0.688,
+      "like_ms": 0.348
+    },
+    {
+      "query": "SSH",
+      "equal_first100": true,
+      "count": 4000,
+      "equal_count": true,
+      "trigram_ms": 0.183,
+      "like_ms": 0.363
+    },
+    {
+      "query": "Jenkins",
+      "equal_first100": true,
+      "count": 4000,
+      "equal_count": true,
+      "trigram_ms": 0.314,
+      "like_ms": 0.22
+    },
+    {
+      "query": "zzyyxxnotfound",
+      "equal_first100": true,
+      "count": 0,
+      "equal_count": true,
+      "trigram_ms": 0.078,
+      "like_ms": 8.509
+    }
+  ],
+  "integrity": true,
+  "query_plan": [
+    "(2, 0, 0, 'SCAN tri_messages VIRTUAL TABLE INDEX 0:L0')"
+  ],
+  "verdict": "LITERAL_SUBSTRING_CANDIDATE_ONLY",
+  "limits": [
+    "LIKE patterns need >=3 consecutive literal Unicode characters for index benefits.",
+    "ESCAPE clause can disable FTS5 trigram LIKE index optimization.",
+    "Extra index costs disk and maintenance; test write synchronization before adoption."
+  ]
+}

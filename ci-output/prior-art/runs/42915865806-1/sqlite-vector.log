@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 96, in <module>
+    if __name__=="__main__":main()
+                            ~~~~^^
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 49, in main
+    db.executemany("INSERT INTO vector_candidates(id,embedding) VALUES(?,vector_as_f32(?))",
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   [(i+1,json.dumps(row.tolist())) for i,row in enumerate(vectors)])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such function: vector_as_f32
