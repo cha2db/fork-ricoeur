@@ -1,0 +1,72 @@
+name: Cha2db Phase-2 JS SQL product comparison
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_orama/**'
+      - '_dev/phase2_export.py'
+      - '_dev/phase2_duckdb.py'
+      - '_dev/build_prior_base.py'
+      - '_dev/publish_phase2.sh'
+      - '.github/workflows/phase2-js-sql.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-js-sql-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  compare-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [orama, duckdb]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        if: matrix.engine == 'orama'
+        with:
+          node-version: '22'
+      - name: Install core and candidate
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          if [ "${{ matrix.engine }}" = "duckdb" ]; then
+            python -m pip install 'duckdb>=1.2,<2' > _dev/results/phase2-duckdb-install.log 2>&1
+          else
+            npm install --prefix _dev/phase2_orama --no-audit --no-fund '@orama/orama' > _dev/results/phase2-orama-install.log 2>&1
+          fi
+      - name: Materialize existing SQLite corpus and export identical ID list
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-${{ matrix.engine }}-base.log 2>&1
+          python _dev/phase2_export.py --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-input.json
+      - name: Run candidate comparison
+        run: |
+          engine="${{ matrix.engine }}"
+          if [ "$engine" = "duckdb" ]; then
+            python -u _dev/phase2_duckdb.py --fixture _dev/results/phase2-input.json --output _dev/results/phase2-duckdb.json > _dev/results/phase2-duckdb.log 2>&1 || {
+              cat _dev/results/phase2-duckdb.log
+              exit 1
+            }
+          else
+            node _dev/phase2_orama/runner.mjs _dev/results/phase2-input.json _dev/results/phase2-orama.json > _dev/results/phase2-orama.log 2>&1 || {
+              cat _dev/results/phase2-orama.log
+              exit 1
+            }
+          fi
+          cat "_dev/results/phase2-$engine.json"
+      - name: Preserve candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-${{ matrix.engine }}-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable evidence
+        if: always()
+        run: bash _dev/publish_phase2.sh "${{ matrix.engine }}"
