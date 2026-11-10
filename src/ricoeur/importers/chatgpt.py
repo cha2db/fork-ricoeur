@@ -7,6 +7,7 @@ The export contains a conversations.json with a tree structure of messages.
 from __future__ import annotations
 
 import json
+import io
 import sqlite3
 import zipfile
 from datetime import datetime, timezone
@@ -35,18 +36,16 @@ def import_chatgpt(
 ) -> ImportStats:
     """Import conversations from a ChatGPT export."""
     stats = ImportStats()
-    data = _load_data(path)
+    task = progress.add_task("Importing ChatGPT...", total=None) if progress else None
 
-    if not isinstance(data, list):
-        raise ValueError("Expected a JSON array of conversations")
-
-    stats.parsed = len(data)
-    task = None
-    if progress:
-        task = progress.add_task("Importing ChatGPT...", total=len(data))
-
-    for conv_raw in data:
+    # Stream individual conversations: never materialize the entire export.
+    # Commit at bounded intervals so long imports do not accumulate one huge
+    # transaction. Reimport remains idempotent through existing IDs.
+    for conv_raw in _iter_conversations(path):
+        stats.parsed += 1
         _import_one(conn, conv_raw, stats, update=update, since=since, dry_run=dry_run)
+        if not dry_run and stats.parsed % 25 == 0:
+            conn.commit()
         if progress and task is not None:
             progress.advance(task)
 
@@ -57,19 +56,90 @@ def import_chatgpt(
     return stats
 
 
-def _load_data(path: Path) -> list[dict[str, Any]]:
-    """Load from .json or .zip file."""
+def _iter_conversations(path: Path):
+    """Yield one JSON-array item at a time from a .json or ChatGPT .zip export.
+
+    Uses the standard library only. Memory scales with the largest individual
+    conversation, not the full export. Malformed JSON raises ValueError.
+    """
     if path.suffix == ".zip":
         with zipfile.ZipFile(path) as zf:
-            # Look for conversations.json inside the zip
             names = [n for n in zf.namelist() if n.endswith("conversations.json")]
             if not names:
                 raise FileNotFoundError("No conversations.json found in zip")
-            with zf.open(names[0]) as f:
-                return json.load(f)
+            with zf.open(names[0]) as binary:
+                with io.TextIOWrapper(binary, encoding="utf-8") as stream:
+                    yield from _parse_json_array(stream)
     else:
-        with open(path) as f:
-            return json.load(f)
+        with path.open(encoding="utf-8") as stream:
+            yield from _parse_json_array(stream)
+
+
+def _parse_json_array(stream):
+    decoder = json.JSONDecoder()
+    buffer = ""
+    position = 0
+    eof = False
+
+    def skip_space():
+        nonlocal buffer, position, eof
+        while True:
+            while position < len(buffer) and buffer[position].isspace():
+                position += 1
+            if position < len(buffer) or eof:
+                return
+            buffer = ""
+            position = 0
+            chunk = stream.read(65536)
+            if chunk:
+                buffer = chunk
+            else:
+                eof = True
+
+    def next_char():
+        skip_space()
+        return buffer[position] if position < len(buffer) else None
+
+    if next_char() != "[":
+        raise ValueError("Expected a JSON array of conversations")
+    position += 1
+    first = True
+    while True:
+        char = next_char()
+        if char is None:
+            raise ValueError("Unexpected end of JSON array")
+        if char == "]":
+            position += 1
+            if next_char() is not None:
+                raise ValueError("Unexpected data after JSON array")
+            return
+        if not first:
+            if char != ",":
+                raise ValueError("Expected comma between conversations")
+            position += 1
+            if next_char() == "]":
+                raise ValueError("Trailing comma in JSON array")
+        first = False
+        while True:
+            try:
+                item, consumed = decoder.raw_decode(buffer, position)
+                position = consumed
+                if not isinstance(item, dict):
+                    raise ValueError("Expected conversation object")
+                yield item
+                buffer = buffer[position:]
+                position = 0
+                break
+            except json.JSONDecodeError as exc:
+                if eof:
+                    raise ValueError("Invalid conversation JSON") from exc
+                # A JSON string may span multiple chunks; keep only the
+                # current conversation in memory while extending the buffer.
+                chunk = stream.read(65536)
+                if chunk:
+                    buffer += chunk
+                else:
+                    eof = True
 
 
 def _import_one(
