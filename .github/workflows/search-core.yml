@@ -47,6 +47,14 @@ jobs:
         run: |
           mkdir -p _dev/results
           bash _dev/busca.sh
+      - name: Compare equivalent SQL queries at 40k messages
+        run: |
+          mkdir -p _dev/results
+          .venv/bin/python -u _dev/scale.py --conversations 1000 --messages 40 --output _dev/results/scale-40k.json > _dev/results/scale-40k.log 2>&1 || {
+            cat _dev/results/scale-40k.log
+            exit 1
+          }
+          cat _dev/results/scale-40k.json
       - name: Upload logs and benchmark reports
         if: always()
         uses: actions/upload-artifact@v4
