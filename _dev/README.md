@@ -9,5 +9,5 @@ Esta organização é uma adaptação local, **não uma certificação InitProj*
 | 2 | ZIP sintético de conta | `bash tests/run_account_zip_android.sh` | PASS parcial observado |
 | 3 | Idempotência persistente (4 importações) | `bash _dev/teste3.sh` | A executar |
 
-| 4 | Mensagens vazias e árvore completa | `bash _dev/teste4.sh` | A executar |\n\nNão comitar `_dev/results/`: contém dados temporários de execução.
+| 4 | Mensagens vazias e árvore completa | `bash _dev/teste4.sh` | A executar |\n\n| 5 | Busca entre conversas, mensagens e prontidão MCP | `bash _dev/teste5.sh` | A executar |\n\nNão comitar `_dev/results/`: contém dados temporários de execução.
 Resumo e decisões: [SESSION.md](SESSION.md).
