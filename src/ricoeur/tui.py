@@ -418,10 +418,12 @@ class RicoeurApp(App):
             self._set_status("No conversations yet — import an export with `ricoeur import`.")
 
     def _run_search(self, query: str) -> None:
+        # Treat search input as literal text, not FTS5 query language.
+        literal_query = '"' + query.replace('"', '""') + '"'
         try:
             results, mode = search_dispatch(
                 self._conn,
-                query,
+                literal_query,
                 self._home,
                 keyword=True,  # keyword is instant and needs no embedding model
                 model_spec=self._model_spec,
