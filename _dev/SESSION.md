@@ -60,3 +60,8 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Prior art pesquisada: modelcontextprotocol/python-sdk (MIT, MCP); sqlite-utils (Apache-2.0, alternativa para utilitários, não necessário substituir SQLite/FTS5); FastMCP standalone (Apache-2.0, alternativa).
 - Teste 6 publicado, execução Android pendente. Gate: não confundir contrato local com conformidade MCP.
 - Objetivo: composição de componentes por portas, sem reimplementação de SQLite/FTS5/MCP.
+
+## Teste 6 — evidência Android
+- PASS visual: 3 ocorrências por mensagem, 2 provedores, IDs estáveis, vizinhança, filtro por provedor e JSON estruturado.
+- MCP ainda não testado; corrigida importação do SDK para mcp.server.fastmcp.FastMCP (antes MCPServer incorreto).
+- Veredicto: recuperar por mensagem usando SQLite/FTS5; não reimplementar motor. Próximo gate: cliente MCP real.
