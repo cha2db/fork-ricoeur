@@ -111,10 +111,23 @@ class ConversationScreen(Screen):
         meta += f" · {date}"
 
         lines = [f"# {conv['title'] or 'Untitled'}", "", meta, ""]
+        messages = _messages(self._conn, self._conv_id)
         if self._query:
-            lines.extend([f"**Search term:** `{self._query}`", ""])
-        for msg in _messages(self._conn, self._conv_id):
-            who = "🧑 You" if msg["role"] == "user" else "🤖 Assistant"
+            matches = [i for i, msg in enumerate(messages)
+                       if self._query.casefold() in (msg["content"] or "").casefold()]
+            lines.extend([f"**Search:** `{self._query}` · **{len(matches)} matching message(s)**", ""])
+            if matches:
+                first = matches[0]
+                lines.extend([f"**First match: message {first + 1} of {len(messages)}**", ""])
+                for i in range(max(0, first - 1), min(len(messages), first + 2)):
+                    item = messages[i]
+                    label = "MATCH" if i == first else "context"
+                    excerpt = (item["content"] or "").replace("\\n", " ")[:240]
+                    lines.append(f"- **{label} · {i + 1}:** {excerpt}")
+                lines.append("")
+        for msg in messages:
+            who = {"user": "🧑 You", "assistant": "🤖 Assistant",
+                   "system": "⚙️ System", "tool": "🛠️ Tool"}.get(msg["role"], f"❔ {msg['role']}")
             ts = (msg["timestamp"] or "")[:16]
             lines.append("---")
             matched = bool(self._query and self._query.casefold() in (msg["content"] or "").casefold())
@@ -429,7 +442,8 @@ class RicoeurApp(App):
             [r.conv_id for r in results],
             columns=("Date", "Platform", "Conversation", "Matching message"),
         )
-        self._set_status(f'{len(results)} result(s) for "{query}" ({mode})')
+        self._set_status(f'{len(results)} conversation(s) for "{query}" ({mode})'
+                         if results else f'No matching conversations for "{query}" — try another term.')
 
     def _populate(self, rows: list[tuple], ids: list[str], columns: tuple[str, ...] = ("Date", "Platform", "Msgs", "Title")) -> None:
         table = self._table()
