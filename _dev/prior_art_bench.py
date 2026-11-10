@@ -115,7 +115,7 @@ def main():
         graph=nx.Graph();graph.add_nodes_from(range(n))
         for i in range(n):
             for j in range(i+1,n):
-                if similarity[i,j]>=0.93:graph.add_edge(i,j,weight=float(similarity[i,j]))
+                if similarity[i,j]>=0.70:graph.add_edge(i,j,weight=float(similarity[i,j]))
         clusters=list(nx.algorithms.community.greedy_modularity_communities(graph))
         communities={j:k for k,part in enumerate(clusters) for j in part}
         from sklearn.metrics import adjusted_rand_score
@@ -129,7 +129,8 @@ def main():
     checks={"all_13_queries":len(report["queries"])==13,
             "fts_exact_gold":report["summary"]["fts5"]["exact"]["mrr"]>=0.99,
             "stable_message_ids":len(ids)==a.conversations,
-            "no_claimed_semantic_relations":report["graph"]["relation_claims"].startswith("none")}
+            "no_claimed_semantic_relations":report["graph"]["relation_claims"].startswith("none"),
+            "graph_ari_gold":report["graph"]["ari_against_fixture_topics"]>=0.85}
     report["checks"]=checks
     report["status"]="PASS" if all(checks.values()) else "FAIL"
     report["verdict"]="ALGORITHMS_EXECUTED_QUALITY_NOT_HUMAN_VALIDATED"
