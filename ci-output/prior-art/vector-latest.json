@@ -9,12 +9,12 @@
     "synthetic": true
   },
   "embedding": "TruncatedSVD32 of TF-IDF (not semantic embeddings)",
-  "index_seconds": 0.026,
+  "index_seconds": 0.014,
   "queries": [
     {
       "index": 0,
       "query_id": "fixture-cha2db-v1-m000000-0000",
-      "latency_ms": 0.16,
+      "latency_ms": 0.169,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -22,7 +22,7 @@
     {
       "index": 7,
       "query_id": "fixture-cha2db-v1-m000007-0000",
-      "latency_ms": 0.11,
+      "latency_ms": 0.086,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -30,7 +30,7 @@
     {
       "index": 25,
       "query_id": "fixture-cha2db-v1-m000025-0000",
-      "latency_ms": 0.103,
+      "latency_ms": 0.063,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -38,7 +38,7 @@
     {
       "index": 78,
       "query_id": "fixture-cha2db-v1-m000078-0000",
-      "latency_ms": 0.102,
+      "latency_ms": 0.054,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -46,7 +46,7 @@
     {
       "index": 125,
       "query_id": "fixture-cha2db-v1-m000125-0000",
-      "latency_ms": 0.105,
+      "latency_ms": 0.05,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true
@@ -54,7 +54,7 @@
     {
       "index": 500,
       "query_id": "fixture-cha2db-v1-m000500-0000",
-      "latency_ms": 0.101,
+      "latency_ms": 0.065,
       "within_brute_force_top10_with_ties": true,
       "distance_monotonic": true,
       "self_retrieved": true

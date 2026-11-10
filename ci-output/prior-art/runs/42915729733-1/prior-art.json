@@ -1,0 +1,1150 @@
+{
+  "status": "PASS",
+  "corpus": {
+    "source": "_dev/corpus.py",
+    "synthetic": true,
+    "human_gold": false,
+    "conversations": 1000,
+    "messages": 40000,
+    "candidate_documents": 1000,
+    "snapshot": "_dev/results/prior-base.sqlite"
+  },
+  "libraries": {
+    "rapidfuzz": "3.14.6",
+    "scikit-learn": "1.9.1",
+    "rank-bm25": "0.2.2",
+    "networkx": "3.7"
+  },
+  "queries": [
+    {
+      "query": "regressão guiada",
+      "group": "exact",
+      "topic": "AUoK",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 2.006,
+        "tfidf_word": 1.269,
+        "tfidf_char": 1.491,
+        "rank_bm25": 0.66,
+        "rapidfuzz": 0.051,
+        "rapidfuzz_fts": 1.777,
+        "rrf": 0.022
+      },
+      "correction": "regressão guiada",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000000-0000",
+          "fixture-cha2db-v1-m000010-0000",
+          "fixture-cha2db-v1-m000020-0000"
+        ]
+      }
+    },
+    {
+      "query": "contrato declarativo",
+      "group": "exact",
+      "topic": "FremUX",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.713,
+        "tfidf_word": 0.859,
+        "tfidf_char": 1.416,
+        "rank_bm25": 0.713,
+        "rapidfuzz": 0.036,
+        "rapidfuzz_fts": 1.749,
+        "rrf": 0.018
+      },
+      "correction": "contrato declarativo",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ]
+      }
+    },
+    {
+      "query": "busca cruzada",
+      "group": "exact",
+      "topic": "Cha2db",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.715,
+        "tfidf_word": 0.814,
+        "tfidf_char": 1.314,
+        "rank_bm25": 0.767,
+        "rapidfuzz": 0.042,
+        "rapidfuzz_fts": 1.742,
+        "rrf": 0.015
+      },
+      "correction": "busca cruzada",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000002-0000",
+          "fixture-cha2db-v1-m000012-0000",
+          "fixture-cha2db-v1-m000022-0000"
+        ]
+      }
+    },
+    {
+      "query": "pipeline Jenkins",
+      "group": "exact",
+      "topic": "DevOps",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.574,
+        "tfidf_word": 0.782,
+        "tfidf_char": 1.267,
+        "rank_bm25": 0.644,
+        "rapidfuzz": 0.025,
+        "rapidfuzz_fts": 1.643,
+        "rrf": 0.014
+      },
+      "correction": "pipeline Jenkins",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000003-0000",
+          "fixture-cha2db-v1-m000013-0000",
+          "fixture-cha2db-v1-m000023-0000"
+        ]
+      }
+    },
+    {
+      "query": "índice B-tree",
+      "group": "exact",
+      "topic": "PostgreSQL",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.726,
+        "tfidf_word": 0.782,
+        "tfidf_char": 1.323,
+        "rank_bm25": 1.013,
+        "rapidfuzz": 0.032,
+        "rapidfuzz_fts": 1.773,
+        "rrf": 0.014
+      },
+      "correction": "índice B-tree",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000004-0000",
+          "fixture-cha2db-v1-m000014-0000",
+          "fixture-cha2db-v1-m000024-0000"
+        ]
+      }
+    },
+    {
+      "query": "conexão SSH",
+      "group": "exact",
+      "topic": "Redes",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.625,
+        "tfidf_word": 0.771,
+        "tfidf_char": 1.244,
+        "rank_bm25": 0.58,
+        "rapidfuzz": 0.03,
+        "rapidfuzz_fts": 1.666,
+        "rrf": 0.014
+      },
+      "correction": "conexão SSH",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ]
+      }
+    },
+    {
+      "query": "Android Studio",
+      "group": "exact",
+      "topic": "Android",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.579,
+        "tfidf_word": 0.766,
+        "tfidf_char": 1.307,
+        "rank_bm25": 0.66,
+        "rapidfuzz": 0.025,
+        "rapidfuzz_fts": 1.649,
+        "rrf": 0.014
+      },
+      "correction": "Android Studio",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000006-0000",
+          "fixture-cha2db-v1-m000016-0000",
+          "fixture-cha2db-v1-m000026-0000"
+        ]
+      }
+    },
+    {
+      "query": "menor privilégio",
+      "group": "exact",
+      "topic": "Segurança",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.563,
+        "tfidf_word": 0.763,
+        "tfidf_char": 1.337,
+        "rank_bm25": 0.551,
+        "rapidfuzz": 0.025,
+        "rapidfuzz_fts": 1.594,
+        "rrf": 0.014
+      },
+      "correction": "menor privilégio",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000007-0000",
+          "fixture-cha2db-v1-m000017-0000",
+          "fixture-cha2db-v1-m000027-0000"
+        ]
+      }
+    },
+    {
+      "query": "avaliação formativa",
+      "group": "exact",
+      "topic": "Educação",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.625,
+        "tfidf_word": 0.765,
+        "tfidf_char": 1.409,
+        "rank_bm25": 0.644,
+        "rapidfuzz": 0.033,
+        "rapidfuzz_fts": 1.695,
+        "rrf": 0.015
+      },
+      "correction": "avaliação formativa",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ]
+      }
+    },
+    {
+      "query": "API REST",
+      "group": "exact",
+      "topic": "Web",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.574,
+        "tfidf_word": 0.768,
+        "tfidf_char": 1.298,
+        "rank_bm25": 0.734,
+        "rapidfuzz": 0.037,
+        "rapidfuzz_fts": 1.631,
+        "rrf": 0.014
+      },
+      "correction": "API REST",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000009-0000",
+          "fixture-cha2db-v1-m000019-0000",
+          "fixture-cha2db-v1-m000029-0000"
+        ]
+      }
+    },
+    {
+      "query": "conexao SSH",
+      "group": "typo",
+      "topic": "Redes",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 1.631,
+        "tfidf_word": 0.774,
+        "tfidf_char": 1.257,
+        "rank_bm25": 0.605,
+        "rapidfuzz": 0.046,
+        "rapidfuzz_fts": 1.677,
+        "rrf": 0.015
+      },
+      "correction": "conexão SSH",
+      "top3": {
+        "fts5": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000005-0000",
+          "fixture-cha2db-v1-m000015-0000",
+          "fixture-cha2db-v1-m000025-0000"
+        ]
+      }
+    },
+    {
+      "query": "contrto declarativo",
+      "group": "typo",
+      "topic": "FremUX",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 0.0,
+          "mrr": 0,
+          "ndcg10": 0.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 0.06,
+        "tfidf_word": 0.729,
+        "tfidf_char": 1.382,
+        "rank_bm25": 0.773,
+        "rapidfuzz": 0.022,
+        "rapidfuzz_fts": 1.682,
+        "rrf": 0.012
+      },
+      "correction": "contrato declarativo",
+      "top3": {
+        "fts5": [],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000001-0000",
+          "fixture-cha2db-v1-m000011-0000",
+          "fixture-cha2db-v1-m000021-0000"
+        ]
+      }
+    },
+    {
+      "query": "avaliacao formatva",
+      "group": "typo",
+      "topic": "Educação",
+      "relevant_documents": 100,
+      "quality": {
+        "fts5": {
+          "p10": 0.0,
+          "mrr": 0,
+          "ndcg10": 0.0
+        },
+        "tfidf_word": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "tfidf_char": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rank_bm25": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rapidfuzz_fts": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        },
+        "rrf": {
+          "p10": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0
+        }
+      },
+      "latency_ms": {
+        "fts5": 0.076,
+        "tfidf_word": 0.697,
+        "tfidf_char": 1.367,
+        "rank_bm25": 0.721,
+        "rapidfuzz": 0.031,
+        "rapidfuzz_fts": 1.693,
+        "rrf": 0.012
+      },
+      "correction": "avaliação formativa",
+      "top3": {
+        "fts5": [],
+        "tfidf_word": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "tfidf_char": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rank_bm25": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rapidfuzz_fts": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ],
+        "rrf": [
+          "fixture-cha2db-v1-m000008-0000",
+          "fixture-cha2db-v1-m000018-0000",
+          "fixture-cha2db-v1-m000028-0000"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "fts5": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 0.3333,
+        "mrr": 0.3333,
+        "ndcg10": 0.3333
+      }
+    },
+    "rank_bm25": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "rapidfuzz_fts": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "rrf": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "tfidf_char": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    },
+    "tfidf_word": {
+      "exact": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      },
+      "typo": {
+        "p10": 1.0,
+        "mrr": 1.0,
+        "ndcg10": 1.0
+      }
+    }
+  },
+  "graph": {
+    "library": "networkx",
+    "algorithm": "greedy_modularity_communities",
+    "nodes": 100,
+    "candidate_edges": 198,
+    "communities": 10,
+    "ari_against_fixture_topics": 1.0,
+    "relation_claims": "none; similarity does not prove follows_up/contradicts/supersedes"
+  },
+  "checks": {
+    "all_13_queries": true,
+    "fts_exact_gold": true,
+    "stable_message_ids": true,
+    "no_claimed_semantic_relations": true,
+    "graph_ari_gold": true
+  },
+  "verdict": "ALGORITHMS_EXECUTED_QUALITY_NOT_HUMAN_VALIDATED",
+  "limitations": [
+    "Existing corpus is regenerated and ephemeral; no persistent 2M DB or private chats are accessed.",
+    "Labels derive from the generator; they are not independent human judgments.",
+    "All ranking methods search the same one-message-per-conversation candidate pool.",
+    "NetworkX communities are topic candidates, not evidence of conversation succession.",
+    "Rank metrics do not test semantic embeddings; semantic models need a separate gate."
+  ]
+}

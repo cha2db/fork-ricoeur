@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 87, in <module>
+    if __name__=="__main__":main()
+                            ~~~~^^
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 34, in main
+    ext=str(importlib.resources.files("sqlite_vector.binaries")/"vector")
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/importlib/resources/_common.py", line 46, in wrapper
+    return func(anchor)
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/importlib/resources/_common.py", line 56, in files
+    return from_package(resolve(anchor))
+                        ~~~~~~~^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/functools.py", line 934, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/importlib/resources/_common.py", line 82, in _
+    return importlib.import_module(cand)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1404, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1369, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1333, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'sqlite_vector.binaries'
