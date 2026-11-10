@@ -1,0 +1,68 @@
+name: Cha2db semantic prior-art experiment
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/semantic_prior.py'
+      - '_dev/publish_semantic.sh'
+      - '.github/workflows/semantic-prior.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-semantic-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  semantic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU models and established topic libraries
+        run: |
+          mkdir -p _dev/results
+          {
+            python -m pip install -e .
+            python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+            python -m pip install 'sentence-transformers>=3,<6' 'bertopic>=0.16,<1'
+          } > _dev/results/semantic-install.log 2>&1 || {
+            tail -n 100 _dev/results/semantic-install.log
+            exit 1
+          }
+      - name: Execute reproducible PT/EN semantic experiments
+        run: |
+          set +e
+          timeout 660s python -u _dev/semantic_prior.py --conversations 1000 --output _dev/results/semantic.json > _dev/results/semantic.log 2>&1
+          status=$?
+          set -e
+          if [ "$status" -eq 124 ]; then
+            python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("_dev/results/semantic.json")
+          r=json.loads(p.read_text()) if p.exists() else {}
+          r["status"]="LIMIT"
+          r["limit"]="660 seconds reached; inspect completed components"
+          p.write_text(json.dumps(r,ensure_ascii=False,indent=2))
+          PY
+          elif [ "$status" -ne 0 ]; then
+            tail -n 80 _dev/results/semantic.log
+            exit "$status"
+          fi
+          tail -n 80 _dev/results/semantic.log
+      - name: Upload full logs and JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-reports-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable semantic results
+        if: always()
+        run: bash _dev/publish_semantic.sh
