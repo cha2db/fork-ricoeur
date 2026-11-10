@@ -1,0 +1,10 @@
+{
+  "repository": "cha2db/fork-ricoeur",
+  "commit": "d82d1bbc223da365fde8c0908a58d66bb13880ee",
+  "run_id": "42914009718",
+  "run_attempt": "1",
+  "report_directory": "ci-output/runs/42914009718-1",
+  "autoscale": null,
+  "mcp": null,
+  "status": "REVIEW"
+}
