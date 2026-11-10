@@ -1,7 +1,6 @@
 """Deterministic realistic multi-provider chat corpus. No private user data."""
 import argparse
 import json
-import sqlite3
 import tempfile
 from pathlib import Path
 
@@ -26,7 +25,7 @@ PREFIX = "fixture-cha2db-v1-"
 
 def populate(conn, conversations=1000, messages=40):
     """Insert only missing IDs; never delete or overwrite existing records."""
-    added_c = added_m = 0
+    added_c = 0
     for i in range(conversations):
         name, term, explanation = TOPICS[i % len(TOPICS)]
         cid = f"{PREFIX}c{i:06d}"
@@ -56,7 +55,6 @@ def populate(conn, conversations=1000, messages=40):
         conn.executemany(
             "INSERT OR IGNORE INTO messages(id,conv_id,role,content,timestamp) VALUES (?,?,?,?,?)",
             batch)
-        added_m += conn.execute("SELECT changes()").fetchone()[0] if False else 0
     conn.commit()
     return added_c
 
