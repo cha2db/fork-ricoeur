@@ -27,6 +27,22 @@ pathlib.Path(sys.argv[1]).write_text(json.dumps({
   "log_tails":logs},ensure_ascii=False,indent=2))
 PY
 fi
+python - "$TMP/ci-output/semantic/latest.json" <<'PY'
+import json,os,pathlib,sys
+target=pathlib.Path(sys.argv[1])
+report=json.loads(target.read_text())
+report["run_id"]=os.environ.get("GITHUB_RUN_ID")
+report["commit"]=os.environ.get("GITHUB_SHA")
+logs={}
+for name in ("semantic-install.log","prior-base.log","semantic.log"):
+    p=pathlib.Path("_dev/results")/name
+    if p.exists():logs[name]=p.read_text(errors="replace")[-12000:]
+report["log_tails"]=logs
+if report.get("status")=="RUNNING":
+    report["status"]="BLOCKED"
+    report["reason"]="Test did not reach final verdict; inspect logs"
+target.write_text(json.dumps(report,ensure_ascii=False,indent=2))
+PY
 git -C "$TMP" add ci-output/semantic
 git -C "$TMP" -c user.name=cha2db-ci -c user.email=ci@users.noreply.github.com commit -m "ci: semantic experiment ${GITHUB_RUN_ID}" >/dev/null
 for attempt in 1 2 3; do
