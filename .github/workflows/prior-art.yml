@@ -5,6 +5,7 @@ on:
     paths:
       - '_dev/prior_art_bench.py'
       - '_dev/vector_prior.py'
+      - '_dev/relations_prior.py'
       - '_dev/corpus.py'
       - '_dev/publish_prior_art.sh'
       - '.github/workflows/prior-art.yml'
@@ -51,6 +52,13 @@ jobs:
             exit 1
           }
           tail -n 40 _dev/results/sqlite-vec.log
+      - name: Evaluate cross-chat explicit provenance graph
+        run: |
+          python -u _dev/relations_prior.py --output _dev/results/relations.json > _dev/results/relations.log 2>&1 || {
+            tail -n 80 _dev/results/relations.log
+            exit 1
+          }
+          cat _dev/results/relations.json
       - name: Upload reproducible logs
         if: always()
         uses: actions/upload-artifact@v4
