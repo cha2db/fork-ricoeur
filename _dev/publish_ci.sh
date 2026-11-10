@@ -12,7 +12,7 @@ RUN="ci-output/runs/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT:-1}"
 mkdir -p "$TMP/$RUN"
 cp -R _dev/results/. "$TMP/$RUN/"
 mkdir -p "$TMP/ci-output"
-"$PWD/.venv/bin/python" - "$TMP/ci-output/latest.json" "$RUN" <<'PY'
+"$PWD/.venv/bin/python" - "$TMP/$RUN/summary.json" "$RUN" <<'PY'
 import json,os,pathlib,sys
 root=pathlib.Path("_dev/results")
 def load(name):
@@ -33,11 +33,18 @@ if "FAIL" in states:result["status"]="FAIL"
 elif all(s in ("PASS","LIMIT") for s in states):result["status"]="PASS_WITH_LIMIT" if "LIMIT" in states else "PASS"
 pathlib.Path(sys.argv[1]).write_text(json.dumps(result,ensure_ascii=False,indent=2))
 PY
-cp "$TMP/$RUN/autoscale.log" "$TMP/ci-output/latest.log" 2>/dev/null || true
+git fetch origin main --quiet
+CURRENT_MAIN="$(git rev-parse FETCH_HEAD)"
+if [[ "$GITHUB_SHA" == "$CURRENT_MAIN" ]]; then
+  cp "$TMP/$RUN/summary.json" "$TMP/ci-output/latest.json"
+  cp "$TMP/$RUN/autoscale.log" "$TMP/ci-output/latest.log" 2>/dev/null || true
+else
+  echo "Stale run $GITHUB_SHA; archived without overwriting latest result for $CURRENT_MAIN"
+fi
 git -C "$TMP" add ci-output
 if ! git -C "$TMP" diff --cached --quiet; then
   git -C "$TMP" -c user.name='cha2db-ci' -c user.email='ci@users.noreply.github.com' \
     commit -m "ci: archive run ${GITHUB_RUN_ID} results" >/dev/null
   git -C "$TMP" push origin HEAD:ci-results
 fi
-echo "Report committed to ci-results: ci-output/latest.json"
+echo "Report archived in ci-results: $RUN/summary.json"
