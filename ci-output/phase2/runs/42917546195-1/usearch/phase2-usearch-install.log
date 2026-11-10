@@ -1,0 +1,41 @@
+Collecting usearch<3,>=2
+  Downloading usearch-2.26.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (35 kB)
+Collecting scikit-learn<2,>=1.5
+  Downloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting numpy (from usearch<3,>=2)
+  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting tqdm (from usearch<3,>=2)
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting numkong>=7.8.6 (from usearch<3,>=2)
+  Downloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (87 kB)
+Collecting scipy>=1.10.0 (from scikit-learn<2,>=1.5)
+  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting joblib>=1.4.0 (from scikit-learn<2,>=1.5)
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn<2,>=1.5)
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn<2,>=1.5)
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn<2,>=1.5)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Downloading usearch-2.26.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (2.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 63.3 MB/s  0:00:00
+Downloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 128.7 MB/s  0:00:00
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 95.9 MB/s  0:00:00
+Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 140.3 MB/s  0:00:00
+Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 131.2 MB/s  0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Installing collected packages: tqdm, threadpoolctl, numpy, numkong, narwhals, cloudpickle, usearch, scipy, joblib, scikit-learn
+
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 numkong-7.8.7 numpy-2.5.4 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tqdm-4.70.1 usearch-2.26.6
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
