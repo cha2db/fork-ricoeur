@@ -1,0 +1,64 @@
+name: Cha2db Phase-2 embedded product comparative gates
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_embedded.py'
+      - '_dev/build_prior_base.py'
+      - '_dev/publish_phase2.sh'
+      - '.github/workflows/phase2-embedded.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  compare-embedded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [bm25s, tantivy, usearch]
+    env:
+      PYTHONPATH: ${{ github.workspace }}/src:${{ github.workspace }}/_dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install source and candidate in isolation
+        shell: bash
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          case "${{ matrix.engine }}" in
+            bm25s) python -m pip install 'bm25s>=0.2,<1' ;;
+            tantivy) python -m pip install 'tantivy>=0.24,<1' ;;
+            usearch) python -m pip install 'usearch>=2,<3' 'scikit-learn>=1.5,<2' ;;
+          esac > _dev/results/phase2-${{ matrix.engine }}-install.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-${{ matrix.engine }}-install.log
+            exit 1
+          }
+      - name: Rebuild same 40k corpus for candidate
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-${{ matrix.engine }}-base.log 2>&1
+          cat _dev/results/prior-base.manifest.json
+      - name: Evaluate candidate with identical message IDs and fixed queries
+        run: |
+          python -u _dev/phase2_embedded.py --engine "${{ matrix.engine }}" --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-${{ matrix.engine }}.json > _dev/results/phase2-${{ matrix.engine }}.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-${{ matrix.engine }}.log
+            exit 1
+          }
+          cat _dev/results/phase2-${{ matrix.engine }}.json
+      - name: Preserve logs and manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-${{ matrix.engine }}-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish readable report
+        if: always()
+        run: bash _dev/publish_phase2.sh "${{ matrix.engine }}"
