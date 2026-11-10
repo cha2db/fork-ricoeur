@@ -1,0 +1,44 @@
+name: Cha2db Phase-2 automated market discovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/PHASE2_MARKET_UNIVERSE_R08.json'
+      - '_dev/phase2_discovery.py'
+      - '_dev/publish_phase2_discovery.sh'
+      - '.github/workflows/phase2-discovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-discovery-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Search across independent prior-art families
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/phase2_discovery.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R08.json --output _dev/results/phase2-discovery.json > _dev/results/phase2-discovery.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-discovery.log
+            exit 1
+          }
+          tail -n 100 _dev/results/phase2-discovery.log
+      - name: Preserve audit source and log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-discovery-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable discovery evidence
+        if: always()
+        run: bash _dev/publish_phase2_discovery.sh
