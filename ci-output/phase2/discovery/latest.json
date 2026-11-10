@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "timestamp_utc": "2026-11-10T23:10:31.914163+00:00",
+  "timestamp_utc": "2026-11-10T23:10:59.131362+00:00",
   "inventory_version": "R08",
   "inventory_count": 134,
   "github_repo_count": 114,
@@ -2837,7 +2837,7 @@
       "description": "Local-first session search, analytics, insights, and token use statistics for coding agents, supporting Claude Code, Codex, and more than 50 other agents. ",
       "license_spdx": "MIT",
       "stars": 6422,
-      "pushed_at": "2026-11-10T23:06:00Z",
+      "pushed_at": "2026-11-10T23:10:34Z",
       "archived": false,
       "fork": false,
       "topics": [],
@@ -2889,7 +2889,7 @@
       "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
       "license_spdx": "MIT",
       "stars": 449841,
-      "pushed_at": "2026-11-10T23:07:22Z",
+      "pushed_at": "2026-11-10T23:10:47Z",
       "archived": false,
       "fork": false,
       "topics": [
@@ -3022,7 +3022,7 @@
       "description": "⌥ Coding agent with the IDE wired in. Built by Stencil Labs.",
       "license_spdx": "MIT",
       "stars": 38568,
-      "pushed_at": "2026-11-10T23:08:19Z",
+      "pushed_at": "2026-11-10T23:10:23Z",
       "archived": false,
       "fork": false,
       "topics": [
