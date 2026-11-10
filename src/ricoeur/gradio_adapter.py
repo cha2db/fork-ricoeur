@@ -24,7 +24,7 @@ def answer(question: str, history: list) -> str:
     lines = [f"**{result['count']} mensagem(ns) encontrada(s)** — resultados por mensagem, sem LLM."]
     for i, hit in enumerate(result["hits"], 1):
         m, c = hit["message"], hit["conversation"]
-        snippet = (m["content"] or "").strip().replace("\\r", " ")
+        snippet = (m["content"] or "").strip().replace("\r", " ")
         if len(snippet) > 900:
             snippet = snippet[:900] + "…"
         lines.extend([
@@ -36,7 +36,7 @@ def answer(question: str, history: list) -> str:
             lines.append("**Anterior:** " + (hit["before"][-1]["content"] or "")[:240])
         if hit["after"]:
             lines.append("**Posterior:** " + (hit["after"][0]["content"] or "")[:240])
-    return "\\n\\n".join(lines)
+    return "\n\n".join(lines)
 
 
 def build_demo():
