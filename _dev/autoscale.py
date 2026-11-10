@@ -26,7 +26,7 @@ TOPICS = (
 )
 QUERIES = ("SSH", "PostgreSQL", "Jenkins", "AUoK", "MCP", "Android", "seguranca", "REST", "marcadorunico2026", "termoausente999")
 FTS_SQL = """SELECT m.id FROM messages_fts JOIN messages m ON m.rowid=messages_fts.rowid
-              WHERE messages_fts MATCH ? ORDER BY m.rowid LIMIT 100"""
+              WHERE messages_fts MATCH ? ORDER BY messages_fts.rowid LIMIT 100"""
 LIKE_SQL = "SELECT id FROM messages WHERE content LIKE ? ORDER BY rowid LIMIT 100"
 
 def measure(conn, sql, arg, repeats):
@@ -59,6 +59,8 @@ def check(conn, total, repeats):
     checked={}
     actual=conn.execute("SELECT count(*) FROM messages").fetchone()[0]
     checked["count"]=actual==total
+    plan=[row[3] for row in conn.execute("EXPLAIN QUERY PLAN "+FTS_SQL,("SSH",))]
+    checked["fts_no_temp_sort"]=not any("TEMP B-TREE" in detail for detail in plan)
     conn.execute("INSERT INTO messages_fts(messages_fts) VALUES('integrity-check')")
     results=[]
     for query in QUERIES:
