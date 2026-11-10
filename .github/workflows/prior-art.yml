@@ -17,7 +17,7 @@ permissions:
   contents: write
 concurrency:
   group: cha2db-prior-art-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   compare:
     runs-on: ubuntu-latest
