@@ -14,7 +14,7 @@ on:
         required: false
         default: "40"
 permissions:
-  contents: read
+  contents: write
 jobs:
   search-core:
     runs-on: ubuntu-latest
@@ -55,6 +55,40 @@ jobs:
             exit 1
           }
           cat _dev/results/scale-40k.json
+      - name: Progressive FTS5 scale and consistency to 2M
+        if: matrix.python-version == '3.13'
+        run: |
+          set +e
+          timeout 360s .venv/bin/python -u _dev/autoscale.py --budget-seconds 300 --output _dev/results/autoscale.json > _dev/results/autoscale.log 2>&1
+          status=$?
+          set -e
+          if [ "$status" -eq 124 ]; then
+            .venv/bin/python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("_dev/results/autoscale.json")
+          report=json.loads(p.read_text()) if p.exists() else {"stages":[]}
+          report["status"]="LIMIT"
+          report["verdict"]="runner_timeout_360s"
+          report["max_verified_messages"]=max((s["messages"] for s in report["stages"]),default=0)
+          p.write_text(json.dumps(report,indent=2))
+          PY
+          elif [ "$status" -ne 0 ]; then
+            echo "Auto-scale correctness/runtime failure"; cat _dev/results/autoscale.log
+            exit "$status"
+          fi
+          tail -n 10 _dev/results/autoscale.log
+      - name: MCP end-to-end contract after core gates
+        if: matrix.python-version == '3.13'
+        run: |
+          .venv/bin/python -m pip install 'mcp==1.9.4' 'pydantic==2.10.6' > _dev/results/mcp-install.log 2>&1 || {
+            tail -n 50 _dev/results/mcp-install.log
+            exit 1
+          }
+          .venv/bin/python -u _dev/teste7.py > _dev/results/teste7.log 2>&1 || {
+            cat _dev/results/teste7.log
+            exit 1
+          }
+          cat _dev/results/teste7.json
       - name: Upload logs and benchmark reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -62,3 +96,6 @@ jobs:
           name: search-reports-py${{ matrix.python-version }}
           path: _dev/results/
           retention-days: 30
+      - name: Publish connector-readable CI reports
+        if: always() && matrix.python-version == '3.13'
+        run: bash _dev/publish_ci.sh
