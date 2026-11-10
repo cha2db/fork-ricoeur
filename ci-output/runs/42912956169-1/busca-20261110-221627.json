@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "RETRIEVAL": 0,
+    "CORPUS": 0,
+    "BENCHMARK": 0
+  },
+  "log": "_dev/results/busca-20261110-221627.log",
+  "benchmark": "_dev/results/busca-20261110-221627-benchmark.json"
+}
