@@ -6,6 +6,8 @@ from pathlib import Path
 from rich.progress import Progress
 from ricoeur.db import init_db
 from ricoeur.importers.chatgpt import import_chatgpt
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tests'))
 from run_account_zip_android import conversation
 import zipfile
 
