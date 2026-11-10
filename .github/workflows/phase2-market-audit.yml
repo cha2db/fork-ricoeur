@@ -1,0 +1,44 @@
+name: Cha2db Phase-2 upstream license and lifecycle audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/PHASE2_MARKET_UNIVERSE_R05.json'
+      - '_dev/phase2_repo_audit.py'
+      - '_dev/publish_phase2_audit.sh'
+      - '.github/workflows/phase2-market-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-market-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Audit upstream source metadata without installing libraries
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/phase2_repo_audit.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R05.json --output _dev/results/phase2-repo-audit.json > _dev/results/phase2-repo-audit.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-repo-audit.log
+            exit 1
+          }
+          tail -n 100 _dev/results/phase2-repo-audit.log
+      - name: Preserve complete report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-repo-audit-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable version
+        if: always()
+        run: bash _dev/publish_phase2_audit.sh
