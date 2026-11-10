@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ricoeur-android-test-001",
+    "title": "SQLite Android — conversa sintética",
+    "create_time": 1760000000,
+    "update_time": 1760000120,
+    "mapping": {
+      "root": {
+        "id": "root",
+        "parent": null,
+        "children": [
+          "m1"
+        ],
+        "message": null
+      },
+      "m1": {
+        "id": "m1",
+        "parent": "root",
+        "children": [
+          "m2"
+        ],
+        "message": {
+          "id": "msg-ricoeur-001",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1760000001,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Como funciona o SQLite no Android?"
+            ]
+          }
+        }
+      },
+      "m2": {
+        "id": "m2",
+        "parent": "m1",
+        "children": [],
+        "message": {
+          "id": "msg-ricoeur-002",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1760000002,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "SQLite é um banco de dados embarcado que pode funcionar localmente no Android."
+            ]
+          }
+        }
+      }
+    }
+  }
+]
