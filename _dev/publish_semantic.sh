@@ -15,7 +15,17 @@ cp _dev/results/semantic-install.log "$TMP/$DIR/semantic-install.log" 2>/dev/nul
 if [[ -f _dev/results/semantic.json ]]; then
   cp _dev/results/semantic.json "$TMP/ci-output/semantic/latest.json"
 else
-  printf '{"status":"BLOCKED","reason":"No semantic report; check install log"}\n' > "$TMP/ci-output/semantic/latest.json"
+  python - "$TMP/ci-output/semantic/latest.json" <<'PY'
+import json,os,pathlib,sys
+logs={}
+for name in ("semantic-install.log","prior-base.log","semantic.log"):
+    p=pathlib.Path("_dev/results")/name
+    if p.exists():logs[name]=p.read_text(errors="replace")[-12000:]
+pathlib.Path(sys.argv[1]).write_text(json.dumps({
+  "status":"BLOCKED","reason":"No semantic report; inspect log tails",
+  "run_id":os.environ.get("GITHUB_RUN_ID"),"commit":os.environ.get("GITHUB_SHA"),
+  "log_tails":logs},ensure_ascii=False,indent=2))
+PY
 fi
 git -C "$TMP" add ci-output/semantic
 git -C "$TMP" -c user.name=cha2db-ci -c user.email=ci@users.noreply.github.com commit -m "ci: semantic experiment ${GITHUB_RUN_ID}" >/dev/null
