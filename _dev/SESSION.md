@@ -52,3 +52,11 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - MCP: nenhum arquivo de servidor identificado pelo teste heurístico; integração real ainda não testada.
 - Decisão provisória: manter SQLite/FTS5 e busca como candidatos de adoção; avaliar adapter MCP fino, sem substituir motor.
 - Próximo gate: teste 6, contrato de busca por mensagem com IDs, vizinhança e múltiplas ocorrências.
+
+## Teste 6 — composição mínima / Frankenstein (10/11/2026)
+- Teste 5: diagnóstico Android validado; FTS5 recupera 4 mensagens em 2 conversas, mas API pública agrupa resultados e omite IDs.
+- Implementado src/ricoeur/retrieval.py: contrato read-only search_messages e get_message_context; resultados por mensagem, IDs, provedor, vizinhos, filtro, JSON.
+- Adapter MCP opcional src/ricoeur/mcp_adapter.py usa SDK oficial MIT v2, Python >=3.11; NÃO testado no Android Python 3.10, não instalar no Termux atual.
+- Prior art pesquisada: modelcontextprotocol/python-sdk (MIT, MCP); sqlite-utils (Apache-2.0, alternativa para utilitários, não necessário substituir SQLite/FTS5); FastMCP standalone (Apache-2.0, alternativa).
+- Teste 6 publicado, execução Android pendente. Gate: não confundir contrato local com conformidade MCP.
+- Objetivo: composição de componentes por portas, sem reimplementação de SQLite/FTS5/MCP.
