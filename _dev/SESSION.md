@@ -44,3 +44,4 @@ Depois: preservação de mensagens vazias, árvore completa e anexos.
 - Execução Android: bash _dev/teste3.sh
 - Evidência local: _dev/results/teste3.json
 - Status: publicado; execução pendente no Android.
+\n## Atualização — Teste 3\n- Evidência visual Android: PASS; quatro importações no mesmo banco, 8 conversas e 40 mensagens estáveis, novas = 8/0/0/0.\n- Após esse resultado, importador alterado para persistir mensagens vazias e árvore completa em chatgpt_nodes.\n- Teste 3 atualizado para novo comportamento esperado (48 mensagens); exige revalidação.\n- Teste 4 criado para verificar 48 mensagens, 8 vazias, 57 nós e ramo alternativo, inclusive reimportação.\n- Anexos ainda não resolvidos; nenhum PASS de fidelidade integral.\n
