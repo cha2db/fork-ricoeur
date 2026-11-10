@@ -5,6 +5,8 @@ No new embedding model: deterministic TF-IDF->SVD only tests the vector index.
 import argparse
 import importlib.metadata
 import json
+import sqlite3
+import shutil
 import tempfile
 import time
 from pathlib import Path
@@ -19,9 +21,15 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--conversations",type=int,default=1000)
     ap.add_argument("--output",default="_dev/results/sqlite-vec.json")
+    ap.add_argument("--db-path",default=None)
     a=ap.parse_args()
     with tempfile.TemporaryDirectory(prefix="cha2db-vec-") as tmp:
-        db=init_db(Path(tmp));populate(db,a.conversations,40)
+        if a.db_path:
+            clone=Path(tmp)/"ricoeur.db"
+            shutil.copy2(a.db_path,clone)
+            db=sqlite3.connect(str(clone));db.row_factory=sqlite3.Row
+        else:
+            db=init_db(Path(tmp));populate(db,a.conversations,40)
         docs=db.execute("SELECT id,content FROM messages WHERE id LIKE ? ORDER BY rowid",
                         (PREFIX+"m%-0000",)).fetchall()
         ids=[r["id"] for r in docs]
