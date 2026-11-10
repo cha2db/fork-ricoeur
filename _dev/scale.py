@@ -58,7 +58,7 @@ def main():
     if not 1<=a.conversations<=20000 or not 1<=a.messages<=100 or not 1<=a.repeats<=50:
         p.error("out-of-range arguments")
     fts="""SELECT m.id FROM messages_fts f JOIN messages m ON m.rowid=f.rowid
-           WHERE messages_fts MATCH ? ORDER BY m.rowid LIMIT 100"""
+           WHERE messages_fts MATCH ? ORDER BY messages_fts.rowid LIMIT 100"""
     # Use the virtual table's real name in the FROM clause for SQLite MATCH.
     fts=fts.replace("messages_fts f JOIN","messages_fts JOIN").replace("f.rowid","messages_fts.rowid")
     literal="""SELECT id FROM messages WHERE content LIKE ? ORDER BY rowid LIMIT 100"""
@@ -81,6 +81,9 @@ def main():
             rows.append({"query":term,"fts_count":fcount,"literal_count":lcount,
                          "top100_equivalent":set(fids)==set(lids),
                          "equivalent":equal,"fts":ft,"literal":lt})
+        plan=[row[3] for row in conn.execute("EXPLAIN QUERY PLAN "+fts,("SSH",))]
+        no_temp_sort=not any("TEMP B-TREE" in detail for detail in plan)
+        checks["fts_no_temp_sort"]=no_temp_sort
         integrity="PASS"
         try:conn.execute("INSERT INTO messages_fts(messages_fts) VALUES('integrity-check')")
         except sqlite3.DatabaseError as exc:integrity=str(exc)
