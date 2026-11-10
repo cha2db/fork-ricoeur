@@ -1,7 +1,5 @@
 import fs from "node:fs";
 import {performance} from "node:perf_hooks";
-import MiniSearch from "minisearch";
-import {Index as FlexIndex} from "flexsearch";
 const [engine, fixturePath, outputPath] = process.argv.slice(2);
 if(!["minisearch","flexsearch"].includes(engine) || !fixturePath || !outputPath)
   throw new Error("Usage node runner.mjs minisearch|flexsearch fixture.json output.json");
@@ -15,10 +13,12 @@ try {
   const began=performance.now();
   let search;
   if(engine==="minisearch"){
+    const {default:MiniSearch}=await import("minisearch");
     const index=new MiniSearch({fields:["content"],storeFields:[]});
     index.addAll(documents.map(d=>({id:d.id,content:d.content})));
     search=q=>index.search(q,{combineWith:"AND"}).slice(0,10).map(hit=>hit.id);
   } else {
+    const {Index:FlexIndex}=await import("flexsearch");
     const index=new FlexIndex({tokenize:"forward"});
     for(let i=0;i<documents.length;i++)index.add(i+1,documents[i].content);
     search=q=>index.search(q,10).map(num=>documents[Number(num)-1].id);
