@@ -6,6 +6,7 @@ import importlib.metadata
 import importlib.resources
 import json
 import shutil
+import struct
 import sqlite3
 import tempfile
 import time
@@ -45,9 +46,11 @@ def main():
         try:db.load_extension(ext)
         finally:db.enable_load_extension(False)
         ext_version=db.execute("SELECT vector_version()").fetchone()[0]
+        functions=[row[0] for row in db.execute("SELECT name FROM pragma_function_list WHERE name LIKE 'vector_%'")]
+        print("sqlite-vector version",ext_version,"functions",sorted(set(functions)),flush=True)
         db.execute("CREATE TABLE vector_candidates(id INTEGER PRIMARY KEY,embedding BLOB)")
-        db.executemany("INSERT INTO vector_candidates(id,embedding) VALUES(?,vector_as_f32(?))",
-                       [(i+1,json.dumps(row.tolist())) for i,row in enumerate(vectors)])
+        db.executemany("INSERT INTO vector_candidates(id,embedding) VALUES(?,?)",
+                       [(i+1,struct.pack("<32f",*row)) for i,row in enumerate(vectors)])
         db.commit()
         db.execute("SELECT vector_init('vector_candidates','embedding','dimension=32,type=FLOAT32,distance=L2')")
         t=time.monotonic()
@@ -56,15 +59,15 @@ def main():
         queries=[]
         for i in (0,7,25,78,125,500):
             if i>=len(vectors):continue
-            query=json.dumps(vectors[i].tolist())
+            query=struct.pack("<32f",*vectors[i])
             t=time.perf_counter_ns()
             exact=[r["rowid"] for r in db.execute(
-                "SELECT rowid,distance FROM vector_full_scan('vector_candidates','embedding',vector_as_f32(?),10)",
+                "SELECT rowid,distance FROM vector_full_scan('vector_candidates','embedding',?,10)",
                 (query,)).fetchall()]
             exact_ms=round((time.perf_counter_ns()-t)/1e6,3)
             t=time.perf_counter_ns()
             approximate=[r["rowid"] for r in db.execute(
-                "SELECT rowid,distance FROM vector_quantize_scan('vector_candidates','embedding',vector_as_f32(?),10)",
+                "SELECT rowid,distance FROM vector_quantize_scan('vector_candidates','embedding',?,10)",
                 (query,)).fetchall()]
             approximate_ms=round((time.perf_counter_ns()-t)/1e6,3)
             brute=np.linalg.norm(vectors-vectors[i],axis=1)
