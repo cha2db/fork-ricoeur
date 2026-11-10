@@ -1,0 +1,58 @@
+name: Cha2db Phase-2 browser-ready lexical engines
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_js_engines/**'
+      - '_dev/phase2_export.py'
+      - '_dev/publish_phase2.sh'
+      - '.github/workflows/phase2-browser-engines.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-js-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [minisearch, flexsearch]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install independent candidate
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          npm install --prefix _dev/phase2_js_engines --no-audit --no-fund "${{ matrix.engine }}" > _dev/results/phase2-${{ matrix.engine }}-install.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-${{ matrix.engine }}-install.log; exit 1
+          }
+      - name: Build common synthetic SQLite data
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-${{ matrix.engine }}-base.log 2>&1
+          python _dev/phase2_export.py --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-input.json
+      - name: Execute fixed headless queries
+        run: |
+          node _dev/phase2_js_engines/runner.mjs "${{ matrix.engine }}" _dev/results/phase2-input.json "_dev/results/phase2-${{ matrix.engine }}.json" > "_dev/results/phase2-${{ matrix.engine }}.log" 2>&1 || {
+            cat "_dev/results/phase2-${{ matrix.engine }}.log"; exit 1
+          }
+          cat "_dev/results/phase2-${{ matrix.engine }}.json"
+      - name: Upload logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-${{ matrix.engine }}-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish reviewable evidence
+        if: always()
+        run: bash _dev/publish_phase2.sh "${{ matrix.engine }}"
