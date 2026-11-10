@@ -1,0 +1,30 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4633.43it/s]
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 4275.11it/s]
+{
+  "status": "PASS",
+  "components": {
+    "encoder": {
+      "status": "PASS",
+      "load_encode_seconds": 10.621,
+      "dimensions": 384
+    },
+    "semantic_retrieval": {
+      "status": "PASS",
+      "mean_mrr10": 0.611,
+      "baseline_tfidf_mean_mrr10": 0.7
+    },
+    "bertopic": {
+      "status": "PASS",
+      "seconds": 13.559,
+      "clusters": 10,
+      "outliers": 0,
+      "ari_against_fixture_topics": 1.0
+    },
+    "cross_encoder": {
+      "status": "PASS",
+      "model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+      "seconds": 12.782
+    }
+  }
+}
