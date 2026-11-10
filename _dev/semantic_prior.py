@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import importlib.metadata
 import json
+import sqlite3
 import math
 import tempfile
 import time
@@ -40,6 +41,7 @@ def main():
     ap.add_argument("--conversations",type=int,default=1000)
     ap.add_argument("--output",default="_dev/results/semantic.json")
     ap.add_argument("--model",default="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+    ap.add_argument("--db-path",default=None)
     a=ap.parse_args()
     if a.conversations<100 or a.conversations%10:ap.error("multiple of 10, minimum 100")
     report={"status":"RUNNING","fixture":{"generator":"_dev/corpus.py",
@@ -52,7 +54,11 @@ def main():
         out.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
     save()
     with tempfile.TemporaryDirectory(prefix="cha2db-semantic-") as d:
-        db=init_db(Path(d));populate(db,a.conversations,40)
+        if a.db_path:
+            db=sqlite3.connect(str(Path(a.db_path).resolve()));db.row_factory=sqlite3.Row
+            report["fixture"]["snapshot"]=a.db_path
+        else:
+            db=init_db(Path(d));populate(db,a.conversations,40)
         rows=db.execute("SELECT id,conv_id,content FROM messages WHERE id LIKE ? ORDER BY rowid LIMIT 100",
                         (PREFIX+"m%-0000",)).fetchall()
         docs=[r["content"] for r in rows]
