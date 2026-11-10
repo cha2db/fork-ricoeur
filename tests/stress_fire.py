@@ -15,6 +15,7 @@ import tempfile
 import time
 from pathlib import Path
 
+from rich.progress import Progress
 from ricoeur.db import init_db
 from ricoeur.importers.chatgpt import import_chatgpt
 from ricoeur.search import fts_search
@@ -112,7 +113,8 @@ def main():
     conn = init_db(home)
     try:
         t0 = time.perf_counter()
-        stats = import_chatgpt(conn, source)
+        with Progress() as progress:
+            stats = import_chatgpt(conn, source, progress=progress)
         import_s = time.perf_counter() - t0
         actual = conn.execute("SELECT COUNT(*) FROM messages").fetchone()[0]
         expected = args.conversations * (args.messages - args.messages // 97)
