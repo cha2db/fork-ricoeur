@@ -17,6 +17,7 @@ from urllib.parse import parse_qs, urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from ricoeur.retrieval import get_message_context, search_messages
 from knowledge_port import load_lexicon, timeline, period_messages, tagcloud, concept_detail
+from dashboard_port import dashboard
 
 VERSION = "ux.v2"
 
@@ -141,11 +142,13 @@ def graph(conn, query="", platform="", limit=30, syntax="literal"):
 
 
 def execute(db, action, *, lexicon=None, **kw):
+    if action == "dashboard":
+        return payload(dashboard())
     with closing(connect(db)) as conn:
         if action == "capabilities":
             return payload({"ports": ["capabilities", "conversations", "search",
                                       "transcript", "message", "graph", "timeline", "period",
-                                      "tagcloud", "concept", "serve"],
+                                      "tagcloud", "concept", "dashboard", "serve"],
                             "search_core": "ricoeur.retrieval.search_messages",
                             "graph": "query_match_only", "storage": "read_only_ricoeur_sqlite"})
         if action == "conversations":
@@ -198,13 +201,19 @@ def execute(db, action, *, lexicon=None, **kw):
 
 def handler_factory(db, lexicon=None):
     page = Path(__file__).with_name("index.html").read_bytes()
+    dashboard_page = Path(__file__).with_name("dashboard.html").read_bytes()
     knowledge_page = Path(__file__).with_name("knowledge.html").read_bytes()
+    nav_js = Path(__file__).with_name("nav.js").read_bytes()
 
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
             url = urlparse(self.path)
             if url.path == "/":
+                body, code, kind = dashboard_page, 200, "text/html; charset=utf-8"
+            elif url.path == "/chats":
                 body, code, kind = page, 200, "text/html; charset=utf-8"
+            elif url.path == "/nav.js":
+                body, code, kind = nav_js, 200, "application/javascript; charset=utf-8"
             elif url.path == "/knowledge":
                 body, code, kind = knowledge_page, 200, "text/html; charset=utf-8"
             elif url.path == "/api":
@@ -246,6 +255,7 @@ def main():
     parser.add_argument("--lexicon", default=None, help="Optional curated SKOS-like JSON sidecar, never automatic")
     sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("capabilities")
+    sub.add_parser("dashboard")
     for action in ("conversations", "search", "graph"):
         p = sub.add_parser(action)
         p.add_argument("--query", default="")
