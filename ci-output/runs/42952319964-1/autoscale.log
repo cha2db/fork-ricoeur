@@ -1,0 +1,3 @@
+GATE 40000 PASS db_mb 10.2 seconds 0.944
+GATE 100000 PASS db_mb 25.6 seconds 1.768
+GATE 400000 PASS db_mb 102.2 seconds 8.706
