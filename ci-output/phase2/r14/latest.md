@@ -2,7 +2,7 @@
 
 **207 candidatos**: 143 já triados e 64 novos da varredura.
 **Fonte encontrada no GitHub:** 62 novos; fontes sem verificação: 0.
-**PASS funcional dos novos: 1.** A maioria permanece descoberta/auditada, sem homologação.
+**PASS funcional dos novos: 2.** A maioria permanece descoberta/auditada, sem homologação.
 
 ## Ranking e filas por porta
 
@@ -285,7 +285,7 @@
 
 | Pos. | ID | Produto | Status funcional | Status da origem | Próximo gate |
 |---:|---|---|---|---|---|
-| 1 | C191 | Portable Memory (MacPaw) | NOT_TESTED | SOURCE_FOUND | Contratos de entrada/exportação e origem |
+| 1 | C191 | Portable Memory (MacPaw) | PASS | SOURCE_FOUND | Contratos de entrada/exportação e origem |
 | 2 | C192 | PAM Portable AI Memory | NOT_TESTED | SOURCE_FOUND | Validar schemas e roundtrip de branches |
 
 ## Confrontos novos, em ordem

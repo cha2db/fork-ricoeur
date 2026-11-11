@@ -1,7 +1,7 @@
 {
   "revision": "R14",
   "status": "PASS",
-  "generated_utc": "2026-11-11T01:05:08.259185+00:00",
+  "generated_utc": "2026-11-11T01:11:13.331880+00:00",
   "base_inventory": "R10",
   "base_rank": "R13",
   "old_count": 143,
@@ -20,7 +20,7 @@
   },
   "unverified_sources": [],
   "functional_pass_existing": 22,
-  "functional_pass_new": 1,
+  "functional_pass_new": 2,
   "functional_test_new": "ONLY_EXPLICIT_GITHUB_ACTIONS_PROOFS",
   "new_candidates": [
     {
@@ -386,7 +386,7 @@
         "archived": false,
         "fork": false,
         "created_at": "2023-08-26T09:21:36Z",
-        "pushed_at": "2026-11-11T01:00:05Z",
+        "pushed_at": "2026-11-11T01:10:46Z",
         "size_kb": 291438,
         "stars": 25213,
         "license": "MIT",
@@ -473,7 +473,7 @@
       },
       "functional_evidence": {
         "status": "PASS",
-        "scope": "PGlite Node WASM filesystem source+branch gate; not browser",
+        "scope": "PGlite Node WASM filesystem FTS and branch persistence PASS; NOT browser",
         "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/r14/pglite-latest.json",
         "checks": {
           "idempotent_on_conflict": true,
@@ -483,6 +483,7 @@
           "original_ids_preserved": true,
           "unique_source_marker": true
         },
+        "topology": null,
         "input_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477"
       },
       "comparative_gate_result": "EXECUTED_SYNTHETIC_PASS"
@@ -1200,8 +1201,8 @@
         "archived": false,
         "fork": false,
         "created_at": "2025-10-04T22:36:49Z",
-        "pushed_at": "2026-11-11T00:08:26Z",
-        "size_kb": 138363,
+        "pushed_at": "2026-11-11T01:10:40Z",
+        "size_kb": 138157,
         "stars": 806,
         "license": "BSD-2-Clause",
         "default_branch": "main",
@@ -1797,7 +1798,7 @@
       "priority": "P0",
       "comparative_gate": "Contratos de entrada/exportação e origem",
       "source_level": "RESEARCH_DISCOVERY_REVIEW_NEEDED",
-      "functional_status": "NOT_TESTED",
+      "functional_status": "PASS",
       "status": "NEW_F2_CANDIDATE",
       "license": "VERIFY_SOURCE_AND_DEPENDENCIES",
       "owner": "PHASE2",
@@ -1825,8 +1826,33 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/MacPaw/portable-memory#readme"
       },
-      "functional_evidence": null,
-      "comparative_gate_result": "NOT_EXECUTED"
+      "functional_evidence": {
+        "status": "PASS",
+        "scope": "Portable .mem episodes, source IDs, checksum, tamper and roundtrip PASS; ChatGPT parent-child tree NOT preserved by this adapter",
+        "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/portable-memory-latest.json",
+        "checks": {
+          "five_message_ids": true,
+          "all_alternative_texts_preserved": true,
+          "provider_conversation_provenance": true,
+          "stable_source_message_ids": true,
+          "role_preserved": true,
+          "valid_bundle_integrity": true,
+          "has_checksums_and_manifest": true,
+          "full_bundle_roundtrip_ids": true,
+          "full_bundle_roundtrip_content": true,
+          "full_bundle_roundtrip_provenance": true,
+          "repeated_bundle_import_no_duplicates": true,
+          "episode_jsonl_nonempty": true,
+          "tamper_detected": true
+        },
+        "topology": {
+          "explicit_parent_link_retained": false,
+          "sibling_source_ids_retained": true,
+          "comment": "The OpenAI adapter preserves both sibling messages as episodes but does not encode their parent/child edges in episode metadata; therefore this bundle cannot reconstruct branch topology by itself."
+        },
+        "input_hash": null
+      },
+      "comparative_gate_result": "EXECUTED_SYNTHETIC_PASS"
     },
     {
       "id": "C192",
@@ -6674,7 +6700,7 @@
           "functional_level": "FUNCTIONAL_PASS",
           "functional_evidence": {
             "status": "PASS",
-            "scope": "PGlite Node WASM filesystem source+branch gate; not browser",
+            "scope": "PGlite Node WASM filesystem FTS and branch persistence PASS; NOT browser",
             "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/r14/pglite-latest.json",
             "checks": {
               "idempotent_on_conflict": true,
@@ -6684,6 +6710,7 @@
               "original_ids_preserved": true,
               "unique_source_marker": true
             },
+            "topology": null,
             "input_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477"
           },
           "eligibility": "PASS_CANDIDATE",
@@ -6851,17 +6878,42 @@
           "port": "interoperability_formats",
           "source_url": "https://github.com/MacPaw/portable-memory",
           "source_status": "SOURCE_FOUND",
-          "functional_status": "NOT_TESTED",
-          "functional_level": "NO_TEST",
-          "functional_evidence": null,
-          "eligibility": "UNTESTED_CANDIDATE",
+          "functional_status": "PASS",
+          "functional_level": "FUNCTIONAL_PASS",
+          "functional_evidence": {
+            "status": "PASS",
+            "scope": "Portable .mem episodes, source IDs, checksum, tamper and roundtrip PASS; ChatGPT parent-child tree NOT preserved by this adapter",
+            "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/portable-memory-latest.json",
+            "checks": {
+              "five_message_ids": true,
+              "all_alternative_texts_preserved": true,
+              "provider_conversation_provenance": true,
+              "stable_source_message_ids": true,
+              "role_preserved": true,
+              "valid_bundle_integrity": true,
+              "has_checksums_and_manifest": true,
+              "full_bundle_roundtrip_ids": true,
+              "full_bundle_roundtrip_content": true,
+              "full_bundle_roundtrip_provenance": true,
+              "repeated_bundle_import_no_duplicates": true,
+              "episode_jsonl_nonempty": true,
+              "tamper_detected": true
+            },
+            "topology": {
+              "explicit_parent_link_retained": false,
+              "sibling_source_ids_retained": true,
+              "comment": "The OpenAI adapter preserves both sibling messages as episodes but does not encode their parent/child edges in episode metadata; therefore this bundle cannot reconstruct branch topology by itself."
+            },
+            "input_hash": null
+          },
+          "eligibility": "PASS_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Memória portátil inter-app com tombstones e checksums",
           "storage_mechanism": "JSONL_manifest_checksum",
           "risks": [],
           "license_spdx": "MIT",
           "test_gate": "Contratos de entrada/exportação e origem",
-          "rank_evidence": "PRIOR_ART_ONLY",
+          "rank_evidence": "GITHUB_ACTIONS_SYNTHETIC_PASS",
           "not_integrated_in_core": true,
           "rank_in_port": 1
         },
@@ -6887,8 +6939,8 @@
         }
       ],
       "candidate_count": 2,
-      "best_verified": null,
-      "next_unverified": "C191"
+      "best_verified": "C191",
+      "next_unverified": "C192"
     }
   },
   "existing_confrontations": [
