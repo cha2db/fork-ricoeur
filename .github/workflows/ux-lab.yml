@@ -35,3 +35,5 @@ jobs:
         run: bash _dev/tests/ux/teste11.sh
       - name: UX-012 search and presentation candidate matrix
         run: bash _dev/tests/ux/teste12.sh
+      - name: UX-014 temporal histogram, period drilldown, lexical cloud and approved SKOS
+        run: bash _dev/tests/ux/teste14.sh
