@@ -20,7 +20,7 @@
         "fixture-cha2db-v1-m000900-0000",
         "fixture-cha2db-v1-m000290-0000"
       ],
-      "latency_ms": 2.194
+      "latency_ms": 4.892
     },
     {
       "query": "contrato declarativo",
@@ -38,7 +38,7 @@
         "fixture-cha2db-v1-m000261-0000",
         "fixture-cha2db-v1-m000651-0000"
       ],
-      "latency_ms": 1.438
+      "latency_ms": 1.286
     },
     {
       "query": "busca cruzada",
@@ -56,7 +56,7 @@
         "fixture-cha2db-v1-m000592-0000",
         "fixture-cha2db-v1-m000482-0000"
       ],
-      "latency_ms": 4.341
+      "latency_ms": 1.241
     },
     {
       "query": "pipeline Jenkins",
@@ -74,7 +74,7 @@
         "fixture-cha2db-v1-m000073-0000",
         "fixture-cha2db-v1-m000943-0000"
       ],
-      "latency_ms": 1.224
+      "latency_ms": 1.339
     },
     {
       "query": "índice B-tree",
@@ -92,7 +92,7 @@
         "fixture-cha2db-v1-m000654-0000",
         "fixture-cha2db-v1-m000284-0000"
       ],
-      "latency_ms": 6.265
+      "latency_ms": 1.266
     },
     {
       "query": "conexão SSH",
@@ -110,7 +110,7 @@
         "fixture-cha2db-v1-m000175-0000",
         "fixture-cha2db-v1-m000755-0000"
       ],
-      "latency_ms": 1.208
+      "latency_ms": 4.253
     },
     {
       "query": "Android Studio",
@@ -128,7 +128,7 @@
         "fixture-cha2db-v1-m000766-0000",
         "fixture-cha2db-v1-m000336-0000"
       ],
-      "latency_ms": 1.204
+      "latency_ms": 1.239
     },
     {
       "query": "menor privilégio",
@@ -146,7 +146,7 @@
         "fixture-cha2db-v1-m000577-0000",
         "fixture-cha2db-v1-m000677-0000"
       ],
-      "latency_ms": 4.192
+      "latency_ms": 4.222
     },
     {
       "query": "avaliação formativa",
@@ -164,7 +164,7 @@
         "fixture-cha2db-v1-m000348-0000",
         "fixture-cha2db-v1-m000718-0000"
       ],
-      "latency_ms": 1.218
+      "latency_ms": 1.231
     },
     {
       "query": "API REST",
@@ -182,17 +182,17 @@
         "fixture-cha2db-v1-m000209-0000",
         "fixture-cha2db-v1-m000179-0000"
       ],
-      "latency_ms": 4.158
+      "latency_ms": 1.21
     }
   ],
   "synthetic": true,
   "human_gold": false,
-  "build_seconds": 0.186,
+  "build_seconds": 0.155,
   "engine": "usearch",
   "package": "2.26.6",
   "embedding": "TFIDF-SVD32: index test, NOT neural semantics",
   "mean_p10": 1.0,
-  "median_latency_ms": 1.816,
+  "median_latency_ms": 1.276,
   "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
   "limitations": [
     "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
@@ -200,11 +200,11 @@
     "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
     "No candidate integrated into production core; no MCP or GUI tests performed here."
   ],
-  "run_id": "42929833540",
-  "commit": "2db20da7876e104dc42cf9b70c13c2aca4d7b6e6",
+  "run_id": "42930539768",
+  "commit": "0404416326cbcaf993995e24afde6eb0f096b555",
   "logs": {
-    "phase2-usearch.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"usearch\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.186,\n  \"engine\": \"usearch\",\n  \"package\": \"2.26.6\",\n  \"embedding\": \"TFIDF-SVD32: index test, NOT neural semantics\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 1.816,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
-    "phase2-usearch-install.log": "nloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nCollecting tqdm (from usearch<3,>=2)\n  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)\nCollecting numkong>=7.8.6 (from usearch<3,>=2)\n  Downloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (87 kB)\nCollecting scipy>=1.10.0 (from scikit-learn<2,>=1.5)\n  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)\nCollecting joblib>=1.4.0 (from scikit-learn<2,>=1.5)\n  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)\nCollecting narwhals>=2.0.1 (from scikit-learn<2,>=1.5)\n  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)\nCollecting threadpoolctl>=3.5.0 (from scikit-learn<2,>=1.5)\n  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)\nCollecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn<2,>=1.5)\n  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)\nDownloading usearch-2.26.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (2.4 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 13.0 MB/s  0:00:00\nDownloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 51.3 MB/s  0:00:00\nDownloading joblib-1.6.0-py3-none-any.whl (306 kB)\nDownloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)\nDownloading narwhals-2.28.0-py3-none-any.whl (490 kB)\nDownloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl (10.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 59.9 MB/s  0:00:00\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 105.1 MB/s  0:00:00\nDownloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 86.5 MB/s  0:00:00\nDownloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)\nDownloading tqdm-4.70.1-py3-none-any.whl (80 kB)\nInstalling collected packages: tqdm, threadpoolctl, numpy, numkong, narwhals, cloudpickle, usearch, scipy, joblib, scikit-learn\n\nSuccessfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 numkong-7.8.7 numpy-2.5.4 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tqdm-4.70.1 usearch-2.26.6\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-usearch.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"usearch\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.155,\n  \"engine\": \"usearch\",\n  \"package\": \"2.26.6\",\n  \"embedding\": \"TFIDF-SVD32: index test, NOT neural semantics\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 1.276,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
+    "phase2-usearch-install.log": "ading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nCollecting tqdm (from usearch<3,>=2)\n  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)\nCollecting numkong>=7.8.6 (from usearch<3,>=2)\n  Downloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (87 kB)\nCollecting scipy>=1.10.0 (from scikit-learn<2,>=1.5)\n  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)\nCollecting joblib>=1.4.0 (from scikit-learn<2,>=1.5)\n  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)\nCollecting narwhals>=2.0.1 (from scikit-learn<2,>=1.5)\n  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)\nCollecting threadpoolctl>=3.5.0 (from scikit-learn<2,>=1.5)\n  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)\nCollecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn<2,>=1.5)\n  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)\nDownloading usearch-2.26.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (2.4 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 35.3 MB/s  0:00:00\nDownloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 147.3 MB/s  0:00:00\nDownloading joblib-1.6.0-py3-none-any.whl (306 kB)\nDownloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)\nDownloading narwhals-2.28.0-py3-none-any.whl (490 kB)\nDownloading numkong-7.8.7-cp313-cp313-manylinux_2_28_x86_64.whl (10.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 102.6 MB/s  0:00:00\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 291.5 MB/s  0:00:00\nDownloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 293.0 MB/s  0:00:00\nDownloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)\nDownloading tqdm-4.70.1-py3-none-any.whl (80 kB)\nInstalling collected packages: tqdm, threadpoolctl, numpy, numkong, narwhals, cloudpickle, usearch, scipy, joblib, scikit-learn\n\nSuccessfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 numkong-7.8.7 numpy-2.5.4 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tqdm-4.70.1 usearch-2.26.6\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
     "phase2-usearch-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
