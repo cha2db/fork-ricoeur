@@ -1,25 +1,25 @@
 {
   "status": "PASS",
-  "timestamp_utc": "2026-11-11T03:20:52.398727+00:00",
+  "timestamp_utc": "2026-11-11T03:25:51.416072+00:00",
   "inventory_version": "R15",
   "inventory_count": 226,
   "github_repo_count": 202,
   "queries": {
     "archives": {
       "query": "chatgpt claude conversation archive in:readme archived:false",
-      "total_count": 9800,
+      "total_count": 9799,
       "sampled": 40,
       "incomplete_results": false
     },
     "mcp": {
       "query": "conversation history mcp sqlite in:readme archived:false",
-      "total_count": 27204,
+      "total_count": 27207,
       "sampled": 40,
       "incomplete_results": false
     },
     "agent-history": {
       "query": "coding agent sessions search sqlite in:readme archived:false",
-      "total_count": 57084,
+      "total_count": 57086,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -31,7 +31,7 @@
     },
     "memory": {
       "query": "local-first ai memory chat in:readme archived:false",
-      "total_count": 28466,
+      "total_count": 28467,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -43,19 +43,19 @@
     },
     "lexical": {
       "query": "embedded full text search rust bm25 in:readme archived:false",
-      "total_count": 5012,
+      "total_count": 5013,
       "sampled": 40,
       "incomplete_results": false
     },
     "hybrid": {
       "query": "hybrid search vector bm25 embedded in:readme archived:false",
-      "total_count": 73471,
+      "total_count": 73475,
       "sampled": 40,
       "incomplete_results": false
     },
     "import": {
       "query": "chatgpt claude import sqlite in:readme archived:false",
-      "total_count": 10859,
+      "total_count": 10860,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -73,7 +73,7 @@
     },
     "parquet-hybrid": {
       "query": "parquet bm25 vector embedded search in:readme archived:false",
-      "total_count": 1895,
+      "total_count": 1896,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -109,7 +109,7 @@
     },
     "graph-lexical": {
       "query": "graph search vector bm25 embedded in:readme archived:false",
-      "total_count": 27457,
+      "total_count": 27461,
       "sampled": 40,
       "incomplete_results": false
     },
@@ -133,7 +133,7 @@
     }
   },
   "query_errors": {},
-  "unique_hits": 631,
+  "unique_hits": 630,
   "new_review_candidates": 196,
   "potential_repositories": [
     {
@@ -993,7 +993,7 @@
       "url": "https://github.com/Marker-Inc-Korea/AutoRAG",
       "description": "Your Personal Librarian Agent. Ask anything on your computer, organize files, remember important info and files.",
       "license_spdx": "Apache-2.0",
-      "stars": 5645,
+      "stars": 5646,
       "pushed_at": "2026-11-11T02:19:39Z",
       "archived": false,
       "fork": false,
@@ -1483,7 +1483,7 @@
       "url": "https://github.com/Graphify-Labs/graphify",
       "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
       "license_spdx": "Apache-2.0",
-      "stars": 145714,
+      "stars": 145716,
       "pushed_at": "2026-11-10T21:53:12Z",
       "archived": false,
       "fork": false,
@@ -1949,8 +1949,8 @@
       "url": "https://github.com/mksglu/context-mode",
       "description": "Free, local plugin that keeps tool output out of your coding agent's context window. Sandbox and SQLite FTS5 search, 99% fewer bytes in context. Works with Claude Code, Codex, Pi, OpenCode, Gemini CLI, Copilot CLI and 4 more agents. Zero telemetry.",
       "license_spdx": "NOASSERTION",
-      "stars": 33825,
-      "pushed_at": "2026-11-10T03:23:18Z",
+      "stars": 33826,
+      "pushed_at": "2026-11-11T03:23:54Z",
       "archived": false,
       "fork": false,
       "topics": [
@@ -3530,7 +3530,7 @@
       "url": "https://github.com/affaan-m/ECC",
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
       "license_spdx": "MIT",
-      "stars": 300857,
+      "stars": 300859,
       "pushed_at": "2026-11-09T04:56:24Z",
       "archived": false,
       "fork": false,
@@ -4669,7 +4669,7 @@
       "url": "https://github.com/netease-youdao/LobsterAI",
       "description": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real desktop and takes commands from your phone via WeChat, Feishu, DingTalk & Telegram.",
       "license_spdx": "MIT",
-      "stars": 6175,
+      "stars": 6177,
       "pushed_at": "2026-11-11T02:33:47Z",
       "archived": false,
       "fork": false,
@@ -5398,7 +5398,7 @@
       "url": "https://github.com/thedotmack/claude-mem",
       "description": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
       "license_spdx": "Apache-2.0",
-      "stars": 115879,
+      "stars": 115882,
       "pushed_at": "2026-11-11T03:16:53Z",
       "archived": false,
       "fork": false,
@@ -5684,7 +5684,7 @@
       "url": "https://github.com/farion1231/cc-switch",
       "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode,DeepSeek Harness and more. Only official website: ccswitch.io",
       "license_spdx": "MIT",
-      "stars": 153403,
+      "stars": 153404,
       "pushed_at": "2026-11-11T02:28:06Z",
       "archived": false,
       "fork": false,
@@ -5726,7 +5726,7 @@
       "url": "https://github.com/reactive-resume/reactive-resume",
       "description": "A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!",
       "license_spdx": "MIT",
-      "stars": 45600,
+      "stars": 45601,
       "pushed_at": "2026-11-08T20:43:39Z",
       "archived": false,
       "fork": false,
@@ -6534,7 +6534,7 @@
       "url": "https://github.com/morluto/rea",
       "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
       "license_spdx": "MIT",
-      "stars": 450330,
+      "stars": 450337,
       "pushed_at": "2026-11-11T03:18:15Z",
       "archived": false,
       "fork": false,
@@ -6609,7 +6609,7 @@
       "url": "https://github.com/colbymchenry/codegraph",
       "description": "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes Agent — fewer tokens, fewer tool calls, 100% local",
       "license_spdx": "MIT",
-      "stars": 77331,
+      "stars": 77332,
       "pushed_at": "2026-11-01T17:36:07Z",
       "archived": false,
       "fork": false,
@@ -6630,7 +6630,7 @@
       "url": "https://github.com/router-for-me/CLIProxyAPI",
       "description": "Wrap Antigravity, ChatGPT Codex, Claude Code, Grok Build, Muse Code, Devin as an OpenAI/Gemini/Claude/Codex compatible API service, allowing you to enjoy the free Gemini Series, GPT Series, Grok Series, Claude model through API",
       "license_spdx": "MIT",
-      "stars": 58212,
+      "stars": 58213,
       "pushed_at": "2026-11-11T02:19:44Z",
       "archived": false,
       "fork": false,
@@ -6700,7 +6700,7 @@
       "url": "https://github.com/can1357/oh-my-pi",
       "description": "⌥ Coding agent with the IDE wired in. Built by Stencil Labs.",
       "license_spdx": "MIT",
-      "stars": 38586,
+      "stars": 38587,
       "pushed_at": "2026-11-11T03:13:45Z",
       "archived": false,
       "fork": false,
@@ -7177,7 +7177,7 @@
       "description": "Local-first AI companion framework — persistent memory, emotional state, dreaming, embodied avatar. Desktop app + Python brain. macOS · Linux · Windows. Runs against Claude.",
       "license_spdx": "MIT",
       "stars": 65,
-      "pushed_at": "2026-11-11T03:11:53Z",
+      "pushed_at": "2026-11-11T03:23:50Z",
       "archived": false,
       "fork": false,
       "topics": [
