@@ -42,6 +42,8 @@ from .base import (
     insert_attachment,
     insert_message,
     make_message_id,
+    resolve_conversation_id,
+    resolve_message_id,
     render_thinking,
     render_tool_block,
     update_conversation_counts,
@@ -271,9 +273,10 @@ def _import_session(
         return
 
     project = _project_name(session, file)
+    conv_id = resolve_conversation_id(conn, PLATFORM, session.id)
     outcome = upsert_conversation(
         conn,
-        id=session.id,
+        id=conv_id,
         title=_resolve_title(session, project),
         platform=PLATFORM,
         model=session.model,
@@ -288,10 +291,11 @@ def _import_session(
         stats.updated += 1
 
     for msg in session.messages:
+        msg_id = resolve_message_id(conn, PLATFORM, conv_id, msg.id)
         inserted, blocks = insert_message(
             conn,
-            id=msg.id,
-            conv_id=session.id,
+            id=msg_id,
+            conv_id=conv_id,
             role=msg.role,
             content=msg.content,
             timestamp=msg.timestamp,
@@ -306,13 +310,13 @@ def _import_session(
         for _ in range(msg.images):
             insert_attachment(
                 conn,
-                conv_id=session.id,
-                msg_id=msg.id,
+                conv_id=conv_id,
+                msg_id=msg_id,
                 type="image",
             )
             stats.attachments += 1
 
-    _record_import(conn, file, session.id)
+    _record_import(conn, file, conv_id)
 
 
 def _parse_session(

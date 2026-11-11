@@ -7,6 +7,7 @@ The export contains a conversations.json with a tree structure of messages.
 from __future__ import annotations
 
 import json
+import hashlib
 import io
 import sqlite3
 import zipfile
@@ -20,9 +21,14 @@ from .base import (
     ImportStats,
     insert_conversation,
     insert_message,
+    delete_conversation_messages,
     make_message_id,
+    resolve_conversation_id,
+    resolve_message_id,
     update_conversation_counts,
 )
+from .branch_index import (validate_snapshot, selected_nodes, sync_projection,
+                           record_node_version, record_selection)
 
 
 def import_chatgpt(
@@ -36,27 +42,84 @@ def import_chatgpt(
 ) -> ImportStats:
     """Import conversations from a ChatGPT export."""
     stats = ImportStats()
-    # Progress is based on uncompressed JSON bytes, so no costly pre-scan.
     task = progress.add_task("Importing ChatGPT...", total=100) if progress else None
-
-    # Stream individual conversations: never materialize the entire export.
-    # Commit at bounded intervals so long imports do not accumulate one huge
-    # transaction. Reimport remains idempotent through existing IDs.
-    for conv_raw, fraction in _iter_conversations_with_progress(path):
-        stats.parsed += 1
-        _import_one(conn, conv_raw, stats, update=update, since=since, dry_run=dry_run)
-        if not dry_run and stats.parsed % 25 == 0:
-            conn.commit()
-        if progress and task is not None:
-            progress.update(task, completed=min(99.9, fraction * 100),
-                            description=f"ChatGPT: {stats.parsed:,} conversations · {fraction * 100:.1f}%")
+    job_id = None
 
     if not dry_run:
-        update_conversation_counts(conn)
+        # Read the raw source once in streaming chunks. Never put chat content,
+        # user file paths or raw IDs in the operational receipt.
+        digest = hashlib.sha256()
+        with path.open("rb") as source:
+            for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                digest.update(chunk)
+        sha = digest.hexdigest()
+        conn.execute(
+            """UPDATE import_jobs SET status='INTERRUPTED',
+                      finished_at=?,error_class='process_interrupted'
+               WHERE source_sha256=? AND provider='chatgpt'
+                     AND status='RUNNING'""",
+            (datetime.now(timezone.utc).isoformat(), sha),
+        )
+        job_id = conn.execute(
+            """INSERT INTO import_jobs(
+                source_sha256,source_bytes,provider,status,started_at)
+               VALUES(?,?,'chatgpt','RUNNING',?)""",
+            (sha, path.stat().st_size, datetime.now(timezone.utc).isoformat()),
+        ).lastrowid
         conn.commit()
-    if progress and task is not None:
-        progress.update(task, completed=100, description=f"ChatGPT: {stats.parsed:,} conversations · 100%")
 
+    def checkpoint(state, error=None):
+        if job_id is None:
+            return
+        conn.execute(
+            """UPDATE import_jobs SET status=?,parsed=?,imported=?,skipped=?,
+                      messages=?,error_class=?,finished_at=?
+               WHERE id=?""",
+            (state,stats.parsed,stats.new,stats.skipped,stats.messages,error,
+             datetime.now(timezone.utc).isoformat()
+             if state != "RUNNING" else None,job_id),
+        )
+
+    try:
+        # Each conversation is atomic. Large archives retain 25-chat batch
+        # checkpoints, but a failed import has an explicit PARTIAL receipt.
+        for conv_raw, fraction in _iter_conversations_with_progress(path):
+            stats.parsed += 1
+            if dry_run:
+                _import_one(conn, conv_raw, stats, update=update,
+                            since=since, dry_run=True)
+            else:
+                conn.execute("SAVEPOINT chatgpt_import_one")
+                try:
+                    _import_one(conn, conv_raw, stats, update=update,
+                                since=since, dry_run=False, source_sha256=sha)
+                    conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+                except BaseException:
+                    conn.execute("ROLLBACK TO SAVEPOINT chatgpt_import_one")
+                    conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+                    raise
+                if stats.parsed % 25 == 0:
+                    checkpoint("RUNNING")
+                    conn.commit()
+            if progress and task is not None:
+                progress.update(task, completed=min(99.9, fraction * 100),
+                                description=f"ChatGPT: {stats.parsed:,} conversations · {fraction * 100:.1f}%")
+
+        if not dry_run:
+            update_conversation_counts(conn)
+            checkpoint("COMPLETE")
+            conn.commit()
+    except BaseException as exc:
+        if not dry_run:
+            conn.rollback()
+            checkpoint("PARTIAL" if stats.parsed > 0 else "FAILED",
+                       type(exc).__name__)
+            conn.commit()
+        raise
+
+    if progress and task is not None:
+        progress.update(task, completed=100,
+                        description=f"ChatGPT: {stats.parsed:,} conversations · 100%")
     return stats
 
 
@@ -182,8 +245,10 @@ def _import_one(
     update: bool,
     since: Optional[str],
     dry_run: bool,
+    source_sha256: Optional[str] = None,
 ) -> None:
-    conv_id = conv.get("id", conv.get("conversation_id", ""))
+    native_conv_id = conv.get("id", conv.get("conversation_id", ""))
+    conv_id = resolve_conversation_id(conn, "chatgpt", native_conv_id)
     title = conv.get("title", "Untitled")
     create_time = conv.get("create_time")
     update_time = conv.get("update_time")
@@ -195,13 +260,25 @@ def _import_one(
         stats.skipped += 1
         return
 
-    # Walk the message tree to find the default model
+    # The exact same structural/content validation is used for dry run
+    # and persist; no "would import" claim before checking the payload.
+    nodes, selected = validate_snapshot(conv)
     model = _extract_model(conv)
 
     if dry_run:
-        stats.new += 1
+        existing = conn.execute("SELECT 1 FROM conversations WHERE id=?",
+                                (conv_id,)).fetchone()
+        if existing and not update:
+            stats.skipped += 1
+        elif existing:
+            stats.updated += 1
+        else:
+            stats.new += 1
+        stats.messages += len(_walk_messages(conv))
         return
 
+    existing_before = conn.execute("SELECT 1 FROM conversations WHERE id=?",
+                                   (conv_id,)).fetchone()
     inserted = insert_conversation(
         conn,
         id=conv_id,
@@ -214,10 +291,18 @@ def _import_one(
     )
 
     if inserted:
-        stats.new += 1
+        if existing_before:
+            stats.updated += 1
+        else:
+            stats.new += 1
     else:
         stats.skipped += 1
         return
+
+    if update:
+        # An updated selected path must replace the prior selected projection
+        # instead of accumulating mutually exclusive responses in messages.
+        delete_conversation_messages(conn, conv_id)
 
     # Preserve the original tree, including non-selected branches and null roots.
     conn.execute("""CREATE TABLE IF NOT EXISTS chatgpt_nodes (
@@ -226,17 +311,39 @@ def _import_one(
         PRIMARY KEY (conv_id, node_id)
     )""")
     for node_id, node in (conv.get("mapping") or {}).items():
-        conn.execute("""INSERT OR IGNORE INTO chatgpt_nodes
-            (conv_id, node_id, parent_id, children_json, message_json)
-            VALUES (?, ?, ?, ?, ?)""",
-            (conv_id, node_id, node.get("parent"),
-             json.dumps(node.get("children", []), ensure_ascii=False),
-             json.dumps(node.get("message"), ensure_ascii=False)))
+        record_node_version(conn, conv_id, node_id, node, source_sha256)
+        if update:
+            conn.execute("""INSERT INTO chatgpt_nodes
+                (conv_id, node_id, parent_id, children_json, message_json)
+                VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(conv_id,node_id) DO UPDATE SET
+                  parent_id=excluded.parent_id,
+                  children_json=excluded.children_json,
+                  message_json=excluded.message_json""",
+                (conv_id,node_id,node.get("parent"),
+                 json.dumps(node.get("children",[]),ensure_ascii=False),
+                 json.dumps(node.get("message"),ensure_ascii=False)))
+        else:
+            conn.execute("""INSERT OR IGNORE INTO chatgpt_nodes
+                (conv_id, node_id, parent_id, children_json, message_json)
+                VALUES (?, ?, ?, ?, ?)""",
+                (conv_id,node_id,node.get("parent"),
+                 json.dumps(node.get("children",[]),ensure_ascii=False),
+                 json.dumps(node.get("message"),ensure_ascii=False)))
+
+    # Source hash and selected leaf are archived separately from the mutable
+    # current projection, allowing review of older branch decisions.
+    path_nodes = selected_nodes(conv)
+    record_selection(conn, conv_id, source_sha256,
+                     path_nodes[-1] if path_nodes else None)
+    # FTS5 sidecar contains *only* nonselected branches.
+    sync_projection(conn, conv_id, conv, selected=selected)
 
     # Keep the selected path searchable, including empty messages.
     messages = _walk_messages(conv)
     for i, msg in enumerate(messages):
-        msg_id = msg.get("id") or make_message_id(conv_id, i)
+        native_msg_id = msg.get("id") or make_message_id(conv_id, i)
+        msg_id = resolve_message_id(conn, "chatgpt", conv_id, native_msg_id)
         role = msg.get("role", "unknown")
         content = _extract_content(msg)
         timestamp = _ts_to_iso(msg.get("create_time")) if msg.get("create_time") else created_at
@@ -250,46 +357,23 @@ def _import_one(
 
 
 def _walk_messages(conv: dict[str, Any]) -> list[dict[str, Any]]:
-    """Walk the ChatGPT message tree to extract messages in order."""
-    mapping = conv.get("mapping", {})
-    if not mapping:
-        return []
+    """Extract the *selected* path only, in its original ancestry order.
 
-    # Build parent->children map and find root
-    children_map: dict[str, list[str]] = {}
-    root = None
-    for node_id, node in mapping.items():
-        parent = node.get("parent")
-        if parent is None:
-            root = node_id
-        else:
-            children_map.setdefault(parent, []).append(node_id)
-
-    if root is None:
-        return []
-
-    # Walk the tree depth-first, preferring the last child (default branch)
+    Alternative paths are kept in chatgpt_nodes and branch FTS, never
+    silently appended to a flat conversation as sequential replies.
+    """
+    mapping = conv.get("mapping") or {}
     messages = []
-    stack = [root]
-    while stack:
-        node_id = stack.pop()
-        node = mapping.get(node_id, {})
-        msg = node.get("message")
-        if msg and msg.get("content"):
-            author = msg.get("author", {})
-            role = author.get("role", "unknown")
-            if role in ("user", "assistant", "system", "tool"):
-                messages.append({**msg, "role": role})
-
-        # Add children to stack (reversed so first child is processed first)
-        # Prefer the explicit children order from the export. Mapping insertion
-        # order is not a reliable indicator of the selected/default branch.
-        kids = node.get("children")
-        if not isinstance(kids, list):
-            kids = children_map.get(node_id, [])
-        if kids:
-            stack.append(kids[-1])
-
+    for node_id in selected_nodes(conv):
+        msg = mapping[node_id].get("message")
+        if not isinstance(msg, dict) or not msg.get("content"):
+            continue
+        author = msg.get("author") or {}
+        if not isinstance(author, dict):
+            raise ValueError("invalid ChatGPT author")
+        role = author.get("role", "unknown")
+        if role in ("user", "assistant", "system", "tool"):
+            messages.append({**msg, "role": role})
     return messages
 
 

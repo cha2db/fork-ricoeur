@@ -1,19 +1,73 @@
-"""Read-only message-level retrieval contract; independent of MCP and TUI."""
+"""Read-only message retrieval contract shared by CLI, GUI and MCP adapters.
+
+The indexed FTS5 query returns identified hits.  Context neighbors use a
+single bounded-window query for the entire hit batch; do not reread a complete
+conversation for each hit.
+"""
 from __future__ import annotations
 
 import sqlite3
+
+from .importers.branch_index import (
+    search_branch_messages, get_branch_context, parse_branch_ref)
 
 
 def _message(row):
     return {key: row[key] for key in ("id", "conv_id", "role", "content", "timestamp")}
 
 
+def _windows(conn: sqlite3.Connection, ids: list[str],
+             conv_ids: list[str], context: int) -> dict[str, dict]:
+    """Get exact neighboring messages for several hits with one SQL query.
+
+    ROW_NUMBER follows the original 'ORDER BY timestamp,rowid' contract.
+    The query only returns up to 2*context+1 messages for each match.
+    """
+    if not ids:
+        return {}
+    if len(ids) > 200:
+        raise ValueError("context batch exceeds limit of 200")
+    idmarks = ",".join("?" for _ in ids)
+    convmarks = ",".join("?" for _ in conv_ids)
+    sql = f"""
+      WITH numbered AS (
+        SELECT id,conv_id,role,content,timestamp,
+               ROW_NUMBER() OVER (
+                   PARTITION BY conv_id ORDER BY timestamp,rowid
+               ) AS pos
+        FROM messages WHERE conv_id IN ({convmarks})
+      ),
+      targets AS (
+        SELECT id,conv_id,pos FROM numbered WHERE id IN ({idmarks})
+      )
+      SELECT t.id AS target_id,t.pos AS target_pos,
+             n.id,n.conv_id,n.role,n.content,n.timestamp,n.pos
+      FROM targets t JOIN numbered n
+        ON n.conv_id=t.conv_id
+       AND n.pos BETWEEN t.pos-? AND t.pos+?
+      ORDER BY t.id,n.pos
+    """
+    found = {}
+    for row in conn.execute(sql, [*conv_ids, *ids, context, context]):
+        bucket = found.setdefault(row["target_id"],
+                                  {"before": [], "after": [], "message": None})
+        item = _message(row)
+        if row["pos"] < row["target_pos"]:
+            bucket["before"].append(item)
+        elif row["pos"] > row["target_pos"]:
+            bucket["after"].append(item)
+        else:
+            bucket["message"] = item
+    return found
+
+
 def search_messages(conn: sqlite3.Connection, query: str, limit: int = 20,
                     context: int = 1, platform: str | None = None) -> dict:
-    """Return all message-level FTS hits with adjacent messages.
+    """Return message-level FTS hits with bounded adjacent messages.
 
-    This is a reusable driver contract for CLI, GUI, MCP and A2A adapters.
-    The search query uses SQLite FTS5 syntax. Invalid syntax returns an error.
+    The query uses SQLite FTS5 syntax. Invalid syntax propagates as an error.
+    No write or migration is performed.  The neighbor query is independent of
+    the number of hits in one conversation (one query for the full batch).
     """
     if not query or not query.strip():
         raise ValueError("query must not be empty")
@@ -34,40 +88,45 @@ def search_messages(conn: sqlite3.Connection, query: str, limit: int = 20,
     sql += " ORDER BY rank, m.rowid LIMIT ?"
     args.append(limit)
     matches = conn.execute(sql, args).fetchall()
+    contexts = _windows(conn, [r["id"] for r in matches],
+                        list(dict.fromkeys(r["conv_id"] for r in matches)),
+                        context)
     hits = []
     for match in matches:
-        messages = conn.execute(
-            """SELECT id, conv_id, role, content, timestamp FROM messages
-               WHERE conv_id = ? ORDER BY timestamp, rowid""",
-            (match["conv_id"],),
-        ).fetchall()
-        index = next(i for i, row in enumerate(messages) if row["id"] == match["id"])
+        neighbors = contexts[match["id"]]
         hits.append({
             "message": _message(match),
             "conversation": {"id": match["conv_id"], "title": match["title"],
                              "platform": match["platform"]},
-            "before": [_message(row) for row in messages[max(0, index-context):index]],
-            "after": [_message(row) for row in messages[index+1:index+1+context]],
+            "before": neighbors["before"],
+            "after": neighbors["after"],
             "rank": match["rank"],
         })
-    return {"query": query, "count": len(hits), "hits": hits}
+    # Alternative ChatGPT branches have their *own* FTS5 rank distribution.
+    # Keep them separate; do not claim BM25 scores are comparable or turn
+    # mutually-exclusive replies into adjacent chronological messages.
+    branch = search_branch_messages(conn, query, limit, platform)
+    return {"query": query, "count": len(hits), "hits": hits,
+            "branch_count": branch["count"],
+            "branch_hits": branch["hits"],
+            "branch_index_status": branch["index_status"]}
 
 
 def get_message_context(conn: sqlite3.Connection, message_id: str,
                         context: int = 2) -> dict | None:
     if not 0 <= context <= 20:
         raise ValueError("context must be 0..20")
-    row = conn.execute("SELECT conv_id FROM messages WHERE id = ?", (message_id,)).fetchone()
-    if row is None:
+    if parse_branch_ref(message_id) is not None:
+        return get_branch_context(conn, message_id, context=context)
+    conv = conn.execute(
+        """SELECT c.id,c.title,c.platform FROM messages m
+           JOIN conversations c ON c.id=m.conv_id WHERE m.id=?""",
+        (message_id,),
+    ).fetchone()
+    if conv is None:
         return None
-    rows = conn.execute(
-        """SELECT id, conv_id, role, content, timestamp FROM messages
-           WHERE conv_id = ? ORDER BY timestamp, rowid""", (row["conv_id"],)
-    ).fetchall()
-    idx = next(i for i, item in enumerate(rows) if item["id"] == message_id)
-    conv = conn.execute("SELECT id,title,platform FROM conversations WHERE id = ?",
-                        (row["conv_id"],)).fetchone()
-    return {"message": _message(rows[idx]),
+    context_data = _windows(conn, [message_id], [conv["id"]], context)[message_id]
+    return {"message": context_data["message"],
             "conversation": dict(conv),
-            "before": [_message(x) for x in rows[max(0, idx-context):idx]],
-            "after": [_message(x) for x in rows[idx+1:idx+1+context]]}
+            "before": context_data["before"],
+            "after": context_data["after"]}

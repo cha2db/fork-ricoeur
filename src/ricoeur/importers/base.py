@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import hashlib
+import base64
+import json
 import re
 import sqlite3
 from dataclasses import dataclass, field
@@ -39,6 +41,66 @@ def extract_code_blocks(content: str) -> list[tuple[str, str]]:
         if code:
             blocks.append((lang, code))
     return blocks
+
+
+
+def _encode_source_id(*parts: str) -> str:
+    """Collision-safe, reversible source identity (no silent hash-only IDs)."""
+    raw = json.dumps(parts, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return "src:v1:" + base64.urlsafe_b64encode(raw).rstrip(b"=").decode("ascii")
+
+
+def decode_source_id(value: str) -> tuple[str, ...] | None:
+    """Recover provider, internal conversation and original native ID if remapped."""
+    if not value.startswith("src:v1:"):
+        return None
+    encoded = value[7:]
+    try:
+        parts = json.loads(base64.urlsafe_b64decode(
+            encoded + "=" * (-len(encoded) % 4)).decode("utf-8"))
+    except (ValueError, UnicodeDecodeError):
+        return None
+    if not isinstance(parts, list) or not all(isinstance(x, str) for x in parts):
+        return None
+    return tuple(parts)
+
+
+def resolve_conversation_id(conn: sqlite3.Connection, platform: str,
+                            native_id: str) -> str:
+    """Reuse old IDs unless another provider already owns one.
+
+    Existing conversations keep their stable IDs, which makes this safe for
+    non-migrated archives. For a cross-provider collision, use a reversible
+    namespaced alias that retains the *original* provider/native ID.
+    """
+    if not isinstance(native_id, str) or not native_id:
+        raise ValueError("conversation requires a nonempty native ID")
+    current = conn.execute("SELECT platform FROM conversations WHERE id=?",
+                           (native_id,)).fetchone()
+    if current is None or current[0] == platform:
+        return native_id
+    alias = _encode_source_id("conversation", platform, native_id)
+    owner = conn.execute("SELECT platform FROM conversations WHERE id=?",
+                         (alias,)).fetchone()
+    if owner is not None and owner[0] != platform:
+        raise ValueError("canonical conversation identity collision")
+    return alias
+
+
+def resolve_message_id(conn: sqlite3.Connection, platform: str,
+                       conv_id: str, native_id: str) -> str:
+    """Avoid global message primary-key collision across conversations."""
+    if not isinstance(native_id, str) or not native_id:
+        raise ValueError("message requires a nonempty native ID")
+    current = conn.execute("SELECT conv_id FROM messages WHERE id=?",
+                           (native_id,)).fetchone()
+    if current is None or current[0] == conv_id:
+        return native_id
+    alias = _encode_source_id("message", platform, conv_id, native_id)
+    owner = conn.execute("SELECT conv_id FROM messages WHERE id=?", (alias,)).fetchone()
+    if owner is not None and owner[0] != conv_id:
+        raise ValueError("canonical message identity collision")
+    return alias
 
 
 def make_message_id(conv_id: str, index: int) -> str:
