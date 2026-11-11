@@ -27,12 +27,27 @@ QUERIES={
  "lexical":"embedded full text search rust bm25 in:readme",
  "hybrid":"hybrid search vector bm25 embedded in:readme",
  "import":"chatgpt claude import sqlite in:readme",
+ "bitemporal":"bitemporal database immutable revisions in:readme",
+ "versioned-graph":"branching versioned graph database in:readme",
+ "parquet-hybrid":"parquet bm25 vector embedded search in:readme",
+ "compressed-vector":"vector quantization 4bit embedded search in:readme",
+ "browser-wasm":"wasm browser offline full text search in:readme",
+ "crdt-sqlite":"sqlite crdt offline sync local first in:readme",
+ "memory-format":"portable ai memory manifest jsonl provenance in:readme",
+ "lossless-history":"append-only conversation archive lossless in:readme",
+ "graph-lexical":"graph search vector bm25 embedded in:readme",
+ "temporal-conflict":"temporal memory contradiction supersedes in:readme",
+ "memory-determinism":"sqlite agent memory temporal conflict in:readme",
+ "startups":"embedded hybrid search startup in:readme",
 }
 RANK_WORDS={
  "chatgpt":2,"claude":2,"conversation":4,"chat":2,"history":3,
  "archive":3,"mcp":3,"sqlite":3,"import":3,"local":2,"provenance":5,
  "audit":4,"source":1,"memory":2,"graph":2,"hybrid":2,
  "search":2,"bm25":2,"embedded":3,"rust":1,
+ "parquet":3,"temporal":4,"immutable":3,"branch":3,"wasm":3,
+ "crdt":3,"bitemporal":5,"quantiz":3,"vector":2,"append-only":3,
+ "lossless":4,"manifest":2,"jsonl":2,"portable":3,"offline":2,
 }
 MIN_RANK=6
 def evaluate(repo):
@@ -44,14 +59,21 @@ def evaluate(repo):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R10.json")
+    p.add_argument("--expansion",default="_dev/PHASE2_MARKET_EXPANSION_R14.json")
     p.add_argument("--output",default="_dev/results/phase2-discovery.json")
     p.add_argument("--max-results",type=int,default=40)
     args=p.parse_args()
     if not 1<=args.max_results<=100:p.error("max results must be 1..100")
     inventory=json.loads(Path(args.inventory).read_text())
+    expansion=json.loads(Path(args.expansion).read_text())
+    if expansion.get("previous_candidates")!=len(inventory["candidates"]):
+        raise ValueError("Expansion and base inventory are inconsistent")
+    all_entries=inventory["candidates"]+expansion["candidates"]
+    if len(all_entries)!=expansion["total_candidates"]:
+        raise ValueError("Expanded inventory count mismatch")
     known={}
     pattern=re.compile(r"^https://github\.com/([^/]+)/([^/?#]+)")
-    for item in inventory["candidates"]:
+    for item in all_entries:
         match=pattern.match(item["url"])
         if match:known[(match.group(1)+"/"+match.group(2).removesuffix(".git")).lower()]=item["id"]
     token=os.environ.get("GITHUB_TOKEN")
@@ -95,7 +117,7 @@ def main():
         novel.append(x)
     novel.sort(key=lambda a:(-a["heuristic_score"],-len(a["query_groups"]),-(a.get("stars") or 0),a["name"]))
     result={"status":"PASS" if not errors else "PARTIAL","timestamp_utc":datetime.now(timezone.utc).isoformat(),
-        "inventory_version":inventory["revision"],"inventory_count":len(inventory["candidates"]),
+        "inventory_version":inventory["revision"]+"+"+expansion["revision"],"inventory_count":len(all_entries),
         "github_repo_count":len(known),"queries":query_details,"query_errors":errors,
         "unique_hits":len(encountered),"new_review_candidates":len(novel),
         "potential_repositories":novel,"unreviewed":True,
