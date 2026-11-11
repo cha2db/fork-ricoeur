@@ -29,10 +29,10 @@ pathlib.Path(sys.argv[1]).write_text(json.dumps({
 PY
 fi
 git -C "$TMP" add ci-output/phase2/frontier
-git -C "$TMP" -c user.name=cha2db-ci -c user.email=ci@users.noreply.github.com commit -m "ci: phase2 frontier 226 candidates ${GITHUB_RUN_ID}" >/dev/null
+git -C "$TMP" -c user.name=cha2db-ci -c user.email=ci@users.noreply.github.com commit -m "ci: phase2 frontier R16 candidates ${GITHUB_RUN_ID}" >/dev/null
 for attempt in 1 2 3 4 5; do
   if git -C "$TMP" push origin HEAD:ci-results; then
-    echo "Published 226 frontier and auditable upstream metadata"
+    echo "Published updated candidate frontier and auditable upstream metadata"
     exit 0
   fi
   git -C "$TMP" fetch origin ci-results
