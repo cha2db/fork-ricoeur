@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 cd "$(dirname "$0")/.."
 engine="${1:?usage: publish_phase2.sh <engine>}"
-case "$engine" in bm25s|tantivy|usearch|orama|duckdb|lancedb|minisearch|flexsearch|reweave|ctk|ctk-store|chronicle) ;; *) exit 2;; esac
+case "$engine" in bm25s|tantivy|usearch|orama|duckdb|lancedb|minisearch|flexsearch|reweave|ctk|ctk-store|chronicle|hnswlib|annoy|rdflib|ir-measures) ;; *) exit 2;; esac
 : "${GITHUB_RUN_ID:?GitHub Actions only}"
 tmp="$(mktemp -d)"
 trap 'git worktree remove --force "$tmp" >/dev/null 2>&1 || true' EXIT
