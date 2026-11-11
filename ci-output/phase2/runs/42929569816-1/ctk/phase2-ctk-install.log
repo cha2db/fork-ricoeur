@@ -1,0 +1,69 @@
+Cloning into '/tmp/ctk'...
+Obtaining file:///tmp/ctk
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: conversation-tk
+  Building editable for conversation-tk (pyproject.toml): started
+  Building editable for conversation-tk (pyproject.toml): finished with status 'done'
+  Created wheel for conversation-tk: filename=conversation_tk-2.20.2-0.editable-py3-none-any.whl size=11450 sha256=25923ec42153b7008eb61956c5c809bd8edb1471d66fa5b3788286e57cb562c1
+  Stored in directory: /tmp/pip-ephem-wheel-cache-6d6fo4re/wheels/67/8b/9a/48a745b7945d02a4f5590a38f5b49a2683f89d1f80568d12b3
+Successfully built conversation-tk
+Installing collected packages: conversation-tk
+Successfully installed conversation-tk-2.20.2
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Collecting pydantic<3,>=2
+  Downloading pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)
+Collecting sqlalchemy<3,>=2
+  Downloading sqlalchemy-2.1.8-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)
+Collecting rich<16,>=13
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3,>=2)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.4 (from pydantic<3,>=2)
+  Downloading pydantic_core-2.50.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.6 kB)
+Collecting typing-extensions>=4.16.0 (from pydantic<3,>=2)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic<3,>=2)
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting markdown-it-py>=2.2.0 (from rich<16,>=13)
+  Downloading markdown_it_py-4.3.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich<16,>=13)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<16,>=13)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading pydantic-2.14.3-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 57.1 MB/s  0:00:00
+Downloading sqlalchemy-2.1.8-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 117.6 MB/s  0:00:00
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 299.7 MB/s  0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading markdown_it_py-4.3.0-py3-none-any.whl (96 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Installing collected packages: typing-extensions, pygments, mdurl, annotated-types, typing-inspection, sqlalchemy, pydantic-core, markdown-it-py, rich, pydantic
+
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+conversation-tk 2.20.2 requires mcp<2,>=1.0.0, which is not installed.
+conversation-tk 2.20.2 requires networkx>=3.0, which is not installed.
+conversation-tk 2.20.2 requires numpy>=1.24.0, which is not installed.
+conversation-tk 2.20.2 requires openai>=1.40.0, which is not installed.
+conversation-tk 2.20.2 requires requests>=2.31.0, which is not installed.
+conversation-tk 2.20.2 requires scikit-learn>=1.3.0, which is not installed.
+conversation-tk 2.20.2 requires textual>=0.50.0, which is not installed.
+conversation-tk 2.20.2 requires textual-image>=0.6.0, which is not installed.
+Successfully installed annotated-types-0.8.0 markdown-it-py-4.3.0 mdurl-0.1.2 pydantic-2.14.3 pydantic-core-2.50.4 pygments-2.21.0 rich-15.0.0 sqlalchemy-2.1.8 typing-extensions-4.16.0 typing-inspection-0.4.5
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip

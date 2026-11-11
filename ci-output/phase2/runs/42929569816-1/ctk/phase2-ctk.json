@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "candidate": "CTK",
+  "mode": "actual OpenAIImporter.import_data public API",
+  "checks": {
+    "valid_source": true,
+    "two_conversations": true,
+    "five_messages_preserved": true,
+    "all_branch_ids": true,
+    "alternative_siblings": true,
+    "marker_preserved": true,
+    "id_stability_second_parse": true
+  },
+  "conversation_count": 2,
+  "first_tree_ids": [
+    "m1",
+    "m2",
+    "m3"
+  ],
+  "second_tree_ids": [
+    "a1",
+    "a2"
+  ],
+  "branch_parent": "m1",
+  "verdict": "PARSER_BRANCH_PRESERVATION_ONLY",
+  "fixture": "exact same 2 ChatGPT conversations / 5 message, two reply branches as Reweave",
+  "limitations": [
+    "CTK importer parser test only, no SQLite persistence, duplicates or MCP.",
+    "The parser executes external vendor code on an isolated read-only runner.",
+    "No dependency on LLM models; no production integration.",
+    "CLI and storage contracts require independent end-to-end gates."
+  ]
+}
