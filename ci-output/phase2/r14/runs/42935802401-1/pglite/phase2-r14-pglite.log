@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "tests": {
+    "idempotent_on_conflict": true,
+    "fts_retrieval": true,
+    "branch_siblings_preserved": true,
+    "persisted_after_reopen": true,
+    "original_ids_preserved": true,
+    "unique_source_marker": true
+  },
+  "import_seconds": 2.494,
+  "storage_bytes": 41623731
+}

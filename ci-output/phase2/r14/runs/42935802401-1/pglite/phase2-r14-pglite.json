@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "candidate": "PGlite",
+  "input_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "storage": "PostgreSQL WASM, persisted to filesystem in Node.js",
+  "dataset": {
+    "representative_messages": 1000,
+    "branch_messages": 5,
+    "synthetic": true,
+    "human_gold": false
+  },
+  "tests": {
+    "idempotent_on_conflict": true,
+    "fts_retrieval": true,
+    "branch_siblings_preserved": true,
+    "persisted_after_reopen": true,
+    "original_ids_preserved": true,
+    "unique_source_marker": true
+  },
+  "queries": [
+    {
+      "query": "SSH",
+      "hits": 20,
+      "latency_ms": 3.273
+    },
+    {
+      "query": "PostgreSQL",
+      "hits": 20,
+      "latency_ms": 1.292
+    },
+    {
+      "query": "AUoK",
+      "hits": 20,
+      "latency_ms": 1.662
+    },
+    {
+      "query": "markerunique2026",
+      "hits": 1,
+      "latency_ms": 1.391
+    },
+    {
+      "query": "doesnotexist999",
+      "hits": 0,
+      "latency_ms": 1.38
+    }
+  ],
+  "import_seconds": 2.494,
+  "storage_bytes": 41623731,
+  "verdict": "WASM_POSTGRES_PERSISTENCE_AND_FTS_ONLY_NO_BROWSER_OR_ANDROID_TEST",
+  "limitations": [
+    "Runs Node.js PGlite with filesystem, not IndexedDB in browser.",
+    "Indexing 1000 representative messages from the same 40k synthetic SQLite fixture plus a five-message branching fixture.",
+    "No concurrency, syncing, large-scale benchmark or corpus of human-labeled chats.",
+    "No runtime integration into Cha2db or Phase3 UX."
+  ]
+}
