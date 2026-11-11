@@ -94,12 +94,13 @@ def gates():
         except ValueError:pass
         else:raise AssertionError("sidecar was incorrectly loaded implicitly")
         check(True,"lexicon explicit-only")
-        for k in [{"grain":"week"},{"grain":"month","period":"bad"}]:
+        for grain, period in [("week","2026-01"),("month","bad")]:
             try:
-                ux.execute(db,"period",query="integração contínua",period="2026-01",
-                           **(k if "period" not in k else {"grain":k["grain"],"period":k["period"]}))
-            except (ValueError,TypeError):pass
-            else:raise AssertionError("invalid grain or period accepted")
+                ux.execute(db,"period",query="integração contínua",grain=grain,period=period)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("invalid grain or period accepted")
         check(True,"invalid periods are rejected")
         check(hashlib.sha256(db.read_bytes()).hexdigest()==sha,"read-only core")
         server=ThreadingHTTPServer(("127.0.0.1",0),ux.handler_factory(db,str(lex)))
