@@ -1,0 +1,63 @@
+name: Cha2db Phase2 Chat Chronicle branch fidelity gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_chronicle_parser.py'
+      - '_dev/phase2_import_candidate.py'
+      - '.github/workflows/phase2-chronicle-import.yml'
+  workflow_dispatch:
+concurrency:
+  group: cha2db-phase2-chronicle-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  run-upstream-without-secrets:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Shallow clone Chat Chronicle and preserve commit identity
+        run: |
+          mkdir -p _dev/results
+          git clone --depth 1 https://github.com/TzurV/mcp-chat-chronicle.git /tmp/chronicle > _dev/results/phase2-chronicle-install.log 2>&1
+          git -C /tmp/chronicle rev-parse HEAD > _dev/results/chronicle-upstream-commit.txt
+      - name: Install only parser dependencies, no optional LLM stack
+        run: |
+          python -m pip install --no-deps -e /tmp/chronicle >> _dev/results/phase2-chronicle-install.log 2>&1
+          python -m pip install 'pydantic>=2,<3' >> _dev/results/phase2-chronicle-install.log 2>&1
+      - name: Execute same lossless branch contract as CTK/Reweave
+        run: |
+          PYTHONPATH=_dev python -u _dev/phase2_chronicle_parser.py --output _dev/results/phase2-chronicle.json > _dev/results/phase2-chronicle.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-chronicle.log
+            exit 1
+          }
+          cat _dev/results/phase2-chronicle.json
+      - name: Preserve results even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-chronicle-evidence
+          path: _dev/results/
+          retention-days: 30
+  archive-results-only:
+    needs: run-upstream-without-secrets
+    if: always()
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2-chronicle-evidence
+          path: _dev/results/
+      - name: Publish independent result JSON
+        if: always()
+        run: bash _dev/publish_phase2.sh chronicle
