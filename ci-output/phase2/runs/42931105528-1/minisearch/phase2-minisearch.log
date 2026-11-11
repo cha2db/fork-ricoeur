@@ -1,0 +1,7 @@
+{
+  "candidate": "minisearch",
+  "status": "PASS",
+  "mean_p10": 1,
+  "median_latency_ms": 0.261,
+  "build_seconds": 0.044
+}
