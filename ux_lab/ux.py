@@ -6,6 +6,7 @@ No search index, migration, graph inference, or SQLite writes live here.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 import json
 import sqlite3
 import sys
@@ -139,7 +140,7 @@ def graph(conn, query="", platform="", limit=30, syntax="literal"):
 
 
 def execute(db, action, **kw):
-    with connect(db) as conn:
+    with closing(connect(db)) as conn:
         if action == "capabilities":
             return payload({"ports": ["capabilities", "conversations", "search",
                                       "transcript", "message", "graph", "serve"],
