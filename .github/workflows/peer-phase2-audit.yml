@@ -6,6 +6,10 @@ on:
     paths:
       - '_dev/tests/peer_review/**'
       - '.github/workflows/peer-phase2-audit.yml'
+  pull_request:
+    paths:
+      - '_dev/tests/peer_review/**'
+      - '.github/workflows/peer-phase2-audit.yml'
   workflow_dispatch:
 jobs:
   peer-phase2-audit:
