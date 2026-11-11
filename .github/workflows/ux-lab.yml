@@ -5,6 +5,12 @@ on:
       - feat/ux-cli-gui-p1-0003
     paths:
       - 'ux_lab/**'
+      - '_dev/tests/ux/**'
+      - '.github/workflows/ux-lab.yml'
+  pull_request:
+    paths:
+      - 'ux_lab/**'
+      - '_dev/tests/ux/**'
       - '.github/workflows/ux-lab.yml'
   workflow_dispatch:
 jobs:
@@ -17,7 +23,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Autonomous synthetic SQLite contract tests
-        run: python ux_lab/test_autonomous.py
-      - name: Compile UX CLI and tests
-        run: python -m compileall -q ux_lab
+      - name: Compile Python UX and tests
+        run: python -m compileall -q ux_lab _dev/tests/ux
+      - name: UX-008 CLI, FTS5 and graph
+        run: bash _dev/tests/ux/teste8.sh
+      - name: UX-009 existing message retrieval driver
+        run: bash _dev/tests/ux/teste9.sh
+      - name: UX-010 candidate scoring baseline
+        run: bash _dev/tests/ux/teste10.sh
+      - name: UX-011 CLI/HTTP/GUI integration
+        run: bash _dev/tests/ux/teste11.sh
+      - name: UX-012 search and presentation candidate matrix
+        run: bash _dev/tests/ux/teste12.sh
