@@ -1,0 +1,71 @@
+{
+  "candidate": "CTK SQLite",
+  "status": "PASS",
+  "checks": {
+    "two_conversations_after_reload": true,
+    "five_messages_after_disk_roundtrip": true,
+    "no_duplicate_after_second_save": true,
+    "both_branch_siblings_survive": true,
+    "branch_paths_survive": true,
+    "content_source_survives": true,
+    "provider_preserved": true
+  },
+  "message_counts": [
+    3,
+    2
+  ],
+  "database_message_count": 5,
+  "tables": [
+    "conversations",
+    "tags",
+    "embedding_sessions",
+    "current_communities",
+    "current_node_metrics",
+    "conversation_tags",
+    "messages",
+    "paths",
+    "conversation_embeddings",
+    "similarities",
+    "current_graph",
+    "conversations_fts",
+    "conversations_fts_data",
+    "conversations_fts_idx",
+    "conversations_fts_content",
+    "conversations_fts_docsize",
+    "conversations_fts_config",
+    "messages_fts",
+    "messages_fts_data",
+    "messages_fts_idx",
+    "messages_fts_content",
+    "messages_fts_docsize",
+    "messages_fts_config"
+  ],
+  "fts_table_names": [
+    "conversations_fts",
+    "conversations_fts_data",
+    "conversations_fts_idx",
+    "conversations_fts_content",
+    "conversations_fts_docsize",
+    "conversations_fts_config",
+    "messages_fts",
+    "messages_fts_data",
+    "messages_fts_idx",
+    "messages_fts_content",
+    "messages_fts_docsize",
+    "messages_fts_config"
+  ],
+  "branch_paths": 2,
+  "test_scope": "SQLite persistence, stable branch IDs, repeated save (not raw-byte fidelity)",
+  "fixture": "Same 2-conversation, 5-message ChatGPT branch fixture as Reweave",
+  "limitations": [
+    "Repeated save overwrites existing messages; source raw-byte preservation untested.",
+    "No export roundtrip or MCP in this gate.",
+    "No production integration or human semantic-quality claim."
+  ],
+  "run_id": "42929863126",
+  "upstream_commit": "dcf2c70bdfee94a3cfbaab27f87be73994e768d4",
+  "commit": "e616d237477577076be40c802ed76320448589e9",
+  "logs": {
+    "phase2-ctk-store.log": "{\n  \"candidate\": \"CTK SQLite\",\n  \"status\": \"PASS\",\n  \"checks\": {\n    \"two_conversations_after_reload\": true,\n    \"five_messages_after_disk_roundtrip\": true,\n    \"no_duplicate_after_second_save\": true,\n    \"both_branch_siblings_survive\": true,\n    \"branch_paths_survive\": true,\n    \"content_source_survives\": true,\n    \"provider_preserved\": true\n  },\n  \"message_counts\": [\n    3,\n    2\n  ],\n  \"database_message_count\": 5,\n  \"tables\": [\n    \"conversations\",\n    \"tags\",\n    \"embedding_sessions\",\n    \"current_communities\",\n    \"current_node_metrics\",\n    \"conversation_tags\",\n    \"messages\",\n    \"paths\",\n    \"conversation_embeddings\",\n    \"similarities\",\n    \"current_graph\",\n    \"conversations_fts\",\n    \"conversations_fts_data\",\n    \"conversations_fts_idx\",\n    \"conversations_fts_content\",\n    \"conversations_fts_docsize\",\n    \"conversations_fts_config\",\n    \"messages_fts\",\n    \"messages_fts_data\",\n    \"messages_fts_idx\",\n    \"messages_fts_content\",\n    \"messages_fts_docsize\",\n    \"messages_fts_config\"\n  ],\n  \"fts_table_names\": [\n    \"conversations_fts\",\n    \"conversations_fts_data\",\n    \"conversations_fts_idx\",\n    \"conversations_fts_content\",\n    \"conversations_fts_docsize\",\n    \"conversations_fts_config\",\n    \"messages_fts\",\n    \"messages_fts_data\",\n    \"messages_fts_idx\",\n    \"messages_fts_content\",\n    \"messages_fts_docsize\",\n    \"messages_fts_config\"\n  ],\n  \"branch_paths\": 2,\n  \"test_scope\": \"SQLite persistence, stable branch IDs, repeated save (not raw-byte fidelity)\",\n  \"fixture\": \"Same 2-conversation, 5-message ChatGPT branch fixture as Reweave\",\n  \"limitations\": [\n    \"Repeated save overwrites existing messages; source raw-byte preservation untested.\",\n    \"No export roundtrip or MCP in this gate.\",\n    \"No production integration or human semantic-quality claim.\"\n  ]\n}\n"
+  }
+}
