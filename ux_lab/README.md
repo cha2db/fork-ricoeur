@@ -40,3 +40,28 @@ Os relatórios locais ficam **somente** em `_dev/results/ux/`. A Action `.github
 `python ux_lab/rank_candidates.py --output _dev/results/ux/ranking12.json`. São 27 candidatos e ranking **preliminar**, com seções por categoria, mecanismo de pesquisa e apresentação. Consultar `docs/ux/UX-013-ADOPTION-AND-MERGE-GATES.md`.
 
 Branch `feat/ux-cli-gui-p1-0003`; PR #1 para `main`. Merge exclusivo do par após verificação dos gates e da compatibilidade com mudanças posteriores em `main`.
+
+## UX-014 — Observatório de palavras, conhecimento e proveniência
+
+Usa **o mesmo arquivo** SQLite e a mesma tabela `messages_fts`. Abre o banco em `mode=ro` e não adiciona índices. Para iniciar:
+
+```bash
+python ux_lab/ux.py --db /caminho/ricoeur.db serve --port 8765
+```
+
+Visões no navegador local: `/knowledge` (barras de incidência absoluta ou por mil mensagens, intervalo clicável e nuvem de termos), `/` (transcrições). Clique em período → mensagens → conversa original (com ID estável). Normalização por mil usa como denominador **todas** as mensagens do mesmo período e plataforma. Data da mensagem prevalece; se ausente, data de criação da conversa.
+
+CLI de comandos equivalentes:
+
+```bash
+python ux_lab/ux.py --db /caminho/ricoeur.db timeline --query "integração contínua" --grain month
+python ux_lab/ux.py --db /caminho/ricoeur.db period --query "integração contínua" --grain month --period 2026-01
+python ux_lab/ux.py --db /caminho/ricoeur.db tagcloud --query "integração contínua" --period 2026-01
+python ux_lab/ux.py --db /caminho/ricoeur.db --lexicon ux_lab/lexicon.example.json timeline --query "CI pipeline" --expand
+python ux_lab/ux.py --db /caminho/ricoeur.db --lexicon ux_lab/lexicon.example.json concept "CI pipeline"
+```
+
+**Importante:** `lexicon.example.json` é um exemplo sintético para validar contratos, não tesauro pronto. Um tesauro real, como OpenWordnet-PT, deve ser importado em outra rodada com checagem de licença, identificação dos sentidos e fontes. O painel não infere sinônimos automaticamente.
+
+Testar autonomamente: `bash _dev/tests/ux/teste14.sh`. Resultados **locais** em `_dev/results/ux/`. Revisão e pesquisa: `docs/ux/UX-014-COGNITIVE-KNOWLEDGE-MAPS-PRIOR-ART.md`. ECharts/wordcloud2 opt-in carregam JS externo: exclusivamente corpus sintético.
+
