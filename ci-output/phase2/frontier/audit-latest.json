@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "timestamp_utc": "2026-11-11T03:23:05.263476+00:00",
-  "inventory_candidate_count": 226,
-  "github_unique_count": 202,
-  "audited_count": 202,
+  "timestamp_utc": "2026-11-11T03:25:30.863206+00:00",
+  "inventory_candidate_count": 235,
+  "github_unique_count": 211,
+  "audited_count": 211,
   "counts": {
-    "FOUND": 202
+    "FOUND": 211
   },
   "archived_repositories": [
     "kuzudb/kuzu",
@@ -29,12 +29,20 @@
       "spdx": "UNIDENTIFIED"
     },
     {
+      "repository": "agent-memory-lab/agent-memory",
+      "spdx": "NOASSERTION"
+    },
+    {
       "repository": "ai-khoj/khoj",
       "spdx": "AGPL-3.0"
     },
     {
       "repository": "amark/gun",
       "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "andreiu77/bitemporal-postgres-engine",
+      "spdx": "UNIDENTIFIED"
     },
     {
       "repository": "basicmachines-co/basic-memory",
@@ -73,8 +81,16 @@
       "spdx": "GPL-2.0"
     },
     {
+      "repository": "inite-ai/inite-brain-service",
+      "spdx": "AGPL-3.0"
+    },
+    {
       "repository": "izihawa/summa",
       "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "jaylfc/taosmd",
+      "spdx": "AGPL-3.0"
     },
     {
       "repository": "kurrent-io/KurrentDB",
@@ -299,6 +315,20 @@
       "homepage": "https://chrystianschutz.github.io/ThreadShelf/"
     },
     {
+      "repository": "Coding-Dev-Tools/engraphis",
+      "status": "FOUND",
+      "full_name": "Coding-Dev-Tools/engraphis",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-09T14:22:55Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://engraphis.com/"
+    },
+    {
       "repository": "CynepMyx/deja",
       "status": "FOUND",
       "full_name": "CynepMyx/deja",
@@ -381,6 +411,20 @@
       "license_spdx": "Apache-2.0",
       "license_review": false,
       "homepage": "https://labelstud.io"
+    },
+    {
+      "repository": "Jason-Doyle/agentic-data-kernel",
+      "status": "FOUND",
+      "full_name": "Jason-Doyle/agentic-data-kernel",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-04T13:33:44Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://jasondoyle.ie/"
     },
     {
       "repository": "LadybugDB/ladybug",
@@ -733,6 +777,20 @@
       "homepage": "https://deeplake.ai"
     },
     {
+      "repository": "agent-memory-lab/agent-memory",
+      "status": "FOUND",
+      "full_name": "agent-memory-lab/agent-memory",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T01:48:01Z",
+      "default_branch": "main",
+      "license_spdx": "NOASSERTION",
+      "license_review": true,
+      "homepage": null
+    },
+    {
       "repository": "ai-khoj/khoj",
       "status": "FOUND",
       "full_name": "ai-khoj/khoj",
@@ -759,6 +817,20 @@
       "license_spdx": "NOASSERTION",
       "license_review": true,
       "homepage": "https://gun.eco/docs"
+    },
+    {
+      "repository": "andreiu77/bitemporal-postgres-engine",
+      "status": "FOUND",
+      "full_name": "andreiu77/bitemporal-postgres-engine",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-22T17:30:09Z",
+      "default_branch": "main",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": null
     },
     {
       "repository": "apache/age",
@@ -1356,7 +1428,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-11T03:20:08Z",
+      "pushed_at": "2026-11-11T03:24:57Z",
       "default_branch": "main",
       "license_spdx": "NOASSERTION",
       "license_review": true,
@@ -1475,6 +1547,20 @@
       "homepage": "http://infino.ai"
     },
     {
+      "repository": "inite-ai/inite-brain-service",
+      "status": "FOUND",
+      "full_name": "inite-ai/inite-brain-service",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T04:00:32Z",
+      "default_branch": "main",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": "https://brain.inite.ai"
+    },
+    {
       "repository": "izihawa/summa",
       "status": "FOUND",
       "full_name": "SpaceFrontiers/summa",
@@ -1487,6 +1573,34 @@
       "license_spdx": "UNIDENTIFIED",
       "license_review": true,
       "homepage": "https://spacefrontiers.github.io/summa/"
+    },
+    {
+      "repository": "jaylfc/taosmd",
+      "status": "FOUND",
+      "full_name": "jaylfc/taosmd",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T18:01:04Z",
+      "default_branch": "master",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": null
+    },
+    {
+      "repository": "joshuaswarren/remnic",
+      "status": "FOUND",
+      "full_name": "joshuaswarren/remnic",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T08:53:36Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://remnic.ai"
     },
     {
       "repository": "kasparovabi/sift",
@@ -1594,7 +1708,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-11T02:39:03Z",
+      "pushed_at": "2026-11-11T03:23:19Z",
       "default_branch": "main",
       "license_spdx": "Apache-2.0",
       "license_review": false,
@@ -2581,6 +2695,20 @@
       "homepage": "https://surrealdb.com"
     },
     {
+      "repository": "teolex2020/aura-memory",
+      "status": "FOUND",
+      "full_name": "teolex2020/aura-memory",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-25T19:09:33Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://aurasdk.dev"
+    },
+    {
       "repository": "terminusdb/terminusdb",
       "status": "FOUND",
       "full_name": "terminusdb/terminusdb",
@@ -2973,6 +3101,20 @@
       "homepage": "https://xtdb.com"
     },
     {
+      "repository": "yantrikos/yantrikdb",
+      "status": "FOUND",
+      "full_name": "yantrikos/yantrikdb",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-02T23:19:09Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://yantrikdb.com"
+    },
+    {
       "repository": "yjs/yjs",
       "status": "FOUND",
       "full_name": "yjs/yjs",
@@ -3217,7 +3359,16 @@
     "C222": "tinyplex/tinybase",
     "C223": "powersync-ja/powersync-service",
     "C224": "amark/gun",
-    "C225": "treeverse/lakeFS"
+    "C225": "treeverse/lakeFS",
+    "C227": "inite-ai/inite-brain-service",
+    "C228": "teolex2020/aura-memory",
+    "C229": "Jason-Doyle/agentic-data-kernel",
+    "C230": "jaylfc/taosmd",
+    "C231": "joshuaswarren/remnic",
+    "C232": "agent-memory-lab/agent-memory",
+    "C233": "yantrikos/yantrikdb",
+    "C234": "Coding-Dev-Tools/engraphis",
+    "C235": "andreiu77/bitemporal-postgres-engine"
   },
   "limits": [
     "Metadata only; a GitHub license identifier does not certify legal compatibility.",

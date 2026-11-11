@@ -1,0 +1,210 @@
+{
+  "status": "PASS",
+  "timestamp_utc": "2026-11-11T03:25:30.863206+00:00",
+  "inventory_candidate_count": 235,
+  "github_unique_count": 211,
+  "audited_count": 211,
+  "counts": {
+    "FOUND": 211
+  },
+  "archived_repositories": [
+    "kuzudb/kuzu",
+    "reorproject/reor"
+  ],
+  "requires_license_review": [
+    {
+      "repository": "1ch1n/mychatarchive",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "Aevorine/Synorive",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "FalkorDB/FalkorDB",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "SpaceFrontiers/summa",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "agent-memory-lab/agent-memory",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "ai-khoj/khoj",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "amark/gun",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "andreiu77/bitemporal-postgres-engine",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "basicmachines-co/basic-memory",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "codenotary/immudb",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "drnrzs/memu",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "facebook/rocksdb",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "repository": "fluree/db",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "gebeer/conversation-search",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "hrishikeshs/sift",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "igraph/python-igraph",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "repository": "inite-ai/inite-brain-service",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "izihawa/summa",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "jaylfc/taosmd",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "kurrent-io/KurrentDB",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "manticoresoftware/manticoresearch",
+      "spdx": "GPL-3.0"
+    },
+    {
+      "repository": "mchaput/whoosh",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "meilisearch/meilisearch",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "memgraph/memgraph",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "mertdeveci5/gora",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "misaelzapata/memoirs",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "naver/splade",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "neo4j/neo4j",
+      "spdx": "GPL-3.0"
+    },
+    {
+      "repository": "nervosys/IronBridge",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "networkx/networkx",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "onyx-dot-app/onyx",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "open-webui/open-webui",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "oramasearch/orama",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "oramasearch/oramacore",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "paradedb/paradedb",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "pgvector/pgvector",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "reorproject/reor",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "rustmailer/bichon",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "supervc-stack/VectorChord",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "surrealdb/surrealdb",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "treeverse/lakeFS",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "typesense/typesense",
+      "spdx": "GPL-3.0"
+    },
+    {
+      "repository": "vtraag/leidenalg",
+      "spdx": "GPL-3.0"
+    },
+    {
+      "repository": "weaviate/weaviate",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "yjs/yjs",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "zincsearch/zincsearch",
+      "spdx": "NOASSERTION"
+    }
+  ],
+  "limits": [
+    "Metadata only; a GitHub license identifier does not certify legal compatibility.",
+    "Package, model-weight, component and commercial edition licenses may differ.",
+    "Projects without a github.com owner/repo URL were not audited.",
+    "Archived status, recency and SPDX can change after this snapshot."
+  ]
+}
