@@ -3,6 +3,10 @@
 from __future__ import annotations
 
 import sqlite3
+import os
+import shutil
+import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -151,15 +155,71 @@ def db_path(home: Optional[Path] = None) -> Path:
     return (home or get_home()) / "ricoeur.db"
 
 
+
+def _backup_before_migration(conn: sqlite3.Connection, path: Path,
+                             from_version: int) -> Path:
+    """Verified SQLite online backup, before any schema migration.
+
+    Use backup(), not file copy (the original may have live WAL content).
+    This is a *local* private backup, permissions 0600 on POSIX. Fail closed
+    when insufficient disk or when the copy fails integrity verification.
+    """
+    backup_dir = path.parent / ".migration-backups"
+    backup_dir.mkdir(mode=0o700, exist_ok=True)
+    # Never loosen permissions on an existing directory.
+    if os.name == "posix":
+        current_mode = backup_dir.stat().st_mode & 0o777
+        if current_mode & 0o077:
+            raise PermissionError("migration-backups directory must be private (0700)")
+    expected = path.stat().st_size
+    wal = path.with_name(path.name + "-wal")
+    if wal.is_file():
+        expected += wal.stat().st_size
+    if shutil.disk_usage(backup_dir).free < max(2 * expected, 64 * 1024 * 1024):
+        raise OSError("insufficient free space for verified migration snapshot")
+    prefix = f"ricoeur-v{from_version}-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-"
+    fd, raw_path = tempfile.mkstemp(prefix=prefix, suffix=".sqlite3",
+                                   dir=backup_dir)
+    os.close(fd)
+    backup_path = Path(raw_path)
+    try:
+        with sqlite3.connect(str(backup_path)) as target:
+            conn.backup(target)
+            integrity = target.execute("PRAGMA quick_check").fetchall()
+            if integrity != [("ok",)]:
+                raise sqlite3.DatabaseError("migration backup failed quick_check")
+            original_rows = conn.execute(
+                "SELECT COUNT(*) FROM conversations").fetchone()[0]
+            backup_rows = target.execute(
+                "SELECT COUNT(*) FROM conversations").fetchone()[0]
+            if original_rows != backup_rows:
+                raise sqlite3.DatabaseError("migration backup row count mismatch")
+            target.commit()
+        if os.name == "posix":
+            backup_path.chmod(0o600)
+        return backup_path
+    except BaseException:
+        backup_path.unlink(missing_ok=True)
+        raise
+
+
 def get_connection(home: Optional[Path] = None) -> sqlite3.Connection:
     """Get a connection to the ricoeur database, migrating it if needed."""
     path = db_path(home)
     conn = sqlite3.connect(str(path))
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA foreign_keys=ON")
-    migrate(conn)
-    return conn
+    try:
+        conn.row_factory = sqlite3.Row
+        if _table_exists(conn, "conversations"):
+            current = schema_version(conn)
+            if current < SCHEMA_VERSION:
+                _backup_before_migration(conn, path, current)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA foreign_keys=ON")
+        migrate(conn)
+        return conn
+    except BaseException:
+        conn.close()
+        raise
 
 
 
