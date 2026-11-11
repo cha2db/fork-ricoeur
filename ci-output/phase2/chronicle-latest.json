@@ -1,0 +1,46 @@
+{
+  "candidate": "Chat Chronicle",
+  "status": "FAIL",
+  "test": "actual parse_conversations_json public parser; 2 conversations/5 messages",
+  "tests": {
+    "two_conversations": true,
+    "all_five_original_messages": false,
+    "both_alternative_branches": false,
+    "marker_text_kept": true,
+    "source_ids_available": true
+  },
+  "normalized_count": 4,
+  "source_ids": [
+    "m1",
+    "m2",
+    "a1",
+    "a2"
+  ],
+  "nonfatal_parse_errors": [
+    {
+      "record_id": "cha2db-branch-1",
+      "node_id": null,
+      "error": "missing_current_node",
+      "detail": "falling back to deepest chain"
+    },
+    {
+      "record_id": "cha2db-branch-2",
+      "node_id": null,
+      "error": "missing_current_node",
+      "detail": "falling back to deepest chain"
+    }
+  ],
+  "limitations": [
+    "Only parser test; no SQLite persistence or official archive ZIP.",
+    "Expected five messages includes alternative branches not only active current branch.",
+    "Vendor code runs in isolated GitHub Actions read-only job with no LLM.",
+    "No Cha2db production integration or end-to-end MCP claim."
+  ],
+  "run_id": "42930580455",
+  "upstream_commit": "de15a6bf525998307844fbbe71715368cb62deca",
+  "commit": "e75ebd4d8fd69a3f69c10f23db6a90927b47578c",
+  "logs": {
+    "phase2-chronicle.log": "{\n  \"candidate\": \"Chat Chronicle\",\n  \"status\": \"FAIL\",\n  \"test\": \"actual parse_conversations_json public parser; 2 conversations/5 messages\",\n  \"tests\": {\n    \"two_conversations\": true,\n    \"all_five_original_messages\": false,\n    \"both_alternative_branches\": false,\n    \"marker_text_kept\": true,\n    \"source_ids_available\": true\n  },\n  \"normalized_count\": 4,\n  \"source_ids\": [\n    \"m1\",\n    \"m2\",\n    \"a1\",\n    \"a2\"\n  ],\n  \"nonfatal_parse_errors\": [\n    {\n      \"record_id\": \"cha2db-branch-1\",\n      \"node_id\": null,\n      \"error\": \"missing_current_node\",\n      \"detail\": \"falling back to deepest chain\"\n    },\n    {\n      \"record_id\": \"cha2db-branch-2\",\n      \"node_id\": null,\n      \"error\": \"missing_current_node\",\n      \"detail\": \"falling back to deepest chain\"\n    }\n  ],\n  \"limitations\": [\n    \"Only parser test; no SQLite persistence or official archive ZIP.\",\n    \"Expected five messages includes alternative branches not only active current branch.\",\n    \"Vendor code runs in isolated GitHub Actions read-only job with no LLM.\",\n    \"No Cha2db production integration or end-to-end MCP claim.\"\n  ]\n}\n",
+    "phase2-chronicle-install.log": "ges: chat-chronicle\n  Building editable for chat-chronicle (pyproject.toml): started\n  Building editable for chat-chronicle (pyproject.toml): finished with status 'done'\n  Created wheel for chat-chronicle: filename=chat_chronicle-0.2.0-py3-none-any.whl size=10358 sha256=babe201a8c759dcbc39e0a9fe147e060ad81c4bf72f62eb57c8bcc401cf0b08a\n  Stored in directory: /tmp/pip-ephem-wheel-cache-gmzg_ljv/wheels/39/53/56/8821120df6f2959f19440d8f3bd7ea6c9cd6ac130767139f94\nSuccessfully built chat-chronicle\nInstalling collected packages: chat-chronicle\nSuccessfully installed chat-chronicle-0.2.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\nCollecting pydantic<3,>=2\n  Downloading pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)\nCollecting annotated-types>=0.6.0 (from pydantic<3,>=2)\n  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)\nCollecting pydantic-core==2.50.4 (from pydantic<3,>=2)\n  Downloading pydantic_core-2.50.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.6 kB)\nCollecting typing-extensions>=4.16.0 (from pydantic<3,>=2)\n  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\nCollecting typing-inspection>=0.4.4 (from pydantic<3,>=2)\n  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)\nDownloading pydantic-2.14.3-py3-none-any.whl (494 kB)\nDownloading pydantic_core-2.50.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 53.3 MB/s  0:00:00\nDownloading annotated_types-0.8.0-py3-none-any.whl (13 kB)\nDownloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)\nDownloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)\nInstalling collected packages: typing-extensions, annotated-types, typing-inspection, pydantic-core, pydantic\n\nERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\nchat-chronicle 0.2.0 requires pyyaml<7.0,>=6.0, which is not installed.\nchat-chronicle 0.2.0 requires rich<15.0,>=13.7, which is not installed.\nchat-chronicle 0.2.0 requires typer<1.0,>=0.12, which is not installed.\nSuccessfully installed annotated-types-0.8.0 pydantic-2.14.3 pydantic-core-2.50.4 typing-extensions-4.16.0 typing-inspection-0.4.5\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n"
+  }
+}

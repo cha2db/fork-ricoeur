@@ -1,0 +1,39 @@
+{
+  "candidate": "Chat Chronicle",
+  "status": "FAIL",
+  "test": "actual parse_conversations_json public parser; 2 conversations/5 messages",
+  "tests": {
+    "two_conversations": true,
+    "all_five_original_messages": false,
+    "both_alternative_branches": false,
+    "marker_text_kept": true,
+    "source_ids_available": true
+  },
+  "normalized_count": 4,
+  "source_ids": [
+    "m1",
+    "m2",
+    "a1",
+    "a2"
+  ],
+  "nonfatal_parse_errors": [
+    {
+      "record_id": "cha2db-branch-1",
+      "node_id": null,
+      "error": "missing_current_node",
+      "detail": "falling back to deepest chain"
+    },
+    {
+      "record_id": "cha2db-branch-2",
+      "node_id": null,
+      "error": "missing_current_node",
+      "detail": "falling back to deepest chain"
+    }
+  ],
+  "limitations": [
+    "Only parser test; no SQLite persistence or official archive ZIP.",
+    "Expected five messages includes alternative branches not only active current branch.",
+    "Vendor code runs in isolated GitHub Actions read-only job with no LLM.",
+    "No Cha2db production integration or end-to-end MCP claim."
+  ]
+}
