@@ -4,10 +4,13 @@ on:
     branches: [main]
     paths:
       - '_dev/PHASE2_MARKET_UNIVERSE_R10.json'
+      - '_dev/PHASE2_MARKET_EXPANSION_R14.json'
       - '_dev/phase2_discovery.py'
       - '_dev/publish_phase2_discovery.sh'
       - '.github/workflows/phase2-discovery.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '47 3 * * 2,5'
 permissions:
   contents: write
 concurrency:
@@ -27,7 +30,7 @@ jobs:
       - name: Search across independent prior-art families
         run: |
           mkdir -p _dev/results
-          python -u _dev/phase2_discovery.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R08.json --output _dev/results/phase2-discovery.json > _dev/results/phase2-discovery.log 2>&1 || {
+          python -u _dev/phase2_discovery.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R10.json --expansion _dev/PHASE2_MARKET_EXPANSION_R14.json --output _dev/results/phase2-discovery.json > _dev/results/phase2-discovery.log 2>&1 || {
             tail -n 100 _dev/results/phase2-discovery.log
             exit 1
           }
