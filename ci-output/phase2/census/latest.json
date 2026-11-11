@@ -1,33 +1,33 @@
 {
   "status": "PASS",
   "revision": "R10",
-  "generated_utc": "2026-11-11T00:22:26.712745+00:00",
+  "generated_utc": "2026-11-11T00:27:18.524850+00:00",
   "meaning": "143 audited and triaged, NOT 143 functionally tested",
   "summary": {
     "inventory_candidates": 143,
     "entries_with_disposition": 143,
     "repositories_in_inventory": 123,
     "audited_unique_github": 123,
-    "real_functional_pass_candidates": 18,
-    "functional_not_passed_or_not_applicable": 125,
-    "actionable_comparative_tests": 85,
+    "real_functional_pass_candidates": 22,
+    "functional_not_passed_or_not_applicable": 121,
+    "actionable_comparative_tests": 81,
     "functional_failures": 2,
     "functional_blocked": 2,
     "dispositions": {
       "KEEP_EXISTING_BASELINE": 1,
-      "TESTED_COMPONENT_CANDIDATE": 17,
-      "COMPARATIVE_TEST_PENDING": 62,
+      "TESTED_COMPONENT_CANDIDATE": 21,
+      "COMPARATIVE_TEST_PENDING": 59,
       "REFERENCE_OR_DEFER_NONCORE": 14,
       "EXTERNAL_ADAPTER_ONLY": 12,
       "HOLD_TECHNICAL_LIMIT": 2,
-      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 23,
+      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 22,
       "LICENSE_HOLD_NO_EMBED": 8,
       "EXCLUDE_ARCHIVED_ACTIVE_CORE": 2,
       "REJECT_FAILED_MANDATORY_CONTRACT": 2
     },
     "test_evidence_levels": {
-      "FUNCTIONAL_PASS": 18,
-      "NO_TEST": 121,
+      "FUNCTIONAL_PASS": 22,
+      "NO_TEST": 117,
       "FUNCTIONAL_BLOCKED": 2,
       "FUNCTIONAL_FAIL": 2
     },
@@ -36,7 +36,7 @@
       "READ": 123
     },
     "repo_source_access_blocks": [],
-    "remaining_p0_contract_gate": 23,
+    "remaining_p0_contract_gate": 22,
     "all_candidates_accounted_for": true
   },
   "candidates": [
@@ -819,7 +819,7 @@
         "status": "FOUND",
         "license_spdx": "AGPL-3.0",
         "archived": false,
-        "pushed_at": "2026-11-11T00:15:08Z"
+        "pushed_at": "2026-11-11T00:25:25Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -955,7 +955,7 @@
         "status": "FOUND",
         "license_spdx": "NOASSERTION",
         "archived": false,
-        "pushed_at": "2026-11-10T23:58:41Z"
+        "pushed_at": "2026-11-11T00:26:14Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -1197,10 +1197,14 @@
       "source_url": "https://github.com/nmslib/hnswlib",
       "original_classification": "REVIEW",
       "priority": "P1",
-      "disposition": "COMPARATIVE_TEST_PENDING",
+      "disposition": "TESTED_COMPONENT_CANDIDATE",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_PASS",
+        "status": "PASS",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/hnswlib-latest.json",
+        "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "nmslib/hnswlib",
@@ -1226,8 +1230,8 @@
         "source": "https://github.com/nmslib/hnswlib#readme",
         "scope": "README keyword heuristic only; no functionality asserted"
       },
-      "remaining_gate": "requires comparative test or scope/eligibility review",
-      "test_pending": 1,
+      "remaining_gate": "no production integration authorized; review license and contract",
+      "test_pending": 0,
       "differentiation_claim": "NOT_DEMONSTRATED"
     },
     {
@@ -1268,10 +1272,14 @@
       "source_url": "https://github.com/spotify/annoy",
       "original_classification": "REVIEW",
       "priority": "P1",
-      "disposition": "COMPARATIVE_TEST_PENDING",
+      "disposition": "TESTED_COMPONENT_CANDIDATE",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_PASS",
+        "status": "PASS",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/annoy-latest.json",
+        "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "spotify/annoy",
@@ -1293,8 +1301,8 @@
         "source": "https://github.com/spotify/annoy#readme",
         "scope": "README keyword heuristic only; no functionality asserted"
       },
-      "remaining_gate": "requires comparative test or scope/eligibility review",
-      "test_pending": 1,
+      "remaining_gate": "no production integration authorized; review license and contract",
+      "test_pending": 0,
       "differentiation_claim": "NOT_DEMONSTRATED"
     },
     {
@@ -2455,10 +2463,14 @@
       "source_url": "https://github.com/RDFLib/rdflib",
       "original_classification": "REVIEW",
       "priority": "P1",
-      "disposition": "COMPARATIVE_TEST_PENDING",
+      "disposition": "TESTED_COMPONENT_CANDIDATE",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_PASS",
+        "status": "PASS",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/rdflib-latest.json",
+        "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "RDFLib/rdflib",
@@ -2480,8 +2492,8 @@
         "source": "https://github.com/RDFLib/rdflib#readme",
         "scope": "README keyword heuristic only; no functionality asserted"
       },
-      "remaining_gate": "requires comparative test or scope/eligibility review",
-      "test_pending": 1,
+      "remaining_gate": "no production integration authorized; review license and contract",
+      "test_pending": 0,
       "differentiation_claim": "NOT_DEMONSTRATED"
     },
     {
@@ -2821,7 +2833,7 @@
         "status": "FOUND",
         "license_spdx": "Apache-2.0",
         "archived": false,
-        "pushed_at": "2026-11-10T19:04:24Z"
+        "pushed_at": "2026-11-11T00:26:54Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
@@ -3160,7 +3172,7 @@
         "status": "FOUND",
         "license_spdx": "NOASSERTION",
         "archived": false,
-        "pushed_at": "2026-11-11T00:21:51Z"
+        "pushed_at": "2026-11-11T00:26:13Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -3509,10 +3521,14 @@
       "source_url": "https://github.com/terrierteam/ir_measures",
       "original_classification": "TEST",
       "priority": "P1",
-      "disposition": "HIGH_PRIORITY_CONTRACT_TEST_PENDING",
+      "disposition": "TESTED_COMPONENT_CANDIDATE",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_PASS",
+        "status": "PASS",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/ir-measures-latest.json",
+        "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "terrierteam/ir_measures",
@@ -3538,8 +3554,8 @@
         "source": "https://github.com/terrierteam/ir_measures#readme",
         "scope": "README keyword heuristic only; no functionality asserted"
       },
-      "remaining_gate": "requires comparative test or scope/eligibility review",
-      "test_pending": 1,
+      "remaining_gate": "no production integration authorized; review license and contract",
+      "test_pending": 0,
       "differentiation_claim": "NOT_DEMONSTRATED"
     },
     {
@@ -4638,7 +4654,7 @@
         "status": "FOUND",
         "license_spdx": "MIT",
         "archived": false,
-        "pushed_at": "2026-11-11T00:02:10Z"
+        "pushed_at": "2026-11-11T00:25:45Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
@@ -5806,7 +5822,7 @@
         "status": "FOUND",
         "license_spdx": "Apache-2.0",
         "archived": false,
-        "pushed_at": "2026-11-10T23:44:17Z"
+        "pushed_at": "2026-11-11T00:26:37Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {

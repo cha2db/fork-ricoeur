@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "summary": {
+    "inventory_candidates": 143,
+    "entries_with_disposition": 143,
+    "repositories_in_inventory": 123,
+    "audited_unique_github": 123,
+    "real_functional_pass_candidates": 22,
+    "functional_not_passed_or_not_applicable": 121,
+    "actionable_comparative_tests": 81,
+    "functional_failures": 2,
+    "functional_blocked": 2,
+    "dispositions": {
+      "KEEP_EXISTING_BASELINE": 1,
+      "TESTED_COMPONENT_CANDIDATE": 21,
+      "COMPARATIVE_TEST_PENDING": 59,
+      "REFERENCE_OR_DEFER_NONCORE": 14,
+      "EXTERNAL_ADAPTER_ONLY": 12,
+      "HOLD_TECHNICAL_LIMIT": 2,
+      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 22,
+      "LICENSE_HOLD_NO_EMBED": 8,
+      "EXCLUDE_ARCHIVED_ACTIVE_CORE": 2,
+      "REJECT_FAILED_MANDATORY_CONTRACT": 2
+    },
+    "test_evidence_levels": {
+      "FUNCTIONAL_PASS": 22,
+      "NO_TEST": 117,
+      "FUNCTIONAL_BLOCKED": 2,
+      "FUNCTIONAL_FAIL": 2
+    },
+    "readme_checks": {
+      "NOT_GITHUB": 20,
+      "READ": 123
+    },
+    "repo_source_access_blocks": [],
+    "remaining_p0_contract_gate": 22,
+    "all_candidates_accounted_for": true
+  }
+}
