@@ -47,6 +47,8 @@ END;
 
 def _parts(message):
     content = message.get("content")
+    if content is None:
+        return ""  # Empty/nontext message remains in the raw source tree.
     if isinstance(content, str):
         return content
     if not isinstance(content, dict):
