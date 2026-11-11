@@ -1,0 +1,72 @@
+name: Cha2db Phase2 R14 search and storage discovery audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/PHASE2_MARKET_EXPANSION_R14.json'
+      - '_dev/phase2_r14_review.py'
+      - '_dev/publish_phase2_r14.sh'
+      - '.github/workflows/phase2-r14-survey.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '31 4 * * 1,4'
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-r14-survey-main
+  cancel-in-progress: false
+jobs:
+  verify-new-approaches:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile script before making any external requests
+        run: python -m py_compile _dev/phase2_r14_review.py
+      - name: Fetch existing R13 benchmark decisions from source of truth
+        run: |
+          git fetch origin ci-results:refs/remotes/origin/ci-results
+          mkdir -p _dev/results
+          git show origin/ci-results:ci-output/phase2/ranking/latest.json > _dev/results/phase2-r13.json
+      - name: Check all 64 newly found entries independently
+        run: |
+          python -u _dev/phase2_r14_review.py \
+            --expansion _dev/PHASE2_MARKET_EXPANSION_R14.json \
+            --base _dev/PHASE2_MARKET_UNIVERSE_R10.json \
+            --legacy-ranking _dev/results/phase2-r13.json \
+            --output _dev/results/phase2-r14.json > _dev/results/phase2-r14.log 2>&1 || {
+              tail -n 120 _dev/results/phase2-r14.log
+              exit 1
+            }
+          python - <<'PY'
+          import json
+          r=json.load(open('_dev/results/phase2-r14.json'))
+          assert r['revision']=='R14'
+          assert r['old_count']==143
+          assert r['new_count']==64
+          assert r['total_count']==207
+          assert r['functional_pass_new']==0
+          names=[x['id'] for p in r['ports'].values() for x in p['entries']]
+          assert len(names)==207 and len(set(names))==207
+          assert r['functional_pass_existing']==22
+          print('R14_DISCOVERY_AND_RANKING_PASS',r['total_count'],r['source_counts'])
+          PY
+          tail -n 50 _dev/results/phase2-r14.log
+      - name: Preserve all outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-r14-survey-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Archive reviewable expanded ranking in ci-results
+        if: always()
+        run: bash _dev/publish_phase2_r14.sh
