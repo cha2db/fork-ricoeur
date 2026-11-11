@@ -1,0 +1,23 @@
+name: UX Lab autonomous gates
+on:
+  push:
+    branches:
+      - feat/ux-cli-gui-p1-0003
+    paths:
+      - 'ux_lab/**'
+      - '.github/workflows/ux-lab.yml'
+  workflow_dispatch:
+jobs:
+  ux-lab:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Autonomous synthetic SQLite contract tests
+        run: python ux_lab/test_autonomous.py
+      - name: Compile UX CLI and tests
+        run: python -m compileall -q ux_lab
