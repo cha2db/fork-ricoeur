@@ -56,6 +56,28 @@ def evaluate(repo):
     terms={k for k in RANK_WORDS if k in t}
     score=sum(RANK_WORDS[k] for k in terms)
     return score,sorted(terms)
+def get_json_with_backoff(url,headers):
+    """Respect GitHub search API secondary limits; never silently skip a category."""
+    for attempt in range(4):
+        try:
+            with urlopen(Request(url,headers=headers),timeout=20) as response:
+                return json.loads(response.read())
+        except HTTPError as error:
+            if error.code not in (403,429) or attempt==3:
+                raise
+            remaining=error.headers.get("X-RateLimit-Remaining")
+            reset=error.headers.get("X-RateLimit-Reset")
+            retry=error.headers.get("Retry-After")
+            if retry:
+                wait=min(90,max(6,float(retry)+2))
+            elif remaining=="0" and reset:
+                wait=min(90,max(8,float(reset)-time.time()+3))
+            else:
+                wait=25*(attempt+1)
+            print(f"RATE_LIMIT_BACKOFF HTTP {error.code}, attempt {attempt+1}, waiting {wait:.0f}s",flush=True)
+            time.sleep(wait)
+    raise RuntimeError("GitHub search retries exhausted")
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R16.json")
@@ -91,8 +113,7 @@ def main():
         url="https://api.github.com/search/repositories?"+urlencode({
             "q":q,"sort":"best-match","order":"desc","per_page":args.max_results})
         try:
-            with urlopen(Request(url,headers=headers),timeout=20) as response:
-                data=json.loads(response.read())
+            data=get_json_with_backoff(url,headers)
             items=data.get("items",[])
             query_details[category]={"query":q,"total_count":data.get("total_count"),
                                     "sampled":len(items),"incomplete_results":data.get("incomplete_results")}
@@ -111,7 +132,7 @@ def main():
             errors[category]={"type":type(error).__name__,
                               "status":getattr(error,"code",None),"message":str(error)[:240]}
             query_details[category]={"query":q,"status":"ERROR"}
-        time.sleep(.15)
+        time.sleep(7.0)  # spaced searches prevent 10/min secondary API throttling
     novel=[]
     for name,x in encountered.items():
         if name in known or x.get("archived") or x.get("fork"):continue
