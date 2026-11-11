@@ -296,7 +296,7 @@
 | 2 | C118 CTK | ThreadShelf, Personal AI Memory | Multiple providers, branches, browser capture, exact export roundtrip |
 | 3 | C001 SQLite FTS5 | SirixDB, TerminusDB, FlureeDB | Bitemporal revisions, immutable messages, rollback, source IDs, disk budget |
 | 4 | C065 RDFLib | HelixDB, LadybugDB, Oxigraph | Typed evidence links + graph traversal, embeddings, mutation safety |
-| 5 | C001 SQLite FTS5 | Searchlite, Bleve, Moss, Infinity | Identical corpus, PT/EN queries, p95/memory/disk, update/delete, no cloud |
+| 5 | C001 SQLite FTS5 | Searchlite, Bleve, Moss, Infinity, Infino | Identical corpus, PT/EN queries, p95/memory/disk, update/delete, no cloud |
 | 6 | C028 sqlite-vec | turbovec, turbovecdb, ObjectBox Python | Exact recall, 2M scale, ARM, persistence, 2/4-bit tradeoffs |
 | 7 | C114 OpenSelf (untested) | Mnemos, Memoirs, Hearth, Lossless Memory | Conflict state, time-first, human approval, provenance, no mandatory model |
 | 8 | C011 FlexSearch | PGlite, RxDB, Dexie, Evolu, cr-sqlite | Persisted browser search + sync without silently merging chat source branches |
