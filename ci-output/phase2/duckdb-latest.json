@@ -20,7 +20,7 @@
         "fixture-cha2db-v1-m000080-0000",
         "fixture-cha2db-v1-m000090-0000"
       ],
-      "latency_ms": 9.067
+      "latency_ms": 6.788
     },
     {
       "query": "contrato declarativo",
@@ -37,7 +37,7 @@
         "fixture-cha2db-v1-m000081-0000",
         "fixture-cha2db-v1-m000091-0000"
       ],
-      "latency_ms": 8.278
+      "latency_ms": 6.413
     },
     {
       "query": "busca cruzada",
@@ -54,7 +54,7 @@
         "fixture-cha2db-v1-m000082-0000",
         "fixture-cha2db-v1-m000092-0000"
       ],
-      "latency_ms": 8.66
+      "latency_ms": 6.008
     },
     {
       "query": "pipeline Jenkins",
@@ -71,7 +71,7 @@
         "fixture-cha2db-v1-m000083-0000",
         "fixture-cha2db-v1-m000093-0000"
       ],
-      "latency_ms": 8.137
+      "latency_ms": 6.121
     },
     {
       "query": "índice B-tree",
@@ -88,7 +88,7 @@
         "fixture-cha2db-v1-m000084-0000",
         "fixture-cha2db-v1-m000094-0000"
       ],
-      "latency_ms": 8.015
+      "latency_ms": 6.055
     },
     {
       "query": "conexão SSH",
@@ -105,7 +105,7 @@
         "fixture-cha2db-v1-m000085-0000",
         "fixture-cha2db-v1-m000095-0000"
       ],
-      "latency_ms": 7.863
+      "latency_ms": 6.06
     },
     {
       "query": "Android Studio",
@@ -122,7 +122,7 @@
         "fixture-cha2db-v1-m000086-0000",
         "fixture-cha2db-v1-m000096-0000"
       ],
-      "latency_ms": 7.632
+      "latency_ms": 5.89
     },
     {
       "query": "menor privilégio",
@@ -139,7 +139,7 @@
         "fixture-cha2db-v1-m000087-0000",
         "fixture-cha2db-v1-m000097-0000"
       ],
-      "latency_ms": 7.552
+      "latency_ms": 5.898
     },
     {
       "query": "avaliação formativa",
@@ -156,7 +156,7 @@
         "fixture-cha2db-v1-m000088-0000",
         "fixture-cha2db-v1-m000098-0000"
       ],
-      "latency_ms": 7.851
+      "latency_ms": 5.837
     },
     {
       "query": "API REST",
@@ -173,12 +173,12 @@
         "fixture-cha2db-v1-m000089-0000",
         "fixture-cha2db-v1-m000099-0000"
       ],
-      "latency_ms": 8.262
+      "latency_ms": 6.035
     }
   ],
-  "build_seconds": 0.053,
+  "build_seconds": 0.041,
   "mean_p10": 1.0,
-  "median_latency_ms": 8.076,
+  "median_latency_ms": 6.045,
   "version": "1.5.6",
   "verdict": "FUNCTIONAL_ONLY_INCREMENTAL_UPDATES_NOT_VERIFIED",
   "limitations": [
@@ -186,11 +186,11 @@
     "Only 1000 representative docs, not the complete 40k ranked",
     "Synthetic topic labels; no human relevance evidence"
   ],
-  "run_id": "42929527448",
-  "commit": "d5b8ecb4f337f28c6179bc0b26f9433b0b23bcfe",
+  "run_id": "42929833625",
+  "commit": "2db20da7876e104dc42cf9b70c13c2aca4d7b6e6",
   "logs": {
-    "phase2-duckdb.log": "{\n  \"candidate\": \"DuckDB FTS\",\n  \"source\": \"_dev/results/phase2-input.json\",\n  \"sha256\": \"a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477\",\n  \"status\": \"PASS\",\n  \"documents\": 1000,\n  \"build_seconds\": 0.053,\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 8.076,\n  \"version\": \"1.5.6\",\n  \"verdict\": \"FUNCTIONAL_ONLY_INCREMENTAL_UPDATES_NOT_VERIFIED\",\n  \"limitations\": [\n    \"Extension downloads in CI; offline portability not established\",\n    \"Only 1000 representative docs, not the complete 40k ranked\",\n    \"Synthetic topic labels; no human relevance evidence\"\n  ]\n}\n",
-    "phase2-duckdb-install.log": "Collecting duckdb<2,>=1.2\n  Downloading duckdb-1.5.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (4.2 kB)\nDownloading duckdb-1.5.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (21.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.6/21.6 MB 50.6 MB/s  0:00:00\nInstalling collected packages: duckdb\nSuccessfully installed duckdb-1.5.6\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-duckdb.log": "{\n  \"candidate\": \"DuckDB FTS\",\n  \"source\": \"_dev/results/phase2-input.json\",\n  \"sha256\": \"a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477\",\n  \"status\": \"PASS\",\n  \"documents\": 1000,\n  \"build_seconds\": 0.041,\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 6.045,\n  \"version\": \"1.5.6\",\n  \"verdict\": \"FUNCTIONAL_ONLY_INCREMENTAL_UPDATES_NOT_VERIFIED\",\n  \"limitations\": [\n    \"Extension downloads in CI; offline portability not established\",\n    \"Only 1000 representative docs, not the complete 40k ranked\",\n    \"Synthetic topic labels; no human relevance evidence\"\n  ]\n}\n",
+    "phase2-duckdb-install.log": "Collecting duckdb<2,>=1.2\n  Downloading duckdb-1.5.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (4.2 kB)\nDownloading duckdb-1.5.6-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (21.6 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.6/21.6 MB 42.8 MB/s  0:00:00\nInstalling collected packages: duckdb\nSuccessfully installed duckdb-1.5.6\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
     "phase2-duckdb-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
