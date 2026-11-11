@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "candidate": "ir-measures",
+  "tests": {
+    "perfect_ranking_high": true,
+    "wrong_ranking_low": true,
+    "same_questions_as_fixture": true
+  },
+  "perfect": {
+    "RR@10": 1.0,
+    "P@10": 1.0,
+    "nDCG@10": 1.0
+  },
+  "adversarial": {
+    "RR@10": 0.0,
+    "P@10": 0.0,
+    "nDCG@10": 0.0
+  },
+  "verdict": "ADOPT_METRIC_LIBRARY_CANDIDATE_NO_NEW_IR_METRICS",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ],
+  "run_id": "42931158973",
+  "commit": "df8bebc253edbef5d6b96d682cb78d095df66c72",
+  "logs": {
+    "phase2-ir-measures.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"ir-measures\",\n  \"tests\": {\n    \"perfect_ranking_high\": true,\n    \"wrong_ranking_low\": true,\n    \"same_questions_as_fixture\": true\n  },\n  \"perfect\": {\n    \"RR@10\": 1.0,\n    \"P@10\": 1.0,\n    \"nDCG@10\": 1.0\n  },\n  \"adversarial\": {\n    \"RR@10\": 0.0,\n    \"P@10\": 0.0,\n    \"nDCG@10\": 0.0\n  },\n  \"verdict\": \"ADOPT_METRIC_LIBRARY_CANDIDATE_NO_NEW_IR_METRICS\",\n  \"limitations\": [\n    \"Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.\",\n    \"These are API and small-scale behavior gates, not end-to-end product integration.\",\n    \"NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.\",\n    \"GitHub Actions Linux x86_64 is not Android/Termux ARM64.\"\n  ]\n}\n",
+    "phase2-ir-measures-install.log": "Collecting ir-measures<1,>=0.4\n  Downloading ir_measures-0.4.3-py3-none-any.whl.metadata (7.0 kB)\nCollecting pytrec-eval-terrier>=0.5.5 (from ir-measures<1,>=0.4)\n  Downloading pytrec_eval_terrier-0.5.11-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (1.1 kB)\nCollecting numpy>=1.15.1 (from pytrec-eval-terrier>=0.5.5->ir-measures<1,>=0.4)\n  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nCollecting scipy>=1.1.0 (from pytrec-eval-terrier>=0.5.5->ir-measures<1,>=0.4)\n  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)\nDownloading ir_measures-0.4.3-py3-none-any.whl (61 kB)\nDownloading pytrec_eval_terrier-0.5.11-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (304 kB)\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 102.3 MB/s  0:00:00\nDownloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 184.5 MB/s  0:00:00\nInstalling collected packages: numpy, scipy, pytrec-eval-terrier, ir-measures\n\nSuccessfully installed ir-measures-0.4.3 numpy-2.5.4 pytrec-eval-terrier-0.5.11 scipy-1.18.1\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-ir-measures-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
+  }
+}

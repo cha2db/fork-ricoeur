@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "candidate": "ir-measures",
+  "tests": {
+    "perfect_ranking_high": true,
+    "wrong_ranking_low": true,
+    "same_questions_as_fixture": true
+  },
+  "perfect": {
+    "RR@10": 1.0,
+    "P@10": 1.0,
+    "nDCG@10": 1.0
+  },
+  "adversarial": {
+    "RR@10": 0.0,
+    "P@10": 0.0,
+    "nDCG@10": 0.0
+  },
+  "verdict": "ADOPT_METRIC_LIBRARY_CANDIDATE_NO_NEW_IR_METRICS",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ]
+}

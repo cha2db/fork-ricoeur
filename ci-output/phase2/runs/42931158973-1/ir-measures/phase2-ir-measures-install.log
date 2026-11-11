@@ -1,0 +1,20 @@
+Collecting ir-measures<1,>=0.4
+  Downloading ir_measures-0.4.3-py3-none-any.whl.metadata (7.0 kB)
+Collecting pytrec-eval-terrier>=0.5.5 (from ir-measures<1,>=0.4)
+  Downloading pytrec_eval_terrier-0.5.11-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (1.1 kB)
+Collecting numpy>=1.15.1 (from pytrec-eval-terrier>=0.5.5->ir-measures<1,>=0.4)
+  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scipy>=1.1.0 (from pytrec-eval-terrier>=0.5.5->ir-measures<1,>=0.4)
+  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Downloading ir_measures-0.4.3-py3-none-any.whl (61 kB)
+Downloading pytrec_eval_terrier-0.5.11-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (304 kB)
+Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 102.3 MB/s  0:00:00
+Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 184.5 MB/s  0:00:00
+Installing collected packages: numpy, scipy, pytrec-eval-terrier, ir-measures
+
+Successfully installed ir-measures-0.4.3 numpy-2.5.4 pytrec-eval-terrier-0.5.11 scipy-1.18.1
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
