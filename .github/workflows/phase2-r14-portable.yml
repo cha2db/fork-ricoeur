@@ -1,0 +1,63 @@
+name: Cha2db Phase2 R14 Portable Memory interoperable bundle gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_r14_portable.py'
+      - '.github/workflows/phase2-r14-portable.yml'
+  workflow_dispatch:
+concurrency:
+  group: cha2db-phase2-r14-portable-main
+  cancel-in-progress: false
+jobs:
+  validate-upstream-format:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install external MIT SDK in isolated test job
+        run: |
+          mkdir -p _dev/results
+          python -m pip install --no-deps 'portable-memory==0.3.0' > _dev/results/phase2-portable-memory-install.log 2>&1 || {
+            cat _dev/results/phase2-portable-memory-install.log
+            exit 1
+          }
+          python -m pip show portable-memory
+      - name: Test same branched ChatGPT export, .mem format, checksums and tamper
+        run: |
+          PYTHONPATH=_dev python -u _dev/phase2_r14_portable.py \
+            --output _dev/results/phase2-portable-memory.json > _dev/results/phase2-portable-memory.log 2>&1 || {
+              tail -n 100 _dev/results/phase2-portable-memory.log
+              exit 1
+            }
+          cat _dev/results/phase2-portable-memory.json
+      - name: Preserve real API and error evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-portable-memory-evidence
+          path: _dev/results/
+          retention-days: 30
+  publish-only-trusted-results:
+    needs: validate-upstream-format
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2-portable-memory-evidence
+          path: _dev/results/
+      - name: Archive read-only test result
+        if: always()
+        run: bash _dev/publish_phase2.sh portable-memory
