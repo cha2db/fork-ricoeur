@@ -1,0 +1,68 @@
+{
+  "candidate": "CTK SQLite",
+  "status": "PASS",
+  "checks": {
+    "two_conversations_after_reload": true,
+    "five_messages_after_disk_roundtrip": true,
+    "no_duplicate_after_second_save": true,
+    "both_branch_siblings_survive": true,
+    "branch_paths_survive": true,
+    "content_source_survives": true,
+    "provider_preserved": true,
+    "native_export_is_tree_envelope": true,
+    "native_json_import_roundtrip": true,
+    "native_export_retains_both_siblings": true
+  },
+  "message_counts": [
+    3,
+    2
+  ],
+  "database_message_count": 5,
+  "tables": [
+    "conversations",
+    "tags",
+    "embedding_sessions",
+    "current_communities",
+    "current_node_metrics",
+    "conversation_tags",
+    "messages",
+    "paths",
+    "conversation_embeddings",
+    "similarities",
+    "current_graph",
+    "conversations_fts",
+    "conversations_fts_data",
+    "conversations_fts_idx",
+    "conversations_fts_content",
+    "conversations_fts_docsize",
+    "conversations_fts_config",
+    "messages_fts",
+    "messages_fts_data",
+    "messages_fts_idx",
+    "messages_fts_content",
+    "messages_fts_docsize",
+    "messages_fts_config"
+  ],
+  "fts_table_names": [
+    "conversations_fts",
+    "conversations_fts_data",
+    "conversations_fts_idx",
+    "conversations_fts_content",
+    "conversations_fts_docsize",
+    "conversations_fts_config",
+    "messages_fts",
+    "messages_fts_data",
+    "messages_fts_idx",
+    "messages_fts_content",
+    "messages_fts_docsize",
+    "messages_fts_config"
+  ],
+  "branch_paths": 2,
+  "test_scope": "SQLite persistence, stable branch IDs, repeated save (not raw-byte fidelity)",
+  "fixture": "Same 2-conversation, 5-message ChatGPT branch fixture as Reweave",
+  "limitations": [
+    "Repeated save overwrites existing messages; source raw-byte preservation untested.",
+    "Native CTK JSON roundtrip covered, but OpenAI re-export and MCP are not covered.",
+    "No production integration or human semantic-quality claim."
+  ]
+}
