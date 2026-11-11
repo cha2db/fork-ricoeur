@@ -1,0 +1,81 @@
+name: Cha2db Phase2 frontier 226 discovery and evidence gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/PHASE2_MARKET_UNIVERSE_R15.json'
+      - '_dev/phase2_frontier_rank.py'
+      - '_dev/phase2_repo_audit.py'
+      - '_dev/publish_phase2_frontier.sh'
+      - '.github/workflows/phase2-frontier.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-frontier-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit-and-rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile independent research tools
+        run: |
+          python -m py_compile _dev/phase2_repo_audit.py _dev/phase2_frontier_rank.py
+      - name: Verify R15 inventory and independent baseline
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('_dev/PHASE2_MARKET_UNIVERSE_R15.json'))
+          assert d['total']==226 and d['baseline_count']==143
+          assert d['coverage']['earlier_additions']==64
+          assert d['coverage']['new_nonduplicates']==19
+          urls=[c['url'].lower().rstrip('/') for c in d['candidates']]
+          assert len(urls)==len(set(urls))==226
+          assert [c['id'] for c in d['candidates']]==[f'C{i:03d}' for i in range(1,227)]
+          assert all(c['execution']=='NOT_TESTED_IN_THIS_ROUND' for c in d['candidates'][143:])
+          print('R15 INVENTORY PASS — baseline unchanged; new source entries unique')
+          PY
+      - name: Audit upstream availability SPDX and archived status for 226
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/phase2_repo_audit.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R15.json --output _dev/results/phase2-frontier-audit.json > _dev/results/phase2-frontier-audit.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-frontier-audit.log; exit 1
+          }
+          python - <<'PY'
+          import json
+          d=json.load(open('_dev/results/phase2-frontier-audit.json'))
+          assert d['inventory_candidate_count']==226
+          print('Audit',d['status'],'repos',d['github_unique_count'],'errors',d['counts'])
+          PY
+      - name: Build ranked untested frontier and confrontation contracts
+        run: |
+          python -u _dev/phase2_frontier_rank.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R15.json --audit _dev/results/phase2-frontier-audit.json --output _dev/results/phase2-frontier.json > _dev/results/phase2-frontier.log 2>&1 || {
+            tail -n 120 _dev/results/phase2-frontier.log; exit 1
+          }
+          python - <<'PY'
+          import json
+          d=json.load(open('_dev/results/phase2-frontier.json'))
+          assert d['status']=='PASS' and d['total_universe']==226
+          assert d['new_research_candidates']==83 and d['new_this_survey']==19
+          assert d['summary']['all_83_have_disposition']
+          assert d['summary']['planned_head_to_heads']>=15
+          assert all(x['functional_status']=='NOT_TESTED' for x in d['frontier'])
+          print('R15 FRONTIER PASS',d['summary'])
+          PY
+      - name: Upload logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-frontier-226-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable evidence without touching R13 baseline
+        if: always()
+        run: bash _dev/publish_phase2_frontier.sh
