@@ -128,7 +128,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 3,
+        "safety": 4,
+        "testability": 5
+      }
     },
     {
       "id": "quality",
@@ -246,7 +252,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 5,
+        "testability": 5
+      }
     },
     {
       "id": "repair",
@@ -346,7 +358,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 4
+      }
     },
     {
       "id": "backup",
@@ -446,7 +464,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 5
+      }
     },
     {
       "id": "privacy",
@@ -564,7 +588,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 4
+      }
     },
     {
       "id": "permissions",
@@ -682,7 +712,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 5,
+        "safety": 5,
+        "testability": 3
+      }
     },
     {
       "id": "interop",
@@ -818,7 +854,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 3,
+        "safety": 3,
+        "testability": 5
+      }
     },
     {
       "id": "install",
@@ -954,7 +996,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
     },
     {
       "id": "sync",
@@ -1072,7 +1120,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 3,
+        "gap": 4,
+        "safety": 3,
+        "testability": 3
+      }
     },
     {
       "id": "observability",
@@ -1190,7 +1244,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
     },
     {
       "id": "evaluation",
@@ -1308,7 +1368,13 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
     },
     {
       "id": "human_review",
@@ -1426,7 +1492,22 @@
           "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
           "adoption_status": "RESEARCH_ONLY"
         }
-      ]
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 5,
+        "safety": 4,
+        "testability": 4
+      }
     }
-  ]
+  ],
+  "front_priority": {
+    "weights": {
+      "impact": 40,
+      "gap": 25,
+      "safety": 25,
+      "testability": 10
+    },
+    "notes": "preliminary product-facing gate priority, independent from technical candidate suitability"
+  }
 }
