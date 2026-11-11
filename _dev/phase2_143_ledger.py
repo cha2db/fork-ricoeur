@@ -54,6 +54,8 @@ TEST_MAP = {
     "C057":("ci-output/prior-art/latest.json","summary.rapidfuzz_fts"),
     "C058":("ci-output/prior-art/latest.json","graph"),
     "C059":("ci-output/semantic/latest.json","components.bertopic"),
+    "C101":("ci-output/phase2/reweave-latest.json",None),
+    "C118":("ci-output/phase2/ctk-store-latest.json",None),
     # All references are SOURCE CI outputs; no inferred performance numbers.
 }
 STRONG_COPYLEFT = {"GPL-2.0","GPL-3.0","AGPL-3.0","SSPL-1.0","BUSL-1.1"}
@@ -105,9 +107,13 @@ def test_result(code,cache):
         status=("PASS" if isinstance(component,dict) and len(component)>=3 and
                 all(v.get("status")=="PASS" for v in component.values()) else "PARTIAL")
     if status is None:status=report.get("status","UNKNOWN")
-    level="FUNCTIONAL_PASS" if status=="PASS" else "FUNCTIONAL_BLOCKED"
+    level=("FUNCTIONAL_PASS" if status=="PASS" else
+           "FUNCTIONAL_FAIL" if status=="FAIL" else "FUNCTIONAL_BLOCKED")
+    checks=report.get("checks") or report.get("tests") or {}
     return {"level":level,"status":status,"evidence":reference,
-        "scope":"synthetic/candidate-specific; no production integration",
+        "scope":report.get("test_scope") or report.get("mode") or
+            "synthetic/candidate-specific; no production integration",
+        "failed_checks":[name for name,passed in checks.items() if passed is False],
         "scope_verified":True}
 
 def load_readme(repository,token):
@@ -152,6 +158,8 @@ def candidate(row,audit,readme,functional):
         disposition="KEEP_EXISTING_BASELINE"
     elif functional["level"]=="FUNCTIONAL_PASS":
         disposition="TESTED_COMPONENT_CANDIDATE"
+    elif functional["level"]=="FUNCTIONAL_FAIL":
+        disposition="REJECT_FAILED_MANDATORY_CONTRACT"
     elif functional["level"]=="FUNCTIONAL_BLOCKED":
         disposition="HOLD_TECHNICAL_LIMIT"
     elif row["status"] in SKIP_STATUSES:
