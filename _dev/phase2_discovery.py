@@ -122,7 +122,7 @@ def main():
         novel.append(x)
     novel.sort(key=lambda a:(-a["heuristic_score"],-len(a["query_groups"]),-(a.get("stars") or 0),a["name"]))
     result={"status":"PASS" if not errors else "PARTIAL","timestamp_utc":datetime.now(timezone.utc).isoformat(),
-        "inventory_version":inventory["revision"]+"+"+expansion["revision"],"inventory_count":len(all_entries),
+        "inventory_version":inventory["revision"]+("+"+expansion["revision"] if args.expansion else ""), "inventory_count":len(all_entries),
         "github_repo_count":len(known),"queries":query_details,"query_errors":errors,
         "unique_hits":len(encountered),"new_review_candidates":len(novel),
         "potential_repositories":novel,"unreviewed":True,
