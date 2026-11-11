@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "counts": {
+    "priority_counts": {
+      "P0": 21,
+      "P1": 29,
+      "P2": 26,
+      "P3": 7
+    },
+    "relevant_approaches": 83,
+    "repo_count_audited": 202,
+    "github_count_in_universe": 202,
+    "upstream_unavailable": 0,
+    "archived": 0,
+    "planned_head_to_heads": 17,
+    "all_83_have_disposition": true
+  },
+  "top_frontier": [
+    {
+      "id": "C206",
+      "name": "Infino",
+      "priority": "P0"
+    },
+    {
+      "id": "C146",
+      "name": "SirixDB",
+      "priority": "P0"
+    },
+    {
+      "id": "C147",
+      "name": "TerminusDB",
+      "priority": "P0"
+    },
+    {
+      "id": "C216",
+      "name": "sqlite-graph",
+      "priority": "P0"
+    },
+    {
+      "id": "C144",
+      "name": "LadybugDB",
+      "priority": "P0"
+    },
+    {
+      "id": "C145",
+      "name": "HelixDB",
+      "priority": "P0"
+    },
+    {
+      "id": "C149",
+      "name": "FlureeDB",
+      "priority": "P0"
+    },
+    {
+      "id": "C217",
+      "name": "Threadline",
+      "priority": "P0"
+    },
+    {
+      "id": "C218",
+      "name": "Personal AI Memory",
+      "priority": "P0"
+    },
+    {
+      "id": "C220",
+      "name": "Kalan DB",
+      "priority": "P0"
+    },
+    {
+      "id": "C155",
+      "name": "PGlite",
+      "priority": "P0"
+    },
+    {
+      "id": "C172",
+      "name": "turbovec",
+      "priority": "P0"
+    }
+  ]
+}
