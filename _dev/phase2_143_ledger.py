@@ -97,8 +97,10 @@ def test_result(code,cache):
     status=component.get("status") if isinstance(component,dict) else None
     if section=="autoscale":status=component.get("status") if isinstance(component,dict) else None
     elif section and section.startswith("summary."):status="PASS" if isinstance(component,dict) else "MISSING"
-    elif section=="graph":status="PASS" if report.get("status")=="PASS" and
-        isinstance(component,dict) and component.get("ari_against_fixture_topics") is not None else "MISSING"
+    elif section=="graph":
+        status=("PASS" if report.get("status")=="PASS" and
+                isinstance(component,dict) and component.get("ari_against_fixture_topics") is not None
+                else "MISSING")
     elif section=="modes":status="PASS" if isinstance(component,dict) and
         len(component)>=3 and all(v.get("status")=="PASS" for v in component.values()) else "PARTIAL"
     if status is None:status=report.get("status","UNKNOWN")
