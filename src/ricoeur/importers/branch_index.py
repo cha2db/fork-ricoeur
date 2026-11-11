@@ -368,10 +368,21 @@ def get_branch_context(conn, reference, context=20):
             src=json.loads(node["message_json"])
             if src:
                 normalized=_normalize({"message":src})
+                # If an ancestor is on the selected path, return its
+                # *real* message key, so the reader can jump back to it.
+                from .base import resolve_message_id
+                native = normalized["source_message_id"]
+                source_key = (resolve_message_id(conn, "chatgpt", conv_id, native)
+                              if isinstance(native,str) and native else None)
+                matches_main = (source_key is not None and conn.execute(
+                    "SELECT 1 FROM messages WHERE id=? AND conv_id=?",
+                    (source_key,conv_id)).fetchone() is not None)
                 ancestors.append({
-                    "id":branch_ref(conv_id,current),"conv_id":conv_id,
+                    "id":source_key if matches_main else branch_ref(conv_id,current),
+                    "conv_id":conv_id,
                     "role":normalized["role"],"content":normalized["content"],
                     "timestamp":normalized["timestamp"],
+                    "branch_node_id":current,
                 })
         current=node["parent_id"]
     ancestors.reverse()
