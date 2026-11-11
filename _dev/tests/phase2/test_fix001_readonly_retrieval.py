@@ -68,7 +68,13 @@ with tempfile.TemporaryDirectory() as td:
         result=search_messages(ro, '"searchneedle"',limit=20,context=1)
         ro.set_trace_callback(None)
         check(result["count"]==20,"all FTS hits")
-        check(len(trace)<=3, f"batch context avoids 20 SELECTs: {len(trace)}")
+        # Trace includes FTS5 virtual-table internal SQL; count only the
+        # explicit window query, not SQLite's internal index statements.
+        windows=sum("WITH numbered AS" in sql for sql in trace)
+        old_full_reads=sum("WHERE conv_id = ?" in sql and
+                           "ORDER BY timestamp, rowid" in sql for sql in trace)
+        check(windows==1 and old_full_reads==0,
+              f"one context-window query (got {windows}); no legacy full reads")
         check(result["hits"][0]["message"]["id"]=="m000","stable first ID")
         check(result["hits"][0]["before"]==[] and result["hits"][0]["after"][0]["id"]=="m001",
               "first boundary")
