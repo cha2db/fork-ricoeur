@@ -1,4 +1,4 @@
-"""Evidence-aware frontier ranking for candidates C144..C226 (Phase 2, R15).
+"""Evidence-aware frontier ranking for candidates beyond C143 (Phase 2).
 
 These are RESEARCH PRIORITIES, not functional winners. Does not change the
 143-candidate tested baseline nor depend on LLM/model APIs.
@@ -29,10 +29,19 @@ CONFRONTS=[
  ("browser_static","C212","C010","Pagefind chunk index vs MiniSearch at 40k results and offline read-only"),
  ("event_log","C209","C001","LiveStore event-log replay vs SQLite existing importer idempotence"),
  ("versioned_sql","C148","C001","Dolt SQL branch/merge/rollback vs SQLite snapshot and repair ledger"),
+ ("memory_governance","C228","C114","Aura Memory offline deterministic correction, provenance and human approval"),
+ ("causal_lineage","C229","C118","Agentic Data Kernel uncertain import result, idempotence and causal repair receipt"),
+ ("memory_governance","C232","C072","Agent Memory alpha source erasure leads to unknown; temporal and scoped evidence"),
+ ("memory_governance","C233","C065","YantrikDB contradiction proposals require evidence and explicit human approval"),
+ ("memory_governance","C234","C114","Engraphis abstention on weak evidence, source scopes and temporal recall"),
+ ("memory_governance","C227","C072","INITE Brain bitemporal conflict handling; AGPL compliance gate first"),
+ ("lossless_archive","C230","C118","taOSmd append-only verbatim source and unsupported-fact detection, AGPL gate"),
+ ("memory_governance","C231","C114","Remnic corrections, portable markdown and human-edit reconciliation"),
+ ("temporal_sql","C235","C162","Experimental Postgres temporal tables against XTDB validity/observation models"),
 ]
 # exact source URLs and IDs, never fabricate results or inferred readiness.
 PREFERRED=("C206","C146","C163","C147","C216","C144","C145","C149","C152",
- "C217","C218","C220","C214","C209","C208","C212","C213","C219")
+ "C217","C218","C220","C228","C229","C232","C233","C234","C227","C230","C231","C214","C209","C208","C212","C213","C219")
 CODE_RE=re.compile(r"^https://github\.com/([^/]+)/([^/?#]+)",re.I)
 def main():
     ap=argparse.ArgumentParser()
@@ -150,7 +159,7 @@ def main():
         lines.append(f"| {x['order']} | {x['port']} | {x['candidate']} | {x['baseline']} | {x['contract_gate']} |")
     lines+=["","## Fronteiras de responsabilidade","",
        "A Fase 2 só avalia bibliotecas, contratos e dados. Fase 3/UX continua independente.",
-       "Nenhum dos 83 candidatos foi instalado ou integrado no núcleo por esta varredura.",
+       "Nenhum dos candidatos adicionais foi instalado ou integrado no núcleo por esta varredura.",
        "Saturação de mercado não comprovada: a pesquisa deve prosseguir até ciclos sem novas abordagens capazes de alterar uma porta.",
        ""]
     out.with_suffix(".md").write_text("\n".join(lines),encoding="utf-8")
