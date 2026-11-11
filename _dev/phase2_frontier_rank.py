@@ -43,11 +43,11 @@ def main():
     obj=json.loads(Path(args.inventory).read_text(encoding="utf-8"))
     audit=json.loads(Path(args.audit).read_text(encoding="utf-8"))
     allrows=obj["candidates"]
-    assert obj["total"]==226 and len(allrows)==226
-    assert [c["id"] for c in allrows]==[f"C{i:03d}" for i in range(1,227)]
+    assert obj["total"]>=226 and len(allrows)==obj["total"]
+    assert [c["id"] for c in allrows]==[f"C{i:03d}" for i in range(1,obj["total"]+1)]
     urls=[c["url"].rstrip("/").lower() for c in allrows]
-    assert len(set(urls))==226, "duplicate source URL"
-    assert audit["inventory_candidate_count"]==226, "audited wrong inventory"
+    assert len(set(urls))==obj["total"], "duplicate source URL"
+    assert audit["inventory_candidate_count"]==obj["total"], "audited wrong inventory"
     map_repo={x["repository"].lower():x for x in audit.get("repositories",[])}
     rows=[]
     for c in allrows[143:]:
@@ -78,7 +78,7 @@ def main():
             "comparative_rank":None,
             "risk":"No independent functional result; source statements only",
         })
-    assert len(rows)==83
+    assert len(rows)==obj["total"]-143
     priority={"P0":0,"P1":1,"P2":2,"P3":3}
     pref={x:i for i,x in enumerate(PREFERRED)}
     rows.sort(key=lambda x:(priority.get(x["priority"],3),pref.get(x["id"],1000),x["id"]))
@@ -95,10 +95,10 @@ def main():
             "priority":by_id[new]["priority"],"replace_core_approved":False})
     counts=Counter(x["priority"] for x in rows)
     result={
-        "revision":"R15","status":"PASS","generated_utc":datetime.now(timezone.utc).isoformat(),
-        "total_universe":226,"vetted_baseline_unchanged":143,
-        "new_research_candidates":83,
-        "new_this_survey":19,
+        "revision":obj["revision"],"status":"PASS","generated_utc":datetime.now(timezone.utc).isoformat(),
+        "total_universe":obj["total"],"vetted_baseline_unchanged":143,
+        "new_research_candidates":obj["total"]-143,
+        "new_this_survey":obj.get("new_after_R15",obj.get("coverage",{}).get("new_nonduplicates",0)),
         "ranking_semantics":"engineering test order, not market quality or proven performance",
         "policy":{"not_tested_are_not_failures":True,"no_p0_means_adoption":True,
          "requires_human_first_no_llm":True,
@@ -111,7 +111,7 @@ def main():
            "upstream_unavailable":sum(x["upstream_state"] in ("UNAVAILABLE","HTTP_ERROR","ERROR") for x in rows),
            "archived":sum(x["state"]=="ARCHIVED_REFERENCE" for x in rows),
            "planned_head_to_heads":len(scheduled),
-           "all_83_have_disposition":all(x["state"] for x in rows)},
+           "all_frontier_disposed":all(x["state"] for x in rows)},
         "frontier":rows,"planned_confrontations":scheduled,
         "baselines":{
           "search":"C001 SQLite FTS5 current product core",
@@ -121,7 +121,7 @@ def main():
           "browser":"C010 MiniSearch/C011 FlexSearch previously tested in Node only",
         },
         "limitations":[
-          "This new 83-candidate frontier has not been functionally tested.",
+          "These newly discovered frontier candidates have not been functionally tested.",
           "The R13 ranking of previously tested 143 remains independently valid.",
           "Vendor-specific source/README descriptions do not establish feature correctness.",
           "GitHub license SPDX is not a legal compliance opinion, and weights/editions may differ.",
@@ -130,9 +130,9 @@ def main():
     }
     out=Path(args.output);out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    lines=["# Cha2db — Fronteira de pesquisa R15", "",
+    lines=[f"# Cha2db — Fronteira de pesquisa {obj['revision']}", "",
       f"Gerado (UTC): {result['generated_utc']}", "",
-      "**226 candidatos únicos** — 143 baseline previamente triados, 64 do primeiro levantamento de fronteira e 19 novos não duplicados.",
+      f"**{obj['total']} candidatos únicos** — 143 baseline previamente triados e {obj['total']-143} novas opções ainda sem testes funcionais.",
       "",
       "**Apenas prioridade de testes, não ranking de qualidade e NÃO homologação.** O ranking R13 dos 143 permanece separado.",
       "",
