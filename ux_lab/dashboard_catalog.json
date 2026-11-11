@@ -1,0 +1,163 @@
+{
+  "schema_version": "ux.dashboard.v1",
+  "policy": "Statuses describe Cha2db UX Lab implementation, not upstream project maturity",
+  "navigation": "fixed",
+  "groups": [
+    {
+      "id": "conversations",
+      "title": "Conversas, leitura e busca",
+      "subtitle": "Recuperar mensagens e voltar à conversa exata.",
+      "icon": "💬",
+      "href": "/chats",
+      "state": "implemented",
+      "adopted": "Ricoeur · SQLite/FTS5 + Click",
+      "implementation": "Leitor Web read-only, pesquisa por mensagem, filtros e transcrições.",
+      "ids": [
+        "ricoeur",
+        "centralchat",
+        "llmchatsarchive",
+        "chatvault",
+        "kept",
+        "msgvault",
+        "aichathistory",
+        "llmviewer",
+        "llmexplorer"
+      ]
+    },
+    {
+      "id": "graph",
+      "title": "Grafo de evidências",
+      "subtitle": "Mostrar relações verificáveis antes de inferir conhecimento.",
+      "icon": "🕸️",
+      "href": "/chats",
+      "state": "implemented",
+      "adopted": "SVG local com evidência FTS5",
+      "implementation": "Grafo consulta → conversas com IDs das mensagens; vis-network só por ativação experimental.",
+      "ids": [
+        "visnetwork",
+        "cytoscape",
+        "sigma",
+        "g6",
+        "networkx",
+        "gephi"
+      ]
+    },
+    {
+      "id": "timeline",
+      "title": "Linha do tempo e incidência",
+      "subtitle": "Contagem por período e taxa por mil mensagens.",
+      "icon": "📊",
+      "href": "/knowledge",
+      "state": "implemented",
+      "adopted": "FTS5 + histograma Web local",
+      "implementation": "Clique na coluna para abrir mensagens do período; ECharts é opcional via CDN.",
+      "ids": [
+        "echarts",
+        "vegalite"
+      ]
+    },
+    {
+      "id": "tags",
+      "title": "Nuvem de termos e expressões",
+      "subtitle": "Frequência documental e termos associados no mesmo recorte.",
+      "icon": "☁️",
+      "href": "/knowledge",
+      "state": "implemented",
+      "adopted": "Frequência por mensagem + tags HTML",
+      "implementation": "Nuvem local em HTML; wordcloud2.js opt-in; extração automática avançada ainda não adotada.",
+      "ids": [
+        "wordcloud2",
+        "yake",
+        "keybert"
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Mapas conceituais e tesauros",
+      "subtitle": "Sinônimos compostos, conceitos e relações tipadas com origem.",
+      "icon": "🧩",
+      "href": "/knowledge",
+      "state": "partial",
+      "adopted": "Subset SKOS via JSON aprovado",
+      "implementation": "Conceitos/altLabels e relações tipadas na API; mapa proposicional interativo ainda não implantado.",
+      "ids": [
+        "skos",
+        "provo",
+        "cmaptools",
+        "jsoncanvas",
+        "openwordnetpt",
+        "omw",
+        "conceptnet",
+        "wikidata"
+      ]
+    },
+    {
+      "id": "terminal",
+      "title": "Terminal, API e ferramentas",
+      "subtitle": "CLI como fonte operacional, múltiplas apresentações.",
+      "icon": "⌨️",
+      "href": "/chats",
+      "state": "implemented",
+      "adopted": "Click CLI + Textual TUI + adaptador HTTP",
+      "implementation": "CLI e TUI existentes, API HTTP localhost e contratos JSON sem migração.",
+      "ids": [
+        "textual",
+        "agenthistory",
+        "threadshelf"
+      ]
+    },
+    {
+      "id": "branches",
+      "title": "Ramificações e organização pessoal",
+      "subtitle": "Árvores, timelines, coleções e visão de contexto.",
+      "icon": "🌿",
+      "href": "/chats",
+      "state": "partial",
+      "adopted": "Navegação sequencial por IDs",
+      "implementation": "Anterior/próxima e retorno exato; DAG/árvore de alternativas e workflow editável ainda não implantados.",
+      "ids": [
+        "vueflow",
+        "threadline",
+        "contextflow",
+        "chatsearch",
+        "gpttoolkit",
+        "threadback",
+        "stowlet",
+        "chatgptgraph",
+        "recollectviewer"
+      ]
+    },
+    {
+      "id": "research",
+      "title": "Pesquisa científica e evolução temática",
+      "subtitle": "Organização de assuntos por coocorrência, tempo, vetores e taxonomias.",
+      "icon": "🔬",
+      "href": "/knowledge",
+      "state": "research",
+      "adopted": null,
+      "implementation": "Comparativos de prior art, sem BERTopic, bibliometria ou embeddings novos instalados.",
+      "ids": [
+        "vosviewer",
+        "biblioshiny",
+        "bertopic",
+        "openalex",
+        "aimemory",
+        "khoj"
+      ]
+    }
+  ],
+  "logos": {
+    "echarts": {
+      "src": "https://raw.githubusercontent.com/apache/echarts/master/asset/logo.png",
+      "alt": "Logo oficial Apache ECharts",
+      "origin": "https://github.com/apache/echarts/blob/master/asset/logo.png",
+      "license_notice": "Apache ECharts — Apache Software Foundation, Apache-2.0"
+    },
+    "textual": {
+      "src": "https://github.com/user-attachments/assets/4caeb77e-48c0-4cf7-b14d-c53ded855ffd",
+      "alt": "Imagem de identidade Textual no README oficial",
+      "origin": "https://github.com/Textualize/textual",
+      "license_notice": "Textual — Textualize, documentação oficial"
+    }
+  }
+}

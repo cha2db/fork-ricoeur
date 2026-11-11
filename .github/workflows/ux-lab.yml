@@ -1,0 +1,51 @@
+name: UX Lab autonomous gates
+on:
+  push:
+    branches:
+      - feat/ux-cli-gui-p1-0003
+    paths:
+      - 'ux_lab/**'
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
+      - '_dev/tests/ux/**'
+      - 'docs/ux/**'
+      - '.github/workflows/ux-lab.yml'
+  pull_request:
+    paths:
+      - 'ux_lab/**'
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
+      - '_dev/tests/ux/**'
+      - 'docs/ux/**'
+      - '.github/workflows/ux-lab.yml'
+  workflow_dispatch:
+jobs:
+  ux-lab:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Python UX and tests
+        run: python -m compileall -q ux_lab _dev/tests/ux product_lab _dev/tests/product
+      - name: UX-008 CLI, FTS5 and graph
+        run: bash _dev/tests/ux/teste8.sh
+      - name: UX-009 existing message retrieval driver
+        run: bash _dev/tests/ux/teste9.sh
+      - name: UX-010 candidate scoring baseline
+        run: bash _dev/tests/ux/teste10.sh
+      - name: UX-011 CLI/HTTP/GUI integration
+        run: bash _dev/tests/ux/teste11.sh
+      - name: UX-012 search and presentation candidate matrix
+        run: bash _dev/tests/ux/teste12.sh
+      - name: UX-014 temporal histogram, period drilldown, lexical cloud and approved SKOS
+        run: bash _dev/tests/ux/teste14.sh
+      - name: UX-015 dashboard fixed navigation and 46 upstream credits
+        run: bash _dev/tests/ux/teste15.sh
+      - name: PRODUCT-016 product-wide inventory and ranking gates
+        run: bash _dev/tests/product/teste16.sh
+      - name: PRODUCT-017 native SQLite read-only health doctor
+        run: bash _dev/tests/product/teste17.sh

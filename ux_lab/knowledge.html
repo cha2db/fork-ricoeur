@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cha2db · Observatório de termos</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#16253b;--line:#394a63;--fg:#eff5ff;--muted:#bac9da;--blue:#87bafe}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px system-ui,sans-serif}
+header{background:#101e32;padding:14px 18px;border-bottom:1px solid var(--line)}
+main{max-width:1300px;margin:auto;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+section.wide{grid-column:1/-1}
+h2{font-size:1.1rem;margin:0 0 10px}p{line-height:1.5}a{color:var(--blue)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+label{display:flex;flex-direction:column;gap:4px;min-width:130px;flex:1}
+input,select,button{font:inherit;padding:10px;border-radius:7px;max-width:100%}
+input,select{width:100%;background:#101b2c;color:var(--fg);border:1px solid var(--line)}
+button{color:var(--fg);background:#294564;border:1px solid #6281a0;cursor:pointer}
+button:focus-visible{outline:3px solid #eac77b}
+small,.muted{color:var(--muted)}
+#barChart{display:flex;align-items:end;gap:8px;min-height:230px;max-height:280px;overflow-x:auto;padding:12px 4px;border-bottom:1px solid #58708d}
+.bar-col{flex:1;min-width:60px;height:240px;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:5px}
+.bar-col button{width:80%;min-height:4px;background:#68a5f4;border:1px solid #bad8fc;padding:0;border-radius:5px 5px 0 0}
+.bar-col button:hover,.bar-col button.selected{background:#e7b668}
+.bar-col span{font-size:11px;text-align:center}
+#echartsPlot{height:320px;display:none}
+#tokens{display:flex;gap:8px;flex-wrap:wrap;align-items:center;min-height:80px}
+#tokens button{padding:5px 8px;background:transparent;border:1px solid transparent;color:#b5d6ff}
+#tokens button:hover{border-color:var(--blue)}
+#wordcloudCanvas{width:100%;min-height:230px;display:none}
+.entry{display:block;padding:10px 0;border-bottom:1px solid var(--line)}
+.entry small{display:block}.entry button{padding:5px;margin-top:4px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:800px){main{display:block}section{margin-bottom:12px}}
+</style></head>
+<body>
+<header><strong>Cha2db · Observatório de termos</strong> · <a href="/">Painel central</a> · <a href="/chats">Transcrições e grafo</a>
+<p class="muted">Incidência por período, termos associados por coocorrência e drill-down para mensagens originais. Sem IA ou taxonomia presumida.</p></header>
+<main>
+<section class="wide">
+<div class="controls">
+<label>Palavra ou expressão<input id="term" placeholder="Ex.: integração contínua"></label>
+<label>Período<select id="grain"><option value="month">Mensal</option><option value="year">Anual</option><option value="day">Diário</option></select></label>
+<label>Plataforma<input id="platform" placeholder="Todas"></label>
+<label>Métrica<select id="metric"><option value="matching_messages">Mensagens</option><option value="rate_per_1000_messages">Taxa por mil mensagens</option></select></label>
+<label>Ampliar por termos aprovados<select id="expand"><option value="false">Não (exato)</option><option value="true">Sim (tesauro externo)</option></select></label>
+<button id="run" type="button">Analisar incidência</button>
+</div>
+<p id="status" role="status" aria-live="polite" class="muted"></p>
+</section>
+<section class="wide">
+<h2>Incidência do termo ao longo do tempo</h2>
+<p class="muted" id="units">Cada barra indica quantas mensagens recuperadas pelo FTS5 ocorreram no período. Não representa o número de repetições dentro da mesma mensagem.</p>
+<div id="barChart"></div><div id="echartsPlot"></div>
+<p><button id="loadEcharts" type="button">Experimentar Apache ECharts (CDN externo)</button>
+<small>Biblioteca opcional, somente corpus sintético. Não ativar em bases privadas.</small></p>
+</section>
+<section>
+<h2 id="drillTitle">Mensagens do período</h2>
+<div id="drill"><p class="muted">Clique em uma barra para abrir as mensagens e conversas correspondentes.</p></div>
+<div class="controls"><button id="prev" disabled>Anterior</button><button id="next" disabled>Próximo</button></div>
+</section>
+<section>
+<h2>Termos nos textos selecionados</h2>
+<p class="muted">Frequência por mensagem na amostra recuperada. Coocorrência não é sinonímia nem relação causal.</p>
+<div id="tokens"></div><canvas id="wordcloudCanvas" width="720" height="260"></canvas>
+<p><button id="loadWordcloud" type="button">Experimentar wordcloud2.js (CDN externo)</button>
+<small>Biblioteca opcional; somente corpus sintético.</small></p>
+<div id="concept"></div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const state={timeline:null,period:null,offset:0,limit:30,tagData:null,echarts:null,wordcloud:false,chart:null};
+const element=(kind,text,root,cl='')=>{const n=document.createElement(kind);n.textContent=String(text??'');if(cl)n.className=cl;root.append(n);return n};
+function params(){
+  return {query:$('term').value.trim(),grain:$('grain').value,
+          platform:$('platform').value.trim(),expand:$('expand').value};
+}
+async function api(action,opts){
+  const u=new URL('/api',location.href);u.searchParams.set('action',action);
+  Object.entries(opts||{}).forEach(([k,v])=>{if(v!==undefined&&v!==null)u.searchParams.set(k,String(v))});
+  const resp=await fetch(u,{cache:'no-store'});const body=await resp.json();
+  if(!resp.ok||body.status!=='ok')throw Error((body.errors||[]).join(', ')||'api_error');
+  return body.data;
+}
+function status(txt){$('status').textContent=txt}
+function fail(err){status('Erro: '+err.message)}
+function drawBars(){
+  const data=state.timeline?.points||[];$('barChart').replaceChildren();
+  if(!data.length){element('p','Nenhum período encontrado.',$('barChart'));return}
+  const metric=$('metric').value;
+  const max=Math.max(1,...data.map(x=>x[metric]||0));
+  for(const row of data){
+    const col=element('div','',$('barChart'),'bar-col');
+    const button=element('button','',col);
+    button.title=row.period+' · '+row.matching_messages+' mensagens em '+row.all_messages+' mensagens totais · '+row.matching_conversations+' conversas · '+row.rate_per_1000_messages+' por mil';
+    button.style.height=Math.max(5,Math.round(180*(row[metric]||0)/max))+'px';
+    button.type='button';button.setAttribute('aria-label',button.title);
+    if(state.period===row.period)button.classList.add('selected');
+    button.onclick=()=>selectPeriod(row.period).catch(fail);
+    element('span',row[metric]??'-',col);
+    element('span',row.period,col);
+  }
+}
+function drawEcharts(){
+  if(!state.echarts||!state.timeline)return;
+  $('barChart').style.display='none';$('echartsPlot').style.display='block';
+  if(!state.chart)state.chart=echarts.init($('echartsPlot'),null,{renderer:'svg'});
+  const rows=state.timeline.points;
+  state.chart.setOption({backgroundColor:'transparent',textStyle:{color:'#e7edf7'},
+    tooltip:{trigger:'axis'},grid:{left:55,right:20,top:25,bottom:75},
+    xAxis:{type:'category',data:rows.map(x=>x.period),axisLabel:{rotate:35}},
+    yAxis:{type:'value',name:$('metric').value==='matching_messages'?'Mensagens':'Por mil'},
+    dataZoom:[{type:'inside'},{type:'slider',bottom:10}],
+    series:[{type:'bar',name:'Incidência',data:rows.map(x=>x[$('metric').value]),
+      itemStyle:{color:'#82baff'}}]},true);
+  state.chart.off('click');state.chart.on('click',e=>{if(e.componentType==='series')selectPeriod(rows[e.dataIndex].period).catch(fail)});
+}
+async function selectPeriod(period){
+  state.period=period;state.offset=0;drawBars();
+  await Promise.all([loadDrill(),loadTags()]);
+  if(state.echarts)drawEcharts();
+}
+async function loadDrill(){
+  const data=await api('period',{...params(),period:state.period,
+    limit:state.limit,offset:state.offset});
+  $('drill').replaceChildren();
+  $('drillTitle').textContent='Mensagens em '+state.period+' · '+data.total_messages+' correspondências';
+  for(const m of data.messages){
+    const article=element('article','',$('drill'),'entry');
+    element('strong',(m.title||m.conv_id)+' · '+m.role,article);
+    element('small',(m.timestamp||'sem data')+' · '+m.platform+' · ID: '+m.message_id,article);
+    element('p',(m.content||'').slice(0,260),article);
+    const btn=element('button','Abrir mensagem na transcrição',article);
+    btn.onclick=()=>{const url=new URL('/chats',location.href);
+      url.searchParams.set('conv',m.conv_id);url.searchParams.set('msg',m.message_id);
+      location.href=url.toString()};
+  }
+  $('prev').disabled=state.offset<=0;$('next').disabled=state.offset+state.limit>=data.total_messages;
+}
+async function loadTags(){
+  const data=await api('tagcloud',{...params(),period:state.period,top:35,max_messages:1000});
+  state.tagData=data;
+  $('tokens').replaceChildren();
+  const max=Math.max(1,...data.terms_frequency.map(x=>x.message_count));
+  for(const row of data.terms_frequency){
+    const b=element('button',row.term,$('tokens'));b.title=row.message_count+' mensagens na amostra';
+    b.style.fontSize=(12+Math.round(15*row.message_count/max))+'px';
+    b.onclick=()=>{$('term').value=row.term;run().catch(fail)};
+  }
+  if(data.is_truncated)element('p','Amostra truncada em '+data.sampled_messages+' mensagens.',$('tokens'),'muted');
+  if(state.wordcloud)drawWordcloud();
+}
+function drawWordcloud(){
+  if(!state.wordcloud||!state.tagData||typeof WordCloud!=='function')return;
+  $('wordcloudCanvas').style.display='block';
+  WordCloud($('wordcloudCanvas'),{list:state.tagData.terms_frequency.map(r=>[r.term,r.message_count]),
+    gridSize:12,weightFactor:4,backgroundColor:'#16253b',color:'#a7d5ff'});
+}
+async function showConcept(){
+  $('concept').replaceChildren();
+  try{
+    const c=await api('concept',{term:$('term').value.trim()});
+    element('h2','Conceito aprovado: '+c.preferred,$('concept'));
+    element('p','Termos alternativos: '+c.altLabels.join(', '),$('concept'));
+    for(const r of c.relations)element('p',r.type+' → '+r.target_label+' · fonte: '+r.source,$('concept'));
+  }catch{element('p','Sem conceito aprovado no tesauro externo.',$('concept'),'muted')}
+}
+async function run(){
+  const p=params();if(!p.query){status('Informe uma palavra ou expressão.');return}
+  state.timeline=await api('timeline',p);state.period=null;state.offset=0;
+  $('units').textContent='FTS5 · '+state.timeline.total_messages+' mensagens encontradas · Mensagens totais por período na base · '+state.timeline.terms.join(' / ')+
+    (state.timeline.expanded?' (rótulos aprovados)':' (termo literal)');
+  drawBars();if(state.echarts)drawEcharts();
+  $('drill').replaceChildren();$('tokens').replaceChildren();
+  $('drillTitle').textContent='Mensagens do período';
+  element('p','Clique numa barra para abrir os resultados.',$('drill'),'muted');
+  status(state.timeline.points.length+' períodos. Clique em um intervalo para examinar suas conversas.');
+  await showConcept();
+}
+function externalScript(url,callback){
+  if(!confirm('Carregar código de terceiros? Use somente dados sintéticos; código externo pode acessar a página.'))return;
+  const s=document.createElement('script');s.src=url;s.onload=callback;s.onerror=()=>status('Falha ao carregar biblioteca externa; visualização local preservada.');
+  document.head.append(s);
+}
+$('run').onclick=()=>run().catch(fail);
+$('metric').onchange=()=>{drawBars();if(state.echarts)drawEcharts()};
+$('term').addEventListener('keydown',e=>{if(e.key==='Enter')run().catch(fail)});
+$('prev').onclick=()=>{state.offset=Math.max(0,state.offset-state.limit);loadDrill().catch(fail)};
+$('next').onclick=()=>{state.offset+=state.limit;loadDrill().catch(fail)};
+$('loadEcharts').onclick=()=>externalScript('https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js',()=>{
+  if(typeof echarts==='undefined'){status('ECharts indisponível');return}
+  state.echarts=true;drawEcharts();status('ECharts ativo (modo experimental)');
+});
+$('loadWordcloud').onclick=()=>externalScript('https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js',()=>{
+  if(typeof WordCloud==='undefined'){status('wordcloud2.js indisponível');return}
+  state.wordcloud=true;drawWordcloud();status('Nuvem wordcloud2.js ativa (modo experimental)');
+});
+</script>
+<script src="/nav.js" defer></script>
+</body></html>

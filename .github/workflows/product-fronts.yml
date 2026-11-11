@@ -1,0 +1,31 @@
+name: Product fronts cross-inventory gates
+on:
+  push:
+    branches:
+      - feat/ux-cli-gui-p1-0003
+    paths:
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
+      - '.github/workflows/product-fronts.yml'
+  pull_request:
+    paths:
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
+      - '.github/workflows/product-fronts.yml'
+  workflow_dispatch:
+jobs:
+  product-map:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile product inventory and tests
+        run: python -m compileall -q product_lab _dev/tests/product
+      - name: PRODUCT-016: real Phase2 and UX duplicate audit + rankings
+        run: bash _dev/tests/product/teste16.sh
+      - name: PRODUCT-017 native SQLite read-only health doctor
+        run: bash _dev/tests/product/teste17.sh

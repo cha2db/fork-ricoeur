@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Cha2db · Painel central</title>
+<style>
+:root{--bg:#0c1524;--p:#15253b;--p2:#1c3049;--bd:#344a65;--fg:#eef4fd;--muted:#adbed5;--accent:#88bcff;--soft:#203954}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,Segoe UI,Arial,sans-serif}
+a{color:var(--accent)}
+header{padding:38px clamp(18px,4vw,56px) 30px;border-bottom:1px solid var(--bd);background:linear-gradient(125deg,#122740,#162036 68%,#101b2d)}
+header .eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#8eafd3;font-size:11px;font-weight:700}
+h1{font-size:clamp(25px,3.5vw,42px);line-height:1.15;margin:10px 0 14px}
+h2{font-size:23px;margin:0 0 4px}h3{font-size:18px;margin:0}
+p{margin:0 0 10px}.muted,small{color:var(--muted)}
+header p{max-width:760px;font-size:16px}
+main{padding:24px clamp(16px,3vw,48px);max-width:1600px;margin:auto}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 0}
+.stat{border:1px solid #395574;border-radius:12px;background:#20364e;padding:13px 20px;min-width:125px}
+.stat strong{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:#c4d2e6}
+.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+button{cursor:pointer;font:inherit;border:1px solid #57749a;background:#263f5b;border-radius:8px;color:var(--fg);padding:9px 12px}
+button:hover,button:focus-visible{background:#3d6086;outline:2px solid #99c7ff;outline-offset:1px}
+button[aria-pressed=true]{background:#d3e9ff;color:#172b45;border-color:#d3e9ff}
+input{border:1px solid #57749a;border-radius:8px;background:#0e1d30;color:var(--fg);padding:11px 12px;font:inherit;min-width:220px}
+section{margin-bottom:28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px}
+.card{border:1px solid var(--bd);border-radius:14px;background:var(--p);padding:19px 20px;min-width:0;display:flex;flex-direction:column;gap:9px}
+.card:target{outline:2px solid var(--accent)}
+.card-head{display:flex;align-items:center;gap:11px}
+.card-icon{background:#284766;border:1px solid #416488;width:45px;height:45px;display:grid;place-items:center;border-radius:12px;font-size:23px;flex:none}
+.card-title{min-width:0}
+.card-title small{display:block}
+.state{display:inline-flex;align-items:center;border:1px solid #61738a;color:#cce0f3;background:#273b51;padding:4px 8px;border-radius:999px;font-size:11px;width:max-content}
+.state.impl{border-color:#598e81;color:#aff4d6;background:#183f3a}
+.state.partial{border-color:#b0975c;color:#ffdeb0;background:#4a3828}
+.state.research{color:#c7d0de}
+.pilot{border-left:3px solid #6ba8df;padding:9px 11px;background:#1b334c;border-radius:0 9px 9px 0}
+.pilot strong{display:block;font-size:14px}
+.pilot p{margin:4px 0 0;color:#d3e1f0;font-size:13px}
+.candidates{margin-top:auto;padding-top:8px;border-top:1px solid var(--bd)}
+.candidate{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid #2b405a;padding:7px 0;font-size:13px}
+.candidate a{color:#dfecff;text-decoration:underline;text-decoration-color:#6e88a8;text-underline-offset:3px}
+.candidate small{font-size:11px;white-space:nowrap;text-align:right}
+.candidate[data-hidden=true]{display:none}
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:5px}
+.open{color:#0d2034;background:#a4cffc;border-radius:8px;padding:9px 13px;font-weight:700;text-decoration:none;display:inline-flex;width:max-content}
+.open:hover,.open:focus-visible{background:#c5e2ff}
+.inline{border:0;background:none;color:var(--accent);padding:4px 0;font-size:12px}
+.inline:hover{background:none}
+.intro{color:#b9cae0;max-width:1000px}
+#credits{padding-top:18px;border-top:1px solid var(--bd)}
+.credits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,255px),1fr));gap:8px}
+.credit{min-height:63px;border:1px solid var(--bd);border-radius:9px;background:#16263a;padding:10px 12px;scroll-margin-top:24px}
+.credit:target{outline:2px solid var(--accent)}
+.credit a{text-decoration:none;font-weight:650;color:#e5f1ff}
+.credit a:hover{text-decoration:underline}
+.credit small{display:block;font-size:11px;margin-top:3px}
+.credit .logo{max-width:155px;max-height:48px;object-fit:contain;display:block;padding:5px 0}
+.credit .logo-badge{color:#9ac3f9;font-size:10px;margin-top:5px}
+.credit img{background:#fff;border-radius:5px;padding:4px}
+.footnote{padding:20px clamp(16px,3vw,48px);border-top:1px solid var(--bd);font-size:13px;line-height:1.7}
+.empty{padding:20px;border:1px dashed var(--bd);border-radius:10px}
+@media(max-width:850px){header{padding:28px 18px}main{padding:15px}.stats{margin:15px 0 0}.card{padding:14px}.toolbar{display:block}.filters{margin-top:10px}}
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">Pesquisa e experimentação · UX Lab · núcleo preservado</div>
+<h1>Um arquivo. Muitas formas de navegar pelo conhecimento.</h1>
+<p>Escolha a forma de apresentação — conversas, grafo, linha do tempo, nuvem de termos, relações tipadas ou terminal — sem trocar a base SQLite/FTS5 existente.</p>
+<p><a href="/product" style="display:inline-block;background:#a4cffc;color:#0d2034;text-decoration:none;padding:11px 17px;border-radius:8px;font-weight:700">Mapa do produto · outras 12 frentes</a></p>
+<div id="stats" class="stats" aria-live="polite"></div>
+</header>
+<main>
+<section id="overview">
+  <div class="toolbar">
+    <div><h2>Catálogo por tipo de interface</h2><p class="intro">Cada categoria mostra o que realmente está implantado no Cha2db. Os demais candidatos são alternativas para adoção, não componentes já instalados.</p></div>
+    <input id="filter" type="search" aria-label="Filtrar categorias e candidatos" placeholder="Filtrar tipos ou tecnologias">
+  </div>
+  <div class="filters" role="group" aria-label="Filtrar pelo estágio de implementação">
+    <button data-filter="all" aria-pressed="true">Todos</button>
+    <button data-filter="implemented" aria-pressed="false">Com interface implantada</button>
+    <button data-filter="partial" aria-pressed="false">Parcial</button>
+    <button data-filter="research" aria-pressed="false">Somente pesquisa</button>
+  </div>
+</section>
+<div id="sections" class="cards" aria-live="polite"><p>Carregando catálogo local…</p></div>
+<section id="credits" style="margin-top:42px">
+  <h2>Referências e créditos</h2>
+  <p class="intro">Todos os projetos que fundamentaram esta classificação são vinculados às suas fontes. Logos só aparecem quando a origem oficial foi verificada e o carregamento externo é autorizado.</p>
+  <p><button id="logos" type="button">Exibir logotipos oficiais disponíveis</button> <small>Carrega imagens de sites externos; o painel funciona offline sem elas.</small></p>
+  <div id="credits-list" class="credits-grid"></div>
+</section>
+</main>
+<footer class="footnote">
+<strong>Créditos e transparência.</strong> Cha2db UX Lab reutiliza Ricoeur (SQLite/FTS5), Click e Textual no núcleo.
+SVG e HTML locais são o fallback visual. ECharts, vis-network e wordcloud2.js são opções experimentais, não bibliotecas implantadas em produção.
+Nomes e logotipos permanecem de seus respectivos titulares; seu uso é apenas identificativo.
+A classificação de compatibilidade é preliminar, não uma homologação de terceiros.
+</footer>
+<script src="/nav.js" defer></script>
+<script>
+(() => {
+  "use strict";
+  const $=id=>document.getElementById(id);
+  const make=(tag,text,parent,cls)=>{const el=document.createElement(tag);if(text!=null)el.textContent=String(text);if(cls)el.className=cls;if(parent)parent.append(el);return el};
+  let catalog=null,filterState="all",filterTerm="",logosEnabled=false;
+  const stateNames={implemented:"Interface implantada",partial:"Implantação parcial",research:"Somente estudo"};
+  const states={adopted_core:"Adotado no núcleo",implemented_subset:"Subset implementado",experimental_opt_in:"Experimental, opcional",researched_only:"Ainda não adotado"};
+  const safeUrl=(url)=>{const u=new URL(url,location.href);return ["https:","http:"].includes(u.protocol)?u.href:"#"};
+  function metrics(data){
+    const categories=data.categories, stats=[
+      [categories.length,"tipos de GUI"],
+      [data.candidate_count,"referências catalogadas"],
+      [categories.filter(c=>c.state==="implemented").length,"tipos com interface"],
+      [categories.filter(c=>c.state==="partial").length,"tipos parciais"]
+    ];
+    $('stats').replaceChildren();
+    for(const [number,label] of stats){const n=make('div',null,$('stats'),'stat');make('strong',number,n);make('span',label,n)}
+  }
+  function showCandidates(card,candidates,count=3){
+    const box=make('div',null,card,'candidates');
+    make('small','Candidatos vinculados · ordem heurística de compatibilidade',box);
+    candidates.forEach((c,i)=>{
+      const entry=make('div',null,box,'candidate');
+      if(i>=count)entry.dataset.hidden="true";
+      const a=make('a',c.name,entry);
+      a.href='#credit-'+c.id;a.title='Ver a fonte e os créditos';
+      make('small',states[c.status]||'Não verificado',entry);
+      const score=make('small',c.score_preliminary+'/100',entry);
+      score.title='Proximidade preliminar de core/GUI/adaptação/licença; não é benchmark';
+    });
+    if(candidates.length>count){
+      const button=make('button','Ver todos os '+candidates.length+' candidatos',box,'inline');
+      button.type='button';button.setAttribute('aria-expanded','false');
+      button.onclick=()=>{
+        const expanded=button.getAttribute('aria-expanded')!=='true';
+        button.setAttribute('aria-expanded',String(expanded));
+        box.querySelectorAll('[data-hidden]').forEach((n,i)=>{n.dataset.hidden=String(!expanded)});
+        button.textContent=expanded?'Recolher candidatos':'Ver todos os '+candidates.length+' candidatos';
+      };
+    }
+  }
+  function card(group){
+    const root=make('section',null,$('sections'),'card');root.id=group.id;
+    const head=make('div',null,root,'card-head');
+    make('span',group.icon,head,'card-icon');
+    const caption=make('div',null,head,'card-title');
+    make('h3',group.title,caption);make('small',group.subtitle,caption);
+    make('span',stateNames[group.state],root,'state '+(group.state==='implemented'?'impl':group.state));
+    const pilot=make('div',null,root,'pilot');
+    make('small',group.adopted?'Candidato implantado / motor atual':'Ainda não há candidato implantado',pilot);
+    make('strong',group.adopted||'Nenhum — categoria em pesquisa',pilot);
+    make('p',group.implementation,pilot);
+    showCandidates(root,group.candidates);
+    const footer=make('div',null,root,'card-footer');
+    const link=make('a',group.state==='research'?'Explorar laboratório':'Abrir interface',footer,'open');
+    link.href=group.href;link.setAttribute('aria-label','Abrir '+group.title);
+    make('small',group.count+' candidato(s)',footer);
+  }
+  function render(){
+    $('sections').replaceChildren();
+    const selection=catalog.categories.filter(g=>{
+      if(filterState!=='all'&&g.state!==filterState)return false;
+      if(!filterTerm)return true;
+      return [g.title,g.subtitle,g.adopted||'',g.implementation,...g.candidates.map(c=>c.name)].join(' ').toLocaleLowerCase('pt-BR').includes(filterTerm);
+    });
+    if(!selection.length)make('p','Nenhuma categoria encontrada.',$('sections'),'empty');
+    for(const group of selection)card(group);
+  }
+  function credits(data){
+    $('credits-list').replaceChildren();
+    for(const c of data.credits){
+      const root=make('div',null,$('credits-list'),'credit');root.id='credit-'+c.id;
+      const a=make('a',c.name,root);a.href=safeUrl(c.url);a.target='_blank';a.rel='noopener noreferrer';a.referrerPolicy='no-referrer';
+      make('small',(c.category_id||'')+' · '+(c.license_status||'licença a verificar'),root);
+      if(c.logo){
+        make('div','Logotipo oficial disponível · origem documentada',root,'logo-badge');
+        if(logosEnabled){
+          const img=make('img',null,root,'logo');
+          img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+          img.alt=c.logo.alt;img.src=safeUrl(c.logo.src);
+          img.onerror=()=>img.remove();
+          const origin=make('a','Fonte do logo',root);origin.href=safeUrl(c.logo.origin);
+          origin.target='_blank';origin.rel='noopener noreferrer';origin.referrerPolicy='no-referrer';
+          make('small',c.logo.license_notice,root);
+        }
+      }
+    }
+  }
+  $('filter').addEventListener('input',e=>{filterTerm=e.target.value.trim().toLocaleLowerCase('pt-BR');if(catalog)render()});
+  document.querySelectorAll('[data-filter]').forEach(button=>button.onclick=()=>{
+    filterState=button.dataset.filter;
+    document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    if(catalog)render();
+  });
+  $('logos').onclick=()=>{
+    if(!catalog)return;
+    if(!logosEnabled&&!confirm('Carregar logos de fontes oficiais externas? Nenhuma conversa será enviada, mas o navegador fará requisições a esses domínios.'))return;
+    logosEnabled=!logosEnabled;
+    $('logos').textContent=logosEnabled?'Ocultar logotipos externos':'Exibir logotipos oficiais disponíveis';
+    credits(catalog);
+  };
+  fetch('/api?action=dashboard',{cache:'no-store'})
+    .then(r=>r.json()).then(result=>{
+      if(result.status!=='ok')throw Error((result.errors||[]).join('; '));
+      catalog=result.data;metrics(catalog);render();credits(catalog);
+      if(location.hash&&location.hash!=='#overview'){
+        const target=document.getElementById(location.hash.slice(1));
+        if(target)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));
+      }
+    }).catch(err=>{
+      $('sections').replaceChildren();make('p','Falha ao carregar catálogo: '+err.message,$('sections'),'empty');
+    });
+})();
+</script>
+</body>
+</html>

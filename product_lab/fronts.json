@@ -1,0 +1,1513 @@
+{
+  "schema_version": "cha2db.product.fronts.v1",
+  "date": "2026-11-10",
+  "repository": "cha2db/fork-ricoeur",
+  "head_branch": "feat/ux-cli-gui-p1-0003",
+  "prior_survey_sources": [
+    "_dev/PHASE2_MARKET_UNIVERSE_R10.json",
+    "_dev/PHASE2_MARKET_EXPANSION_R14.json",
+    "ux_lab/candidates.json"
+  ],
+  "baseline": {
+    "core": "Ricoeur SQLite FTS5",
+    "status": "KEEP",
+    "search": "src/ricoeur/retrieval.py",
+    "phase2_candidates": 207,
+    "ux_candidates": 46,
+    "phase2_functional_candidate_gates_reported": 24,
+    "notes": "Preliminary product ranking extends rather than replaces Phase2 and UX inventories"
+  },
+  "ranking": {
+    "weight": {
+      "core_fit": 35,
+      "adapter_fit": 25,
+      "data_sovereignty": 20,
+      "platform_fit": 10,
+      "license_confidence": 10
+    },
+    "scale": "integer 1..5; normalized to 100",
+    "policy": "Heuristic suitability to propose tests, not benchmark; metrics/license verify per component before adoption",
+    "status_rule": "NOT_TESTED_IN_PRODUCT_ROUND for every discovered candidate"
+  },
+  "fronts": [
+    {
+      "id": "capture",
+      "title": "Captura e conversão multiformato",
+      "objective": "De exportações de chats até anexos, documentos e páginas com fidelidade de papéis e IDs",
+      "existing_evidence": "ACE e importadores ChatGPT/Claude/Claude Code já estudados; R14 Fase2 segue input-first",
+      "observed_state": "partially_covered",
+      "gate": "RAW preservation, chat tree, multiword, attachments, offsets; never replace raw JSON with inferred Markdown",
+      "candidates": [
+        {
+          "id": "OPS001",
+          "name": "ACE — AI Chat Exporter",
+          "url": "https://github.com/Covai-Labs/ace",
+          "subport": "chat_export",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 3
+          },
+          "approach": "Captura local JSON/MD/HTML via browser; fonte do chat original precisa checksum",
+          "next_gate": "Comparar 3 provedores + anexos e IDs ao contrato canônico",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS002",
+          "name": "Microsoft MarkItDown",
+          "url": "https://github.com/microsoft/markitdown",
+          "subport": "document_converter",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 4,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Conversão PDF/Office/HTML para Markdown com plugins opcionais; sem identidade de chat",
+          "next_gate": "Converter 3 anexos sem inventar autor nem datas",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS003",
+          "name": "Docling",
+          "url": "https://github.com/docling-project/docling",
+          "subport": "document_converter",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Estrutura PDF/Office/tabelas com extração local",
+          "next_gate": "Comparar fidelidade estrutural e recursos Termux",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS004",
+          "name": "Apache Tika",
+          "url": "https://github.com/apache/tika",
+          "subport": "document_converter",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Extração de metadados e texto de muitos formatos",
+          "next_gate": "Testar anexos e metadados sem serviço remoto obrigatório",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS005",
+          "name": "Unstructured",
+          "url": "https://github.com/Unstructured-IO/unstructured",
+          "subport": "document_converter",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 3,
+            "platform_fit": 4,
+            "license_confidence": 4
+          },
+          "approach": "Partição e enriquecimento de documentos heterogêneos",
+          "next_gate": "Medir dependências e separar pipeline de modelos opcionais",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 3,
+        "safety": 4,
+        "testability": 5
+      }
+    },
+    {
+      "id": "quality",
+      "title": "Qualidade e contrato de entrada",
+      "objective": "Normalização, validação e recusa de importação com evidência dos erros",
+      "existing_evidence": "Modelo canônico proposto, imports sintéticos idempotentes e preservação de ramos já validados",
+      "observed_state": "partially_covered",
+      "gate": "Schema version, no role guessing, exact IDs, invalid fixture rejection, no silent data loss",
+      "candidates": [
+        {
+          "id": "OPS006",
+          "name": "Pydantic",
+          "url": "https://github.com/pydantic/pydantic",
+          "subport": "schema_validation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Validação Python declarativa dos contratos sem novo banco",
+          "next_gate": "Validar payloads ausentes/unknown/ramificação em JSON",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS007",
+          "name": "jsonschema",
+          "url": "https://github.com/python-jsonschema/jsonschema",
+          "subport": "schema_validation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Validação independente JSON Schema para adapters e exportação",
+          "next_gate": "Comparar schemas e compatibilidade com toolchains JS",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS008",
+          "name": "Pandera",
+          "url": "https://github.com/unionai-oss/pandera",
+          "subport": "tabular_validation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Checks declarativos em lotes tabulares",
+          "next_gate": "Testar contagens e constraints na exportação de auditoria",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS009",
+          "name": "Great Expectations",
+          "url": "https://github.com/great-expectations/great_expectations",
+          "subport": "tabular_validation",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Expectations, relatório e validação de conjuntos",
+          "next_gate": "Confrontar custo vs schemas nativos e CI",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS010",
+          "name": "OpenRefine",
+          "url": "https://github.com/OpenRefine/OpenRefine",
+          "subport": "human_reconciliation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Revisão humana e reconciliação de nomes e entidades em GUI",
+          "next_gate": "Testar import/export controlado sem sobrescrever registros brutos",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS011",
+          "name": "Frictionless Data",
+          "url": "https://github.com/frictionlessdata/frictionless-py",
+          "subport": "tabular_validation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Padrões de tabelas, validação de metadados e pacotes",
+          "next_gate": "Provar schema package sem duplicar canônico",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 5,
+        "testability": 5
+      }
+    },
+    {
+      "id": "repair",
+      "title": "Diagnóstico e reparação de arquivo",
+      "objective": "Encontrar e reparar índices e vínculos sem alterar transcrições fonte",
+      "existing_evidence": "R14: repair sem motor aprovado; evidências de perda de ramificação ao trocar parsers",
+      "observed_state": "research_open",
+      "gate": "Snapshot -> integrity -> diagnose -> dry-run -> rebuild -> verify hashes/branch count -> rollback",
+      "candidates": [
+        {
+          "id": "OPS012",
+          "name": "SQLite integrity_check / recover",
+          "url": "https://www.sqlite.org/recovery.html",
+          "subport": "db_recovery",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Recuperar banco parcial e verificar integridade com ferramentas nativas",
+          "next_gate": "Corromper fixture controlada e medir perda vs cópia imutável",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS013",
+          "name": "SQLite Online Backup API",
+          "url": "https://www.sqlite.org/backup.html",
+          "subport": "db_snapshot",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Snapshot transacional via sqlite3.backup() sem copiar WAL em corrida",
+          "next_gate": "Comparar SHA/contagem de linhas e abrir snapshot isolado",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS014",
+          "name": "sqlite-utils",
+          "url": "https://github.com/simonw/sqlite-utils",
+          "subport": "db_diagnostics",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Inspeção, transformação e exportação SQLite (não repair semântica)",
+          "next_gate": "Demonstrar query de índices órfãos sem executar mutações",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS015",
+          "name": "Litestream",
+          "url": "https://github.com/benbjohnson/litestream",
+          "subport": "wal_replay",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 4,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Replay de histórico WAL para recuperação de desastre",
+          "next_gate": "Simular desligamento abrupto e restaurar réplica em sandbox",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS016",
+          "name": "sqlite-dissect",
+          "url": "https://github.com/dahlia/sqlite-dissect",
+          "subport": "forensic_repair",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 2,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 3
+          },
+          "approach": "Análise forense de páginas SQLite; licença e manutenção ainda não verificadas",
+          "next_gate": "Confirmar fonte/licença; comparação com PRAGMA integrity_check",
+          "source_level": "source_needs_repo_verification",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 4
+      }
+    },
+    {
+      "id": "backup",
+      "title": "Backup, exportação e restauração",
+      "objective": "Recuperabilidade verificável, snapshots e portabilidade com manifestos",
+      "existing_evidence": "R14 cita memória portátil; não equivale a backup/restore de banco + anexos",
+      "observed_state": "not_yet_implemented",
+      "gate": "Backup native SQLite + attachments, restore to different path, checksum, no overwrite source",
+      "candidates": [
+        {
+          "id": "OPS017",
+          "name": "restic",
+          "url": "https://github.com/restic/restic",
+          "subport": "encrypted_backup",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Backup deduplicado e criptografado com snapshots",
+          "next_gate": "Restaurar banco+anexos completos, testar retenção e senha",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS018",
+          "name": "BorgBackup",
+          "url": "https://github.com/borgbackup/borg",
+          "subport": "encrypted_backup",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Snapshots criptografados, compressão e deduplicação",
+          "next_gate": "Comparar tamanho/recovery/ARM com restic",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS019",
+          "name": "age",
+          "url": "https://github.com/FiloSottile/age",
+          "subport": "file_encryption",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Criptografar exportação/manifesto sem inventar cifra",
+          "next_gate": "Teste de cifra/decifra e ausência de dados na stdout",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS020",
+          "name": "rclone",
+          "url": "https://github.com/rclone/rclone",
+          "subport": "backup_transport",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 3,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Transporte opcional de backups já cifrados a repositórios externos",
+          "next_gate": "Simular destino local e validar que upload foi cifrado",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS021",
+          "name": "Duplicati",
+          "url": "https://github.com/duplicati/duplicati",
+          "subport": "encrypted_backup",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Agendamento/restauração com GUI para arquivos",
+          "next_gate": "Comparar cenário tablet e dependências com restic",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 5
+      }
+    },
+    {
+      "id": "privacy",
+      "title": "Privacidade, segurança e proteção de dados",
+      "objective": "Dados pessoais, segredos, criptografia, compartilhamento e logs seguros",
+      "existing_evidence": "UX expõe servidor localhost read-only; não há autenticação ou criptografia integrada",
+      "observed_state": "not_yet_implemented",
+      "gate": "No private corpus to CI; deny by default; scan synthetic secrets; compare offline/locked DB",
+      "candidates": [
+        {
+          "id": "OPS022",
+          "name": "SQLCipher",
+          "url": "https://github.com/sqlcipher/sqlcipher",
+          "subport": "at_rest_encryption",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 4
+          },
+          "approach": "SQLite criptografado em repouso com AES e troca do driver",
+          "next_gate": "Confrontar extensões FTS5 e velocidade com SQLite atual",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS023",
+          "name": "Microsoft Presidio",
+          "url": "https://github.com/microsoft/presidio",
+          "subport": "pii_redaction",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Reconhecer/redigir entidades sensíveis em exportações opcionalmente",
+          "next_gate": "Medir falsos positivos em PT-BR + preservar versão original",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS024",
+          "name": "Gitleaks",
+          "url": "https://github.com/gitleaks/gitleaks",
+          "subport": "secret_scanning",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Detectar chaves e segredos antes da publicação ou logs CI",
+          "next_gate": "Inserir segredos sintéticos e verificar gate negativo",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS025",
+          "name": "detect-secrets",
+          "url": "https://github.com/Yelp/detect-secrets",
+          "subport": "secret_scanning",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Baselines e varredura pré-commit de segredos",
+          "next_gate": "Comparar falsos positivos/supressões auditáveis com Gitleaks",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS026",
+          "name": "Semgrep",
+          "url": "https://github.com/semgrep/semgrep",
+          "subport": "code_security",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 4
+          },
+          "approach": "Análise estática de código e regras de uso inseguro",
+          "next_gate": "CI regras de porta HTTP, SQL, credenciais sem upload de dados",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS027",
+          "name": "pip-audit",
+          "url": "https://github.com/pypa/pip-audit",
+          "subport": "dependency_security",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Auditoria de vulnerabilidades em dependências Python",
+          "next_gate": "Verificar lockfile pinado sem bloquear offline",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 5,
+        "safety": 5,
+        "testability": 4
+      }
+    },
+    {
+      "id": "permissions",
+      "title": "Permissões, grupos e delegações",
+      "objective": "Explicar por que pode/não pode, aplicar cascata e separar multiusuário",
+      "existing_evidence": "Nenhuma política central verificada no núcleo; experimento de servidor local sem autenticação",
+      "observed_state": "not_yet_implemented",
+      "gate": "Local single-user first -> optional multiuser; deny by default; human override and audit",
+      "candidates": [
+        {
+          "id": "OPS028",
+          "name": "Cedar Policy",
+          "url": "https://github.com/cedar-policy/cedar",
+          "subport": "embedded_policy",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Linguagem de política e validação com deny-overrides; bindings a avaliar",
+          "next_gate": "Provar regras de root, grupo e usuário em fixture",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS029",
+          "name": "OPA (Rego)",
+          "url": "https://github.com/open-policy-agent/opa",
+          "subport": "policy_engine",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Motor agnóstico via políticas declarativas",
+          "next_gate": "Testar decisão local e explicação sem serviço na LAN",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS030",
+          "name": "Casbin",
+          "url": "https://github.com/casbin/pycasbin",
+          "subport": "embedded_policy",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "RBAC/ABAC direto como biblioteca Python no processo",
+          "next_gate": "Confrontar cascata e negativa explícita por usuário",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS031",
+          "name": "SpiceDB",
+          "url": "https://github.com/authzed/spicedb",
+          "subport": "relation_authz",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 2,
+            "license_confidence": 5
+          },
+          "approach": "ReBAC Zanzibar para grafos de colaboração com serviço dedicado",
+          "next_gate": "Só avançar se multiusuário justificar serviço extra",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS032",
+          "name": "OpenFGA",
+          "url": "https://github.com/openfga/openfga",
+          "subport": "relation_authz",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Autorização por relações, CLI e modelo declarativo",
+          "next_gate": "Confrontar com SpiceDB e casos de grupo herdado",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS033",
+          "name": "Oso",
+          "url": "https://github.com/osohq/oso",
+          "subport": "embedded_policy",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 4,
+            "license_confidence": 2
+          },
+          "approach": "Policy-as-code, SDK; confirmar licença da biblioteca escolhida",
+          "next_gate": "Gate de licença antes de copiar runtime",
+          "source_level": "source_needs_license_verification",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 5,
+        "safety": 5,
+        "testability": 3
+      }
+    },
+    {
+      "id": "interop",
+      "title": "Integração por protocolos e portas",
+      "objective": "MCP, A2A, APIs públicas e uso por diferentes apps sobre contratos idênticos",
+      "existing_evidence": "MCP real stdio Teste 7 PASS no Termux sintético; UX CLI/HTTP sobre FTS5",
+      "observed_state": "partially_covered",
+      "gate": "Same test vectors for CLI/API/MCP; A2A only optional; no implicit LLM or write capability",
+      "candidates": [
+        {
+          "id": "OPS034",
+          "name": "Model Context Protocol Python SDK",
+          "url": "https://github.com/modelcontextprotocol/python-sdk",
+          "subport": "tool_protocol",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "MCP oficial com servidor e cliente stdio; já testado no projeto",
+          "next_gate": "Manter teste regressivo com cliente externo sem permissões de escrita",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS035",
+          "name": "A2A Python SDK",
+          "url": "https://github.com/a2aproject/a2a-python",
+          "subport": "agent_protocol",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Comunicação agentes/tarefas separada da porta de ferramentas MCP",
+          "next_gate": "Provar compatibilidade com identidade e fronteiras; LLM opcional",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS036",
+          "name": "OpenAPI Specification",
+          "url": "https://spec.openapis.org/oas/latest.html",
+          "subport": "http_contract",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Contrato HTTP agnóstico para adapters CLI e GUI",
+          "next_gate": "Gerar spec e validar OpenAPI sem acoplar SQL à GUI",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS037",
+          "name": "AG-UI",
+          "url": "https://github.com/ag-ui-protocol/ag-ui",
+          "subport": "realtime_frontend",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 4
+          },
+          "approach": "Stream de eventos da interação com humanos, não banco nem CLI",
+          "next_gate": "Só testar quando houver streaming/feedback real",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS038",
+          "name": "CloudEvents",
+          "url": "https://github.com/cloudevents/spec",
+          "subport": "event_interchange",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Envelope padronizado para eventos de import/review sem criar protocolo próprio",
+          "next_gate": "Envelope mínimo id/time/type/subject/trace e replay idempotente",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS039",
+          "name": "JSON Schema",
+          "url": "https://json-schema.org/specification",
+          "subport": "data_contract",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Schemas versionados e validação cruzada entre adapters",
+          "next_gate": "Validar exemplos válidos/inválidos em Python e JS",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS040",
+          "name": "FastAPI",
+          "url": "https://github.com/fastapi/fastapi",
+          "subport": "http_adapter",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 4,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Adapter HTTP opcional sem assumir framework no core",
+          "next_gate": "Confrontar com servidor stdlib existente e exigir autenticação",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 3,
+        "safety": 3,
+        "testability": 5
+      }
+    },
+    {
+      "id": "install",
+      "title": "Instalação e distribuição multiplataforma",
+      "objective": "Tirar do git e entregar app simples em Windows/Linux/Termux/Android",
+      "existing_evidence": "uv usado no README; execução Termux e CLI manual, instalador nativo não demonstrado",
+      "observed_state": "partially_covered",
+      "gate": "One-command bootstrap with rollback, 3 platforms, no private keys, reproducible lock",
+      "candidates": [
+        {
+          "id": "OPS041",
+          "name": "uv",
+          "url": "https://github.com/astral-sh/uv",
+          "subport": "dependency_manager",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Projeto já utiliza uv como instalador/gerenciador de pacotes",
+          "next_gate": "Provar Termux sem versões Python inviáveis",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS042",
+          "name": "pipx",
+          "url": "https://github.com/pypa/pipx",
+          "subport": "cli_installer",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Instala CLI Python isolada sem resolver UI nativa",
+          "next_gate": "Testar build wheel ricoeur com pin de versão",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS043",
+          "name": "PyInstaller",
+          "url": "https://github.com/pyinstaller/pyinstaller",
+          "subport": "desktop_packager",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 4
+          },
+          "approach": "Gerar executável standalone por plataforma",
+          "next_gate": "Provar build Windows e Linux + artefato assinado",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS044",
+          "name": "Nuitka",
+          "url": "https://github.com/Nuitka/Nuitka",
+          "subport": "desktop_packager",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 4
+          },
+          "approach": "Compilar app Python em executáveis; exige toolchain",
+          "next_gate": "Comparar tamanho/tempo cold-start/CI com PyInstaller",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS045",
+          "name": "BeeWare Briefcase",
+          "url": "https://github.com/beeware/briefcase",
+          "subport": "android_packager",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Pacotes Android/Windows/Linux; GUI Web atual precisaria container",
+          "next_gate": "APK experimental sem duplicar indexador",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS046",
+          "name": "PEX",
+          "url": "https://github.com/pex-tool/pex",
+          "subport": "cli_installer",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Ambiente Python executável empacotado, não runtime universal",
+          "next_gate": "Confrontar com pipx e uv tool install",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS047",
+          "name": "Termux packages",
+          "url": "https://github.com/termux/termux-packages",
+          "subport": "android_packager",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Empacotamento Android via Termux e dependências nativas",
+          "next_gate": "Pin de versões e instalação limpa em Android arm64",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
+    },
+    {
+      "id": "sync",
+      "title": "Sincronização e colaboração",
+      "objective": "Múltiplos aparelhos, alterações concorrentes em etiquetas e decisões humanas",
+      "existing_evidence": "Fase2 pesquisou CRDT e browsers; nenhuma replicação de conversa bruta homologada",
+      "observed_state": "research_open",
+      "gate": "Immutable raw, sync only annotations, explicit conflict log and audit, no silent merge",
+      "candidates": [
+        {
+          "id": "OPS048",
+          "name": "Syncthing",
+          "url": "https://github.com/syncthing/syncthing",
+          "subport": "file_transport",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Transporte P2P de snapshots completos, NÃO sincronização SQLite aberto",
+          "next_gate": "Provar snapshot atômico e conflito de arquivos",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS049",
+          "name": "Automerge",
+          "url": "https://github.com/automerge/automerge",
+          "subport": "crdt_annotations",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "CRDT para notas e decisões, mantendo texto bruto imutável",
+          "next_gate": "Teste de duas edições offline, reconciliação auditável",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS050",
+          "name": "Yjs",
+          "url": "https://github.com/yjs/yjs",
+          "subport": "crdt_annotations",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "CRDT colaborativo de anotações/árvores visual",
+          "next_gate": "Sem replicar tabelas brutas nem conceder permissão por acidente",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS051",
+          "name": "RxDB",
+          "url": "https://github.com/pubkey/rxdb",
+          "subport": "browser_sync",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 4,
+            "platform_fit": 4,
+            "license_confidence": 4
+          },
+          "approach": "Camada reativa browser, plugins de sincronização",
+          "next_gate": "Provar navegador offline sem core duplicado",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS052",
+          "name": "cr-sqlite",
+          "url": "https://github.com/vlcn-io/cr-sqlite",
+          "subport": "sqlite_crdt",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 3,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 4
+          },
+          "approach": "Extensão CRDT sobre tabelas SQLite, alto risco de alterar core",
+          "next_gate": "Usar cópia e confrontar preservação de árvore",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS053",
+          "name": "ElectricSQL",
+          "url": "https://github.com/electric-sql/electric",
+          "subport": "server_sync",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 2,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Sincronização PostgreSQL/cliente, requer arquitetura servidor",
+          "next_gate": "Só avaliar após contrato de colaboração multiusuário",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 3,
+        "gap": 4,
+        "safety": 3,
+        "testability": 3
+      }
+    },
+    {
+      "id": "observability",
+      "title": "Operação, monitoria e diagnóstico",
+      "objective": "Rastrear ingestão, falhas, latência e gatilhos sem registrar conteúdo privado",
+      "existing_evidence": "Logs de CI e testes de carga existem; métricas operacionais e dashboards contínuos não verificados",
+      "observed_state": "partially_covered",
+      "gate": "Trace IDs, metrics only metadata, no prompt/content/keys; CLI and API same operation ID",
+      "candidates": [
+        {
+          "id": "OPS054",
+          "name": "OpenTelemetry Python",
+          "url": "https://github.com/open-telemetry/opentelemetry-python",
+          "subport": "instrumentation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Traços/medidas com API padrão e exportação configurável",
+          "next_gate": "Instrumentar duração/erro sem capturar conteúdo",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS055",
+          "name": "Prometheus",
+          "url": "https://github.com/prometheus/prometheus",
+          "subport": "metrics_collector",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 4,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Métricas de processo e séries temporais, serviço opcional",
+          "next_gate": "Provar p95 RSS/latência como stdout no perfil local",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS056",
+          "name": "Grafana",
+          "url": "https://github.com/grafana/grafana",
+          "subport": "dashboard",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 4,
+            "data_sovereignty": 4,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Painéis de operação, não motor de ingestão",
+          "next_gate": "Comparar com HTML/JSON local para não obrigar servidor",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS057",
+          "name": "Grafana Loki",
+          "url": "https://github.com/grafana/loki",
+          "subport": "log_store",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 3,
+            "data_sovereignty": 3,
+            "platform_fit": 2,
+            "license_confidence": 5
+          },
+          "approach": "Armazenamento e consulta de logs operacionais",
+          "next_gate": "Redact logs; só para implantação multiusuário",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS058",
+          "name": "Sentry",
+          "url": "https://github.com/getsentry/sentry",
+          "subport": "error_reporting",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 3,
+            "data_sovereignty": 2,
+            "platform_fit": 2,
+            "license_confidence": 3
+          },
+          "approach": "Rastreamento de exceções, telemetria externa requer opt-in",
+          "next_gate": "Proibir vazamento de conversa e avaliar self-host overhead",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS059",
+          "name": "Arize Phoenix",
+          "url": "https://github.com/Arize-ai/phoenix",
+          "subport": "llm_observability",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 3,
+            "data_sovereignty": 3,
+            "platform_fit": 3,
+            "license_confidence": 4
+          },
+          "approach": "Observabilidade de fluxos LLM/RAG opcionais",
+          "next_gate": "Evitar dependência e saída de conteúdo, apenas adapter opt-in",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
+    },
+    {
+      "id": "evaluation",
+      "title": "Avaliação e qualidade do produto",
+      "objective": "Ranking validado por corpus comum e medição do que a pessoa recupera",
+      "existing_evidence": "Fase2 já mede mecanismos e volumes; UX verifica contratos e navegação, não ensaio humano",
+      "observed_state": "partially_covered",
+      "gate": "Relevance judgments / gold IDs, no hallucinated recall claims; IR metrics with confidence intervals",
+      "candidates": [
+        {
+          "id": "OPS060",
+          "name": "ir-measures",
+          "url": "https://github.com/terrierteam/ir_measures",
+          "subport": "deterministic_ir",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Métricas TREC padrão P@k, recall, nDCG para resultados de consulta",
+          "next_gate": "Mesmo qrels para FTS5 e qualquer candidato de busca",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS061",
+          "name": "ranx",
+          "url": "https://github.com/AmenRa/ranx",
+          "subport": "deterministic_ir",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Métricas IR e comparação estatística para sistemas de recuperação",
+          "next_gate": "Testes pareados por consulta e intervalos",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS062",
+          "name": "BEIR",
+          "url": "https://github.com/beir-cellar/beir",
+          "subport": "retrieval_benchmark",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Datasets de IR heterogêneos, não substituem corpus Cha2db",
+          "next_gate": "Reproduzir baseline com mensagens PT-BR e semântica do chat",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS063",
+          "name": "Hypothesis",
+          "url": "https://github.com/HypothesisWorks/hypothesis",
+          "subport": "property_testing",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 5,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Gerar invariantes para import/corpus/export e evitar fixtures fáceis",
+          "next_gate": "Reimportação idempotente, ciclos, IDs, mensagens nulas",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS064",
+          "name": "promptfoo",
+          "url": "https://github.com/promptfoo/promptfoo",
+          "subport": "llm_eval",
+          "scores": {
+            "core_fit": 4,
+            "adapter_fit": 4,
+            "data_sovereignty": 3,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Testes/red team de LLM somente quando existir porta opcional",
+          "next_gate": "Não chamar LLM real nos gates determinísticos",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS065",
+          "name": "Ragas",
+          "url": "https://github.com/explodinggradients/ragas",
+          "subport": "llm_eval",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 3,
+            "data_sovereignty": 3,
+            "platform_fit": 3,
+            "license_confidence": 5
+          },
+          "approach": "Métricas RAG com julgamento de modelo, não IR determinístico",
+          "next_gate": "Separar métrica LLM de evidência indexada",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 5,
+        "gap": 4,
+        "safety": 4,
+        "testability": 5
+      }
+    },
+    {
+      "id": "human_review",
+      "title": "Governança humana do conhecimento",
+      "objective": "Aceitar, rejeitar, versionar e explicar ligações inferidas",
+      "existing_evidence": "SKOS parcial com relações de fonte; ainda sem workflow de aprovação multiusuário",
+      "observed_state": "not_yet_implemented",
+      "gate": "Candidate -> human review -> accepted/rejected -> provenance -> undo without rewriting originals",
+      "candidates": [
+        {
+          "id": "OPS066",
+          "name": "Label Studio",
+          "url": "https://github.com/HumanSignal/label-studio",
+          "subport": "human_annotation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Interface pronta de revisão/rotulagem de textos e relações",
+          "next_gate": "Confrontar fila e export JSON com contrato candidate/approval",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS067",
+          "name": "doccano",
+          "url": "https://github.com/doccano/doccano",
+          "subport": "human_annotation",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Anotação de textos, entidades e relações por humanos",
+          "next_gate": "Provar revisão sem inferir relações automáticas",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS068",
+          "name": "DVC",
+          "url": "https://github.com/iterative/dvc",
+          "subport": "data_lineage",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 4,
+            "data_sovereignty": 5,
+            "platform_fit": 4,
+            "license_confidence": 5
+          },
+          "approach": "Versionar corpora e resultados de testes por hash",
+          "next_gate": "Só fixtures sintéticas em CI, dados privados fora de GitHub",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS069",
+          "name": "DataHub",
+          "url": "https://github.com/datahub-project/datahub",
+          "subport": "governance_catalog",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 2,
+            "data_sovereignty": 4,
+            "platform_fit": 2,
+            "license_confidence": 5
+          },
+          "approach": "Catálogo de metadados e linhagem, exige serviços extras",
+          "next_gate": "Comparar contra manifesto JSON local antes de instalar",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS070",
+          "name": "OpenMetadata",
+          "url": "https://github.com/open-metadata/OpenMetadata",
+          "subport": "governance_catalog",
+          "scores": {
+            "core_fit": 3,
+            "adapter_fit": 2,
+            "data_sovereignty": 4,
+            "platform_fit": 2,
+            "license_confidence": 5
+          },
+          "approach": "Plataforma de catálogo/linhagem empresarial",
+          "next_gate": "Avaliar se equipe grande justifica overhead",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        },
+        {
+          "id": "OPS071",
+          "name": "Datasette",
+          "url": "https://github.com/simonw/datasette",
+          "subport": "read_only_audit",
+          "scores": {
+            "core_fit": 5,
+            "adapter_fit": 5,
+            "data_sovereignty": 4,
+            "platform_fit": 5,
+            "license_confidence": 5
+          },
+          "approach": "Leitor SQL e auditoria visual de bases SQLite com plugins",
+          "next_gate": "Servir apenas fixtures ou views filtradas, nunca expor dados crus",
+          "source_level": "primary_repo_identified",
+          "execution_status": "NOT_TESTED_IN_PRODUCT_ROUND",
+          "adoption_status": "RESEARCH_ONLY"
+        }
+      ],
+      "priority_hypothesis": {
+        "impact": 4,
+        "gap": 5,
+        "safety": 4,
+        "testability": 4
+      }
+    }
+  ],
+  "front_priority": {
+    "weights": {
+      "impact": 40,
+      "gap": 25,
+      "safety": 25,
+      "testability": 10
+    },
+    "notes": "preliminary product-facing gate priority, independent from technical candidate suitability"
+  }
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cha2db · Mapa de produto e adoção</title>
+<style>
+:root{color-scheme:dark;--bg:#091321;--panel:#17283d;--line:#385069;--ink:#ebf2fb;--muted:#b0c3d8;--accent:#93c3ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,Segoe UI,sans-serif}
+a{color:var(--accent)}button,select,input{font:inherit;color:var(--ink);border:1px solid #617d9f;background:#192f48;border-radius:8px;padding:9px}
+button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #a7ceff;outline-offset:2px}
+header{background:linear-gradient(135deg,#1b3655,#101a2c);padding:30px clamp(16px,3.5vw,50px);border-bottom:1px solid var(--line)}
+h1{font-size:clamp(25px,3vw,37px);line-height:1.2;margin:6px 0 12px}
+header p{max-width:850px;color:#c9d9ed;font-size:16px}
+h2{font-size:21px;margin:0 0 5px}h3{font-size:17px;margin:2px 0}
+main{max-width:1550px;margin:auto;padding:24px clamp(14px,3.5vw,48px)}
+.metricrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.metric{min-width:135px;padding:12px 19px;border:1px solid #506581;background:#1c3651;border-radius:11px}
+.metric strong{font-size:24px;display:block;font-variant-numeric:tabular-nums}.metric small{color:#bccce0}
+.intro{margin-bottom:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:15px}
+.intro input{min-width:220px;width:300px;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:15px}
+.card{background:var(--panel);border:1px solid var(--line);padding:19px;border-radius:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card:hover{border-color:#5d83b1}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pill{font-size:11px;padding:4px 7px;border-radius:100px;border:1px solid #6a7b93;color:#c6d6e7;white-space:nowrap}
+.pill.partial{color:#ffe1ae;border-color:#9d7a53}
+.pill.open{color:#f9c9bb;border-color:#9c736a}
+.muted,small{color:var(--muted)}.gate{border-left:3px solid #77a8d9;padding:8px 12px;background:#203650;border-radius:0 8px 8px 0}
+.gate strong{font-size:13px}.gate p{margin:4px 0;font-size:13px}
+ol{margin:4px 0;padding-left:22px}li{padding:5px 0;font-size:13px}
+li a{font-weight:600;text-underline-offset:3px}
+li span{color:#adc1d9}
+li code{display:inline-block;padding:1px 6px;background:#243b55;border-radius:4px;font-size:11px;margin-left:4px}
+.more{display:none}.expanded .more{display:list-item}
+.openall{align-self:flex-start;margin-top:auto}
+.sources{margin-top:40px;border-top:1px solid var(--line);padding-top:25px}
+.sources a{display:block;margin-bottom:8px}
+.warning{background:#1d2e45;border:1px solid #536781;border-radius:10px;padding:16px}
+#message{margin-bottom:16px}
+@media(max-width:740px){header{padding:22px 15px}main{padding:16px}.card{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+<div class="muted" style="text-transform:uppercase;letter-spacing:.16em;font-size:11px">Cha2db · pesquisa comparativa transversal</div>
+<h1>Mapa de maturidade e alternativas do produto</h1>
+<p>Do arquivo de conversas à operação completa: captura, qualidade, reparo, backup, privacidade, permissões, integração, instalação, sincronização, monitoria, avaliação e revisão humana. O núcleo SQLite/FTS5 permanece inalterado.</p>
+<div class="metricrow" id="metrics"></div>
+</header>
+<main>
+<div class="intro">
+<div><h2>Prioridade das próximas provas</h2>
+<p class="muted">Cada categoria traz um ranking apenas entre alternativas da mesma frente. Os números expressam hipóteses de adequação, não desempenho medido.</p></div>
+<input id="search" type="search" placeholder="Buscar frente, produto ou porta" aria-label="Filtrar frentes e candidatos">
+</div>
+<div id="message" role="status" aria-live="polite"></div>
+<div class="grid" id="fronts"></div>
+<section class="sources" id="product-sources">
+<h2>Inventários anteriores e critérios</h2>
+<div class="warning">Fase 2 e UX possuem seus próprios rankings e testes. Um candidato que reaparece neste painel mantém a referência ao inventário original; ele não é contado como uma descoberta inédita. Todos os candidatos desta nova rodada estão classificados como <strong>não testados nesta frente</strong>.</div>
+<p><a href="https://github.com/cha2db/fork-ricoeur/blob/main/_dev/PHASE2_DISCOVERY_VERDICT_R14.md" target="_blank" rel="noopener noreferrer">Fase 2 — 207 candidatos: armazenamento, busca, importação e memória</a></p>
+<p><a href="https://github.com/cha2db/fork-ricoeur/blob/main/_dev/PHASE2_DISCOVERY_PRESCREEN_R15.md" target="_blank" rel="noopener noreferrer">Fase 2 — triagem de novos candidatos R15</a></p>
+<p><a href="/#credits">UX — 46 candidatos: interfaces, organização e visualização</a></p>
+<p><a href="https://github.com/cha2db/fork-ricoeur/blob/feat/ux-cli-gui-p1-0003/product_lab/fronts.json" target="_blank" rel="noopener noreferrer">Manifesto de ranking desta frente (contratos e links)</a></p>
+<p class="muted">Pesos de adequação do candidato: core 35%, adapter 25%, soberania dos dados 20%, plataforma 10%, licença 10%. Prioridade da frente: impacto 40%, lacuna 25%, segurança 25%, testabilidade 10%. Licenças e funcionalidades não foram homologadas por esta pontuação.</p>
+</section>
+</main>
+<script src="/nav.js" defer></script>
+<script>
+(() => {
+"use strict";
+const $=id=>document.getElementById(id);
+const mk=(tag,text,parent,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;if(parent)parent.append(n);return n};
+let catalog=null,filter="";
+function tile(n,label){let e=mk("div",null,$("metrics"),"metric");mk("strong",n,e);mk("small",label,e)}
+function draw(){
+  $("fronts").replaceChildren();
+  const rows=catalog.front_ranking.filter(g=>(g.title+" "+g.objective+" "+g.candidates.map(c=>c.name+" "+c.subport).join(" ")).toLowerCase().includes(filter));
+  if(!rows.length)mk("p","Sem frentes correspondentes.",$("fronts"));
+  rows.forEach((f,i)=>{
+    const card=mk("section",null,$("fronts"),"card");card.id="front-"+f.id;
+    const head=mk("div",null,card,"head");
+    mk("h3",(i+1)+". "+f.title,head);
+    mk("span",f.priority_preliminary+"/100 · prioridade",head,"pill");
+    const state=f.observed_state==="partially_covered"?"Cobertura parcial":
+      f.observed_state==="not_yet_implemented"?"Ainda não implementada":"Pesquisa em andamento";
+    mk("span",state,card,"pill "+(f.observed_state==="partially_covered"?"partial":"open"));
+    mk("p",f.objective,card);
+    const evidence=mk("small","Base existente: "+f.existing_evidence,card);
+    const gate=mk("div",null,card,"gate");mk("strong","Próxima prova de valor",gate);mk("p",f.gate,gate);
+    mk("small",f.candidate_count+" candidatos · "+f.new_to_inventories+" novas URLs nestes inventários · "+f.previously_catalogued+" já vistos",card);
+    const lists=mk("div",null,card);
+    for(const group of f.comparison_groups){
+      const title=mk("div",group.subport+" · "+group.candidate_count+" alternativa(s)",lists,"muted");
+      title.style.fontSize="12px";title.style.marginTop="10px";
+      const list=mk("ol",null,lists);
+      group.candidates.forEach((c,idx)=>{
+        const li=mk("li",null,list,idx>=1?"more":"");
+        const a=mk("a",c.name,li);a.href=c.url;a.rel="noopener noreferrer";a.target="_blank";a.referrerPolicy="no-referrer";
+        mk("code",c.priority_preliminary+"/100",li);
+        mk("span"," · "+(c.prior_surveys.length?"Já visto: "+c.prior_surveys.join(", "):"Novo neste catálogo"),li);
+        const info=mk("details",null,li);
+        mk("summary","Contrato e próximo teste",info);
+        mk("p",c.approach,info);mk("p",c.next_gate,info);
+        mk("small","Fonte: "+c.source_level+" · Ainda não homologado · Licença a verificar por componente",info);
+      });
+    }
+    if(f.comparison_groups.some(g=>g.candidate_count>1)){
+      const button=mk("button","Exibir todos os "+f.candidate_count+" candidatos",card,"openall");
+      button.type="button";button.setAttribute("aria-expanded","false");
+      button.onclick=()=>{
+        const on=card.classList.toggle("expanded");
+        button.setAttribute("aria-expanded",String(on));
+        button.textContent=on?"Recolher":"Exibir todos os "+f.candidate_count+" candidatos";
+      };
+    }
+  });
+}
+$("search").oninput=e=>{filter=e.target.value.trim().toLowerCase();if(catalog)draw()};
+fetch("/api?action=product",{cache:"no-store"}).then(r=>r.json()).then(r=>{
+  if(r.status!=="ok")throw Error((r.errors||[]).join("; "));
+  catalog=r.data;
+  const coverage=catalog.source_coverage;
+  $("metrics").replaceChildren();
+  tile(catalog.front_count,"frentes");
+  tile(catalog.candidate_count,"comparações por contrato");
+  tile(catalog.new_to_existing_inventories,"URLs novas nos inventários");
+  tile(catalog.overlapping_existing_inventories,"já catalogadas");
+  $("message").textContent=coverage.phase2_r14.present?
+      "Confronto completo: Fase 2 R10 + R14 + UX.":
+      "Confronto PARCIAL nesta branch: a expansão R14 está apenas na main. PR deverá executar sobre checkout integrado.";
+  draw();
+}).catch(err=>$("message").textContent="Falha ao carregar o ranking: "+err.message);
+})();
+</script>
+</body>
+</html>

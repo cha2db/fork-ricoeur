@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cha2db · UX Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#152238;--line:#32445e;--ink:#e7edf7;--sub:#aebed1;--accent:#79baff}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);font:15px system-ui,Segoe UI,sans-serif;margin:0}
+header{background:#101e32;padding:13px 18px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+header strong{font-size:1.1rem}small,.muted{color:var(--sub)}main{padding:12px;display:grid;grid-template-columns:minmax(250px,34%) minmax(0,1fr);gap:12px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:end;margin-bottom:10px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--sub);flex:1;min-width:105px}
+button,input,select{border-radius:6px;padding:9px;font:inherit}button{background:#243c58;border:1px solid #55708f;color:var(--ink);cursor:pointer}
+button:hover,button:focus-visible{border-color:var(--accent);background:#345375}button:disabled{opacity:.5;cursor:wait}
+input,select{background:#0b1626;color:var(--ink);border:1px solid #53637c;max-width:100%;width:100%}
+h1,h2{font-size:1.1rem}h2{margin:4px 0 10px}.item{display:block;text-align:left;width:100%;margin:6px 0;white-space:normal;overflow-wrap:anywhere}
+article{padding:12px 0;border-top:1px solid var(--line)}article:target,.selected-message{background:#28415c;outline:1px solid var(--accent)}
+article .body{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:8px}
+#results{max-height:calc(100vh - 270px);overflow-y:auto}#detail{max-height:calc(100vh - 140px);overflow-y:auto}
+#graphArea{display:none}#network{width:100%;height:440px;border:1px solid var(--line);border-radius:8px}
+#graphSvg{width:100%;height:440px;border:1px solid var(--line)}
+#evidence{padding:10px 0;color:var(--sub)}#status{min-height:22px;margin:4px 0}
+code{color:#a6e3b8}a{color:var(--accent)}
+@media(max-width:760px){main{display:block}section{margin:0 0 12px}#results,#detail{max-height:none}header{display:block}}
+</style>
+</head>
+<body>
+<header><strong>Cha2db · laboratório UX</strong> <a href="/">Painel central</a> <a href="/knowledge">Observatório temporal / termos</a><small>Ricoeur SQLite/FTS5 · contratos JSON · leitura local</small></header>
+<main>
+<section>
+ <div class="controls">
+  <label>Consulta<input id="query" placeholder="Assunto, termo ou expressão" autocomplete="off"></label>
+  <label>Plataforma<input id="platform" placeholder="Todas (ou chatgpt)"></label>
+  <label>Interpretação<select id="syntax"><option value="literal">Texto literal</option><option value="fts5">Expressão FTS5</option></select></label>
+ </div>
+ <div class="controls">
+  <button id="search" type="button">Busca por mensagem</button>
+  <button id="recent" type="button">Conversas recentes</button>
+  <button id="showGraph" type="button">Grafo da consulta</button>
+ </div>
+ <div id="status" role="status" aria-live="polite"></div>
+ <div id="results"></div>
+</section>
+<section>
+ <div id="detail"><p>Selecione uma conversa ou resultado de busca para abrir a transcrição.</p></div>
+ <div id="graphArea">
+  <h2>Grafo de resultados com evidências</h2>
+  <p class="muted">As arestas representam somente mensagens recuperadas por FTS5. Não significam correlação semântica entre assuntos.</p>
+  <div id="network" hidden></div>
+  <svg id="graphSvg" viewBox="0 0 720 440" role="img" aria-label="Grafo de consulta e conversas"></svg>
+  <p><button id="enableVis" type="button">Ativar vis-network (experimental, requer internet)</button></p>
+  <small>Modo padrão usa SVG local. Ativar a biblioteca externa carrega JavaScript de um CDN; não recomendado para bases sensíveis.</small>
+  <div id="evidence"></div>
+  <div id="graphItems"></div>
+ </div>
+</section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const el = (tag, text, parent, cls='') => { const n=document.createElement(tag);n.textContent=String(text??'');if(cls)n.className=cls;parent.append(n);return n; };
+const state={graph:null,vis:false,network:null};
+async function api(action, params={}){
+  const u=new URL('/api',location.href);u.searchParams.set('action',action);
+  Object.entries(params).forEach(([k,v])=>{if(v!==undefined&&v!==null)u.searchParams.set(k,String(v))});
+  const r=await fetch(u);const j=await r.json();if(!r.ok||j.status!=='ok')throw Error((j.errors||[]).join(', ')||'api_error');
+  return j.data;
+}
+const args=()=>({query:$('query').value.trim(),platform:$('platform').value.trim(),syntax:$('syntax').value,limit:50});
+function status(text){$('status').textContent=text}
+function display(type){
+  $('detail').style.display=type==='graph'?'none':'block';
+  $('graphArea').style.display=type==='graph'?'block':'none';
+}
+function resultButton(label,description,parent,callback){
+  const b=el('button',label,parent,'item');b.type='button';b.onclick=callback;
+  if(description)el('small',description,b);
+  return b;
+}
+async function showTranscript(id,messageId){
+  const d=await api('transcript',{id});
+  display('transcript');$('detail').replaceChildren();
+  el('h2',d.conversation.title||id,$('detail'));
+  el('small',[(d.conversation.platform||'?'),(d.conversation.created_at||'?'),(d.conversation.source_path||'')].filter(Boolean).join(' · '),$('detail'));
+  for(const m of d.messages){
+    const article=el('article','',$('detail'));article.id='message-'+m.id;
+    el('strong',m.role+' · '+(m.timestamp||'sem data'),article);
+    el('div',m.content??'',article,'body');
+    const nav=el('div','',article);
+    if(m.previous_id)resultButton('Anterior','',nav,()=>focusMessage(m.previous_id));
+    if(m.next_id)resultButton('Próxima','',nav,()=>focusMessage(m.next_id));
+  }
+  if(messageId)requestAnimationFrame(()=>focusMessage(messageId));
+}
+function focusMessage(id){
+  document.querySelectorAll('.selected-message').forEach(n=>n.classList.remove('selected-message'));
+  const n=$('message-'+id);if(n){n.classList.add('selected-message');n.scrollIntoView({block:'center'})}
+}
+async function loadRecent(){
+  const rows=await api('conversations',{platform:$('platform').value.trim(),limit:50});
+  $('results').replaceChildren();display('transcript');
+  status(rows.length+' conversas recentes');
+  for(const c of rows)resultButton(c.title||c.id,c.platform+' · '+(c.created_at||''),$('results'),()=>showTranscript(c.id).catch(report));
+}
+async function loadSearch(){
+  const a=args();if(!a.query){status('Informe uma consulta.');return}
+  const d=await api('search',a);
+  $('results').replaceChildren();display('transcript');
+  status(d.count+' mensagens recuperadas · '+d.engine+' · '+d.syntax);
+  for(const hit of d.hits){
+    const m=hit.message,c=hit.conversation;
+    resultButton((c.title||c.id)+' · '+m.role,
+      (m.content||'').slice(0,220)+' · ID: '+m.id,$('results'),
+      ()=>showTranscript(c.id,m.id).catch(report));
+  }
+}
+function graphEvidence(edge){
+  $('evidence').replaceChildren();
+  if(!edge){el('p','Selecione uma ligação para consultar as mensagens que a justificam.',$('evidence'));return}
+  el('strong','Evidência FTS5 · '+edge.evidence_message_ids.length+' mensagem(ns)',$('evidence'));
+  edge.evidence_message_ids.forEach(id=>resultButton('Mensagem '+id,'',$('evidence'),
+    ()=>showTranscript(edge.target,id).catch(report)));
+}
+function svgGraph(d){
+  const s=$('graphSvg');s.replaceChildren();s.hidden=false;
+  $('network').hidden=true;
+  if(!d.nodes.length){el('p','Consulta sem resultados para grafo.',$('evidence'));return}
+  const ns='http://www.w3.org/2000/svg';
+  const nodes=d.nodes.slice(0,31);
+  const positions=new Map(nodes.map((n,i)=>[n.id,
+    n.type==='query'?[360,220]:[360+260*Math.cos((i-1)*2*Math.PI/Math.max(1,nodes.length-1)),
+                                220+165*Math.sin((i-1)*2*Math.PI/Math.max(1,nodes.length-1))]]));
+  for(const edge of d.edges){
+    if(!positions.has(edge.source)||!positions.has(edge.target))continue;
+    const a=positions.get(edge.source),b=positions.get(edge.target);
+    const line=document.createElementNS(ns,'line');
+    [['x1',a[0]],['y1',a[1]],['x2',b[0]],['y2',b[1]],['stroke','#7794ba'],['stroke-width',2]].forEach(([k,v])=>line.setAttribute(k,v));
+    line.style.cursor='pointer';line.onclick=()=>graphEvidence(edge);s.append(line);
+  }
+  for(const node of nodes){
+    const [x,y]=positions.get(node.id),group=document.createElementNS(ns,'g');
+    const circle=document.createElementNS(ns,'circle'),label=document.createElementNS(ns,'text');
+    [['cx',x],['cy',y],['r',node.type==='query'?24:13],['fill',node.type==='query'?'#eab56c':'#79baff']].forEach(([k,v])=>circle.setAttribute(k,v));
+    [['x',x+18],['y',y-12],['fill','#f3f7ff'],['font-size','11']].forEach(([k,v])=>label.setAttribute(k,v));
+    label.textContent=(node.label||node.id).slice(0,36);
+    group.append(circle,label);group.style.cursor='pointer';
+    if(node.type==='conversation')group.onclick=()=>showTranscript(node.id).catch(report);
+    s.append(group);
+  }
+}
+function drawGraph(){
+  const d=state.graph;if(!d)return;
+  if(state.vis&&window.vis?.Network){
+    $('graphSvg').hidden=true;$('network').hidden=false;
+    if(state.network)state.network.destroy();
+    const data={nodes:new vis.DataSet(d.nodes.map(n=>({id:n.id,label:n.label,
+      shape:n.type==='query'?'diamond':'dot',color:n.type==='query'?'#eab56c':'#79baff'}))),
+      edges:new vis.DataSet(d.edges.map((e,i)=>({id:i,from:e.source,to:e.target,
+      title:'FTS5: '+e.evidence_message_ids.join(', ')})))};
+    state.network=new vis.Network($('network'),data,{interaction:{hover:true},
+      physics:{stabilization:true},edges:{color:'#7794ba'},nodes:{font:{color:'#e7edf7'}}});
+    state.network.on('click',p=>{
+      if(p.edges.length)graphEvidence(d.edges[p.edges[0]]);
+      else if(p.nodes.length&&p.nodes[0]!=='query')showTranscript(p.nodes[0]).catch(report);
+    });
+  }else svgGraph(d);
+}
+async function loadGraph(){
+  const a=args();if(!a.query){status('Informe uma consulta para gerar relações com evidência.');return}
+  state.graph=await api('graph',a);
+  $('graphItems').replaceChildren();graphEvidence(null);display('graph');drawGraph();
+  for(const n of state.graph.nodes.filter(x=>x.type==='conversation')){
+    resultButton(n.label,n.platform,$('graphItems'),()=>showTranscript(n.id).catch(report));
+  }
+  status(state.graph.edges.length+' conversas com evidência; sem inferência semântica');
+}
+function report(error){status('Erro: '+error.message)}
+$('search').onclick=()=>loadSearch().catch(report);
+$('recent').onclick=()=>const deepLink=new URLSearchParams(location.search);
+if(deepLink.has('conv'))showTranscript(deepLink.get('conv'),deepLink.get('msg')||undefined).catch(report);
+else loadRecent().catch(report);
+$('showGraph').onclick=()=>loadGraph().catch(report);
+$('query').addEventListener('keydown',event=>{if(event.key==='Enter')loadSearch().catch(report)});
+$('enableVis').onclick=()=>{
+  if(state.vis)return;
+  if(!confirm('Carregar biblioteca JavaScript externa? Não recomendado com conversas sensíveis.'))return;
+  const script=document.createElement('script');
+  script.src='https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js';
+  script.onload=()=>{state.vis=Boolean(window.vis?.Network);if(state.vis){drawGraph();status('Grafo vis-network ativo')}else status('Biblioteca indisponível; SVG mantido')};
+  script.onerror=()=>status('Falha no CDN; SVG local permanece');
+  document.head.append(script);
+};
+loadRecent().catch(report);
+</script>
+<script src="/nav.js" defer></script>
+</body>
+</html>
