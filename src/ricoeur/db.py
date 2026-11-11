@@ -7,8 +7,9 @@ from pathlib import Path
 from typing import Optional
 
 from .config import get_home
+from .importers.branch_index import SCHEMA_SQL as BRANCH_SCHEMA_SQL, backfill_existing
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS conversations (
@@ -120,6 +121,9 @@ CREATE INDEX IF NOT EXISTS idx_conversations_project ON conversations(project);
 CREATE INDEX IF NOT EXISTS idx_code_blocks_msg ON code_blocks(msg_id);
 CREATE INDEX IF NOT EXISTS idx_code_blocks_lang ON code_blocks(language);
 """
+
+# Additive v3 projection, selected-path messages remain in the legacy tables.
+SCHEMA_SQL += BRANCH_SCHEMA_SQL
 
 
 def db_path(home: Optional[Path] = None) -> Path:
@@ -233,6 +237,12 @@ def migrate(conn: sqlite3.Connection) -> int:
                 ON conversations(project);
             """
         )
+
+    if version < 3:
+        # No destructive schema changes: keep the original raw ChatGPT tree and
+        # selected message rows. Backfill only nonselected nodes to a derived FTS.
+        conn.executescript(BRANCH_SCHEMA_SQL)
+        backfill_existing(conn)
 
     conn.execute(
         "INSERT OR REPLACE INTO schema_meta(key, value) VALUES (?, ?)",
