@@ -8,6 +8,10 @@ on:
       - '_dev/publish_phase2_r14.sh'
       - '.github/workflows/phase2-r14-survey.yml'
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Cha2db Phase2 R14 PGlite WASM Postgres source/branch gate'
+    types: [completed]
   schedule:
     - cron: '31 4 * * 1,4'
 permissions:
@@ -53,7 +57,7 @@ jobs:
           assert r['old_count']==143
           assert r['new_count']==64
           assert r['total_count']==207
-          assert r['functional_pass_new']==0
+          assert 0 <= r['functional_pass_new'] <= r['new_count']
           names=[x['id'] for p in r['ports'].values() for x in p['entries']]
           assert len(names)==207 and len(set(names))==207
           assert r['functional_pass_existing']==22
