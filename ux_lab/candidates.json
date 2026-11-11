@@ -26,7 +26,17 @@
       "license": 5,
       "core_relation": "identical",
       "status": "implemented",
-      "notes": "Baseline; Click/Textual/SQLite FTS5 already present"
+      "notes": "Baseline; Click/Textual/SQLite FTS5 already present",
+      "search_modes": [
+        "fts5",
+        "hybrid",
+        "semantic"
+      ],
+      "presentation_modes": [
+        "web-reader"
+      ],
+      "reuse_strategy": "keep-core",
+      "license_status": "verify-upstream"
     },
     {
       "id": "textual",
@@ -39,7 +49,15 @@
       "license": 5,
       "core_relation": "no replacement; existing dependency",
       "status": "adopted",
-      "notes": "Already implemented as Ricoeur TUI"
+      "notes": "Already implemented as Ricoeur TUI",
+      "search_modes": [
+        "fts5"
+      ],
+      "presentation_modes": [
+        "tui"
+      ],
+      "reuse_strategy": "keep-ui",
+      "license_status": "verify-upstream"
     },
     {
       "id": "cytoscape",
@@ -52,7 +70,15 @@
       "license": 5,
       "core_relation": "render-only; no DB/search core",
       "status": "candidate",
-      "notes": "Network discovery and graph layouts"
+      "notes": "Network discovery and graph layouts",
+      "search_modes": [
+        "graph"
+      ],
+      "presentation_modes": [
+        "graph"
+      ],
+      "reuse_strategy": "visual-driver",
+      "license_status": "verify-upstream"
     },
     {
       "id": "vueflow",
@@ -65,7 +91,15 @@
       "license": 5,
       "core_relation": "render/edit-only; no DB/search core",
       "status": "candidate",
-      "notes": "n8n-like editor; edit requirements unconfirmed"
+      "notes": "n8n-like editor; edit requirements unconfirmed",
+      "search_modes": [
+        "graph-editor"
+      ],
+      "presentation_modes": [
+        "graph"
+      ],
+      "reuse_strategy": "visual-driver",
+      "license_status": "verify-upstream"
     },
     {
       "id": "visnetwork",
@@ -78,7 +112,15 @@
       "license": 5,
       "core_relation": "render-only; no DB/search core",
       "status": "candidate",
-      "notes": "Lightweight integration proof"
+      "notes": "Lightweight integration proof",
+      "search_modes": [
+        "graph"
+      ],
+      "presentation_modes": [
+        "graph"
+      ],
+      "reuse_strategy": "visual-driver",
+      "license_status": "verify-upstream"
     },
     {
       "id": "sigma",
@@ -91,7 +133,15 @@
       "license": 5,
       "core_relation": "render-only; no DB/search core",
       "status": "candidate",
-      "notes": "WebGL large graph; requires Graphology"
+      "notes": "WebGL large graph; requires Graphology",
+      "search_modes": [
+        "graph-large"
+      ],
+      "presentation_modes": [
+        "graph"
+      ],
+      "reuse_strategy": "visual-driver",
+      "license_status": "verify-upstream"
     },
     {
       "id": "g6",
@@ -104,7 +154,15 @@
       "license": 5,
       "core_relation": "render-only; no DB/search core",
       "status": "candidate",
-      "notes": "Rich graph layouts; integration untested"
+      "notes": "Rich graph layouts; integration untested",
+      "search_modes": [
+        "graph"
+      ],
+      "presentation_modes": [
+        "graph"
+      ],
+      "reuse_strategy": "visual-driver",
+      "license_status": "verify-upstream"
     },
     {
       "id": "chatvault",
@@ -117,7 +175,16 @@
       "license": 4,
       "core_relation": "own SQLite schema and branch resolver; no equivalence proved",
       "status": "candidate",
-      "notes": "Reader, branches and timeline; inspect component isolation"
+      "notes": "Reader, branches and timeline; inspect component isolation",
+      "search_modes": [
+        "fts5",
+        "branch"
+      ],
+      "presentation_modes": [
+        "web-reader"
+      ],
+      "reuse_strategy": "research-only",
+      "license_status": "verify-upstream"
     },
     {
       "id": "kept",
@@ -130,7 +197,16 @@
       "license": 4,
       "core_relation": "CozoDB/Markdown vault; different storage model",
       "status": "candidate",
-      "notes": "App-level chat archive/graph; potential UI reuse, not core swap"
+      "notes": "App-level chat archive/graph; potential UI reuse, not core swap",
+      "search_modes": [
+        "fts5",
+        "graph"
+      ],
+      "presentation_modes": [
+        "web-reader"
+      ],
+      "reuse_strategy": "research-only",
+      "license_status": "verify-upstream"
     },
     {
       "id": "msgvault",
@@ -143,7 +219,15 @@
       "license": 3,
       "core_relation": "message archive schema unverified",
       "status": "candidate",
-      "notes": "Messaging archive, not proven AI chat branches"
+      "notes": "Messaging archive, not proven AI chat branches",
+      "search_modes": [
+        "keyword"
+      ],
+      "presentation_modes": [
+        "web-reader"
+      ],
+      "reuse_strategy": "research-only",
+      "license_status": "verify-upstream"
     },
     {
       "id": "khoj",
@@ -156,7 +240,398 @@
       "license": 3,
       "core_relation": "different AI assistant/search stack",
       "status": "candidate",
-      "notes": "High coupling; not default for human-first deterministic core"
+      "notes": "High coupling; not default for human-first deterministic core",
+      "search_modes": [
+        "semantic"
+      ],
+      "presentation_modes": [
+        "web-reader"
+      ],
+      "reuse_strategy": "research-only",
+      "license_status": "verify-upstream"
+    },
+    {
+      "id": "llmchatsarchive",
+      "name": "LLM Chats Archive",
+      "category": "app-web",
+      "url": "https://github.com/nuxdie/llm-chats-archive",
+      "core": 3,
+      "ui": 5,
+      "adapter": 4,
+      "license": 4,
+      "core_relation": "Python/FastAPI/SQLite FTS5; unknown data schema",
+      "status": "candidate",
+      "search_modes": [
+        "literal",
+        "fts5",
+        "filters"
+      ],
+      "presentation_modes": [
+        "split-pane",
+        "highlight",
+        "attachments"
+      ],
+      "reuse_strategy": "adapter-rest",
+      "license_status": "MIT-unverified",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "centralchat",
+      "name": "CentralChat",
+      "category": "app-web",
+      "url": "https://github.com/daveonkels/centralchat",
+      "core": 3,
+      "ui": 5,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "Python/FastAPI/SQLite FTS5; unknown data schema",
+      "status": "candidate",
+      "search_modes": [
+        "fts5",
+        "operators",
+        "filters"
+      ],
+      "presentation_modes": [
+        "split-pane",
+        "shortcuts",
+        "deep-links"
+      ],
+      "reuse_strategy": "adapter-rest",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "threadshelf",
+      "name": "ThreadShelf",
+      "category": "app-web",
+      "url": "https://github.com/ChrystianSchutz/ThreadShelf",
+      "core": 2,
+      "ui": 5,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "LanceDB, different storage/search; CLI+HTTP+MCP contract similar",
+      "status": "candidate",
+      "search_modes": [
+        "semantic",
+        "exact",
+        "hybrid"
+      ],
+      "presentation_modes": [
+        "web-reader",
+        "preview",
+        "continuation"
+      ],
+      "reuse_strategy": "interface-contract",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "threadline",
+      "name": "Threadline",
+      "category": "extension-graph",
+      "url": "https://github.com/terra901/Threadline",
+      "core": 1,
+      "ui": 5,
+      "adapter": 2,
+      "license": 3,
+      "core_relation": "IndexedDB + browser graph; not Ricoeur SQLite",
+      "status": "candidate",
+      "search_modes": [
+        "semantic",
+        "branch-navigation"
+      ],
+      "presentation_modes": [
+        "branch-graph",
+        "extension"
+      ],
+      "reuse_strategy": "ui-only",
+      "license_status": "unverified",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "chatsearch",
+      "name": "ChatSearch",
+      "category": "extension-search",
+      "url": "https://github.com/AaronBergman/chatsearch",
+      "core": 2,
+      "ui": 5,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "browser local indexes; different search core",
+      "status": "candidate",
+      "search_modes": [
+        "substring",
+        "fuzzy",
+        "semantic",
+        "filters"
+      ],
+      "presentation_modes": [
+        "preview",
+        "jump-to-match",
+        "extension"
+      ],
+      "reuse_strategy": "search-ux",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "agenthistory",
+      "name": "Agent History",
+      "category": "tui",
+      "url": "https://github.com/Tien-Lam/agent-history",
+      "core": 2,
+      "ui": 4,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "Rust/Tantivy; different core, stable message citations",
+      "status": "candidate",
+      "search_modes": [
+        "bm25",
+        "hybrid",
+        "filters"
+      ],
+      "presentation_modes": [
+        "tui",
+        "cli",
+        "stable-citations"
+      ],
+      "reuse_strategy": "contract-only",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "contextflow",
+      "name": "ContextFlow",
+      "category": "extension-graph",
+      "url": "https://github.com/Cynthia387/contextflow",
+      "core": 2,
+      "ui": 5,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "React Flow/IndexedDB graph; different storage",
+      "status": "candidate",
+      "search_modes": [
+        "in-thread-search",
+        "branch-navigation"
+      ],
+      "presentation_modes": [
+        "graph",
+        "timeline",
+        "sidebar"
+      ],
+      "reuse_strategy": "ui-only",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "aichathistory",
+      "name": "AI Chat History Manager",
+      "category": "app-web",
+      "url": "https://github.com/jetpack3331/ai-chat-history-manager",
+      "core": 3,
+      "ui": 3,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "Python ingestion and SQLite FTS5; schema differs, Next.js UI",
+      "status": "candidate",
+      "search_modes": [
+        "fts5",
+        "filters"
+      ],
+      "presentation_modes": [
+        "cards",
+        "side-by-side"
+      ],
+      "reuse_strategy": "adapter-rest",
+      "license_status": "MIT",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "llmviewer",
+      "name": "LLM Conversations Viewer",
+      "category": "app-web",
+      "url": "https://github.com/TomzxCode/llm-conversations-viewer",
+      "core": 1,
+      "ui": 4,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "IndexedDB browser vault; independent core",
+      "status": "candidate",
+      "search_modes": [
+        "keyword",
+        "filters"
+      ],
+      "presentation_modes": [
+        "viewer",
+        "sidebar",
+        "export"
+      ],
+      "reuse_strategy": "ui-only",
+      "license_status": "MIT-related",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "llmexplorer",
+      "name": "LLM Chat Explorer",
+      "category": "app-web",
+      "url": "https://github.com/levysoft/llm-chat-explorer",
+      "core": 1,
+      "ui": 4,
+      "adapter": 4,
+      "license": 3,
+      "core_relation": "local JSON browser processing; no SQLite",
+      "status": "candidate",
+      "search_modes": [
+        "keyword",
+        "filters"
+      ],
+      "presentation_modes": [
+        "sidebar",
+        "viewer",
+        "theme"
+      ],
+      "reuse_strategy": "ui-only",
+      "license_status": "unverified",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "recollectviewer",
+      "name": "RecollectViewer",
+      "category": "desktop",
+      "url": "https://github.com/y-tomioka/RecollectViewer",
+      "core": 1,
+      "ui": 4,
+      "adapter": 2,
+      "license": 2,
+      "core_relation": "local Windows viewer; unknown storage and source/license constraints",
+      "status": "candidate",
+      "search_modes": [
+        "cross-provider",
+        "advanced-filters"
+      ],
+      "presentation_modes": [
+        "tree",
+        "exact-exchange"
+      ],
+      "reuse_strategy": "ux-reference",
+      "license_status": "restricted",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "aimemory",
+      "name": "AI Memory",
+      "category": "extension-search",
+      "url": "https://github.com/pairojvrh/ai-memory",
+      "core": 1,
+      "ui": 4,
+      "adapter": 2,
+      "license": 5,
+      "core_relation": "IndexedDB/WASM browser local vector; different core",
+      "status": "candidate",
+      "search_modes": [
+        "bm25",
+        "semantic",
+        "hybrid"
+      ],
+      "presentation_modes": [
+        "floating-panel",
+        "recall"
+      ],
+      "reuse_strategy": "ux-reference",
+      "license_status": "Apache-2.0",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "threadback",
+      "name": "Threadback",
+      "category": "commercial-extension",
+      "url": "https://threadback.dev/",
+      "core": 1,
+      "ui": 5,
+      "adapter": 1,
+      "license": 1,
+      "core_relation": "browser proprietary index; cannot directly adopt core",
+      "status": "candidate",
+      "search_modes": [
+        "keyword",
+        "semantic"
+      ],
+      "presentation_modes": [
+        "search-overlay",
+        "collections"
+      ],
+      "reuse_strategy": "ux-reference-only",
+      "license_status": "proprietary",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "stowlet",
+      "name": "Stowlet",
+      "category": "commercial-extension",
+      "url": "https://www.stowlet.app/",
+      "core": 1,
+      "ui": 4,
+      "adapter": 1,
+      "license": 1,
+      "core_relation": "IndexedDB proprietary browser index",
+      "status": "candidate",
+      "search_modes": [
+        "keyword",
+        "folders"
+      ],
+      "presentation_modes": [
+        "browser-sidebar"
+      ],
+      "reuse_strategy": "ux-reference-only",
+      "license_status": "proprietary",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "gpttoolkit",
+      "name": "GPT Conversation Toolkit",
+      "category": "extension-search",
+      "url": "https://github.com/bujue3709/GPT-Conversation-Toolkit",
+      "core": 1,
+      "ui": 4,
+      "adapter": 2,
+      "license": 3,
+      "core_relation": "browser ChatGPT provider, not SQLite core",
+      "status": "candidate",
+      "search_modes": [
+        "in-thread-search",
+        "filters"
+      ],
+      "presentation_modes": [
+        "timeline",
+        "sidebar",
+        "export"
+      ],
+      "reuse_strategy": "ux-reference",
+      "license_status": "unverified",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "chatgptgraph",
+      "name": "ChatGPT Graph View JS",
+      "category": "commercial-extension",
+      "url": "https://chromewebstore.google.com/detail/chatgpt-graph-view-js/lmkpaddocaikcfkmohgiajdbjjnchjhb",
+      "core": 1,
+      "ui": 4,
+      "adapter": 1,
+      "license": 1,
+      "core_relation": "browser plugin no verified source/license",
+      "status": "candidate",
+      "search_modes": [
+        "in-thread-search"
+      ],
+      "presentation_modes": [
+        "graph",
+        "tree",
+        "sidebar"
+      ],
+      "reuse_strategy": "ux-reference-only",
+      "license_status": "unverified",
+      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
     }
   ]
 }
