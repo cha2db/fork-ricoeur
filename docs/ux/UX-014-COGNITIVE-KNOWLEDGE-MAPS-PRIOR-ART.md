@@ -45,7 +45,7 @@ O projeto **já usa** Textual + FTS5. Não reimplementar motor nem substituir co
 
 **Contratos CLI/HTTP separados**, mesmos dados SQLite read-only:
 
-- `timeline --query "integração contínua" --grain month`: eixo X período, Y número de **mensagens recuperadas pelo FTS5** e conversas distintas; suporte day/month/year. A duplicação de uma palavra na mesma mensagem conta **uma mensagem**, não duas menções.
+- `timeline --query "integração contínua" --grain month`: eixo X período, Y número de **mensagens recuperadas pelo FTS5** e conversas distintas; inclui taxa normalizada por mil mensagens do período; suporte day/month/year. A duplicação de uma palavra na mesma mensagem conta **uma mensagem**, não duas menções.
 - `period --query ... --period 2026-01`: clique/drill-down com IDs de mensagens, conversas, texto/role/timestamp; paginável, sem exportação de dados privados.
 - `tagcloud --query ... --period 2026-01`: frequência **documental** de cada palavra entre as mensagens encontradas, amostra máxima de 2000, marca truncamento; não deduz sinonímia.
 - `concept "CI pipeline" --lexicon ...`: consulta vocabulário externo explicitamente aceito; conceitos e relações tipadas com fonte, sem criar tabelas nem sinônimos automáticos.
@@ -93,3 +93,7 @@ O projeto **já usa** Textual + FTS5. Não reimplementar motor nem substituir co
 GitHub PR #1 pertence à frente UX; **merge somente pelo par** quando os gates relevantes terminarem com PASS e `mergeable=true` contra HEAD corrente. `_dev/tests/ux/` e `_dev/results/ux/` continuam as únicas duas subpastas de categoria. Sem testes externos em dados privados.
 
 **Correção de expectativa:** possuir botão experimental de carregamento de lib não é adoção em produção; testes sintéticos não são benchmark real em Android; referências científicas não são prova de capacidade do software.
+
+## 7. Ajuste metodológico: crescimento do corpus
+
+A variação da contagem bruta pode refletir apenas aumento de importações. A porta `timeline` também emite `all_messages` e `rate_per_1000_messages`, calculada no mesmo recorte temporal e filtro de plataforma. O painel permite alternar entre número absoluto e taxa, sem afirmar que uma diferença temporal constitui mudança cognitiva. Esta normalização tem teste automatizado UX-014.
