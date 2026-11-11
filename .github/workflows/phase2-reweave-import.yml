@@ -4,7 +4,6 @@ on:
     branches: [main]
     paths:
       - '_dev/phase2_import_candidate.py'
-      - '_dev/publish_phase2.sh'
       - '.github/workflows/phase2-reweave-import.yml'
   workflow_dispatch:
 concurrency:
