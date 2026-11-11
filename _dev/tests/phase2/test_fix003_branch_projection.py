@@ -114,6 +114,13 @@ with tempfile.TemporaryDirectory() as td:
         ro_missing=True
     gate(ro_missing,"read adapter refuses v2 until explicitly migrated")
     migrated=get_connection(old)
+    backups=list((old/".migration-backups").glob("ricoeur-v2-*.sqlite3"))
+    gate(len(backups)==1,"verified private backup created before upgrade")
+    with sqlite3.connect(backups[0]) as snapshot:
+        gate(snapshot.execute("SELECT value FROM schema_meta WHERE key='version'").fetchone()[0]=="2",
+             "backup preserved old schema version")
+        gate(snapshot.execute("SELECT count(*) FROM chatgpt_nodes").fetchone()[0]==4,
+             "backup preserved original tree before migration")
     gate(migrated.execute("SELECT value FROM schema_meta WHERE key='version'").fetchone()[0]=="3",
          "migration to additive v3")
     hits=search_branch_messages(migrated,'"hiddenword"')
