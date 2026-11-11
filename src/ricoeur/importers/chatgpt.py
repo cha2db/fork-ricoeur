@@ -275,6 +275,8 @@ def _import_one(
         stats.messages += len(_walk_messages(conv))
         return
 
+    existing_before = conn.execute("SELECT 1 FROM conversations WHERE id=?",
+                                   (conv_id,)).fetchone()
     inserted = insert_conversation(
         conn,
         id=conv_id,
@@ -287,7 +289,10 @@ def _import_one(
     )
 
     if inserted:
-        stats.new += 1
+        if existing_before:
+            stats.updated += 1
+        else:
+            stats.new += 1
     else:
         stats.skipped += 1
         return
@@ -345,74 +350,23 @@ def _import_one(
 
 
 def _walk_messages(conv: dict[str, Any]) -> list[dict[str, Any]]:
-    """Walk the ChatGPT message tree to extract messages in order."""
-    mapping = conv.get("mapping", {})
-    if not mapping:
-        return []
+    """Extract the *selected* path only, in its original ancestry order.
 
-    # Build parent->children map and find root
-    children_map: dict[str, list[str]] = {}
-    root = None
-    for node_id, node in mapping.items():
-        parent = node.get("parent")
-        if parent is None:
-            root = node_id
-        else:
-            children_map.setdefault(parent, []).append(node_id)
-
-    if root is None:
-        return []
-
-    # ChatGPT identifies the selected leaf explicitly. Following the
-    # parent chain is more reliable than assuming the last sibling is active.
-    selected = conv.get("current_node")
-    if selected in mapping:
-        path = []
-        seen = set()
-        cursor = selected
-        while cursor in mapping and cursor not in seen:
-            seen.add(cursor)
-            path.append(cursor)
-            node = mapping[cursor]
-            if not isinstance(node, dict):
-                break
-            cursor = node.get("parent")
-            if cursor is None:
-                # Valid chain terminating at a declared root.
-                path.reverse()
-                selected_messages = []
-                for item_id in path:
-                    item = mapping[item_id]
-                    msg = item.get("message")
-                    if msg and isinstance(msg, dict) and msg.get("content"):
-                        author = msg.get("author", {})
-                        role = author.get("role", "unknown")
-                        if role in ("user", "assistant", "system", "tool"):
-                            selected_messages.append({**msg, "role": role})
-                return selected_messages
-
-    # Compatibility fallback for malformed/older exports without current_node.
+    Alternative paths are kept in chatgpt_nodes and branch FTS, never
+    silently appended to a flat conversation as sequential replies.
+    """
+    mapping = conv.get("mapping") or {}
     messages = []
-    stack = [root]
-    while stack:
-        node_id = stack.pop()
-        node = mapping.get(node_id, {})
-        msg = node.get("message")
-        if msg and msg.get("content"):
-            author = msg.get("author", {})
-            role = author.get("role", "unknown")
-            if role in ("user", "assistant", "system", "tool"):
-                messages.append({**msg, "role": role})
-
-        # Add children to stack (reversed so first child is processed first)
-        # Prefer the explicit children order from the export. Mapping insertion
-        # order is not a reliable indicator of the selected/default branch.
-        kids = node.get("children")
-        if not isinstance(kids, list):
-            kids = children_map.get(node_id, [])
-        if kids:
-            stack.append(kids[-1])
-
+    for node_id in selected_nodes(conv):
+        msg = mapping[node_id].get("message")
+        if not isinstance(msg, dict) or not msg.get("content"):
+            continue
+        author = msg.get("author") or {}
+        if not isinstance(author, dict):
+            raise ValueError("invalid ChatGPT author")
+        role = author.get("role", "unknown")
+        if role in ("user", "assistant", "system", "tool"):
+            messages.append({**msg, "role": role})
     return messages
 
 
