@@ -1,6 +1,6 @@
 # Cha2db — Fronteira de pesquisa R16
 
-Gerado (UTC): 2026-11-11T03:25:30.941804+00:00
+Gerado (UTC): 2026-11-11T03:25:59.218305+00:00
 
 **235 candidatos únicos** — 143 baseline previamente triados e 92 novas opções ainda sem testes funcionais.
 
