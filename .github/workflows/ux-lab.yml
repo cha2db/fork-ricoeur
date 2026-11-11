@@ -5,12 +5,16 @@ on:
       - feat/ux-cli-gui-p1-0003
     paths:
       - 'ux_lab/**'
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
       - '_dev/tests/ux/**'
       - 'docs/ux/**'
       - '.github/workflows/ux-lab.yml'
   pull_request:
     paths:
       - 'ux_lab/**'
+      - 'product_lab/**'
+      - '_dev/tests/product/**'
       - '_dev/tests/ux/**'
       - 'docs/ux/**'
       - '.github/workflows/ux-lab.yml'
@@ -26,7 +30,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Compile Python UX and tests
-        run: python -m compileall -q ux_lab _dev/tests/ux
+        run: python -m compileall -q ux_lab _dev/tests/ux product_lab _dev/tests/product
       - name: UX-008 CLI, FTS5 and graph
         run: bash _dev/tests/ux/teste8.sh
       - name: UX-009 existing message retrieval driver
@@ -41,3 +45,5 @@ jobs:
         run: bash _dev/tests/ux/teste14.sh
       - name: UX-015 dashboard fixed navigation and 46 upstream credits
         run: bash _dev/tests/ux/teste15.sh
+      - name: PRODUCT-016 product-wide inventory and ranking gates
+        run: bash _dev/tests/product/teste16.sh
