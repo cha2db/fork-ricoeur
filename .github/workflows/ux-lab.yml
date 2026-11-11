@@ -39,3 +39,5 @@ jobs:
         run: bash _dev/tests/ux/teste12.sh
       - name: UX-014 temporal histogram, period drilldown, lexical cloud and approved SKOS
         run: bash _dev/tests/ux/teste14.sh
+      - name: UX-015 dashboard fixed navigation and 46 upstream credits
+        run: bash _dev/tests/ux/teste15.sh
