@@ -1,0 +1,189 @@
+{
+  "candidate": "DuckDB FTS",
+  "source": "_dev/results/phase2-input.json",
+  "sha256": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "status": "PASS",
+  "documents": 1000,
+  "queries": [
+    {
+      "query": "regressão guiada",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000000-0000",
+        "fixture-cha2db-v1-m000010-0000",
+        "fixture-cha2db-v1-m000020-0000",
+        "fixture-cha2db-v1-m000030-0000",
+        "fixture-cha2db-v1-m000040-0000",
+        "fixture-cha2db-v1-m000050-0000",
+        "fixture-cha2db-v1-m000060-0000",
+        "fixture-cha2db-v1-m000070-0000",
+        "fixture-cha2db-v1-m000080-0000",
+        "fixture-cha2db-v1-m000090-0000"
+      ],
+      "latency_ms": 9.067
+    },
+    {
+      "query": "contrato declarativo",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000001-0000",
+        "fixture-cha2db-v1-m000011-0000",
+        "fixture-cha2db-v1-m000021-0000",
+        "fixture-cha2db-v1-m000031-0000",
+        "fixture-cha2db-v1-m000041-0000",
+        "fixture-cha2db-v1-m000051-0000",
+        "fixture-cha2db-v1-m000061-0000",
+        "fixture-cha2db-v1-m000071-0000",
+        "fixture-cha2db-v1-m000081-0000",
+        "fixture-cha2db-v1-m000091-0000"
+      ],
+      "latency_ms": 8.278
+    },
+    {
+      "query": "busca cruzada",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000002-0000",
+        "fixture-cha2db-v1-m000012-0000",
+        "fixture-cha2db-v1-m000022-0000",
+        "fixture-cha2db-v1-m000032-0000",
+        "fixture-cha2db-v1-m000042-0000",
+        "fixture-cha2db-v1-m000052-0000",
+        "fixture-cha2db-v1-m000062-0000",
+        "fixture-cha2db-v1-m000072-0000",
+        "fixture-cha2db-v1-m000082-0000",
+        "fixture-cha2db-v1-m000092-0000"
+      ],
+      "latency_ms": 8.66
+    },
+    {
+      "query": "pipeline Jenkins",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000003-0000",
+        "fixture-cha2db-v1-m000013-0000",
+        "fixture-cha2db-v1-m000023-0000",
+        "fixture-cha2db-v1-m000033-0000",
+        "fixture-cha2db-v1-m000043-0000",
+        "fixture-cha2db-v1-m000053-0000",
+        "fixture-cha2db-v1-m000063-0000",
+        "fixture-cha2db-v1-m000073-0000",
+        "fixture-cha2db-v1-m000083-0000",
+        "fixture-cha2db-v1-m000093-0000"
+      ],
+      "latency_ms": 8.137
+    },
+    {
+      "query": "índice B-tree",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000004-0000",
+        "fixture-cha2db-v1-m000014-0000",
+        "fixture-cha2db-v1-m000024-0000",
+        "fixture-cha2db-v1-m000034-0000",
+        "fixture-cha2db-v1-m000044-0000",
+        "fixture-cha2db-v1-m000054-0000",
+        "fixture-cha2db-v1-m000064-0000",
+        "fixture-cha2db-v1-m000074-0000",
+        "fixture-cha2db-v1-m000084-0000",
+        "fixture-cha2db-v1-m000094-0000"
+      ],
+      "latency_ms": 8.015
+    },
+    {
+      "query": "conexão SSH",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000005-0000",
+        "fixture-cha2db-v1-m000015-0000",
+        "fixture-cha2db-v1-m000025-0000",
+        "fixture-cha2db-v1-m000035-0000",
+        "fixture-cha2db-v1-m000045-0000",
+        "fixture-cha2db-v1-m000055-0000",
+        "fixture-cha2db-v1-m000065-0000",
+        "fixture-cha2db-v1-m000075-0000",
+        "fixture-cha2db-v1-m000085-0000",
+        "fixture-cha2db-v1-m000095-0000"
+      ],
+      "latency_ms": 7.863
+    },
+    {
+      "query": "Android Studio",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000006-0000",
+        "fixture-cha2db-v1-m000016-0000",
+        "fixture-cha2db-v1-m000026-0000",
+        "fixture-cha2db-v1-m000036-0000",
+        "fixture-cha2db-v1-m000046-0000",
+        "fixture-cha2db-v1-m000056-0000",
+        "fixture-cha2db-v1-m000066-0000",
+        "fixture-cha2db-v1-m000076-0000",
+        "fixture-cha2db-v1-m000086-0000",
+        "fixture-cha2db-v1-m000096-0000"
+      ],
+      "latency_ms": 7.632
+    },
+    {
+      "query": "menor privilégio",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000007-0000",
+        "fixture-cha2db-v1-m000017-0000",
+        "fixture-cha2db-v1-m000027-0000",
+        "fixture-cha2db-v1-m000037-0000",
+        "fixture-cha2db-v1-m000047-0000",
+        "fixture-cha2db-v1-m000057-0000",
+        "fixture-cha2db-v1-m000067-0000",
+        "fixture-cha2db-v1-m000077-0000",
+        "fixture-cha2db-v1-m000087-0000",
+        "fixture-cha2db-v1-m000097-0000"
+      ],
+      "latency_ms": 7.552
+    },
+    {
+      "query": "avaliação formativa",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000008-0000",
+        "fixture-cha2db-v1-m000018-0000",
+        "fixture-cha2db-v1-m000028-0000",
+        "fixture-cha2db-v1-m000038-0000",
+        "fixture-cha2db-v1-m000048-0000",
+        "fixture-cha2db-v1-m000058-0000",
+        "fixture-cha2db-v1-m000068-0000",
+        "fixture-cha2db-v1-m000078-0000",
+        "fixture-cha2db-v1-m000088-0000",
+        "fixture-cha2db-v1-m000098-0000"
+      ],
+      "latency_ms": 7.851
+    },
+    {
+      "query": "API REST",
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000009-0000",
+        "fixture-cha2db-v1-m000019-0000",
+        "fixture-cha2db-v1-m000029-0000",
+        "fixture-cha2db-v1-m000039-0000",
+        "fixture-cha2db-v1-m000049-0000",
+        "fixture-cha2db-v1-m000059-0000",
+        "fixture-cha2db-v1-m000069-0000",
+        "fixture-cha2db-v1-m000079-0000",
+        "fixture-cha2db-v1-m000089-0000",
+        "fixture-cha2db-v1-m000099-0000"
+      ],
+      "latency_ms": 8.262
+    }
+  ],
+  "build_seconds": 0.053,
+  "mean_p10": 1.0,
+  "median_latency_ms": 8.076,
+  "version": "1.5.6",
+  "verdict": "FUNCTIONAL_ONLY_INCREMENTAL_UPDATES_NOT_VERIFIED",
+  "limitations": [
+    "Extension downloads in CI; offline portability not established",
+    "Only 1000 representative docs, not the complete 40k ranked",
+    "Synthetic topic labels; no human relevance evidence"
+  ]
+}
