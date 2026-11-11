@@ -58,7 +58,7 @@ def evaluate(repo):
     return score,sorted(terms)
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R15.json")
+    p.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R16.json")
     p.add_argument("--expansion",default=None,
                    help="Legacy R10+R14 separate mode; omit for canonical R15+ inventories")
     p.add_argument("--output",default="_dev/results/phase2-discovery.json")
