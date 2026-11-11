@@ -16,6 +16,7 @@ from urllib.parse import parse_qs, urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from ricoeur.retrieval import get_message_context, search_messages
+from knowledge_port import load_lexicon, timeline, period_messages, tagcloud, concept_detail
 
 VERSION = "ux.v2"
 
@@ -139,11 +140,12 @@ def graph(conn, query="", platform="", limit=30, syntax="literal"):
     return {"nodes": nodes, "edges": edges, "relation_status": "query_match_only"}
 
 
-def execute(db, action, **kw):
+def execute(db, action, *, lexicon=None, **kw):
     with closing(connect(db)) as conn:
         if action == "capabilities":
             return payload({"ports": ["capabilities", "conversations", "search",
-                                      "transcript", "message", "graph", "serve"],
+                                      "transcript", "message", "graph", "timeline", "period",
+                                      "tagcloud", "concept", "serve"],
                             "search_core": "ricoeur.retrieval.search_messages",
                             "graph": "query_match_only", "storage": "read_only_ricoeur_sqlite"})
         if action == "conversations":
@@ -163,10 +165,38 @@ def execute(db, action, **kw):
         if action == "graph":
             return payload(graph(conn, kw.get("query", ""), kw.get("platform", ""),
                                  kw.get("limit", 30), kw.get("syntax", "literal")))
+        if action in ("timeline", "period", "tagcloud", "concept"):
+            vocabulary = load_lexicon(lexicon)
+            expand_text = str(kw.get("expand", "false")).strip().lower()
+            if expand_text not in ("false", "true", "0", "1"):
+                raise ValueError("invalid_expand")
+            expand = expand_text in ("true", "1")
+            if action == "timeline":
+                return payload(timeline(conn, kw.get("query", ""),
+                                        grain=kw.get("grain", "month"),
+                                        platform=kw.get("platform", ""),
+                                        expand=expand, lexicon=vocabulary))
+            if action == "period":
+                return payload(period_messages(conn, kw.get("query", ""),
+                                               period=kw["period"],
+                                               grain=kw.get("grain", "month"),
+                                               platform=kw.get("platform", ""),
+                                               expand=expand, lexicon=vocabulary,
+                                               limit=kw.get("limit", 50),
+                                               offset=kw.get("offset", 0)))
+            if action == "tagcloud":
+                return payload(tagcloud(conn, kw.get("query", ""),
+                                        period=kw.get("period"),
+                                        grain=kw.get("grain", "month"),
+                                        platform=kw.get("platform", ""),
+                                        expand=expand, lexicon=vocabulary,
+                                        max_messages=kw.get("max_messages", 1000),
+                                        top=kw.get("top", 40)))
+            return payload(concept_detail(vocabulary, kw["term"]))
         raise ValueError("unsupported_action")
 
 
-def handler_factory(db):
+def handler_factory(db, lexicon=None):
     page = Path(__file__).with_name("index.html").read_bytes()
 
     class Handler(BaseHTTPRequestHandler):
@@ -178,7 +208,7 @@ def handler_factory(db):
                 args = {k: v[0] for k, v in parse_qs(url.query).items()}
                 action = args.pop("action", "capabilities")
                 try:
-                    body = json.dumps(execute(db, action, **args), ensure_ascii=False).encode()
+                    body = json.dumps(execute(db, action, lexicon=lexicon, **args), ensure_ascii=False).encode()
                     code = 200
                 except (ValueError, KeyError, sqlite3.Error) as exc:
                     body = json.dumps(error_payload(exc), ensure_ascii=False).encode()
@@ -198,8 +228,8 @@ def handler_factory(db):
     return Handler
 
 
-def serve(db, port):
-    server = ThreadingHTTPServer(("127.0.0.1", int(port)), handler_factory(db))
+def serve(db, port, lexicon=None):
+    server = ThreadingHTTPServer(("127.0.0.1", int(port)), handler_factory(db, lexicon))
     print(f"UX lab: http://127.0.0.1:{server.server_port}", flush=True)
     try:
         server.serve_forever()
@@ -210,6 +240,7 @@ def serve(db, port):
 def main():
     parser = argparse.ArgumentParser(description="Ricoeur read-only UX CLI/GUI")
     parser.add_argument("--db", required=True)
+    parser.add_argument("--lexicon", default=None, help="Optional curated SKOS-like JSON sidecar, never automatic")
     sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("capabilities")
     for action in ("conversations", "search", "graph"):
@@ -220,6 +251,21 @@ def main():
         p.add_argument("--syntax", choices=["literal", "fts5"], default="literal")
         if action == "search":
             p.add_argument("--context", type=int, default=1)
+    for action in ("timeline", "period", "tagcloud"):
+        p = sub.add_parser(action)
+        p.add_argument("--query", required=True)
+        p.add_argument("--platform", default="")
+        p.add_argument("--grain", choices=("year", "month", "day"), default="month")
+        p.add_argument("--expand", action="store_true")
+        if action == "period":
+            p.add_argument("--period", required=True)
+            p.add_argument("--limit", type=int, default=50)
+            p.add_argument("--offset", type=int, default=0)
+        if action == "tagcloud":
+            p.add_argument("--period")
+            p.add_argument("--max-messages", type=int, default=1000)
+            p.add_argument("--top", type=int, default=40)
+    sub.add_parser("concept").add_argument("term")
     sub.add_parser("transcript").add_argument("id")
     p = sub.add_parser("message")
     p.add_argument("id")
@@ -227,10 +273,11 @@ def main():
     sub.add_parser("serve").add_argument("--port", type=int, default=8765)
     args = vars(parser.parse_args())
     db, action = args.pop("db"), args.pop("action")
+    lexicon = args.pop("lexicon")
     if action == "serve":
-        return serve(db, args["port"])
+        return serve(db, args["port"], lexicon=lexicon)
     try:
-        print(json.dumps(execute(db, action, **args), ensure_ascii=False, indent=2))
+        print(json.dumps(execute(db, action, lexicon=lexicon, **args), ensure_ascii=False, indent=2))
     except (ValueError, KeyError, sqlite3.Error) as exc:
         print(json.dumps(error_payload(exc), ensure_ascii=False))
         raise SystemExit(1)
