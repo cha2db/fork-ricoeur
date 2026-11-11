@@ -958,13 +958,13 @@
     },
     {
       "id": "C206",
-      "name": "Kosha design",
-      "url": "https://getkosha.dev/",
-      "category": "vendor_reference",
-      "storage_mechanism": "S3_search_decoupled",
-      "search_or_connection_approach": "Startup S3+NVMe, benchmark declarativo",
-      "priority": "P3",
-      "comparative_gate": "Já existe repositório Kosha; evitar ID duplicado",
+      "name": "Infino",
+      "url": "https://github.com/infino-ai/infino",
+      "category": "hybrid_engine",
+      "storage_mechanism": "append_only_Parquet_BM25_vector_embedded",
+      "search_or_connection_approach": "BM25 + vetor/RRF em arquivos Parquet com snapshot imutável e SQL; sem servidor",
+      "priority": "P0",
+      "comparative_gate": "Confrontar LanceDB/FTS5 em corpus idêntico, indexação incremental, snapshots, S3/local e licença",
       "source_level": "RESEARCH_DISCOVERY_REVIEW_NEEDED",
       "functional_status": "NOT_TESTED",
       "status": "NEW_F2_CANDIDATE",
@@ -986,5 +986,9 @@
       "license": "VERIFY_SOURCE_AND_DEPENDENCIES",
       "owner": "PHASE2"
     }
-  ]
+  ],
+  "delta": {
+    "revision": "R14b",
+    "note": "Replaced duplicate vendor landing page for Kosha with distinct embedded Parquet hybrid search engine Infino; total remains 207"
+  }
 }
