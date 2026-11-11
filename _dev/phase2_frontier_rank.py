@@ -14,7 +14,7 @@ import re
 CONFRONTS=[
  ("hybrid_parquet","C206","C035","Same 40k->2M messages, keyword+vector+SQL, chunk updates, file size, p95 and RAM"),
  ("temporal_state","C146","C001","Branch/recovery as-of, time of observation vs validity, no loss of original message"),
- ("temporal_state","C163","C001","XTDB system-time vs valid-time revisions and Java runtime footprint"),
+ ("temporal_state","C162","C001","XTDB system-time vs valid-time revisions and Java runtime footprint"),
  ("temporal_state","C147","C065","TerminusDB branches, merges, typed relations with evidence and license"),
  ("graph_sqlite","C216","C065","sqlite-graph recursive SQLite edges vs RDFLib on typed source-cited paths"),
  ("graph_sqlite","C144","C065","LadybugDB graph traversal/FTS/vector vs SQLite evidence-first prototype"),
@@ -28,7 +28,7 @@ CONFRONTS=[
  ("substring","C213","C002","Zoekt positional trigram vs FTS5 trigram: regex and partial terms"),
  ("browser_static","C212","C010","Pagefind chunk index vs MiniSearch at 40k results and offline read-only"),
  ("event_log","C209","C001","LiveStore event-log replay vs SQLite existing importer idempotence"),
- ("versioned_sql","C147","C001","Dolt SQL branch/merge/rollback vs SQLite snapshot and repair ledger"),
+ ("versioned_sql","C148","C001","Dolt SQL branch/merge/rollback vs SQLite snapshot and repair ledger"),
 ]
 # exact source URLs and IDs, never fabricate results or inferred readiness.
 PREFERRED=("C206","C146","C163","C147","C216","C144","C145","C149","C152",
