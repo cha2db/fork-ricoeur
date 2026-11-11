@@ -101,8 +101,9 @@ def test_result(code,cache):
         status=("PASS" if report.get("status")=="PASS" and
                 isinstance(component,dict) and component.get("ari_against_fixture_topics") is not None
                 else "MISSING")
-    elif section=="modes":status="PASS" if isinstance(component,dict) and
-        len(component)>=3 and all(v.get("status")=="PASS" for v in component.values()) else "PARTIAL"
+    elif section=="modes":
+        status=("PASS" if isinstance(component,dict) and len(component)>=3 and
+                all(v.get("status")=="PASS" for v in component.values()) else "PARTIAL")
     if status is None:status=report.get("status","UNKNOWN")
     level="FUNCTIONAL_PASS" if status=="PASS" else "FUNCTIONAL_BLOCKED"
     return {"level":level,"status":status,"evidence":reference,
