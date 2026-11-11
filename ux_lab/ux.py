@@ -1,121 +1,239 @@
-"""Independent read-only UX CLI/HTTP port over an existing Ricoeur SQLite DB."""
+"""Read-only CLI and localhost HTTP for an existing Ricoeur SQLite database.
+
+All text search delegates to ricoeur.retrieval.search_messages (FTS5).
+No search index, migration, graph inference, or SQLite writes live here.
+"""
+from __future__ import annotations
+
 import argparse
 import json
 import sqlite3
+import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-VERSION = "ux.v1"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from ricoeur.retrieval import get_message_context, search_messages
+
+VERSION = "ux.v2"
+
 
 def connect(path):
-    uri = Path(path).resolve().as_uri() + "?mode=ro"
-    conn = sqlite3.connect(uri, uri=True)
+    conn = sqlite3.connect(Path(path).resolve().as_uri() + "?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
     return conn
+
 
 def payload(data):
     return {"schema_version": VERSION, "status": "ok", "data": data, "errors": []}
 
-def conversations(conn, query="", platform="", limit=30):
-    limit = max(1, min(int(limit), 100))
-    if query:
-        # Plain literal matching is safe, predictable and works without an FTS migration.
-        sql = """SELECT DISTINCT c.id,c.title,c.platform,c.created_at,c.message_count
-                 FROM conversations c JOIN messages m ON m.conv_id=c.id
-                 WHERE (LOWER(COALESCE(m.content,'')) LIKE ? ESCAPE '\\'
-                    OR LOWER(COALESCE(c.title,'')) LIKE ? ESCAPE '\\')
-                   AND (?='' OR c.platform=?) ORDER BY c.created_at DESC,c.id LIMIT ?"""
-        term = "%" + query.lower().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
-        rows = conn.execute(sql, (term, term, platform, platform, limit)).fetchall()
-    else:
-        rows = conn.execute("""SELECT id,title,platform,created_at,message_count
-                 FROM conversations WHERE (?='' OR platform=?)
-                 ORDER BY created_at DESC,id LIMIT ?""", (platform, platform, limit)).fetchall()
-    return [dict(r) for r in rows]
+
+def error_payload(error):
+    return {"schema_version": VERSION, "status": "error", "data": None, "errors": [str(error)]}
+
+
+def expression(query, syntax="literal"):
+    if not isinstance(query, str) or not query.strip():
+        raise ValueError("query_required")
+    if len(query) > 2000:
+        raise ValueError("query_too_long")
+    if syntax == "literal":
+        return '"' + query.strip().replace('"', '""') + '"'
+    if syntax == "fts5":
+        return query.strip()
+    raise ValueError("invalid_syntax")
+
+
+def _limit(value, ceiling=100):
+    n = int(value)
+    if n < 1 or n > ceiling:
+        raise ValueError("limit_out_of_range")
+    return n
+
+
+def _context(value):
+    n = int(value)
+    if n < 0 or n > 10:
+        raise ValueError("context_out_of_range")
+    return n
+
+
+def recent(conn, platform="", limit=30):
+    limit = _limit(limit)
+    rows = conn.execute(
+        """SELECT * FROM conversations
+           WHERE (? = '' OR platform = ?)
+           ORDER BY created_at DESC, id LIMIT ?""",
+        (platform, platform, limit),
+    ).fetchall()
+    return [_conversation(row) for row in rows]
+
+
+def _conversation(row):
+    fields = dict(row)
+    return {k: fields.get(k) for k in
+            ("id", "title", "platform", "model", "created_at", "message_count", "source_path")}
+
+
+def message_hits(conn, query, platform="", limit=30, context=1, syntax="literal"):
+    # IMPORTANT: Delegate all retrieval, ranking, filtering and adjacency to peer core.
+    fts_query = expression(query, syntax)
+    result = search_messages(
+        conn, fts_query, limit=_limit(limit, 200),
+        context=_context(context), platform=platform or None,
+    )
+    return {"query": query, "syntax": syntax, "engine": "ricoeur.retrieval/FTS5",
+            "count": result["count"], "hits": result["hits"]}
+
+
+def conversations(conn, query="", platform="", limit=30, syntax="literal"):
+    if not query:
+        return recent(conn, platform, limit)
+    hits = message_hits(conn, query, platform, limit=_limit(limit, 200), syntax=syntax)["hits"]
+    ordered = {}
+    for hit in hits:
+        c = hit["conversation"]
+        cid = c["id"]
+        if cid not in ordered:
+            ordered[cid] = {"id": cid, "title": c["title"], "platform": c["platform"],
+                            "first_match_id": hit["message"]["id"], "match_count": 0}
+        ordered[cid]["match_count"] += 1
+    return list(ordered.values())
+
 
 def transcript(conn, cid):
-    conv = conn.execute("SELECT id,title,platform,created_at FROM conversations WHERE id=?", (cid,)).fetchone()
-    if conv is None:
+    row = conn.execute("SELECT * FROM conversations WHERE id = ?", (cid,)).fetchone()
+    if row is None:
         raise ValueError("conversation_not_found")
-    msgs = conn.execute("""SELECT id,role,content,timestamp FROM messages WHERE conv_id=?
-                          ORDER BY timestamp,id""", (cid,)).fetchall()
+    msgs = conn.execute(
+        """SELECT id,role,content,timestamp FROM messages WHERE conv_id = ?
+           ORDER BY timestamp, rowid""", (cid,)
+    ).fetchall()
     messages = [dict(r) for r in msgs]
-    for i, m in enumerate(messages):
-        m["previous_id"] = messages[i-1]["id"] if i else None
-        m["next_id"] = messages[i+1]["id"] if i+1 < len(messages) else None
-    return {"conversation":dict(conv),"messages":messages}
+    for index, message in enumerate(messages):
+        message["previous_id"] = messages[index - 1]["id"] if index else None
+        message["next_id"] = messages[index + 1]["id"] if index + 1 < len(messages) else None
+    return {"conversation": _conversation(row), "messages": messages}
 
-def graph(conn, query="", limit=30):
-    # Evidence-only co-occurrence: two conversations match the *same user query*.
-    # No edge implies semantic or causal relation.
-    nodes = conversations(conn, query, limit=limit)
-    edges = []
-    if query:
-        for i in range(len(nodes)-1):
-            edges.append({"source":nodes[i]["id"],"target":nodes[i+1]["id"],
-                          "type":"shared_query_result","query":query,
-                          "evidence":"both conversations matched literal query",
-                          "semantic_claim":False})
-    return {"nodes":nodes,"edges":edges,"relation_status":"query_cooccurrence_only"}
+
+def graph(conn, query="", platform="", limit=30, syntax="literal"):
+    """Evidence-backed query-to-conversation star; NO inferred semantic edges."""
+    if not query:
+        return {"nodes": [], "edges": [], "relation_status": "query_required_for_evidence"}
+    result = message_hits(conn, query, platform, limit, context=0, syntax=syntax)
+    match_ids = {}
+    metadata = {}
+    for hit in result["hits"]:
+        cid = hit["conversation"]["id"]
+        metadata[cid] = hit["conversation"]
+        match_ids.setdefault(cid, []).append(hit["message"]["id"])
+    nodes = [{"id": "query", "type": "query", "label": query}]
+    nodes.extend({"id": cid, "type": "conversation", "label": conv.get("title") or cid,
+                  "platform": conv.get("platform")} for cid, conv in metadata.items())
+    edges = [{"source": "query", "target": cid, "type": "fts5_query_match",
+              "evidence_message_ids": mids, "query": query,
+              "method": "ricoeur.retrieval/FTS5", "semantic_claim": False}
+             for cid, mids in match_ids.items()]
+    return {"nodes": nodes, "edges": edges, "relation_status": "query_match_only"}
+
 
 def execute(db, action, **kw):
     with connect(db) as conn:
-        if action=="capabilities":
-            return payload({"ports":["capabilities","conversations","transcript","graph","serve"],
-                            "graph":"query_cooccurrence_only","storage":"read_only_ricoeur_sqlite"})
-        if action=="conversations":
-            return payload(conversations(conn,kw.get("query",""),kw.get("platform",""),kw.get("limit",30)))
-        if action=="transcript":
-            return payload(transcript(conn,kw["id"]))
-        if action=="graph":
-            return payload(graph(conn,kw.get("query",""),kw.get("limit",30)))
+        if action == "capabilities":
+            return payload({"ports": ["capabilities", "conversations", "search",
+                                      "transcript", "message", "graph", "serve"],
+                            "search_core": "ricoeur.retrieval.search_messages",
+                            "graph": "query_match_only", "storage": "read_only_ricoeur_sqlite"})
+        if action == "conversations":
+            return payload(conversations(conn, kw.get("query", ""), kw.get("platform", ""),
+                                         kw.get("limit", 30), kw.get("syntax", "literal")))
+        if action == "search":
+            return payload(message_hits(conn, kw.get("query", ""), kw.get("platform", ""),
+                                        kw.get("limit", 30), kw.get("context", 1),
+                                        kw.get("syntax", "literal")))
+        if action == "transcript":
+            return payload(transcript(conn, kw["id"]))
+        if action == "message":
+            found = get_message_context(conn, kw["id"], _context(kw.get("context", 2)))
+            if found is None:
+                raise ValueError("message_not_found")
+            return payload(found)
+        if action == "graph":
+            return payload(graph(conn, kw.get("query", ""), kw.get("platform", ""),
+                                 kw.get("limit", 30), kw.get("syntax", "literal")))
         raise ValueError("unsupported_action")
 
-def serve(db, port):
+
+def handler_factory(db):
     page = Path(__file__).with_name("index.html").read_bytes()
+
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
-            parsed = urlparse(self.path)
-            if parsed.path=="/":
-                self.send_response(200); self.send_header("Content-Type","text/html; charset=utf-8")
-                self.end_headers(); self.wfile.write(page); return
-            if parsed.path!="/api":
-                self.send_error(404); return
-            args = {k:v[0] for k,v in parse_qs(parsed.query).items()}
-            action=args.pop("action","capabilities")
-            if "id" not in args and action=="transcript":
-                self.send_error(400,"missing id"); return
-            try:
-                result=execute(db,action,**args)
-                code=200
-            except (ValueError,sqlite3.Error) as e:
-                result={"schema_version":VERSION,"status":"error","data":None,"errors":[str(e)]}
-                code=400
-            raw=json.dumps(result,ensure_ascii=False).encode()
-            self.send_response(code);self.send_header("Content-Type","application/json; charset=utf-8")
-            self.send_header("Cache-Control","no-store");self.send_header("Content-Length",str(len(raw)))
-            self.end_headers();self.wfile.write(raw)
-    httpd=ThreadingHTTPServer(("127.0.0.1",int(port)),Handler)
-    print(f"UX lab: http://127.0.0.1:{httpd.server_port}",flush=True)
-    httpd.serve_forever()
+            url = urlparse(self.path)
+            if url.path == "/":
+                body, code, kind = page, 200, "text/html; charset=utf-8"
+            elif url.path == "/api":
+                args = {k: v[0] for k, v in parse_qs(url.query).items()}
+                action = args.pop("action", "capabilities")
+                try:
+                    body = json.dumps(execute(db, action, **args), ensure_ascii=False).encode()
+                    code = 200
+                except (ValueError, KeyError, sqlite3.Error) as exc:
+                    body = json.dumps(error_payload(exc), ensure_ascii=False).encode()
+                    code = 400
+                kind = "application/json; charset=utf-8"
+            else:
+                self.send_error(404)
+                return
+            self.send_response(code)
+            self.send_header("Content-Type", kind)
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+    return Handler
+
+
+def serve(db, port):
+    server = ThreadingHTTPServer(("127.0.0.1", int(port)), handler_factory(db))
+    print(f"UX lab: http://127.0.0.1:{server.server_port}", flush=True)
+    try:
+        server.serve_forever()
+    finally:
+        server.server_close()
+
 
 def main():
-    p=argparse.ArgumentParser()
-    p.add_argument("--db",required=True)
-    sub=p.add_subparsers(dest="action",required=True)
+    parser = argparse.ArgumentParser(description="Ricoeur read-only UX CLI/GUI")
+    parser.add_argument("--db", required=True)
+    sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("capabilities")
-    for name in ("conversations","graph"):
-        s=sub.add_parser(name);s.add_argument("--query",default="")
-        s.add_argument("--limit",type=int,default=30)
-        if name=="conversations":s.add_argument("--platform",default="")
+    for action in ("conversations", "search", "graph"):
+        p = sub.add_parser(action)
+        p.add_argument("--query", default="")
+        p.add_argument("--platform", default="")
+        p.add_argument("--limit", type=int, default=30)
+        p.add_argument("--syntax", choices=["literal", "fts5"], default="literal")
+        if action == "search":
+            p.add_argument("--context", type=int, default=1)
     sub.add_parser("transcript").add_argument("id")
-    sub.add_parser("serve").add_argument("--port",type=int,default=8765)
-    a=vars(p.parse_args());db=a.pop("db");action=a.pop("action")
-    if action=="serve":return serve(db,a["port"])
-    if action=="transcript":a["id"]=a.pop("id")
-    try:print(json.dumps(execute(db,action,**a),ensure_ascii=False,indent=2))
-    except (ValueError,sqlite3.Error) as e:
-        print(json.dumps({"schema_version":VERSION,"status":"error","data":None,"errors":[str(e)]}))
+    p = sub.add_parser("message")
+    p.add_argument("id")
+    p.add_argument("--context", type=int, default=2)
+    sub.add_parser("serve").add_argument("--port", type=int, default=8765)
+    args = vars(parser.parse_args())
+    db, action = args.pop("db"), args.pop("action")
+    if action == "serve":
+        return serve(db, args["port"])
+    try:
+        print(json.dumps(execute(db, action, **args), ensure_ascii=False, indent=2))
+    except (ValueError, KeyError, sqlite3.Error) as exc:
+        print(json.dumps(error_payload(exc), ensure_ascii=False))
         raise SystemExit(1)
-if __name__=="__main__":main()
+
+
+if __name__ == "__main__":
+    main()
