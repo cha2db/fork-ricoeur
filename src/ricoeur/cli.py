@@ -13,7 +13,7 @@ from rich.table import Table
 
 from . import __version__
 from .config import get_home, load_config, save_config, set_config_value, DEFAULT_CONFIG
-from .db import get_connection, init_db
+from .db import get_connection, get_read_connection, init_db
 
 console = Console()
 
@@ -72,7 +72,7 @@ def import_chatgpt(path: str, update: bool, since: Optional[str], dry_run: bool)
     """Import from a ChatGPT export (conversations.json or .zip)."""
     from .importers.chatgpt import import_chatgpt as do_import
 
-    conn = get_connection()
+    conn = get_read_connection() if dry_run else get_connection()
     file_path = Path(path)
 
     with Progress(console=console) as progress:
@@ -91,7 +91,7 @@ def import_claude_cmd(path: str, update: bool, since: Optional[str], dry_run: bo
     """Import from a Claude export (conversations.json or .zip)."""
     from .importers.claude import import_claude as do_import
 
-    conn = get_connection()
+    conn = get_read_connection() if dry_run else get_connection()
     file_path = Path(path)
 
     with Progress(console=console) as progress:
@@ -125,7 +125,7 @@ def import_claude_code_cmd(
     """
     from .importers.claude_code import DEFAULT_PROJECTS_DIR, import_claude_code as do_import
 
-    conn = get_connection()
+    conn = get_read_connection() if dry_run else get_connection()
     root = Path(path) if path else DEFAULT_PROJECTS_DIR
 
     if not root.exists():
@@ -203,7 +203,7 @@ def search(query, platform, lang, since, until, model, topic, role, code, semant
     model_spec = embed_cfg.get("model", "st:paraphrase-multilingual-mpnet-base-v2")
     device = embed_cfg.get("device", "auto")
 
-    conn = get_connection()
+    conn = get_read_connection()
     try:
         results, mode = search_dispatch(
             conn,
@@ -283,7 +283,7 @@ def search(query, platform, lang, since, until, model, topic, role, code, semant
 @click.option("--format", "fmt", default="rich", type=click.Choice(["rich", "md", "json"]))
 def show(conversation_id, msg_filter, summary, code, fmt):
     """Display a full conversation."""
-    conn = get_connection()
+    conn = get_read_connection()
 
     # Support partial ID prefix matching
     conv = conn.execute(
@@ -383,7 +383,7 @@ def show(conversation_id, msg_filter, summary, code, fmt):
 @click.option("--format", "fmt", default="rich", type=click.Choice(["rich", "json", "csv"]))
 def stats(platform, lang, project, since, until, fmt):
     """Analytics dashboard."""
-    conn = get_connection()
+    conn = get_read_connection()
 
     where_clauses = []
     params: list = []
