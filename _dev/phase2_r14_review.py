@@ -119,7 +119,7 @@ def risk_and_rank(row,source):
  return risks,phase
 
 def merge(existing, new, base, legacy_rank):
- existing_ids={x["id"] for x in existing}
+ existing_ids={x["id"] for pool in existing.values() for x in pool["entries"]}
  new_ids={x["id"] for x in new}
  if len(new_ids)!=len(new) or existing_ids.intersection(new_ids):
   raise ValueError("Duplicate candidate ID")
