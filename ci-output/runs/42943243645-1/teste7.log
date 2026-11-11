@@ -1,0 +1,21 @@
+[11/11/26 02:05:05] INFO     Processing request of type            server.py:523
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:523
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:523
+                             CallToolRequest                                    
+{
+  "status": "PASS",
+  "transport": "stdio",
+  "sdk": "official mcp v1",
+  "checks": {
+    "tools_discovered": true,
+    "search_over_mcp": true,
+    "ids_over_mcp": true,
+    "context_over_mcp": true
+  },
+  "tools": [
+    "search_chat_messages",
+    "read_chat_message"
+  ]
+}
