@@ -1,0 +1,202 @@
+{
+  "status": "PASS",
+  "candidate": "bm25s",
+  "input_snapshot": "_dev/results/prior-base.sqlite",
+  "comparison": "same 1000 representative messages from existing synthetic 40k SQLite fixture",
+  "queries": [
+    {
+      "query": "regressão guiada",
+      "topic_id": 0,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000000-0000",
+        "fixture-cha2db-v1-m000180-0000",
+        "fixture-cha2db-v1-m000210-0000",
+        "fixture-cha2db-v1-m000410-0000",
+        "fixture-cha2db-v1-m000800-0000",
+        "fixture-cha2db-v1-m000300-0000",
+        "fixture-cha2db-v1-m000540-0000",
+        "fixture-cha2db-v1-m000860-0000",
+        "fixture-cha2db-v1-m000920-0000",
+        "fixture-cha2db-v1-m000370-0000"
+      ],
+      "latency_ms": 0.205
+    },
+    {
+      "query": "contrato declarativo",
+      "topic_id": 1,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000001-0000",
+        "fixture-cha2db-v1-m000011-0000",
+        "fixture-cha2db-v1-m000041-0000",
+        "fixture-cha2db-v1-m000021-0000",
+        "fixture-cha2db-v1-m000971-0000",
+        "fixture-cha2db-v1-m000071-0000",
+        "fixture-cha2db-v1-m000051-0000",
+        "fixture-cha2db-v1-m000961-0000",
+        "fixture-cha2db-v1-m000231-0000",
+        "fixture-cha2db-v1-m000251-0000"
+      ],
+      "latency_ms": 0.128
+    },
+    {
+      "query": "busca cruzada",
+      "topic_id": 2,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000002-0000",
+        "fixture-cha2db-v1-m000192-0000",
+        "fixture-cha2db-v1-m000882-0000",
+        "fixture-cha2db-v1-m000392-0000",
+        "fixture-cha2db-v1-m000102-0000",
+        "fixture-cha2db-v1-m000782-0000",
+        "fixture-cha2db-v1-m000652-0000",
+        "fixture-cha2db-v1-m000892-0000",
+        "fixture-cha2db-v1-m000562-0000",
+        "fixture-cha2db-v1-m000312-0000"
+      ],
+      "latency_ms": 0.137
+    },
+    {
+      "query": "pipeline Jenkins",
+      "topic_id": 3,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000003-0000",
+        "fixture-cha2db-v1-m000583-0000",
+        "fixture-cha2db-v1-m000123-0000",
+        "fixture-cha2db-v1-m000863-0000",
+        "fixture-cha2db-v1-m000373-0000",
+        "fixture-cha2db-v1-m000133-0000",
+        "fixture-cha2db-v1-m000853-0000",
+        "fixture-cha2db-v1-m000363-0000",
+        "fixture-cha2db-v1-m000843-0000",
+        "fixture-cha2db-v1-m000623-0000"
+      ],
+      "latency_ms": 0.11
+    },
+    {
+      "query": "índice B-tree",
+      "topic_id": 4,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000004-0000",
+        "fixture-cha2db-v1-m000124-0000",
+        "fixture-cha2db-v1-m000544-0000",
+        "fixture-cha2db-v1-m000914-0000",
+        "fixture-cha2db-v1-m000664-0000",
+        "fixture-cha2db-v1-m000764-0000",
+        "fixture-cha2db-v1-m000074-0000",
+        "fixture-cha2db-v1-m000414-0000",
+        "fixture-cha2db-v1-m000214-0000",
+        "fixture-cha2db-v1-m000634-0000"
+      ],
+      "latency_ms": 0.109
+    },
+    {
+      "query": "conexão SSH",
+      "topic_id": 5,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000005-0000",
+        "fixture-cha2db-v1-m000795-0000",
+        "fixture-cha2db-v1-m000185-0000",
+        "fixture-cha2db-v1-m000785-0000",
+        "fixture-cha2db-v1-m000195-0000",
+        "fixture-cha2db-v1-m000775-0000",
+        "fixture-cha2db-v1-m000205-0000",
+        "fixture-cha2db-v1-m000765-0000",
+        "fixture-cha2db-v1-m000215-0000",
+        "fixture-cha2db-v1-m000755-0000"
+      ],
+      "latency_ms": 0.104
+    },
+    {
+      "query": "Android Studio",
+      "topic_id": 6,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000006-0000",
+        "fixture-cha2db-v1-m000546-0000",
+        "fixture-cha2db-v1-m000346-0000",
+        "fixture-cha2db-v1-m000586-0000",
+        "fixture-cha2db-v1-m000766-0000",
+        "fixture-cha2db-v1-m000076-0000",
+        "fixture-cha2db-v1-m000916-0000",
+        "fixture-cha2db-v1-m000126-0000",
+        "fixture-cha2db-v1-m000666-0000",
+        "fixture-cha2db-v1-m000416-0000"
+      ],
+      "latency_ms": 0.104
+    },
+    {
+      "query": "menor privilégio",
+      "topic_id": 7,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000007-0000",
+        "fixture-cha2db-v1-m000417-0000",
+        "fixture-cha2db-v1-m000857-0000",
+        "fixture-cha2db-v1-m000067-0000",
+        "fixture-cha2db-v1-m000217-0000",
+        "fixture-cha2db-v1-m000927-0000",
+        "fixture-cha2db-v1-m000297-0000",
+        "fixture-cha2db-v1-m000757-0000",
+        "fixture-cha2db-v1-m000097-0000",
+        "fixture-cha2db-v1-m000197-0000"
+      ],
+      "latency_ms": 0.102
+    },
+    {
+      "query": "avaliação formativa",
+      "topic_id": 8,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000008-0000",
+        "fixture-cha2db-v1-m000018-0000",
+        "fixture-cha2db-v1-m000038-0000",
+        "fixture-cha2db-v1-m000988-0000",
+        "fixture-cha2db-v1-m000048-0000",
+        "fixture-cha2db-v1-m000058-0000",
+        "fixture-cha2db-v1-m000068-0000",
+        "fixture-cha2db-v1-m000078-0000",
+        "fixture-cha2db-v1-m000088-0000",
+        "fixture-cha2db-v1-m000098-0000"
+      ],
+      "latency_ms": 0.087
+    },
+    {
+      "query": "API REST",
+      "topic_id": 9,
+      "p10": 1.0,
+      "hits": [
+        "fixture-cha2db-v1-m000009-0000",
+        "fixture-cha2db-v1-m000019-0000",
+        "fixture-cha2db-v1-m000989-0000",
+        "fixture-cha2db-v1-m000039-0000",
+        "fixture-cha2db-v1-m000059-0000",
+        "fixture-cha2db-v1-m000049-0000",
+        "fixture-cha2db-v1-m000079-0000",
+        "fixture-cha2db-v1-m000069-0000",
+        "fixture-cha2db-v1-m000089-0000",
+        "fixture-cha2db-v1-m000109-0000"
+      ],
+      "latency_ms": 0.083
+    }
+  ],
+  "synthetic": true,
+  "human_gold": false,
+  "build_seconds": 0.056,
+  "engine": "bm25s",
+  "package": "0.3.16",
+  "mean_p10": 1.0,
+  "median_latency_ms": 0.107,
+  "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
+  "limitations": [
+    "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
+    "One representative message per conversation, not a full-text 40k-message ranking index.",
+    "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
+    "No candidate integrated into production core; no MCP or GUI tests performed here."
+  ]
+}
