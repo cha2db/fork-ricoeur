@@ -1,0 +1,195 @@
+Cha2db search suite
+Date: 2026-11-11T03:19:19+00:00
+Commit: 1321284
+Python: Python 3.13.18
+=== retrieval contract ===
+{
+  "status": "PASS",
+  "checks": {
+    "three_message_hits": true,
+    "cross_provider": true,
+    "stable_message_ids": true,
+    "context_before_after": true,
+    "provider_filter": true,
+    "structured_json_contract": true
+  },
+  "hits": 3,
+  "sample_context": {
+    "message": {
+      "id": "a3",
+      "conv_id": "a",
+      "role": "user",
+      "content": "Segundo: agulha-mcp",
+      "timestamp": "2026-01-01T00:00:03"
+    },
+    "conversation": {
+      "id": "a",
+      "title": "Projeto A",
+      "platform": "chatgpt"
+    },
+    "before": [
+      {
+        "id": "a1",
+        "conv_id": "a",
+        "role": "user",
+        "content": "Primeiro: agulha-mcp",
+        "timestamp": "2026-01-01T00:00:01"
+      },
+      {
+        "id": "a2",
+        "conv_id": "a",
+        "role": "assistant",
+        "content": "Resposta intermediária",
+        "timestamp": "2026-01-01T00:00:02"
+      }
+    ],
+    "after": []
+  },
+  "mcp_protocol_tested": false
+}
+RETRIEVAL_EXIT=0
+=== isolated corpus ===
+{
+  "status": "PASS",
+  "checks": {
+    "conversation_count": true,
+    "message_count": true,
+    "literal_marker_count": true,
+    "fts_marker_count": true,
+    "cross_conversation": true,
+    "context": true,
+    "provider_diversity": true
+  },
+  "conversations": 100,
+  "messages": 4000,
+  "marker_hits": 10
+}
+CORPUS_EXIT=0
+=== benchmark correctness / performance ===
+{
+  "status": "PASS",
+  "dataset": {
+    "conversations": 300,
+    "messages": 12000,
+    "seed": 2026,
+    "synthetic": true
+  },
+  "checks": {
+    "count": true,
+    "fts_integrity": true,
+    "fts_precision_SSH": true,
+    "fts_recall_SSH": true,
+    "fts_precision_PostgreSQL": true,
+    "fts_recall_PostgreSQL": true,
+    "fts_precision_Jenkins": true,
+    "fts_recall_Jenkins": true,
+    "fts_precision_MCP": true,
+    "fts_recall_MCP": true,
+    "fts_precision_Android": true,
+    "fts_recall_Android": true,
+    "fts_precision_REST": true,
+    "fts_recall_REST": true,
+    "fts_precision_regressão": true,
+    "fts_recall_regressão": true,
+    "fts_precision_MARCADOR_UNICO_2026": true,
+    "fts_recall_MARCADOR_UNICO_2026": true,
+    "exact_MARCADOR_UNICO_2026": true,
+    "exact_sem_palavra_inexistente_987654": true,
+    "context_navigation": true,
+    "provider_filter": true,
+    "sql_injection_literal": true,
+    "fts_invalid_syntax_rejected": true,
+    "empty_query_rejected": true,
+    "pagination_limit": true
+  },
+  "latency": {
+    "fts_SSH": {
+      "median_ms": 2.798,
+      "min_ms": 2.776,
+      "max_ms": 3.266
+    },
+    "literal_SSH": {
+      "median_ms": 0.34,
+      "min_ms": 0.336,
+      "max_ms": 0.4
+    },
+    "fts_PostgreSQL": {
+      "median_ms": 2.695,
+      "min_ms": 2.671,
+      "max_ms": 2.956
+    },
+    "literal_PostgreSQL": {
+      "median_ms": 0.324,
+      "min_ms": 0.32,
+      "max_ms": 0.383
+    },
+    "fts_Jenkins": {
+      "median_ms": 2.534,
+      "min_ms": 2.521,
+      "max_ms": 2.729
+    },
+    "literal_Jenkins": {
+      "median_ms": 0.335,
+      "min_ms": 0.326,
+      "max_ms": 0.396
+    },
+    "fts_MCP": {
+      "median_ms": 2.667,
+      "min_ms": 2.641,
+      "max_ms": 2.858
+    },
+    "literal_MCP": {
+      "median_ms": 0.353,
+      "min_ms": 0.351,
+      "max_ms": 0.409
+    },
+    "fts_Android": {
+      "median_ms": 2.503,
+      "min_ms": 2.492,
+      "max_ms": 2.715
+    },
+    "literal_Android": {
+      "median_ms": 0.361,
+      "min_ms": 0.358,
+      "max_ms": 0.415
+    },
+    "fts_REST": {
+      "median_ms": 2.644,
+      "min_ms": 2.606,
+      "max_ms": 2.745
+    },
+    "literal_REST": {
+      "median_ms": 0.393,
+      "min_ms": 0.386,
+      "max_ms": 0.434
+    },
+    "fts_regressão": {
+      "median_ms": 3.412,
+      "min_ms": 3.389,
+      "max_ms": 4.606
+    },
+    "literal_regressão": {
+      "median_ms": 0.201,
+      "min_ms": 0.201,
+      "max_ms": 0.223
+    },
+    "fts_MARCADOR_UNICO_2026": {
+      "median_ms": 0.193,
+      "min_ms": 0.135,
+      "max_ms": 0.311
+    },
+    "literal_MARCADOR_UNICO_2026": {
+      "median_ms": 4.707,
+      "min_ms": 4.673,
+      "max_ms": 4.72
+    }
+  },
+  "errors": {},
+  "notes": [
+    "FTS5 token matching and literal substring matching are not equivalent.",
+    "Semantic retrieval, real HTTP and relevance judgments are not tested.",
+    "Timings are local samples, not cross-device comparisons."
+  ]
+}
+BENCHMARK_EXIT=0
+=== end ===
