@@ -5,7 +5,6 @@ on:
     paths:
       - '_dev/phase2_js_engines/**'
       - '_dev/phase2_export.py'
-      - '_dev/publish_phase2.sh'
       - '.github/workflows/phase2-browser-engines.yml'
   workflow_dispatch:
 permissions:
