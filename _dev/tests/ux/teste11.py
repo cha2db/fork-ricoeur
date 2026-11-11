@@ -94,7 +94,7 @@ with tempfile.TemporaryDirectory() as temp:
     thread.start()
     try:
         origin=f"http://127.0.0.1:{server.server_port}"
-        with urllib.request.urlopen(origin+"/",timeout=5) as response:
+        with urllib.request.urlopen(origin+"/chats",timeout=5) as response:
             html=response.read().decode("utf-8")
         gate("vis-network@9.1.9" in html and "loadSearch" in html, "GUI + optional graph lib")
         gate("api('search'" in html and "api('transcript'" in html, "GUI via HTTP ports")
