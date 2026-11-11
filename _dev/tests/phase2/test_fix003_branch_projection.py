@@ -49,6 +49,7 @@ with tempfile.TemporaryDirectory() as td:
         gate(opened["message"]["content"]=="hiddenword","branch text retrievable")
         gate(len(opened["before"])==1 and opened["before"][0]["content"]=="question",
              "ancestor context, not fabricated linear siblings")
+        gate(opened["before"][0]["id"]=="m-u", "selected ancestor navigates by real message ID")
         gate(conn.execute("SELECT count(*) FROM chatgpt_nodes").fetchone()[0]==4,
              "whole raw source tree remains")
         gate(conn.execute("SELECT count(*) FROM messages").fetchone()[0]==2,
