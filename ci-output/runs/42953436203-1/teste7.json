@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "transport": "stdio",
+  "sdk": "official mcp v1",
+  "checks": {
+    "tools_discovered": true,
+    "search_over_mcp": true,
+    "ids_over_mcp": true,
+    "context_over_mcp": true
+  },
+  "tools": [
+    "search_chat_messages",
+    "read_chat_message",
+    "search_chat_branches",
+    "read_chat_branch"
+  ]
+}

@@ -1,0 +1,6 @@
+GATE 40000 PASS db_mb 10.2 seconds 1.483
+GATE 100000 PASS db_mb 25.6 seconds 2.734
+GATE 400000 PASS db_mb 102.2 seconds 13.615
+GATE 1000000 PASS db_mb 256.0 seconds 29.061
+GATE 2000000 PASS db_mb 512.6 seconds 49.994
+VERDICT PASS max_planned_volume_passed_not_physical_limit max_messages 2000000

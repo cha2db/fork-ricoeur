@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "dataset": {
+    "conversations": 300,
+    "messages": 12000,
+    "seed": 2026,
+    "synthetic": true
+  },
+  "checks": {
+    "count": true,
+    "fts_integrity": true,
+    "fts_precision_SSH": true,
+    "fts_recall_SSH": true,
+    "fts_precision_PostgreSQL": true,
+    "fts_recall_PostgreSQL": true,
+    "fts_precision_Jenkins": true,
+    "fts_recall_Jenkins": true,
+    "fts_precision_MCP": true,
+    "fts_recall_MCP": true,
+    "fts_precision_Android": true,
+    "fts_recall_Android": true,
+    "fts_precision_REST": true,
+    "fts_recall_REST": true,
+    "fts_precision_regressão": true,
+    "fts_recall_regressão": true,
+    "fts_precision_MARCADOR_UNICO_2026": true,
+    "fts_recall_MARCADOR_UNICO_2026": true,
+    "exact_MARCADOR_UNICO_2026": true,
+    "exact_sem_palavra_inexistente_987654": true,
+    "context_navigation": true,
+    "provider_filter": true,
+    "sql_injection_literal": true,
+    "fts_invalid_syntax_rejected": true,
+    "empty_query_rejected": true,
+    "pagination_limit": true
+  },
+  "latency": {
+    "fts_SSH": {
+      "median_ms": 5.259,
+      "min_ms": 5.124,
+      "max_ms": 5.607
+    },
+    "literal_SSH": {
+      "median_ms": 0.601,
+      "min_ms": 0.59,
+      "max_ms": 0.668
+    },
+    "fts_PostgreSQL": {
+      "median_ms": 4.872,
+      "min_ms": 4.801,
+      "max_ms": 5.251
+    },
+    "literal_PostgreSQL": {
+      "median_ms": 0.58,
+      "min_ms": 0.565,
+      "max_ms": 0.623
+    },
+    "fts_Jenkins": {
+      "median_ms": 4.687,
+      "min_ms": 4.659,
+      "max_ms": 5.018
+    },
+    "literal_Jenkins": {
+      "median_ms": 0.581,
+      "min_ms": 0.572,
+      "max_ms": 0.646
+    },
+    "fts_MCP": {
+      "median_ms": 4.878,
+      "min_ms": 4.787,
+      "max_ms": 5.007
+    },
+    "literal_MCP": {
+      "median_ms": 0.633,
+      "min_ms": 0.618,
+      "max_ms": 0.727
+    },
+    "fts_Android": {
+      "median_ms": 4.717,
+      "min_ms": 4.625,
+      "max_ms": 4.882
+    },
+    "literal_Android": {
+      "median_ms": 0.664,
+      "min_ms": 0.656,
+      "max_ms": 0.729
+    },
+    "fts_REST": {
+      "median_ms": 4.864,
+      "min_ms": 4.818,
+      "max_ms": 5.028
+    },
+    "literal_REST": {
+      "median_ms": 0.683,
+      "min_ms": 0.677,
+      "max_ms": 0.749
+    },
+    "fts_regressão": {
+      "median_ms": 6.52,
+      "min_ms": 6.35,
+      "max_ms": 7.697
+    },
+    "literal_regressão": {
+      "median_ms": 0.368,
+      "min_ms": 0.362,
+      "max_ms": 0.405
+    },
+    "fts_MARCADOR_UNICO_2026": {
+      "median_ms": 0.274,
+      "min_ms": 0.258,
+      "max_ms": 0.563
+    },
+    "literal_MARCADOR_UNICO_2026": {
+      "median_ms": 4.844,
+      "min_ms": 4.776,
+      "max_ms": 4.968
+    }
+  },
+  "errors": {},
+  "notes": [
+    "FTS5 token matching and literal substring matching are not equivalent.",
+    "Semantic retrieval, real HTTP and relevance judgments are not tested.",
+    "Timings are local samples, not cross-device comparisons."
+  ]
+}
