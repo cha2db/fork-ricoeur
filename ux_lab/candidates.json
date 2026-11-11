@@ -1,0 +1,162 @@
+{
+  "schema_version": "ux.candidates.v1",
+  "weights": {
+    "core": 40,
+    "ui": 30,
+    "adapter": 20,
+    "license": 10
+  },
+  "baseline": {
+    "storage": "SQLite",
+    "search": "FTS5",
+    "cli": "Click",
+    "tui": "Textual",
+    "api": "ricoeur.retrieval",
+    "ui": "HTML prototype"
+  },
+  "candidates": [
+    {
+      "id": "ricoeur",
+      "name": "Ricoeur current",
+      "category": "core",
+      "url": "https://github.com/cha2db/fork-ricoeur",
+      "core": 5,
+      "ui": 3,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "identical",
+      "status": "implemented",
+      "notes": "Baseline; Click/Textual/SQLite FTS5 already present"
+    },
+    {
+      "id": "textual",
+      "name": "Textual",
+      "category": "tui",
+      "url": "https://github.com/Textualize/textual",
+      "core": 5,
+      "ui": 4,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "no replacement; existing dependency",
+      "status": "adopted",
+      "notes": "Already implemented as Ricoeur TUI"
+    },
+    {
+      "id": "cytoscape",
+      "name": "Cytoscape.js",
+      "category": "graph",
+      "url": "https://github.com/cytoscape/cytoscape.js",
+      "core": 5,
+      "ui": 5,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "render-only; no DB/search core",
+      "status": "candidate",
+      "notes": "Network discovery and graph layouts"
+    },
+    {
+      "id": "vueflow",
+      "name": "Vue Flow",
+      "category": "graph-editor",
+      "url": "https://github.com/bcakmakoglu/vue-flow",
+      "core": 5,
+      "ui": 5,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "render/edit-only; no DB/search core",
+      "status": "candidate",
+      "notes": "n8n-like editor; edit requirements unconfirmed"
+    },
+    {
+      "id": "visnetwork",
+      "name": "vis-network",
+      "category": "graph",
+      "url": "https://github.com/visjs/vis-network",
+      "core": 5,
+      "ui": 4,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "render-only; no DB/search core",
+      "status": "candidate",
+      "notes": "Lightweight integration proof"
+    },
+    {
+      "id": "sigma",
+      "name": "Sigma.js",
+      "category": "graph",
+      "url": "https://github.com/jacomyal/sigma.js",
+      "core": 5,
+      "ui": 4,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "render-only; no DB/search core",
+      "status": "candidate",
+      "notes": "WebGL large graph; requires Graphology"
+    },
+    {
+      "id": "g6",
+      "name": "AntV G6",
+      "category": "graph",
+      "url": "https://github.com/antvis/G6",
+      "core": 5,
+      "ui": 4,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "render-only; no DB/search core",
+      "status": "candidate",
+      "notes": "Rich graph layouts; integration untested"
+    },
+    {
+      "id": "chatvault",
+      "name": "LLM Chat Vault",
+      "category": "app",
+      "url": "https://github.com/shuruili77/llm-chat-vault",
+      "core": 2,
+      "ui": 5,
+      "adapter": 2,
+      "license": 4,
+      "core_relation": "own SQLite schema and branch resolver; no equivalence proved",
+      "status": "candidate",
+      "notes": "Reader, branches and timeline; inspect component isolation"
+    },
+    {
+      "id": "kept",
+      "name": "Kept",
+      "category": "app",
+      "url": "https://github.com/egroup-labs/kept",
+      "core": 1,
+      "ui": 5,
+      "adapter": 2,
+      "license": 4,
+      "core_relation": "CozoDB/Markdown vault; different storage model",
+      "status": "candidate",
+      "notes": "App-level chat archive/graph; potential UI reuse, not core swap"
+    },
+    {
+      "id": "msgvault",
+      "name": "msgvault",
+      "category": "app",
+      "url": "https://github.com/wesm/msgvault",
+      "core": 2,
+      "ui": 3,
+      "adapter": 2,
+      "license": 3,
+      "core_relation": "message archive schema unverified",
+      "status": "candidate",
+      "notes": "Messaging archive, not proven AI chat branches"
+    },
+    {
+      "id": "khoj",
+      "name": "Khoj",
+      "category": "app",
+      "url": "https://github.com/khoj-ai/khoj",
+      "core": 1,
+      "ui": 3,
+      "adapter": 1,
+      "license": 3,
+      "core_relation": "different AI assistant/search stack",
+      "status": "candidate",
+      "notes": "High coupling; not default for human-first deterministic core"
+    }
+  ]
+}
