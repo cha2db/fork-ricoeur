@@ -5,7 +5,7 @@ The core retrieval contract has no MCP dependency.
 """
 from typing import Optional
 
-from .db import get_connection
+from .db import get_read_connection
 from .retrieval import search_messages, get_message_context
 
 
@@ -17,7 +17,7 @@ def build_server():
     def search_chat_messages(query: str, limit: int = 20,
                              context: int = 1, platform: Optional[str] = None) -> dict:
         """Search individual chat messages across conversations and providers."""
-        conn = get_connection()
+        conn = get_read_connection()
         try:
             return search_messages(conn, query, limit, context, platform)
         finally:
@@ -26,7 +26,7 @@ def build_server():
     @server.tool()
     def read_chat_message(message_id: str, context: int = 2) -> dict:
         """Read one identified message and its adjacent messages."""
-        conn = get_connection()
+        conn = get_read_connection()
         try:
             return get_message_context(conn, message_id, context) or {"error": "not_found"}
         finally:
