@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import base64
 import json
+import hashlib
 import sqlite3
+from datetime import datetime, timezone
 
 
 SCHEMA_SQL = """
@@ -42,7 +44,59 @@ BEGIN
         VALUES ('delete',old.rowid,old.content);
     INSERT INTO chatgpt_branch_fts(rowid,content) VALUES (new.rowid,new.content);
 END;
+CREATE TABLE IF NOT EXISTS chatgpt_node_versions(
+    conv_id TEXT NOT NULL REFERENCES conversations(id),
+    node_id TEXT NOT NULL,
+    version_sha256 TEXT NOT NULL,
+    parent_id TEXT,
+    children_json TEXT NOT NULL,
+    message_json TEXT,
+    source_sha256 TEXT,
+    recorded_at TEXT NOT NULL,
+    PRIMARY KEY(conv_id,node_id,version_sha256)
+);
+CREATE TABLE IF NOT EXISTS chatgpt_selection_versions(
+    conv_id TEXT NOT NULL REFERENCES conversations(id),
+    source_sha256 TEXT NOT NULL,
+    selected_node_id TEXT,
+    recorded_at TEXT NOT NULL,
+    PRIMARY KEY(conv_id,source_sha256)
+);
 """
+
+
+
+def record_node_version(conn, conv_id, node_id, node, source_sha256=None):
+    """Append immutable node evidence before projecting newer source state."""
+    payload = {
+        "parent": node.get("parent"),
+        "children": node.get("children", []),
+        "message": node.get("message"),
+    }
+    raw = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+    conn.execute(
+        """INSERT OR IGNORE INTO chatgpt_node_versions(
+            conv_id,node_id,version_sha256,parent_id,children_json,message_json,
+            source_sha256,recorded_at)
+           VALUES(?,?,?,?,?,?,?,?)""",
+        (conv_id,node_id,digest,node.get("parent"),
+         json.dumps(payload["children"],ensure_ascii=False),
+         json.dumps(payload["message"],ensure_ascii=False),
+         source_sha256,datetime.now(timezone.utc).isoformat()),
+    )
+    return digest
+
+
+def record_selection(conn, conv_id, source_sha256, current_node):
+    if not source_sha256:
+        return
+    conn.execute(
+        """INSERT OR IGNORE INTO chatgpt_selection_versions(
+            conv_id,source_sha256,selected_node_id,recorded_at)
+           VALUES(?,?,?,?)""",
+        (conv_id,source_sha256,current_node,datetime.now(timezone.utc).isoformat()),
+    )
 
 
 def _parts(message):
@@ -198,6 +252,18 @@ def backfill_existing(conn):
         "SELECT conv_id,node_id,parent_id,message_json FROM chatgpt_nodes"
     ):
         conv_id,node_id,parent_id,payload = row
+        # Backfill historical original nodes before marking v3, even when
+        # they are selected messages and therefore not in branch FTS.
+        raw_node=conn.execute(
+            "SELECT children_json FROM chatgpt_nodes WHERE conv_id=? AND node_id=?",
+            (conv_id,node_id)).fetchone()
+        record_node_version(
+            conn,conv_id,node_id,
+            {"parent":parent_id,
+             "children":json.loads(raw_node[0]) if raw_node else [],
+             "message":json.loads(payload) if payload else None},
+            source_sha256=None,
+        )
         if not payload:
             continue
         message = json.loads(payload)
