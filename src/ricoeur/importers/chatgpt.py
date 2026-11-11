@@ -272,7 +272,35 @@ def _walk_messages(conv: dict[str, Any]) -> list[dict[str, Any]]:
     if root is None:
         return []
 
-    # Walk the tree depth-first, preferring the last child (default branch)
+    # ChatGPT identifies the selected leaf explicitly. Following the
+    # parent chain is more reliable than assuming the last sibling is active.
+    selected = conv.get("current_node")
+    if selected in mapping:
+        path = []
+        seen = set()
+        cursor = selected
+        while cursor in mapping and cursor not in seen:
+            seen.add(cursor)
+            path.append(cursor)
+            node = mapping[cursor]
+            if not isinstance(node, dict):
+                break
+            cursor = node.get("parent")
+            if cursor is None:
+                # Valid chain terminating at a declared root.
+                path.reverse()
+                selected_messages = []
+                for item_id in path:
+                    item = mapping[item_id]
+                    msg = item.get("message")
+                    if msg and isinstance(msg, dict) and msg.get("content"):
+                        author = msg.get("author", {})
+                        role = author.get("role", "unknown")
+                        if role in ("user", "assistant", "system", "tool"):
+                            selected_messages.append({**msg, "role": role})
+                return selected_messages
+
+    # Compatibility fallback for malformed/older exports without current_node.
     messages = []
     stack = [root]
     while stack:
