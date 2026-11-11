@@ -35,5 +35,7 @@ jobs:
         run: python _dev/tests/phase2/test_fix003_branch_projection.py
       - name: P1 - partial import receipts, origin hash and resumed data
         run: python _dev/tests/phase2/test_fix004_import_receipts.py
+      - name: P1 - FTS5 integrity using only disposable SQLite snapshot
+        run: python _dev/tests/phase2/test_fix005_fts_snapshot.py
       - name: Existing message retrieval contract
         run: python _dev/teste6.py
