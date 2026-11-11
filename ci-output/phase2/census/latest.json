@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "revision": "R10",
-  "generated_utc": "2026-11-11T00:15:55.815766+00:00",
+  "generated_utc": "2026-11-11T00:21:13.603940+00:00",
   "meaning": "143 audited and triaged, NOT 143 functionally tested",
   "summary": {
     "inventory_candidates": 143,
@@ -17,23 +17,23 @@
       "REFERENCE_OR_DEFER_NONCORE": 14,
       "EXTERNAL_ADAPTER_ONLY": 12,
       "HOLD_TECHNICAL_LIMIT": 2,
-      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 24,
+      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 23,
       "LICENSE_HOLD_NO_EMBED": 8,
       "EXCLUDE_ARCHIVED_ACTIVE_CORE": 2,
-      "REJECT_FAILED_MANDATORY_CONTRACT": 1
+      "REJECT_FAILED_MANDATORY_CONTRACT": 2
     },
     "test_evidence_levels": {
       "FUNCTIONAL_PASS": 18,
-      "NO_TEST": 122,
+      "NO_TEST": 121,
       "FUNCTIONAL_BLOCKED": 2,
-      "FUNCTIONAL_FAIL": 1
+      "FUNCTIONAL_FAIL": 2
     },
     "readme_checks": {
       "NOT_GITHUB": 20,
       "READ": 123
     },
     "repo_source_access_blocks": [],
-    "remaining_p0_contract_gate": 24,
+    "remaining_p0_contract_gate": 23,
     "all_candidates_accounted_for": true
   },
   "candidates": [
@@ -1315,7 +1315,7 @@
         "status": "FOUND",
         "license_spdx": "Apache-2.0",
         "archived": false,
-        "pushed_at": "2026-11-11T00:15:27Z"
+        "pushed_at": "2026-11-11T00:19:34Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
@@ -3157,7 +3157,7 @@
         "status": "FOUND",
         "license_spdx": "NOASSERTION",
         "archived": false,
-        "pushed_at": "2026-11-11T00:15:45Z"
+        "pushed_at": "2026-11-11T00:17:34Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -4450,10 +4450,17 @@
       "source_url": "https://github.com/TzurV/mcp-chat-chronicle",
       "original_classification": "CRITICAL",
       "priority": "P0",
-      "disposition": "HIGH_PRIORITY_CONTRACT_TEST_PENDING",
+      "disposition": "REJECT_FAILED_MANDATORY_CONTRACT",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_FAIL",
+        "status": "FAIL",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/chronicle-latest.json",
+        "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [
+          "all_five_original_messages",
+          "both_alternative_branches"
+        ],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "TzurV/mcp-chat-chronicle",
@@ -5344,7 +5351,7 @@
         "status": "FOUND",
         "license_spdx": "MIT",
         "archived": false,
-        "pushed_at": "2026-11-11T00:15:28Z"
+        "pushed_at": "2026-11-11T00:20:40Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
