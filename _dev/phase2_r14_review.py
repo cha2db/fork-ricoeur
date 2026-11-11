@@ -152,7 +152,7 @@ def merge(existing, new, base, legacy_rank):
   port=PORTS[row["category"]]
   if row["id"] in EXCEPTIONS:port=EXCEPTIONS[row["id"]]
   if row["name"]=="Moss":port="browser_index"
-  if row["name"] in ("Kosha","Marqo","Turbopuffer","Kosha design"):port="search_service"
+  if row["name"] in ("Kosha","Marqo","Turbopuffer"):port="search_service"
   if row["name"]=="Portable Memory (MacPaw)" or row["name"]=="PAM Portable AI Memory":port="interoperability_formats"
   if row["name"]=="Personal AI Memory":port="ingest_tree"
   if row["name"]=="Deep Lake":port="vector_index"
@@ -250,7 +250,7 @@ def main():
     "contract":"Bitemporal revisions, immutable messages, rollback, source IDs, disk budget"},
    {"order":4,"incumbent":"C065 RDFLib","challengers":["HelixDB","LadybugDB","Oxigraph"],
     "contract":"Typed evidence links + graph traversal, embeddings, mutation safety"},
-   {"order":5,"incumbent":"C001 SQLite FTS5","challengers":["Searchlite","Bleve","Moss","Infinity"],
+   {"order":5,"incumbent":"C001 SQLite FTS5","challengers":["Searchlite","Bleve","Moss","Infinity","Infino"],
     "contract":"Identical corpus, PT/EN queries, p95/memory/disk, update/delete, no cloud"},
    {"order":6,"incumbent":"C028 sqlite-vec","challengers":["turbovec","turbovecdb","ObjectBox Python"],
     "contract":"Exact recall, 2M scale, ARM, persistence, 2/4-bit tradeoffs"},
