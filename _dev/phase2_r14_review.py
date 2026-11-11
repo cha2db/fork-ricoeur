@@ -119,20 +119,30 @@ def risk_and_rank(row,source):
  return risks,phase
 
 def current_test(code):
- paths={"C155":"ci-output/phase2/r14/pglite-latest.json"}
+ paths={
+  "C155":"ci-output/phase2/r14/pglite-latest.json",
+  "C191":"ci-output/phase2/portable-memory-latest.json"}
  if code not in paths:return None
  try:
   result=subprocess.run(["git","show","origin/ci-results:"+paths[code]],
      capture_output=True,text=True,check=False,timeout=12)
   if result.returncode:return None
   evidence=json.loads(result.stdout)
-  checks=evidence.get("tests",{})
+  checks=evidence.get("tests") or evidence.get("checks") or {}
   if evidence.get("status")!="PASS" or len(checks)<5 or not all(checks.values()):
    return None
-  if not evidence.get("input_hash"):return None
-  return {"status":"PASS","scope":"PGlite Node WASM filesystem source+branch gate; not browser",
+  if code=="C155" and not evidence.get("input_hash"):return None
+  if code=="C191":
+   topology=evidence.get("branch_topology",{})
+   if topology.get("explicit_parent_link_retained") is not False:return None
+   scope=("Portable .mem episodes, source IDs, checksum, tamper and roundtrip PASS; "
+          "ChatGPT parent-child tree NOT preserved by this adapter")
+  else:
+   scope="PGlite Node WASM filesystem FTS and branch persistence PASS; NOT browser"
+  return {"status":"PASS","scope":scope,
     "report":"https://github.com/cha2db/fork-ricoeur/blob/ci-results/"+paths[code],
-    "checks":checks,"input_hash":evidence["input_hash"]}
+    "checks":checks,"topology":evidence.get("branch_topology"),
+    "input_hash":evidence.get("input_hash")}
  except (OSError,ValueError,subprocess.TimeoutExpired):return None
 
 def merge(existing, new, base, legacy_rank):
