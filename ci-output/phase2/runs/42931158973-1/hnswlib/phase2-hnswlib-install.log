@@ -1,0 +1,43 @@
+Collecting hnswlib<1,>=0.8
+  Downloading hnswlib-0.8.0.tar.gz (36 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting scikit-learn<2,>=1.5
+  Downloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting numpy (from hnswlib<1,>=0.8)
+  Using cached numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scipy>=1.10.0 (from scikit-learn<2,>=1.5)
+  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting joblib>=1.4.0 (from scikit-learn<2,>=1.5)
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn<2,>=1.5)
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn<2,>=1.5)
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn<2,>=1.5)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Downloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 29.4 MB/s  0:00:00
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Using cached numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 80.4 MB/s  0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Building wheels for collected packages: hnswlib
+  Building wheel for hnswlib (pyproject.toml): started
+  Building wheel for hnswlib (pyproject.toml): finished with status 'done'
+  Created wheel for hnswlib: filename=hnswlib-0.8.0-cp313-cp313-linux_x86_64.whl size=2811778 sha256=e64a45871a50232cd2592e6224021aefa792e23428ff807f289ce199b63a7252
+  Stored in directory: /home/runner/.cache/pip/wheels/35/04/88/b31765a4b9957705e18065db4657e61fc8da54f50e3ef0b67e
+Successfully built hnswlib
+Installing collected packages: threadpoolctl, numpy, narwhals, cloudpickle, scipy, joblib, hnswlib, scikit-learn
+
+Successfully installed cloudpickle-3.1.2 hnswlib-0.8.0 joblib-1.6.0 narwhals-2.28.0 numpy-2.5.4 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
