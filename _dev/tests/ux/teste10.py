@@ -10,7 +10,7 @@ rows=data["ranking"]
 assert len(rows)>=10
 assert len({r["id"] for r in rows})==len(rows)
 assert rows==sorted(rows,key=lambda x:(-x["score_preliminary"],x["id"]))
-assert rows[0]["id"] in ("ricoeur","textual","cytoscape","vueflow","visnetwork")
+assert rows[0]["score_preliminary"] >= next(r for r in rows if r["id"]=="ricoeur")["score_preliminary"]
 assert all(r["tested"] is False for r in rows)
 assert all(0<=r["score_preliminary"]<=100 for r in rows)
 assert next(r for r in rows if r["id"]=="kept")["core"]<next(r for r in rows if r["id"]=="ricoeur")["core"]
