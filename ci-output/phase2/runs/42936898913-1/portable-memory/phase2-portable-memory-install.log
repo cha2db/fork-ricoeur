@@ -1,0 +1,8 @@
+Collecting portable-memory==0.3.0
+  Downloading portable_memory-0.3.0-py3-none-any.whl.metadata (19 kB)
+Downloading portable_memory-0.3.0-py3-none-any.whl (63 kB)
+Installing collected packages: portable-memory
+Successfully installed portable-memory-0.3.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip

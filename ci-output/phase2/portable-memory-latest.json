@@ -1,0 +1,50 @@
+{
+  "candidate": "Portable Memory (MacPaw)",
+  "upstream": "MacPaw/portable-memory",
+  "status": "PASS",
+  "contract": "portable messages, metadata, deterministic ID, JSONL manifest, integrity and tamper",
+  "checks": {
+    "five_message_ids": true,
+    "all_alternative_texts_preserved": true,
+    "provider_conversation_provenance": true,
+    "stable_source_message_ids": true,
+    "role_preserved": true,
+    "valid_bundle_integrity": true,
+    "has_checksums_and_manifest": true,
+    "full_bundle_roundtrip_ids": true,
+    "full_bundle_roundtrip_content": true,
+    "full_bundle_roundtrip_provenance": true,
+    "repeated_bundle_import_no_duplicates": true,
+    "episode_jsonl_nonempty": true,
+    "tamper_detected": true
+  },
+  "branch_topology": {
+    "explicit_parent_link_retained": false,
+    "sibling_source_ids_retained": true,
+    "comment": "The OpenAI adapter preserves both sibling messages as episodes but does not encode their parent/child edges in episode metadata; therefore this bundle cannot reconstruct branch topology by itself."
+  },
+  "bundle_items": 5,
+  "manifest_format": "1.1.0",
+  "roundtrip_ids": [
+    "a1",
+    "a2",
+    "m1",
+    "m2",
+    "m3"
+  ],
+  "tamper_issue_count": 3,
+  "verdict": "ADOPT_FORMAT_CANDIDATE_NOT_LOSSLESS_TREE_REPLACEMENT",
+  "limitations": [
+    "ChatGPT source tree edges/parent pointers are not in Portable Memory episode metadata.",
+    "Only user/assistant text episodes tested, not tool calls, attachments, or raw JSON preservation.",
+    "Deterministic JSONL content is separate from generation timestamps in manifest.",
+    "No browser, tablet or external provider integration; core Cha2db remains untouched.",
+    "PASS means portable bundle integrity and content only, NOT entire conversation structure."
+  ],
+  "run_id": "42936898913",
+  "commit": "51d296c74ea2718aeabc53503c39daeb13870172",
+  "logs": {
+    "phase2-portable-memory.log": "{\n  \"candidate\": \"Portable Memory (MacPaw)\",\n  \"upstream\": \"MacPaw/portable-memory\",\n  \"status\": \"PASS\",\n  \"contract\": \"portable messages, metadata, deterministic ID, JSONL manifest, integrity and tamper\",\n  \"checks\": {\n    \"five_message_ids\": true,\n    \"all_alternative_texts_preserved\": true,\n    \"provider_conversation_provenance\": true,\n    \"stable_source_message_ids\": true,\n    \"role_preserved\": true,\n    \"valid_bundle_integrity\": true,\n    \"has_checksums_and_manifest\": true,\n    \"full_bundle_roundtrip_ids\": true,\n    \"full_bundle_roundtrip_content\": true,\n    \"full_bundle_roundtrip_provenance\": true,\n    \"repeated_bundle_import_no_duplicates\": true,\n    \"episode_jsonl_nonempty\": true,\n    \"tamper_detected\": true\n  },\n  \"branch_topology\": {\n    \"explicit_parent_link_retained\": false,\n    \"sibling_source_ids_retained\": true,\n    \"comment\": \"The OpenAI adapter preserves both sibling messages as episodes but does not encode their parent/child edges in episode metadata; therefore this bundle cannot reconstruct branch topology by itself.\"\n  },\n  \"bundle_items\": 5,\n  \"manifest_format\": \"1.1.0\",\n  \"roundtrip_ids\": [\n    \"a1\",\n    \"a2\",\n    \"m1\",\n    \"m2\",\n    \"m3\"\n  ],\n  \"tamper_issue_count\": 3,\n  \"verdict\": \"ADOPT_FORMAT_CANDIDATE_NOT_LOSSLESS_TREE_REPLACEMENT\",\n  \"limitations\": [\n    \"ChatGPT source tree edges/parent pointers are not in Portable Memory episode metadata.\",\n    \"Only user/assistant text episodes tested, not tool calls, attachments, or raw JSON preservation.\",\n    \"Deterministic JSONL content is separate from generation timestamps in manifest.\",\n    \"No browser, tablet or external provider integration; core Cha2db remains untouched.\",\n    \"PASS means portable bundle integrity and content only, NOT entire conversation structure.\"\n  ]\n}\n",
+    "phase2-portable-memory-install.log": "Collecting portable-memory==0.3.0\n  Downloading portable_memory-0.3.0-py3-none-any.whl.metadata (19 kB)\nDownloading portable_memory-0.3.0-py3-none-any.whl (63 kB)\nInstalling collected packages: portable-memory\nSuccessfully installed portable-memory-0.3.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n"
+  }
+}

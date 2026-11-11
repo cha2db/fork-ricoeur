@@ -1,0 +1,44 @@
+{
+  "candidate": "Portable Memory (MacPaw)",
+  "upstream": "MacPaw/portable-memory",
+  "status": "PASS",
+  "contract": "portable messages, metadata, deterministic ID, JSONL manifest, integrity and tamper",
+  "checks": {
+    "five_message_ids": true,
+    "all_alternative_texts_preserved": true,
+    "provider_conversation_provenance": true,
+    "stable_source_message_ids": true,
+    "role_preserved": true,
+    "valid_bundle_integrity": true,
+    "has_checksums_and_manifest": true,
+    "full_bundle_roundtrip_ids": true,
+    "full_bundle_roundtrip_content": true,
+    "full_bundle_roundtrip_provenance": true,
+    "repeated_bundle_import_no_duplicates": true,
+    "episode_jsonl_nonempty": true,
+    "tamper_detected": true
+  },
+  "branch_topology": {
+    "explicit_parent_link_retained": false,
+    "sibling_source_ids_retained": true,
+    "comment": "The OpenAI adapter preserves both sibling messages as episodes but does not encode their parent/child edges in episode metadata; therefore this bundle cannot reconstruct branch topology by itself."
+  },
+  "bundle_items": 5,
+  "manifest_format": "1.1.0",
+  "roundtrip_ids": [
+    "a1",
+    "a2",
+    "m1",
+    "m2",
+    "m3"
+  ],
+  "tamper_issue_count": 3,
+  "verdict": "ADOPT_FORMAT_CANDIDATE_NOT_LOSSLESS_TREE_REPLACEMENT",
+  "limitations": [
+    "ChatGPT source tree edges/parent pointers are not in Portable Memory episode metadata.",
+    "Only user/assistant text episodes tested, not tool calls, attachments, or raw JSON preservation.",
+    "Deterministic JSONL content is separate from generation timestamps in manifest.",
+    "No browser, tablet or external provider integration; core Cha2db remains untouched.",
+    "PASS means portable bundle integrity and content only, NOT entire conversation structure."
+  ]
+}
