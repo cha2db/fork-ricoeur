@@ -249,18 +249,14 @@ def backfill_existing(conn):
         source_ids.setdefault(row[0], set()).add(row[1])
     count = 0
     for row in conn.execute(
-        "SELECT conv_id,node_id,parent_id,message_json FROM chatgpt_nodes"
+        "SELECT conv_id,node_id,parent_id,children_json,message_json FROM chatgpt_nodes"
     ):
-        conv_id,node_id,parent_id,payload = row
-        # Backfill historical original nodes before marking v3, even when
-        # they are selected messages and therefore not in branch FTS.
-        raw_node=conn.execute(
-            "SELECT children_json FROM chatgpt_nodes WHERE conv_id=? AND node_id=?",
-            (conv_id,node_id)).fetchone()
+        conv_id,node_id,parent_id,children,payload = row
+        # Backfill immutable historical nodes with one streaming scan.
         record_node_version(
             conn,conv_id,node_id,
             {"parent":parent_id,
-             "children":json.loads(raw_node[0]) if raw_node else [],
+             "children":json.loads(children) if children else [],
              "message":json.loads(payload) if payload else None},
             source_sha256=None,
         )
