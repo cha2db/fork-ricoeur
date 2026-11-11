@@ -58,7 +58,7 @@ jobs:
             "scenarios":["fix001","fix002","fix003","fix004","fix005","existing-retrieval"],
             "data_policy":"synthetic_only",
             "merge_policy":"peer_review_required",
-          },indent=2)+"\\n")
+          },indent=2))
           PY
       - name: Preserve Phase2 test evidence
         if: always()
