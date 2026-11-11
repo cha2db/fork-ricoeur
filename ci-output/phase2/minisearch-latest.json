@@ -21,7 +21,7 @@
         "fixture-cha2db-v1-m000090-0000"
       ],
       "p10": 1,
-      "latency_ms": 1.436
+      "latency_ms": 1.141
     },
     {
       "query": "contrato declarativo",
@@ -39,7 +39,7 @@
         "fixture-cha2db-v1-m000091-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.378
+      "latency_ms": 0.284
     },
     {
       "query": "busca cruzada",
@@ -57,7 +57,7 @@
         "fixture-cha2db-v1-m000092-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.265
+      "latency_ms": 0.179
     },
     {
       "query": "pipeline Jenkins",
@@ -75,7 +75,7 @@
         "fixture-cha2db-v1-m000093-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.245
+      "latency_ms": 0.174
     },
     {
       "query": "índice B-tree",
@@ -93,7 +93,7 @@
         "fixture-cha2db-v1-m000094-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.536
+      "latency_ms": 0.357
     },
     {
       "query": "conexão SSH",
@@ -111,7 +111,7 @@
         "fixture-cha2db-v1-m000095-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.249
+      "latency_ms": 0.201
     },
     {
       "query": "Android Studio",
@@ -129,7 +129,7 @@
         "fixture-cha2db-v1-m000096-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.236
+      "latency_ms": 0.168
     },
     {
       "query": "menor privilégio",
@@ -147,7 +147,7 @@
         "fixture-cha2db-v1-m000097-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.239
+      "latency_ms": 0.171
     },
     {
       "query": "avaliação formativa",
@@ -165,7 +165,7 @@
         "fixture-cha2db-v1-m000098-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.288
+      "latency_ms": 0.174
     },
     {
       "query": "API REST",
@@ -183,12 +183,12 @@
         "fixture-cha2db-v1-m000099-0000"
       ],
       "p10": 1,
-      "latency_ms": 0.257
+      "latency_ms": 0.185
     }
   ],
-  "build_seconds": 0.044,
-  "delta_heap_bytes": 2829328,
-  "median_latency_ms": 0.261,
+  "build_seconds": 0.033,
+  "delta_heap_bytes": 2841936,
+  "median_latency_ms": 0.182,
   "mean_p10": 1,
   "verdict": "ENGINE_EXECUTES_NOT_SELECTED_OR_HUMAN_VALIDATED",
   "limitations": [
@@ -197,11 +197,11 @@
     "No full 40k ranking benchmark and no human relevance gold",
     "Heap delta reflects Node process only, noisy and not comparable across runners"
   ],
-  "run_id": "42931105528",
-  "commit": "a3c73fb368fd60ca6a87389ed2e81feb04031d0d",
+  "run_id": "42931538983",
+  "commit": "25e242c29c1f4aabbb7bfbe6e02af84c9aa4dc2a",
   "logs": {
-    "phase2-minisearch.log": "{\n  \"candidate\": \"minisearch\",\n  \"status\": \"PASS\",\n  \"mean_p10\": 1,\n  \"median_latency_ms\": 0.261,\n  \"build_seconds\": 0.044\n}\n",
-    "phase2-minisearch-install.log": "\nadded 1 package in 650ms\n",
+    "phase2-minisearch.log": "{\n  \"candidate\": \"minisearch\",\n  \"status\": \"PASS\",\n  \"mean_p10\": 1,\n  \"median_latency_ms\": 0.182,\n  \"build_seconds\": 0.033\n}\n",
+    "phase2-minisearch-install.log": "\nadded 1 package in 992ms\n",
     "phase2-minisearch-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
