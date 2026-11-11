@@ -632,6 +632,459 @@
       "reuse_strategy": "ux-reference-only",
       "license_status": "unverified",
       "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+    },
+    {
+      "id": "echarts",
+      "name": "Apache ECharts",
+      "category": "visual-chart",
+      "url": "https://echarts.apache.org/en/index.html",
+      "core": 5,
+      "ui": 5,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "bar/timeline",
+        "datazoom",
+        "click"
+      ],
+      "presentation_modes": [
+        "bar-chart",
+        "timeline",
+        "heatmap",
+        "sunburst"
+      ],
+      "reuse_strategy": "visual-driver-opt-in",
+      "license_status": "Apache-2.0",
+      "notes": "experimentally linked in knowledge.html; not bundled/tested in browser"
+    },
+    {
+      "id": "wordcloud2",
+      "name": "wordcloud2.js",
+      "category": "visual-tags",
+      "url": "https://github.com/timdream/wordcloud2.js",
+      "core": 5,
+      "ui": 4,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "token-frequency"
+      ],
+      "presentation_modes": [
+        "wordcloud"
+      ],
+      "reuse_strategy": "visual-driver-opt-in",
+      "license_status": "MIT",
+      "notes": "experimentally linked in knowledge.html; no source code bundled"
+    },
+    {
+      "id": "vegalite",
+      "name": "Vega-Lite",
+      "category": "visual-chart",
+      "url": "https://vega.github.io/vega-lite/",
+      "core": 5,
+      "ui": 5,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "temporal-series",
+        "brush",
+        "selection"
+      ],
+      "presentation_modes": [
+        "dashboard",
+        "small-multiples",
+        "heatmap"
+      ],
+      "reuse_strategy": "visual-driver-pending",
+      "license_status": "BSD-3-Clause",
+      "notes": "declarative linked dashboards, compare with ECharts"
+    },
+    {
+      "id": "skos",
+      "name": "W3C SKOS",
+      "category": "knowledge-standard",
+      "url": "https://www.w3.org/TR/skos-reference/",
+      "core": 5,
+      "ui": 4,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "broader",
+        "narrower",
+        "related",
+        "altLabel"
+      ],
+      "presentation_modes": [
+        "taxonomy",
+        "typed-graph",
+        "thesaurus"
+      ],
+      "reuse_strategy": "contract-subset",
+      "license_status": "W3C-REC",
+      "notes": "subset implemented in optional curated JSON sidecar, not full RDF serializer"
+    },
+    {
+      "id": "provo",
+      "name": "W3C PROV-O",
+      "category": "provenance-standard",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "core": 5,
+      "ui": 3,
+      "adapter": 5,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "source",
+        "evidence",
+        "derivation"
+      ],
+      "presentation_modes": [
+        "traceability-graph"
+      ],
+      "reuse_strategy": "contract-candidate",
+      "license_status": "W3C-REC",
+      "notes": "message provenance already available; RDF PROV-O not implemented"
+    },
+    {
+      "id": "openwordnetpt",
+      "name": "OpenWordnet-PT",
+      "category": "lexical-resource",
+      "url": "https://github.com/own-pt/openwordnet-pt",
+      "core": 5,
+      "ui": 3,
+      "adapter": 4,
+      "license": 4,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "synset",
+        "multisense",
+        "pt"
+      ],
+      "presentation_modes": [
+        "dictionary",
+        "thesaurus"
+      ],
+      "reuse_strategy": "data-adapter-pending",
+      "license_status": "CC-BY-4.0",
+      "notes": "Portuguese synsets; no corpus imported; semantic sense disambiguation gate"
+    },
+    {
+      "id": "omw",
+      "name": "Open Multilingual Wordnet",
+      "category": "lexical-resource",
+      "url": "https://omwn.org/",
+      "core": 5,
+      "ui": 3,
+      "adapter": 4,
+      "license": 3,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "synsets",
+        "multilingual"
+      ],
+      "presentation_modes": [
+        "thesaurus",
+        "translation"
+      ],
+      "reuse_strategy": "data-adapter-pending",
+      "license_status": "per-component",
+      "notes": "multi-language lexica, each component license distinct"
+    },
+    {
+      "id": "conceptnet",
+      "name": "ConceptNet 5",
+      "category": "knowledge-graph",
+      "url": "https://conceptnet.io/",
+      "core": 5,
+      "ui": 5,
+      "adapter": 3,
+      "license": 3,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "synonym",
+        "relatedto",
+        "isa",
+        "usedfor",
+        "hasprerequisite"
+      ],
+      "presentation_modes": [
+        "typed-graph",
+        "concept-map"
+      ],
+      "reuse_strategy": "data-adapter-pending",
+      "license_status": "CC-BY-SA-4.0",
+      "notes": "external knowledge; assert provenance/source and separate corpus-level evidence"
+    },
+    {
+      "id": "wikidata",
+      "name": "Wikidata",
+      "category": "knowledge-graph",
+      "url": "https://www.wikidata.org/",
+      "core": 5,
+      "ui": 4,
+      "adapter": 3,
+      "license": 4,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "entity",
+        "alias",
+        "subclass",
+        "property"
+      ],
+      "presentation_modes": [
+        "typed-graph",
+        "entity-cards"
+      ],
+      "reuse_strategy": "data-adapter-pending",
+      "license_status": "CC0-1.0",
+      "notes": "entity disambiguation and ID mapping required"
+    },
+    {
+      "id": "vosviewer",
+      "name": "VOSviewer",
+      "category": "bibliometrics",
+      "url": "https://www.vosviewer.com/",
+      "core": 4,
+      "ui": 5,
+      "adapter": 2,
+      "license": 4,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "coword",
+        "cocitation",
+        "coauthorship"
+      ],
+      "presentation_modes": [
+        "network-map",
+        "temporal-overlay"
+      ],
+      "reuse_strategy": "algorithm-interface-study",
+      "license_status": "open-use-verify-license",
+      "notes": "co-word networks useful; not a direct Ricoeur component"
+    },
+    {
+      "id": "biblioshiny",
+      "name": "Biblioshiny",
+      "category": "bibliometrics",
+      "url": "https://www.bibliometrix.org/biblioshiny/",
+      "core": 4,
+      "ui": 5,
+      "adapter": 2,
+      "license": 3,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "coword",
+        "topic-evolution"
+      ],
+      "presentation_modes": [
+        "thematic-map",
+        "strategic-diagram"
+      ],
+      "reuse_strategy": "algorithm-interface-study",
+      "license_status": "verify-license",
+      "notes": "science mapping; no production adoption"
+    },
+    {
+      "id": "bertopic",
+      "name": "BERTopic",
+      "category": "dynamic-topics",
+      "url": "https://maartengr.github.io/BERTopic/",
+      "core": 3,
+      "ui": 5,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "embedding",
+        "topics-over-time",
+        "c-tfidf"
+      ],
+      "presentation_modes": [
+        "topic-trend",
+        "hierarchy",
+        "heatmap"
+      ],
+      "reuse_strategy": "ml-optional-study",
+      "license_status": "MIT",
+      "notes": "not installed; require human gate and cross-run reliability, LLM not mandatory"
+    },
+    {
+      "id": "yake",
+      "name": "YAKE",
+      "category": "keyphrases",
+      "url": "https://github.com/LIAAD/yake",
+      "core": 5,
+      "ui": 3,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "statistical-keyphrases"
+      ],
+      "presentation_modes": [
+        "keyword-list",
+        "wordcloud"
+      ],
+      "reuse_strategy": "algorithm-adapter-pending",
+      "license_status": "GPL-3.0",
+      "notes": "license compatibility requires audit; no use yet"
+    },
+    {
+      "id": "keybert",
+      "name": "KeyBERT",
+      "category": "keyphrases",
+      "url": "https://github.com/MaartenGr/KeyBERT",
+      "core": 4,
+      "ui": 4,
+      "adapter": 3,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "embedding-keyphrases"
+      ],
+      "presentation_modes": [
+        "keyword-clusters",
+        "wordcloud"
+      ],
+      "reuse_strategy": "ml-optional-study",
+      "license_status": "MIT",
+      "notes": "embeddings optional, avoid duplicate peer code"
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex Topics",
+      "category": "bibliometrics",
+      "url": "https://help.openalex.org/data/topics/",
+      "core": 5,
+      "ui": 4,
+      "adapter": 3,
+      "license": 4,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "topics",
+        "works",
+        "citations",
+        "hierarchy"
+      ],
+      "presentation_modes": [
+        "topic-taxonomy",
+        "bibliometric-map"
+      ],
+      "reuse_strategy": "data-adapter-pending",
+      "license_status": "data-terms-verify",
+      "notes": "external research knowledge, API budget; not chat evidence"
+    },
+    {
+      "id": "cmaptools",
+      "name": "IHMC CmapTools",
+      "category": "concept-maps",
+      "url": "https://cmap.ihmc.us/",
+      "core": 5,
+      "ui": 5,
+      "adapter": 2,
+      "license": 3,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "concept-propositions",
+        "linking-phrases"
+      ],
+      "presentation_modes": [
+        "concept-map"
+      ],
+      "reuse_strategy": "ui-reference-only",
+      "license_status": "verify-license",
+      "notes": "epistemic model useful; app not embedded"
+    },
+    {
+      "id": "jsoncanvas",
+      "name": "JSON Canvas",
+      "category": "interchange-standard",
+      "url": "https://jsoncanvas.org/",
+      "core": 5,
+      "ui": 4,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "nodes",
+        "edges",
+        "groups"
+      ],
+      "presentation_modes": [
+        "portable-concept-map"
+      ],
+      "reuse_strategy": "export-adapter-pending",
+      "license_status": "MIT",
+      "notes": "open graph export representation separate from DB"
+    },
+    {
+      "id": "networkx",
+      "name": "NetworkX",
+      "category": "graph-analytics",
+      "url": "https://networkx.org/",
+      "core": 5,
+      "ui": 3,
+      "adapter": 4,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "centrality",
+        "community",
+        "paths"
+      ],
+      "presentation_modes": [
+        "graph-metrics",
+        "clusters"
+      ],
+      "reuse_strategy": "algorithm-adapter-pending",
+      "license_status": "BSD-3-Clause",
+      "notes": "pure analysis on existing graph with provenance; no new DB required"
+    },
+    {
+      "id": "gephi",
+      "name": "Gephi",
+      "category": "graph-analytics",
+      "url": "https://gephi.org/",
+      "core": 5,
+      "ui": 4,
+      "adapter": 2,
+      "license": 5,
+      "core_relation": "noncanonical extension; does not replace Ricoeur SQLite/FTS5 unless verified otherwise",
+      "status": "candidate",
+      "search_modes": [
+        "community",
+        "centrality",
+        "layouts"
+      ],
+      "presentation_modes": [
+        "graph-clusters",
+        "overlay"
+      ],
+      "reuse_strategy": "export-adapter-pending",
+      "license_status": "GPL-3.0",
+      "notes": "offline external desktop, export only; no GUI embedding"
     }
   ]
 }
