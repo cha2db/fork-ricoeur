@@ -1,0 +1,70 @@
+name: Cha2db Phase 2 - 143 evidence and disposition gates
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/PHASE2_MARKET_UNIVERSE_R10.json'
+      - '_dev/phase2_143_ledger.py'
+      - '_dev/phase2_repo_audit.py'
+      - '_dev/publish_phase2_census.sh'
+      - '.github/workflows/phase2-143-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-143-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile census and audit programs
+        run: python -m py_compile _dev/phase2_143_ledger.py _dev/phase2_repo_audit.py
+      - name: Gather current GitHub evidence branch
+        run: git fetch origin ci-results:refs/remotes/origin/ci-results
+      - name: Audit all 143 inventory entries against upstream metadata
+        run: |
+          mkdir -p _dev/results
+          python -u _dev/phase2_repo_audit.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R10.json --output _dev/results/phase2-repo-audit.json > _dev/results/phase2-repo-audit.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-repo-audit.log
+            exit 1
+          }
+          python - <<'PY'
+          import json
+          x=json.load(open('_dev/results/phase2-repo-audit.json'))
+          assert x['inventory_candidate_count']==143,x
+          assert x['github_unique_count']>=100,x
+          print("GH METADATA AUDIT",x["inventory_candidate_count"],x["github_unique_count"])
+          PY
+      - name: Inspect upstream README, mapping, license gates and actual CI evidence
+        run: |
+          python -u _dev/phase2_143_ledger.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R10.json --audit _dev/results/phase2-repo-audit.json --output _dev/results/phase2-143-ledger.json > _dev/results/phase2-143-ledger.log 2>&1 || {
+            tail -n 150 _dev/results/phase2-143-ledger.log
+            exit 1
+          }
+          python - <<'PY'
+          import json
+          r=json.load(open('_dev/results/phase2-143-ledger.json'))
+          assert r['summary']['entries_with_disposition']==143,r["summary"]
+          assert len(set(x['id'] for x in r['candidates']))==143
+          print(json.dumps(r['summary'],indent=2))
+          PY
+      - name: Archive complete reproducible logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-census-143-${{ github.run_id }}
+          path: _dev/results/
+          retention-days: 30
+      - name: Publish connector-readable ledger and summary
+        if: always()
+        run: bash _dev/publish_phase2_census.sh
