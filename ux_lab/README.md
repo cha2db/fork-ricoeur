@@ -65,3 +65,15 @@ python ux_lab/ux.py --db /caminho/ricoeur.db --lexicon ux_lab/lexicon.example.js
 
 Testar autonomamente: `bash _dev/tests/ux/teste14.sh`. Resultados **locais** em `_dev/results/ux/`. Revisão e pesquisa: `docs/ux/UX-014-COGNITIVE-KNOWLEDGE-MAPS-PRIOR-ART.md`. ECharts/wordcloud2 opt-in carregam JS externo: exclusivamente corpus sintético.
 
+
+## UX-015 — Página inicial e classificação por GUI
+
+`/` agora é **painel central**. Navegação fixa e acessível também em `/chats` (leitor de conversas/grafo) e `/knowledge` (incidência temporal/nuvem). O catálogo JSON `ux_lab/dashboard_catalog.json` distribui **todos os 46 candidatos** por 8 tipos; o rodapé oferece 46 links com crédito e opção explícita de exibir logos oficiais verificados.
+
+```sh
+python ux_lab/ux.py --db /caminho/ricoeur.db dashboard
+python ux_lab/ux.py --db /caminho/ricoeur.db serve --port 8765
+bash _dev/tests/ux/teste15.sh
+```
+
+**Nunca inferir adoção de candidato estudado:** somente Ricoeur/Textual estão marcados como núcleos já adotados; vis-network/ECharts/wordcloud2 experimentais opt-in; subset SKOS não implica validação RDF. URLs externas de logo exigem autorização. Leia `docs/ux/UX-015-CENTRAL-GUI-DASHBOARD-CREDITS.md`.
