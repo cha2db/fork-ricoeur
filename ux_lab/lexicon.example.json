@@ -1,0 +1,34 @@
+{
+  "schema_version": "ux.lexicon.v1",
+  "description": "SYNTHETIC DEMONSTRATION ONLY — no global synonym truth inferred",
+  "concepts": [
+    {
+      "id": "demo:continuous-integration",
+      "prefLabel": "integração contínua",
+      "altLabels": [
+        "continuous integration",
+        "CI pipeline"
+      ],
+      "language": "pt",
+      "relations": [
+        {
+          "target": "demo:delivery",
+          "type": "skos:related",
+          "source": "human_curated_synthetic_demo",
+          "evidence_refs": [],
+          "note": "Associação pedagógica de demonstração; não comprovada em conversas"
+        }
+      ]
+    },
+    {
+      "id": "demo:delivery",
+      "prefLabel": "entrega contínua",
+      "altLabels": [
+        "continuous delivery",
+        "CD"
+      ],
+      "language": "pt",
+      "relations": []
+    }
+  ]
+}
