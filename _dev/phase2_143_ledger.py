@@ -175,7 +175,8 @@ def candidate(row,audit,readme,functional):
         disposition="COMPARATIVE_TEST_PENDING"
     if upstream in {"HTTP_ERROR","UNAVAILABLE","ERROR"}:
         disposition="SOURCE_ACCESS_BLOCKED"
-    review_count=0 if functional["level"]=="FUNCTIONAL_PASS" else 1
+    review_count=int(disposition in {"HIGH_PRIORITY_CONTRACT_TEST_PENDING",
+                                     "COMPARATIVE_TEST_PENDING"})
     return {
         "id":code,"name":row["name"],"family":row["family"],
         "source_url":row["url"],"original_classification":row["status"],
@@ -238,7 +239,10 @@ def main():
         "inventory_candidates":143,"entries_with_disposition":len(rows),
         "repositories_in_inventory":len(repos),"audited_unique_github":audited["audited_count"],
         "real_functional_pass_candidates":functional,
-        "functional_pending_or_blocked":143-functional,
+        "functional_not_passed_or_not_applicable":143-functional,
+        "actionable_comparative_tests":sum(r["test_pending"] for r in rows),
+        "functional_failures":sum(r["functional_test"]["level"]=="FUNCTIONAL_FAIL" for r in rows),
+        "functional_blocked":sum(r["functional_test"]["level"]=="FUNCTIONAL_BLOCKED" for r in rows),
         "dispositions":dict(dispositions),
         "test_evidence_levels":dict(outcomes),
         "readme_checks":dict(read_status),
