@@ -27,7 +27,7 @@ code{color:#a6e3b8}a{color:var(--accent)}
 </style>
 </head>
 <body>
-<header><strong>Cha2db · laboratório UX</strong><small>Ricoeur SQLite/FTS5 · contratos JSON · leitura local</small></header>
+<header><strong>Cha2db · laboratório UX</strong> <a href="/knowledge">Observatório temporal / termos</a><small>Ricoeur SQLite/FTS5 · contratos JSON · leitura local</small></header>
 <main>
 <section>
  <div class="controls">
@@ -177,7 +177,9 @@ async function loadGraph(){
 }
 function report(error){status('Erro: '+error.message)}
 $('search').onclick=()=>loadSearch().catch(report);
-$('recent').onclick=()=>loadRecent().catch(report);
+$('recent').onclick=()=>const deepLink=new URLSearchParams(location.search);
+if(deepLink.has('conv'))showTranscript(deepLink.get('conv'),deepLink.get('msg')||undefined).catch(report);
+else loadRecent().catch(report);
 $('showGraph').onclick=()=>loadGraph().catch(report);
 $('query').addEventListener('keydown',event=>{if(event.key==='Enter')loadSearch().catch(report)});
 $('enableVis').onclick=()=>{
