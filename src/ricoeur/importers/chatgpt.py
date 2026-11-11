@@ -27,7 +27,8 @@ from .base import (
     resolve_message_id,
     update_conversation_counts,
 )
-from .branch_index import validate_snapshot, selected_nodes, sync_projection
+from .branch_index import (validate_snapshot, selected_nodes, sync_projection,
+                           record_node_version, record_selection)
 
 
 def import_chatgpt(
@@ -91,7 +92,7 @@ def import_chatgpt(
                 conn.execute("SAVEPOINT chatgpt_import_one")
                 try:
                     _import_one(conn, conv_raw, stats, update=update,
-                                since=since, dry_run=False)
+                                since=since, dry_run=False, source_sha256=sha)
                     conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
                 except BaseException:
                     conn.execute("ROLLBACK TO SAVEPOINT chatgpt_import_one")
@@ -244,6 +245,7 @@ def _import_one(
     update: bool,
     since: Optional[str],
     dry_run: bool,
+    source_sha256: Optional[str] = None,
 ) -> None:
     native_conv_id = conv.get("id", conv.get("conversation_id", ""))
     conv_id = resolve_conversation_id(conn, "chatgpt", native_conv_id)
@@ -309,6 +311,7 @@ def _import_one(
         PRIMARY KEY (conv_id, node_id)
     )""")
     for node_id, node in (conv.get("mapping") or {}).items():
+        record_node_version(conn, conv_id, node_id, node, source_sha256)
         if update:
             conn.execute("""INSERT INTO chatgpt_nodes
                 (conv_id, node_id, parent_id, children_json, message_json)
@@ -328,8 +331,12 @@ def _import_one(
                  json.dumps(node.get("children",[]),ensure_ascii=False),
                  json.dumps(node.get("message"),ensure_ascii=False)))
 
-    # FTS5 sidecar contains *only* nonselected branches, never the default
-    # message path; raw chatgpt_nodes remains the original source structure.
+    # Source hash and selected leaf are archived separately from the mutable
+    # current projection, allowing review of older branch decisions.
+    path_nodes = selected_nodes(conv)
+    record_selection(conn, conv_id, source_sha256,
+                     path_nodes[-1] if path_nodes else None)
+    # FTS5 sidecar contains *only* nonselected branches.
     sync_projection(conn, conv_id, conv, selected=selected)
 
     # Keep the selected path searchable, including empty messages.
