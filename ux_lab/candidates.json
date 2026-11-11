@@ -184,7 +184,7 @@
         "web-reader"
       ],
       "reuse_strategy": "research-only",
-      "license_status": "verify-upstream"
+      "license_status": "MIT"
     },
     {
       "id": "kept",
@@ -206,7 +206,7 @@
         "web-reader"
       ],
       "reuse_strategy": "research-only",
-      "license_status": "verify-upstream"
+      "license_status": "MIT"
     },
     {
       "id": "msgvault",
@@ -259,7 +259,7 @@
       "ui": 5,
       "adapter": 4,
       "license": 4,
-      "core_relation": "Python/FastAPI/SQLite FTS5; unknown data schema",
+      "core_relation": "SQLite/FTS5 but conversations/messages use INTEGER surrogate keys, provider, sequence/text/content_json; differs from Ricoeur TEXT IDs/content/conv_id; NOT equivalent",
       "status": "candidate",
       "search_modes": [
         "literal",
@@ -273,7 +273,7 @@
       ],
       "reuse_strategy": "adapter-rest",
       "license_status": "MIT-unverified",
-      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+      "notes": "Source inspected: backend/app/db.py; reuse split-pane UX only"
     },
     {
       "id": "centralchat",
@@ -284,7 +284,7 @@
       "ui": 5,
       "adapter": 4,
       "license": 5,
-      "core_relation": "Python/FastAPI/SQLite FTS5; unknown data schema",
+      "core_relation": "SQLite/FTS5, conversations.id TEXT matches; messages.conversation_id/created_at/search_fts differ from Ricoeur conv_id/timestamp/messages_fts; NOT equivalent",
       "status": "candidate",
       "search_modes": [
         "fts5",
@@ -298,7 +298,7 @@
       ],
       "reuse_strategy": "adapter-rest",
       "license_status": "MIT",
-      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+      "notes": "Source inspected: backend/app/database.py; API adapter rather than core replacement"
     },
     {
       "id": "threadshelf",
@@ -333,7 +333,7 @@
       "core": 1,
       "ui": 5,
       "adapter": 2,
-      "license": 3,
+      "license": 5,
       "core_relation": "IndexedDB + browser graph; not Ricoeur SQLite",
       "status": "candidate",
       "search_modes": [
@@ -345,8 +345,8 @@
         "extension"
       ],
       "reuse_strategy": "ui-only",
-      "license_status": "unverified",
-      "notes": "Prior art / integration viability unverified; requires pinned source+same-corpus test"
+      "license_status": "Apache-2.0",
+      "notes": "Source README verified Apache-2.0; IndexedDB and branch graph remain separate core"
     },
     {
       "id": "chatsearch",
