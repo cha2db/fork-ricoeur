@@ -34,7 +34,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:800px){main{display:block}section{margin-bottom:12px}}
 </style></head>
 <body>
-<header><strong>Cha2db · Observatório de termos</strong> · <a href="/">Transcrições e grafo</a>
+<header><strong>Cha2db · Observatório de termos</strong> · <a href="/">Painel central</a> · <a href="/chats">Transcrições e grafo</a>
 <p class="muted">Incidência por período, termos associados por coocorrência e drill-down para mensagens originais. Sem IA ou taxonomia presumida.</p></header>
 <main>
 <section class="wide">
@@ -133,7 +133,7 @@ async function loadDrill(){
     element('small',(m.timestamp||'sem data')+' · '+m.platform+' · ID: '+m.message_id,article);
     element('p',(m.content||'').slice(0,260),article);
     const btn=element('button','Abrir mensagem na transcrição',article);
-    btn.onclick=()=>{const url=new URL('/',location.href);
+    btn.onclick=()=>{const url=new URL('/chats',location.href);
       url.searchParams.set('conv',m.conv_id);url.searchParams.set('msg',m.message_id);
       location.href=url.toString()};
   }
@@ -198,4 +198,5 @@ $('loadWordcloud').onclick=()=>externalScript('https://cdn.jsdelivr.net/npm/word
   state.wordcloud=true;drawWordcloud();status('Nuvem wordcloud2.js ativa (modo experimental)');
 });
 </script>
+<script src="/nav.js" defer></script>
 </body></html>
