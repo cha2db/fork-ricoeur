@@ -122,8 +122,29 @@ CREATE INDEX IF NOT EXISTS idx_code_blocks_msg ON code_blocks(msg_id);
 CREATE INDEX IF NOT EXISTS idx_code_blocks_lang ON code_blocks(language);
 """
 
-# Additive v3 projection, selected-path messages remain in the legacy tables.
-SCHEMA_SQL += BRANCH_SCHEMA_SQL
+# Import receipts survive a failure after a committed batch of 25 chats.
+# No raw titles, content or source paths are put in this operational ledger.
+IMPORT_RECEIPT_SQL = """
+CREATE TABLE IF NOT EXISTS import_jobs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_sha256 TEXT NOT NULL,
+    source_bytes INTEGER NOT NULL,
+    provider TEXT NOT NULL,
+    status TEXT NOT NULL,
+    started_at TEXT NOT NULL,
+    finished_at TEXT,
+    parsed INTEGER NOT NULL DEFAULT 0,
+    imported INTEGER NOT NULL DEFAULT 0,
+    skipped INTEGER NOT NULL DEFAULT 0,
+    messages INTEGER NOT NULL DEFAULT 0,
+    error_class TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_import_jobs_sha
+    ON import_jobs(source_sha256,provider);
+"""
+
+# Additive v3 projection; selected-path messages remain in legacy tables.
+SCHEMA_SQL += BRANCH_SCHEMA_SQL + IMPORT_RECEIPT_SQL
 
 
 def db_path(home: Optional[Path] = None) -> Path:
@@ -241,7 +262,7 @@ def migrate(conn: sqlite3.Connection) -> int:
     if version < 3:
         # No destructive schema changes: keep the original raw ChatGPT tree and
         # selected message rows. Backfill only nonselected nodes to a derived FTS.
-        conn.executescript(BRANCH_SCHEMA_SQL)
+        conn.executescript(BRANCH_SCHEMA_SQL + IMPORT_RECEIPT_SQL)
         backfill_existing(conn)
 
     conn.execute(
