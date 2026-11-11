@@ -198,12 +198,15 @@ def execute(db, action, *, lexicon=None, **kw):
 
 def handler_factory(db, lexicon=None):
     page = Path(__file__).with_name("index.html").read_bytes()
+    knowledge_page = Path(__file__).with_name("knowledge.html").read_bytes()
 
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
             url = urlparse(self.path)
             if url.path == "/":
                 body, code, kind = page, 200, "text/html; charset=utf-8"
+            elif url.path == "/knowledge":
+                body, code, kind = knowledge_page, 200, "text/html; charset=utf-8"
             elif url.path == "/api":
                 args = {k: v[0] for k, v in parse_qs(url.query).items()}
                 action = args.pop("action", "capabilities")
