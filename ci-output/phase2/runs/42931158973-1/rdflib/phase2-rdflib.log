@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "candidate": "rdflib",
+  "tests": {
+    "rdf_roundtrip_exact": true,
+    "evidence_for_each_link": true,
+    "nothing_auto_approved": true,
+    "two_explicit_relations_only": true
+  },
+  "triples": 10,
+  "verdict": "GRAPH_SERIALIZATION_ONLY_NO_RELATION_INFERENCE",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "candidate": "rdflib",
+  "tests": {
+    "rdf_roundtrip_exact": true,
+    "evidence_for_each_link": true,
+    "nothing_auto_approved": true,
+    "two_explicit_relations_only": true
+  },
+  "triples": 10,
+  "verdict": "GRAPH_SERIALIZATION_ONLY_NO_RELATION_INFERENCE",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ],
+  "run_id": "42931158973",
+  "commit": "df8bebc253edbef5d6b96d682cb78d095df66c72",
+  "logs": {
+    "phase2-rdflib.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"rdflib\",\n  \"tests\": {\n    \"rdf_roundtrip_exact\": true,\n    \"evidence_for_each_link\": true,\n    \"nothing_auto_approved\": true,\n    \"two_explicit_relations_only\": true\n  },\n  \"triples\": 10,\n  \"verdict\": \"GRAPH_SERIALIZATION_ONLY_NO_RELATION_INFERENCE\",\n  \"limitations\": [\n    \"Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.\",\n    \"These are API and small-scale behavior gates, not end-to-end product integration.\",\n    \"NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.\",\n    \"GitHub Actions Linux x86_64 is not Android/Termux ARM64.\"\n  ]\n}\n",
+    "phase2-rdflib-install.log": "Collecting rdflib<8,>=7\n  Downloading rdflib-7.6.0-py3-none-any.whl.metadata (12 kB)\nCollecting pyparsing<4,>=2.1.0 (from rdflib<8,>=7)\n  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)\nDownloading rdflib-7.6.0-py3-none-any.whl (615 kB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 615.4/615.4 kB 26.2 MB/s  0:00:00\nDownloading pyparsing-3.3.3-py3-none-any.whl (126 kB)\nInstalling collected packages: pyparsing, rdflib\n\nSuccessfully installed pyparsing-3.3.3 rdflib-7.6.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-rdflib-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
+  }
+}

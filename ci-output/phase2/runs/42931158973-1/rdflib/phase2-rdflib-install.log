@@ -1,0 +1,13 @@
+Collecting rdflib<8,>=7
+  Downloading rdflib-7.6.0-py3-none-any.whl.metadata (12 kB)
+Collecting pyparsing<4,>=2.1.0 (from rdflib<8,>=7)
+  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Downloading rdflib-7.6.0-py3-none-any.whl (615 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 615.4/615.4 kB 26.2 MB/s  0:00:00
+Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Installing collected packages: pyparsing, rdflib
+
+Successfully installed pyparsing-3.3.3 rdflib-7.6.0
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip
