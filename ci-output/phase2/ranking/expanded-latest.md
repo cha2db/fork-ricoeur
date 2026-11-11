@@ -2,7 +2,7 @@
 
 **207 candidatos**: 143 já triados e 64 novos da varredura.
 **Fonte encontrada no GitHub:** 61 novos; fontes sem verificação: 0.
-**PASS funcional dos novos: 0.** Esta rodada é pesquisa e auditoria, não homologação.
+**PASS funcional dos novos: 1.** A maioria permanece descoberta/auditada, sem homologação.
 
 ## Ranking e filas por porta
 
@@ -272,7 +272,7 @@
 
 | Pos. | ID | Produto | Status funcional | Status da origem | Próximo gate |
 |---:|---|---|---|---|---|
-| 1 | C155 | PGlite | NOT_TESTED | SOURCE_FOUND | Confrontar SQLite WASM para browser/tablet |
+| 1 | C155 | PGlite | PASS | SOURCE_FOUND | Confrontar SQLite WASM para browser/tablet |
 | 2 | C157 | RxDB | NOT_TESTED | SOURCE_FOUND | Reusar portas de persistência browser |
 | 3 | C158 | Dexie | NOT_TESTED | SOURCE_FOUND | Suporte de índice e uso offline da UX |
 | 4 | C159 | Evolu | NOT_TESTED | SOURCE_FOUND | Conflitos entre dispositivos e integridade |

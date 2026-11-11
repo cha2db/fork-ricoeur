@@ -1,7 +1,7 @@
 {
   "revision": "R14",
   "status": "PASS",
-  "generated_utc": "2026-11-11T00:59:04.702034+00:00",
+  "generated_utc": "2026-11-11T01:03:14.549756+00:00",
   "base_inventory": "R10",
   "base_rank": "R13",
   "old_count": 143,
@@ -20,8 +20,8 @@
   },
   "unverified_sources": [],
   "functional_pass_existing": 22,
-  "functional_pass_new": 0,
-  "functional_test_new": "NONE_RUN_IN_THIS_SURVEY",
+  "functional_pass_new": 1,
+  "functional_test_new": "ONLY_EXPLICIT_GITHUB_ACTIONS_PROOFS",
   "new_candidates": [
     {
       "id": "C144",
@@ -59,6 +59,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/LadybugDB/ladybug#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -95,6 +96,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/HelixDB/helix-db#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -133,6 +135,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/sirixdb/sirix#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -172,6 +175,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/terminusdb/terminusdb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -210,6 +214,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/dolthub/dolt#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -250,6 +255,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/fluree/db#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -288,6 +294,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/surrealdb/surrealdb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -322,6 +329,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/oxigraph/oxigraph#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -354,6 +362,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -377,7 +386,7 @@
         "archived": false,
         "fork": false,
         "created_at": "2023-08-26T09:21:36Z",
-        "pushed_at": "2026-11-11T00:36:48Z",
+        "pushed_at": "2026-11-11T01:00:05Z",
         "size_kb": 291438,
         "stars": 25213,
         "license": "MIT",
@@ -391,6 +400,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/tursodatabase/turso#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -423,6 +433,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -435,7 +446,7 @@
       "priority": "P0",
       "comparative_gate": "Confrontar SQLite WASM para browser/tablet",
       "source_level": "RESEARCH_DISCOVERY_REVIEW_NEEDED",
-      "functional_status": "NOT_TESTED",
+      "functional_status": "PASS",
       "status": "NEW_F2_CANDIDATE",
       "license": "VERIFY_SOURCE_AND_DEPENDENCIES",
       "owner": "PHASE2",
@@ -460,7 +471,21 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/electric-sql/pglite#readme"
       },
-      "comparative_gate_result": "NOT_EXECUTED"
+      "functional_evidence": {
+        "status": "PASS",
+        "scope": "PGlite Node WASM filesystem source+branch gate; not browser",
+        "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/r14/pglite-latest.json",
+        "checks": {
+          "idempotent_on_conflict": true,
+          "fts_retrieval": true,
+          "branch_siblings_preserved": true,
+          "persisted_after_reopen": true,
+          "original_ids_preserved": true,
+          "unique_source_marker": true
+        },
+        "input_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477"
+      },
+      "comparative_gate_result": "EXECUTED_SYNTHETIC_PASS"
     },
     {
       "id": "C156",
@@ -492,6 +517,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -528,6 +554,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/pubkey/rxdb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -565,6 +592,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/dexie/Dexie.js#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -602,6 +630,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/evoluhq/evolu#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -640,6 +669,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/vlcn-io/cr-sqlite#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -677,6 +707,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/codenotary/immudb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -714,6 +745,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/xtdb/xtdb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -751,6 +783,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/blevesearch/bleve#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -790,6 +823,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/davidkelley/searchlite#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -822,6 +856,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -858,6 +893,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/infiniflow/infinity#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -890,6 +926,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -922,6 +959,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -959,6 +997,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/objectbox/objectbox-python#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -996,6 +1035,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/powersync-ja/powersync-js#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1028,6 +1068,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1065,6 +1106,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/RyanCodrai/turbovec#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1101,6 +1143,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/kostadis/turbovecdb#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1133,6 +1176,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1170,6 +1214,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/usemoss/moss#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1211,6 +1256,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/ChrystianSchutz/ThreadShelf#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1251,6 +1297,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/pairojvrh/ai-memory#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1290,6 +1337,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/reallyreallyryan/hearth#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1328,6 +1376,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/aru-labs/lossless-memory#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1366,6 +1415,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/Rithvickkr/ContextVolt#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1398,6 +1448,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1437,6 +1488,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/mmlac/fieldnotes#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1474,6 +1526,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/Sohamp2809/mnemos#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1514,6 +1567,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/misaelzapata/memoirs#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1553,6 +1607,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/HBarefoot/engram#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1592,6 +1647,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/dearbld/dsh-living-memory#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1624,6 +1680,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1656,6 +1713,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1688,6 +1746,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1725,6 +1784,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/kenforthewin/atomic#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1765,6 +1825,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/MacPaw/portable-memory#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1803,6 +1864,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/portable-ai-memory/portable-ai-memory#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1840,6 +1902,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/drnrzs/memu#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1878,6 +1941,7 @@
         "readme_status": "READ",
         "readme_source": "https://github.com/shubhsaxena2020/cortex#readme"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1910,6 +1974,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1942,6 +2007,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -1974,6 +2040,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2006,6 +2073,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2038,6 +2106,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2063,13 +2132,14 @@
         "created_at": "2012-11-30T06:16:18Z",
         "pushed_at": "2026-11-11T00:55:45Z",
         "size_kb": 253689,
-        "stars": 32262,
+        "stars": 32263,
         "license": "GPL-2.0",
         "default_branch": "main",
         "description": "A library that provides an embeddable, persistent key-value store for fast storage.",
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2102,6 +2172,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2134,6 +2205,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2166,6 +2238,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2198,6 +2271,7 @@
         "source_claim": "GitHub REST metadata: no functional testing",
         "readme_status": "NOT_REQUESTED_LOW_PRIORITY"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2220,6 +2294,7 @@
         "license": "NOT_VERIFIED",
         "claim_scope": "vendor documentation, not locally executable"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2242,6 +2317,7 @@
         "license": "NOT_VERIFIED",
         "claim_scope": "vendor documentation, not locally executable"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     },
     {
@@ -2264,6 +2340,7 @@
         "license": "NOT_VERIFIED",
         "claim_scope": "vendor documentation, not locally executable"
       },
+      "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
     }
   ],
@@ -2628,6 +2705,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Chat multi-provider + texto/semântico + CLI HTTP MCP",
@@ -2668,6 +2746,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Continuidade de chats entre providers com MCP",
@@ -2687,6 +2766,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Captura extensão+grafo+digest local",
@@ -2851,6 +2931,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P0",
           "search_form": "Captura passiva + vetor decaimento + RRF",
@@ -3175,6 +3256,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "FTS com analisadores PT e vetor",
@@ -3194,6 +3276,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Motor pequeno BM25 + filtro e fuzzy",
@@ -3213,6 +3296,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "BM25+vetor denso/esparso+late interaction",
@@ -3232,6 +3316,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Índice diminuto de termos+posting",
@@ -3460,6 +3545,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Busca semântica/BM25 edge e browser",
@@ -3623,6 +3709,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Busca diretamente em 2/4 bits ARM+x86",
@@ -3726,6 +3813,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "turbovec + SQLite para documentos, filtros e exato",
@@ -3745,6 +3833,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Dataset multimodal, versionamento e vetor",
@@ -3932,6 +4021,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P2",
           "search_form": "IVF/RaBitQ disco, índice Postgres",
@@ -4305,6 +4395,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Cypher + FTS + vetor + WASM",
@@ -4324,6 +4415,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Grafo + BM25 + vetor pré-filtrado",
@@ -4469,6 +4561,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "SPARQL com triplas persistentes",
@@ -4488,6 +4581,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Datalog+grafo+vetores, API <1.0",
@@ -4507,6 +4601,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Datalog/tuplas imutáveis ClojureScript",
@@ -4526,6 +4621,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Graficos RDF/Sparql com reasoning",
@@ -4671,6 +4767,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P1",
           "search_form": "Documento+grafo+BM25+vetor+WASM",
@@ -5099,6 +5196,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Linhas de investigação/tensões/revisão humana",
@@ -5118,6 +5216,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Busca temporal primeiro, nunca sumariza origem",
@@ -5137,6 +5236,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Supersede/replace/coexist no ingresso",
@@ -5156,6 +5256,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "MCP timeline e ligações cruzadas sugeridas",
@@ -5175,6 +5276,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Import preview/commit, conflitos auditáveis",
@@ -5194,6 +5296,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Decaimento, RRF multi-sinal, conflitos para revisão",
@@ -5213,6 +5316,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Wiki citada + grafo + busca local",
@@ -5232,6 +5336,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Memória local via REST/MCP",
@@ -5251,6 +5356,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Contradição experimental com checagem factual",
@@ -5270,6 +5376,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Grafo temporal protegido OAuth e multi-device",
@@ -5289,6 +5396,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Pontuação de tempo e tipagem de memória",
@@ -5455,6 +5563,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P0",
           "search_form": "Proveniência, time-travel, ACL e grafo PPR",
@@ -5476,6 +5585,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P1",
           "search_form": "Resources→items→categories e recuperação dupla",
@@ -5787,6 +5897,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Texto+imagem+tensor+Vespa",
@@ -5806,6 +5917,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "BM25+HNSW com computação descartável",
@@ -6014,6 +6126,7 @@
           "source_status": "EXTERNAL_REFERENCE",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P3",
           "search_form": "Serviço gerenciado lexical+vetor em object storage",
@@ -6036,6 +6149,7 @@
           "source_status": "EXTERNAL_REFERENCE",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P3",
           "search_form": "Startup S3+NVMe, benchmark declarativo",
@@ -6129,6 +6243,7 @@
           "source_status": "EXTERNAL_REFERENCE",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P2",
           "search_form": "Startup com conflict resolution e audit trail",
@@ -6201,6 +6316,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Revisão imutável + consulta bitemporal + diff",
@@ -6220,6 +6336,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Branch/merge/diff + JSON-LD + grafo",
@@ -6239,6 +6356,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Git de tabelas com merge/conflicts/rollback",
@@ -6258,6 +6376,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Transação e validade bitemporais",
@@ -6277,6 +6396,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Histórico de fatos por transação",
@@ -6296,6 +6416,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P0",
           "search_form": "Commit imutável + origem por relação + política",
@@ -6317,6 +6438,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P1",
           "search_form": "Histórico e prova criptográfica",
@@ -6338,6 +6460,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "SOURCE_OR_LICENSE_REVIEW",
           "original_priority": "P2",
           "search_form": "Event sourcing imutável com projeções",
@@ -6367,6 +6490,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "SQLite-like em Rust, concorrência e vetor",
@@ -6386,6 +6510,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Objetos nativos com vetor HNSW",
@@ -6405,6 +6530,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "SQLite com réplicas e vetor",
@@ -6424,6 +6550,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "KV transacional com baixo write amplification",
@@ -6443,6 +6570,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "KV ACID embutido arquivo único",
@@ -6462,6 +6590,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P3",
           "search_form": "LSM sobre S3 para tier frio",
@@ -6481,6 +6610,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P3",
           "search_form": "KV LSM embutível com transações",
@@ -6500,6 +6630,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "REFERENCE_UNLESS_LEGAL_APPROVAL",
           "original_priority": "P3",
           "search_form": "Armazenamento KV robusto com write batches",
@@ -6527,16 +6658,30 @@
           "port": "local_sync",
           "source_url": "https://github.com/electric-sql/pglite",
           "source_status": "SOURCE_FOUND",
-          "functional_status": "NOT_TESTED",
-          "functional_level": "NO_TEST",
-          "eligibility": "UNTESTED_CANDIDATE",
+          "functional_status": "PASS",
+          "functional_level": "FUNCTIONAL_PASS",
+          "functional_evidence": {
+            "status": "PASS",
+            "scope": "PGlite Node WASM filesystem source+branch gate; not browser",
+            "report": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/r14/pglite-latest.json",
+            "checks": {
+              "idempotent_on_conflict": true,
+              "fts_retrieval": true,
+              "branch_siblings_preserved": true,
+              "persisted_after_reopen": true,
+              "original_ids_preserved": true,
+              "unique_source_marker": true
+            },
+            "input_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477"
+          },
+          "eligibility": "PASS_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Postgres+FTS em WASM/Node/IndexedDB",
           "storage_mechanism": "PostgreSQL_WASM_IndexDB",
           "risks": [],
           "license_spdx": "Apache-2.0",
           "test_gate": "Confrontar SQLite WASM para browser/tablet",
-          "rank_evidence": "PRIOR_ART_ONLY",
+          "rank_evidence": "GITHUB_ACTIONS_SYNTHETIC_PASS",
           "not_integrated_in_core": true,
           "rank_in_port": 1
         },
@@ -6548,6 +6693,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Adapters IndexedDB OPFS SQLite e replicação",
@@ -6567,6 +6713,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Schema+queries+persistência IndexedDB",
@@ -6586,6 +6733,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Sincronização SQLite E2EE e CRDT",
@@ -6605,6 +6753,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "Merge offline multiwriter via CRDT",
@@ -6624,6 +6773,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P1",
           "search_form": "SQLite offline sincronizado para web/Vue",
@@ -6643,6 +6793,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Sincronização parcial e reativa",
@@ -6662,6 +6813,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "COMPARISON_CANDIDATE",
           "original_priority": "P2",
           "search_form": "Réplica offline de documentos JSON",
@@ -6675,8 +6827,8 @@
         }
       ],
       "candidate_count": 8,
-      "best_verified": null,
-      "next_unverified": "C155"
+      "best_verified": "C155",
+      "next_unverified": null
     },
     "interoperability_formats": {
       "title": "Contratos e formatos portáteis entre fornecedores",
@@ -6689,6 +6841,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Memória portátil inter-app com tombstones e checksums",
@@ -6708,6 +6861,7 @@
           "source_status": "SOURCE_FOUND",
           "functional_status": "NOT_TESTED",
           "functional_level": "NO_TEST",
+          "functional_evidence": null,
           "eligibility": "UNTESTED_CANDIDATE",
           "original_priority": "P0",
           "search_form": "Padrão de conversas e memórias cross-provider",
