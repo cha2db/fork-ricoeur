@@ -10,7 +10,6 @@ on:
       - '_dev/trigram_prior.py'
       - '_dev/sqlite_vector_prior.py'
       - '_dev/corpus.py'
-      - '_dev/publish_prior_art.sh'
       - '.github/workflows/prior-art.yml'
   workflow_dispatch:
 permissions:
