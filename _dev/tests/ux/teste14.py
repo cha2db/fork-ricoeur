@@ -59,11 +59,15 @@ def gates():
         check([(p["period"],p["matching_messages"]) for p in t["points"]]==
               [("2026-01",1),("2026-02",1),("2026-03",1)],"timeline monthly")
         check(t["unit"]=="messages_containing_query","count distinct messages")
+        check(all(r["all_messages"]==2 for r in t["points"]),"per-bucket denominator")
+        check(all(r["rate_per_1000_messages"]==500 for r in t["points"]),"normalized per thousand")
+
         check(t["date_policy"]=="message_timestamp_else_conversation_created_at","date fallback disclosed")
         expanded=ux.execute(db,"timeline",lexicon=str(lex),expand=True,**base)["data"]
         check(expanded["total_messages"]==5,"expansion includes 3 approved labels")
         check(expanded["concept_id"]=="demo:continuous-integration","concept id stable")
         check(len(expanded["terms"])==3,"compound phrase variants")
+        check([r["rate_per_1000_messages"] for r in expanded["points"]]==[1000,1000,500],"expanded normalized trend")
         check([(r["period"],r["matching_messages"]) for r in expanded["points"]]==
               [("2026-01",2),("2026-02",2),("2026-03",1)],"expanded trend")
         filtered=ux.execute(db,"timeline",lexicon=str(lex),expand=True,platform="chatgpt",**base)["data"]
@@ -108,7 +112,7 @@ def gates():
         try:
             host=f"http://127.0.0.1:{server.server_port}"
             with urllib.request.urlopen(host+"/knowledge",timeout=8) as r:html=r.read().decode()
-            check("barChart" in html and "loadEcharts" in html,"dashboard delivered")
+            check("barChart" in html and "loadEcharts" in html and "rate_per_1000_messages" in html,"dashboard delivered")
             check("wordcloudCanvas" in html and "loadWordcloud" in html,"cloud delivered")
             query=urllib.parse.urlencode({"action":"timeline","query":"integração contínua","expand":"true"})
             with urllib.request.urlopen(host+"/api?"+query,timeout=8) as r:
