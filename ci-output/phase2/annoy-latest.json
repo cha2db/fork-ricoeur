@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "candidate": "annoy",
+  "corpus_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "indexed_vectors": 1000,
+  "embedding": "TFIDF-SVD32 + fixed 0.001 seed jitter; no neural semantics",
+  "vector_preparation_s": 0.109,
+  "index_seconds": 0.036,
+  "mean_recall_at10": 1.0,
+  "queries": [
+    {
+      "source_id": "fixture-cha2db-v1-m000000-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.29121,
+      "latency_ms": 0.572
+    },
+    {
+      "source_id": "fixture-cha2db-v1-m000007-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.39365,
+      "latency_ms": 0.55
+    },
+    {
+      "source_id": "fixture-cha2db-v1-m000025-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.07035,
+      "latency_ms": 0.556
+    },
+    {
+      "source_id": "fixture-cha2db-v1-m000078-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.08362,
+      "latency_ms": 0.532
+    },
+    {
+      "source_id": "fixture-cha2db-v1-m000125-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.06357,
+      "latency_ms": 1.55
+    },
+    {
+      "source_id": "fixture-cha2db-v1-m000500-0000",
+      "recall_at10": 1.0,
+      "median_candidate_distance": 0.07011,
+      "latency_ms": 0.535
+    }
+  ],
+  "verdict": "OPTIONAL_ANN_ONLY_ASSET_TO_COMPARE",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ],
+  "run_id": "42931158973",
+  "commit": "df8bebc253edbef5d6b96d682cb78d095df66c72",
+  "logs": {
+    "phase2-annoy.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"annoy\",\n  \"corpus_hash\": \"a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477\",\n  \"indexed_vectors\": 1000,\n  \"embedding\": \"TFIDF-SVD32 + fixed 0.001 seed jitter; no neural semantics\",\n  \"vector_preparation_s\": 0.109,\n  \"index_seconds\": 0.036,\n  \"mean_recall_at10\": 1.0,\n  \"verdict\": \"OPTIONAL_ANN_ONLY_ASSET_TO_COMPARE\",\n  \"limitations\": [\n    \"Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.\",\n    \"These are API and small-scale behavior gates, not end-to-end product integration.\",\n    \"NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.\",\n    \"GitHub Actions Linux x86_64 is not Android/Termux ARM64.\"\n  ]\n}\n",
+    "phase2-annoy-install.log": "  Downloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)\nCollecting numpy>=1.24.1 (from scikit-learn<2,>=1.5)\n  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)\nCollecting scipy>=1.10.0 (from scikit-learn<2,>=1.5)\n  Downloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)\nCollecting joblib>=1.4.0 (from scikit-learn<2,>=1.5)\n  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)\nCollecting narwhals>=2.0.1 (from scikit-learn<2,>=1.5)\n  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)\nCollecting threadpoolctl>=3.5.0 (from scikit-learn<2,>=1.5)\n  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)\nCollecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn<2,>=1.5)\n  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)\nDownloading scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.1 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 74.1 MB/s  0:00:00\nDownloading joblib-1.6.0-py3-none-any.whl (306 kB)\nDownloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)\nDownloading narwhals-2.28.0-py3-none-any.whl (490 kB)\nDownloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 63.6 MB/s  0:00:00\nDownloading scipy-1.18.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 79.7 MB/s  0:00:00\nDownloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)\nBuilding wheels for collected packages: annoy\n  Building wheel for annoy (pyproject.toml): started\n  Building wheel for annoy (pyproject.toml): finished with status 'done'\n  Created wheel for annoy: filename=annoy-1.17.3-cp313-cp313-linux_x86_64.whl size=570736 sha256=6a1e3132edfeb73d928754dcd8c6be023c457170459a76604ae6c35eeee7e6db\n  Stored in directory: /home/runner/.cache/pip/wheels/fc/4e/87/f1f957e7382aa370452cff98276f51686924d5415e449800ed\nSuccessfully built annoy\nInstalling collected packages: annoy, threadpoolctl, numpy, narwhals, cloudpickle, scipy, joblib, scikit-learn\n\nSuccessfully installed annoy-1.17.3 cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 numpy-2.5.4 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-annoy-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "candidate": "annoy",
+  "corpus_hash": "a5da90e446e25d28a7f336e803ffe3b07ef3f1fb77616ca2404d775505ff4477",
+  "indexed_vectors": 1000,
+  "embedding": "TFIDF-SVD32 + fixed 0.001 seed jitter; no neural semantics",
+  "vector_preparation_s": 0.109,
+  "index_seconds": 0.036,
+  "mean_recall_at10": 1.0,
+  "verdict": "OPTIONAL_ANN_ONLY_ASSET_TO_COMPARE",
+  "limitations": [
+    "Same synthetic 1000 canonical IDs regenerated from existing 40k SQLite corpus.",
+    "These are API and small-scale behavior gates, not end-to-end product integration.",
+    "NN recall on TFIDF vectors does not imply semantic relevance, human gold or production throughput.",
+    "GitHub Actions Linux x86_64 is not Android/Termux ARM64."
+  ]
+}
