@@ -106,6 +106,16 @@ def generate(root=REPO, manifest=None):
                 "license_verdict": "VERIFY_COMPONENT_LICENSE",
             })
         candidates.sort(key=lambda c: (-c["priority_preliminary"], c["id"]))
+        # Only candidates serving the same technical port are direct alternatives.
+        by_port = {}
+        for candidate in candidates:
+            by_port.setdefault(candidate["subport"], []).append(candidate)
+        comparison_groups = [
+            {"subport": port, "candidate_count": len(items), "candidates": items}
+            for port, items in by_port.items()
+        ]
+        comparison_groups.sort(key=lambda g: (-g["candidates"][0]["priority_preliminary"],
+                                              g["subport"]))
         by_front.append({
             "id": front["id"], "title": front["title"],
             "objective": front["objective"],
@@ -117,6 +127,7 @@ def generate(root=REPO, manifest=None):
             "new_to_inventories": sum(not x["prior_surveys"] for x in candidates),
             "previously_catalogued": sum(bool(x["prior_surveys"]) for x in candidates),
             "candidates": candidates,
+            "comparison_groups": comparison_groups,
         })
     by_front.sort(key=lambda f: (-f["priority_preliminary"], f["id"]))
     return {
@@ -165,12 +176,14 @@ def markdown(result):
             "| Ordem | Candidato | Porta | Score prévio | Já visto | Próxima prova |",
             "|---:|---|---|---:|---|---|",
         ])
-        for pos, x in enumerate(front["candidates"], 1):
-            elsewhere = ", ".join(x["prior_surveys"]) or "não encontrado"
-            lines.append(
-                f"| {pos} | [{x['name']}]({x['url']}) | {x['subport']} | "
-                f"{x['priority_preliminary']} | {elsewhere} | {x['next_gate']} |"
-            )
+        for group in front["comparison_groups"]:
+            lines.append(f"| **Porta: {group['subport']}** | | | | | |")
+            for pos, x in enumerate(group["candidates"], 1):
+                elsewhere = ", ".join(x["prior_surveys"]) or "não encontrado"
+                lines.append(
+                    f"| {pos} | [{x['name']}]({x['url']}) | {x['subport']} | "
+                    f"{x['priority_preliminary']} | {elsewhere} | {x['next_gate']} |"
+                )
     lines.extend([
         "", "## Limites", "",
         "- As categorias não substituem a pesquisa Fase 2 (207) nem UX (46).",
