@@ -1,0 +1,78 @@
+name: Cha2db Phase2 optional ANN graph and metrics gates
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_misc_gates.py'
+      - '_dev/phase2_export.py'
+      - '.github/workflows/phase2-library-gates.yml'
+  workflow_dispatch:
+concurrency:
+  group: cha2db-phase2-library-gates-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  compare-readonly:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        candidate: [hnswlib, annoy, rdflib, ir-measures]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install only chosen candidate and source under test
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          case "${{ matrix.candidate }}" in
+            hnswlib) python -m pip install 'hnswlib>=0.8,<1' 'scikit-learn>=1.5,<2' ;;
+            annoy) python -m pip install 'annoy>=1.17,<2' 'scikit-learn>=1.5,<2' ;;
+            rdflib) python -m pip install 'rdflib>=7,<8' ;;
+            ir-measures) python -m pip install 'ir-measures>=0.4,<1' ;;
+          esac > _dev/results/phase2-${{ matrix.candidate }}-install.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-${{ matrix.candidate }}-install.log; exit 1
+          }
+      - name: Generate identical SQLite synthetic dataset
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-${{ matrix.candidate }}-base.log 2>&1
+          python _dev/phase2_export.py --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-input.json
+      - name: Execute API and quality checks
+        run: |
+          python -u _dev/phase2_misc_gates.py --candidate "${{ matrix.candidate }}" --fixture _dev/results/phase2-input.json --output "_dev/results/phase2-${{ matrix.candidate }}.json" > "_dev/results/phase2-${{ matrix.candidate }}.log" 2>&1 || {
+            tail -n 100 "_dev/results/phase2-${{ matrix.candidate }}.log"; exit 1
+          }
+          cat "_dev/results/phase2-${{ matrix.candidate }}.json"
+      - name: Preserve logs regardless of outcome
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-gate-${{ matrix.candidate }}
+          path: _dev/results/
+          retention-days: 30
+  publish-metrics-only:
+    needs: compare-readonly
+    if: always()
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        candidate: [hnswlib, annoy, rdflib, ir-measures]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2-gate-${{ matrix.candidate }}
+          path: _dev/results/
+      - name: Publish independent candidate reports
+        if: always()
+        run: bash _dev/publish_phase2.sh "${{ matrix.candidate }}"
