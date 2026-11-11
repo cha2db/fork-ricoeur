@@ -1,0 +1,46 @@
+name: Independent Phase2 source audit reproduction
+on:
+  push:
+    branches:
+      - audit/phase2-independent-review-20261110
+    paths:
+      - '_dev/tests/peer_review/**'
+      - '.github/workflows/peer-phase2-audit.yml'
+  pull_request:
+    paths:
+      - '_dev/tests/peer_review/**'
+      - '.github/workflows/peer-phase2-audit.yml'
+  workflow_dispatch:
+jobs:
+  peer-phase2-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install only the baseline package, no third-party candidates
+        run: python -m pip install -q -e .
+      - name: Compile independent Phase2 audit
+        run: python -m py_compile _dev/tests/peer_review/peer_phase2_adversarial.py
+      - name: Reproduce source gaps with synthetic data (not an acceptance pass)
+        run: |
+          mkdir -p _dev/results/peer_review
+          python _dev/tests/peer_review/peer_phase2_adversarial.py > _dev/results/peer_review/adversarial-latest.json
+          python - <<'PY'
+          import json
+          p=json.load(open('_dev/results/peer_review/adversarial-latest.json'))
+          assert p['finding_count']==7
+          assert all(x['status']=='REPRODUCED' for x in p['findings'].values())
+          print('REPRODUCED', p['finding_count'], 'peer core gaps; NOT a product acceptance pass')
+          PY
+      - name: Upload independent reproduction only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-independent-adversarial-reproduction
+          path: _dev/results/peer_review
+          retention-days: 30
