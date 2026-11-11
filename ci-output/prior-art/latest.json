@@ -54,13 +54,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.601,
-        "tfidf_word": 1.22,
-        "tfidf_char": 2.015,
-        "rank_bm25": 0.654,
-        "rapidfuzz": 0.037,
-        "rapidfuzz_fts": 2.259,
-        "rrf": 0.021
+        "fts5": 2.775,
+        "tfidf_word": 1.54,
+        "tfidf_char": 2.512,
+        "rank_bm25": 0.732,
+        "rapidfuzz": 0.036,
+        "rapidfuzz_fts": 2.452,
+        "rrf": 0.024
       },
       "correction": "regressão guiada",
       "top3": {
@@ -134,13 +134,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.29,
-        "tfidf_word": 0.989,
-        "tfidf_char": 1.978,
-        "rank_bm25": 0.579,
-        "rapidfuzz": 0.025,
-        "rapidfuzz_fts": 2.251,
-        "rrf": 0.017
+        "fts5": 2.496,
+        "tfidf_word": 1.238,
+        "tfidf_char": 2.69,
+        "rank_bm25": 0.821,
+        "rapidfuzz": 0.027,
+        "rapidfuzz_fts": 2.45,
+        "rrf": 0.02
       },
       "correction": "contrato declarativo",
       "top3": {
@@ -214,13 +214,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.287,
-        "tfidf_word": 0.959,
-        "tfidf_char": 2.012,
-        "rank_bm25": 0.721,
-        "rapidfuzz": 0.024,
-        "rapidfuzz_fts": 2.215,
-        "rrf": 0.015
+        "fts5": 2.565,
+        "tfidf_word": 1.254,
+        "tfidf_char": 2.524,
+        "rank_bm25": 0.675,
+        "rapidfuzz": 0.031,
+        "rapidfuzz_fts": 2.55,
+        "rrf": 0.02
       },
       "correction": "busca cruzada",
       "top3": {
@@ -294,13 +294,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.177,
-        "tfidf_word": 0.958,
-        "tfidf_char": 1.913,
-        "rank_bm25": 0.741,
-        "rapidfuzz": 0.013,
-        "rapidfuzz_fts": 2.123,
-        "rrf": 0.014
+        "fts5": 2.423,
+        "tfidf_word": 1.38,
+        "tfidf_char": 3.529,
+        "rank_bm25": 1.23,
+        "rapidfuzz": 0.031,
+        "rapidfuzz_fts": 2.911,
+        "rrf": 0.024
       },
       "correction": "pipeline Jenkins",
       "top3": {
@@ -374,13 +374,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.436,
-        "tfidf_word": 0.964,
-        "tfidf_char": 1.945,
-        "rank_bm25": 0.689,
-        "rapidfuzz": 0.016,
-        "rapidfuzz_fts": 2.36,
-        "rrf": 0.016
+        "fts5": 2.804,
+        "tfidf_word": 1.549,
+        "tfidf_char": 2.571,
+        "rank_bm25": 1.071,
+        "rapidfuzz": 0.033,
+        "rapidfuzz_fts": 2.916,
+        "rrf": 0.021
       },
       "correction": "índice B-tree",
       "top3": {
@@ -454,13 +454,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.253,
-        "tfidf_word": 0.959,
-        "tfidf_char": 1.929,
-        "rank_bm25": 0.611,
-        "rapidfuzz": 0.017,
-        "rapidfuzz_fts": 2.202,
-        "rrf": 0.016
+        "fts5": 2.503,
+        "tfidf_word": 1.347,
+        "tfidf_char": 2.413,
+        "rank_bm25": 0.87,
+        "rapidfuzz": 0.024,
+        "rapidfuzz_fts": 2.581,
+        "rrf": 0.02
       },
       "correction": "conexão SSH",
       "top3": {
@@ -534,13 +534,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.194,
-        "tfidf_word": 0.96,
-        "tfidf_char": 2.003,
-        "rank_bm25": 0.885,
-        "rapidfuzz": 0.018,
-        "rapidfuzz_fts": 2.264,
-        "rrf": 0.017
+        "fts5": 2.443,
+        "tfidf_word": 1.198,
+        "tfidf_char": 2.433,
+        "rank_bm25": 0.721,
+        "rapidfuzz": 0.019,
+        "rapidfuzz_fts": 2.476,
+        "rrf": 0.019
       },
       "correction": "Android Studio",
       "top3": {
@@ -614,13 +614,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.188,
-        "tfidf_word": 1.066,
-        "tfidf_char": 1.992,
-        "rank_bm25": 0.644,
-        "rapidfuzz": 0.019,
-        "rapidfuzz_fts": 2.23,
-        "rrf": 0.014
+        "fts5": 2.393,
+        "tfidf_word": 1.274,
+        "tfidf_char": 2.505,
+        "rank_bm25": 0.918,
+        "rapidfuzz": 0.022,
+        "rapidfuzz_fts": 2.423,
+        "rrf": 0.018
       },
       "correction": "menor privilégio",
       "top3": {
@@ -694,13 +694,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.27,
-        "tfidf_word": 0.985,
-        "tfidf_char": 2.043,
-        "rank_bm25": 0.901,
+        "fts5": 2.497,
+        "tfidf_word": 1.234,
+        "tfidf_char": 2.555,
+        "rank_bm25": 1.043,
         "rapidfuzz": 0.026,
-        "rapidfuzz_fts": 2.385,
-        "rrf": 0.017
+        "rapidfuzz_fts": 2.514,
+        "rrf": 0.02
       },
       "correction": "avaliação formativa",
       "top3": {
@@ -774,13 +774,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.25,
-        "tfidf_word": 0.99,
-        "tfidf_char": 1.93,
-        "rank_bm25": 0.711,
-        "rapidfuzz": 0.027,
-        "rapidfuzz_fts": 2.243,
-        "rrf": 0.015
+        "fts5": 2.412,
+        "tfidf_word": 1.212,
+        "tfidf_char": 2.441,
+        "rank_bm25": 0.866,
+        "rapidfuzz": 0.034,
+        "rapidfuzz_fts": 2.454,
+        "rrf": 0.018
       },
       "correction": "API REST",
       "top3": {
@@ -854,13 +854,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 2.299,
-        "tfidf_word": 0.963,
-        "tfidf_char": 1.957,
-        "rank_bm25": 0.678,
-        "rapidfuzz": 0.03,
-        "rapidfuzz_fts": 2.214,
-        "rrf": 0.016
+        "fts5": 2.517,
+        "tfidf_word": 1.311,
+        "tfidf_char": 2.415,
+        "rank_bm25": 0.893,
+        "rapidfuzz": 0.041,
+        "rapidfuzz_fts": 2.587,
+        "rrf": 0.019
       },
       "correction": "conexão SSH",
       "top3": {
@@ -934,13 +934,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 0.072,
-        "tfidf_word": 0.931,
-        "tfidf_char": 1.948,
-        "rank_bm25": 0.598,
-        "rapidfuzz": 0.01,
-        "rapidfuzz_fts": 2.278,
-        "rrf": 0.013
+        "fts5": 0.103,
+        "tfidf_word": 1.196,
+        "tfidf_char": 2.481,
+        "rank_bm25": 0.793,
+        "rapidfuzz": 0.017,
+        "rapidfuzz_fts": 2.563,
+        "rrf": 0.017
       },
       "correction": "contrato declarativo",
       "top3": {
@@ -1010,13 +1010,13 @@
         }
       },
       "latency_ms": {
-        "fts5": 0.094,
-        "tfidf_word": 0.923,
-        "tfidf_char": 1.927,
-        "rank_bm25": 0.921,
-        "rapidfuzz": 0.017,
-        "rapidfuzz_fts": 2.253,
-        "rrf": 0.012
+        "fts5": 0.115,
+        "tfidf_word": 1.216,
+        "tfidf_char": 2.503,
+        "rank_bm25": 0.991,
+        "rapidfuzz": 0.025,
+        "rapidfuzz_fts": 2.525,
+        "rrf": 0.016
       },
       "correction": "avaliação formativa",
       "top3": {

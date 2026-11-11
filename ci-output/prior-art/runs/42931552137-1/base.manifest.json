@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "source": "_dev/corpus.py existing deterministic corpus",
+  "synthetic": true,
+  "actual_sqlite_file": "_dev/results/prior-base.sqlite",
+  "bytes": 30535680,
+  "logical_sha256": "f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6",
+  "counts": {
+    "conversations": 1000,
+    "messages": 40000
+  }
+}

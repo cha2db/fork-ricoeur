@@ -1,0 +1,9 @@
+sqlite-vector version v0.0.1 functions ['vector0', 'vector_debug', 'vector_from_blob', 'vector_from_json', 'vector_from_raw', 'vector_length', 'vector_to_blob', 'vector_to_json', 'vector_to_raw', 'vector_value_at', 'vector_version']
+Traceback (most recent call last):
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 99, in <module>
+    if __name__=="__main__":main()
+                            ~~~~^^
+  File "/home/runner/work/fork-ricoeur/fork-ricoeur/_dev/sqlite_vector_prior.py", line 55, in main
+    db.execute("SELECT vector_init('vector_candidates','embedding','dimension=32,type=FLOAT32,distance=L2')")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such function: vector_init

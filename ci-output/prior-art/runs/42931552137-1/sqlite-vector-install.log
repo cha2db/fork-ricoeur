@@ -1,0 +1,8 @@
+Collecting sqlite-vector
+  Downloading sqlite_vector-0.0.1a6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux1_x86_64.whl.metadata (511 bytes)
+Downloading sqlite_vector-0.0.1a6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux1_x86_64.whl (66 kB)
+Installing collected packages: sqlite-vector
+Successfully installed sqlite-vector-0.0.1a6
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: pip install --upgrade pip

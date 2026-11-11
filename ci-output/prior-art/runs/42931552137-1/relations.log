@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "dataset": {
+    "base": "_dev/corpus.py",
+    "base_messages": 40000,
+    "explicit_relation_cases": 7,
+    "synthetic": true
+  },
+  "checks": {
+    "explicit_links_match": true,
+    "cross_provider": true,
+    "no_inferred_supersedes": true,
+    "review_pending": true,
+    "supersedes_acyclic": true
+  },
+  "precision": 1.0,
+  "recall": 1.0,
+  "candidates": [
+    {
+      "source": "DEC-102",
+      "target": "DEC-101",
+      "type": "refines",
+      "evidence_message_id": "r2",
+      "platform": "claude",
+      "status": "candidate"
+    },
+    {
+      "source": "DEC-103",
+      "target": "DEC-102",
+      "type": "supersedes",
+      "evidence_message_id": "r3",
+      "platform": "gemini",
+      "status": "candidate"
+    },
+    {
+      "source": "DEC-104",
+      "target": "DEC-101",
+      "type": "contradicts",
+      "evidence_message_id": "r4",
+      "platform": "chatgpt",
+      "status": "candidate"
+    },
+    {
+      "source": "DEC-105",
+      "target": "DEC-103",
+      "type": "follows_up",
+      "evidence_message_id": "r5",
+      "platform": "copilot",
+      "status": "candidate"
+    }
+  ],
+  "verdict": "EXPLICIT_REFERENCES_ONLY_HUMAN_CONFIRMATION_REQUIRED",
+  "limitations": [
+    "Synthetic explicit references; not free-text semantic inference.",
+    "No automated contradiction/supersession verdict.",
+    "Graph edges remain candidates until human approval."
+  ]
+}
