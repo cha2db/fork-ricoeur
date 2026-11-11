@@ -42,6 +42,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 <label>Palavra ou expressão<input id="term" placeholder="Ex.: integração contínua"></label>
 <label>Período<select id="grain"><option value="month">Mensal</option><option value="year">Anual</option><option value="day">Diário</option></select></label>
 <label>Plataforma<input id="platform" placeholder="Todas"></label>
+<label>Métrica<select id="metric"><option value="matching_messages">Mensagens</option><option value="rate_per_1000_messages">Taxa por mil mensagens</option></select></label>
 <label>Ampliar por termos aprovados<select id="expand"><option value="false">Não (exato)</option><option value="true">Sim (tesauro externo)</option></select></label>
 <button id="run" type="button">Analisar incidência</button>
 </div>
@@ -88,16 +89,17 @@ function fail(err){status('Erro: '+err.message)}
 function drawBars(){
   const data=state.timeline?.points||[];$('barChart').replaceChildren();
   if(!data.length){element('p','Nenhum período encontrado.',$('barChart'));return}
-  const max=Math.max(1,...data.map(x=>x.matching_messages));
+  const metric=$('metric').value;
+  const max=Math.max(1,...data.map(x=>x[metric]||0));
   for(const row of data){
     const col=element('div','',$('barChart'),'bar-col');
     const button=element('button','',col);
-    button.title=row.period+' · '+row.matching_messages+' mensagens · '+row.matching_conversations+' conversas';
-    button.style.height=Math.max(5,Math.round(180*row.matching_messages/max))+'px';
+    button.title=row.period+' · '+row.matching_messages+' mensagens em '+row.all_messages+' mensagens totais · '+row.matching_conversations+' conversas · '+row.rate_per_1000_messages+' por mil';
+    button.style.height=Math.max(5,Math.round(180*(row[metric]||0)/max))+'px';
     button.type='button';button.setAttribute('aria-label',button.title);
     if(state.period===row.period)button.classList.add('selected');
     button.onclick=()=>selectPeriod(row.period).catch(fail);
-    element('span',row.matching_messages,col);
+    element('span',row[metric]??'-',col);
     element('span',row.period,col);
   }
 }
@@ -109,9 +111,9 @@ function drawEcharts(){
   state.chart.setOption({backgroundColor:'transparent',textStyle:{color:'#e7edf7'},
     tooltip:{trigger:'axis'},grid:{left:55,right:20,top:25,bottom:75},
     xAxis:{type:'category',data:rows.map(x=>x.period),axisLabel:{rotate:35}},
-    yAxis:{type:'value',name:'Mensagens'},
+    yAxis:{type:'value',name:$('metric').value==='matching_messages'?'Mensagens':'Por mil'},
     dataZoom:[{type:'inside'},{type:'slider',bottom:10}],
-    series:[{type:'bar',name:'Mensagens',data:rows.map(x=>x.matching_messages),
+    series:[{type:'bar',name:'Incidência',data:rows.map(x=>x[$('metric').value]),
       itemStyle:{color:'#82baff'}}]},true);
   state.chart.off('click');state.chart.on('click',e=>{if(e.componentType==='series')selectPeriod(rows[e.dataIndex].period).catch(fail)});
 }
@@ -168,7 +170,7 @@ async function showConcept(){
 async function run(){
   const p=params();if(!p.query){status('Informe uma palavra ou expressão.');return}
   state.timeline=await api('timeline',p);state.period=null;state.offset=0;
-  $('units').textContent='FTS5 · '+state.timeline.total_messages+' mensagens · '+state.timeline.terms.join(' / ')+
+  $('units').textContent='FTS5 · '+state.timeline.total_messages+' mensagens encontradas · Mensagens totais por período na base · '+state.timeline.terms.join(' / ')+
     (state.timeline.expanded?' (rótulos aprovados)':' (termo literal)');
   drawBars();if(state.echarts)drawEcharts();
   $('drill').replaceChildren();$('tokens').replaceChildren();
@@ -183,6 +185,7 @@ function externalScript(url,callback){
   document.head.append(s);
 }
 $('run').onclick=()=>run().catch(fail);
+$('metric').onchange=()=>{drawBars();if(state.echarts)drawEcharts()};
 $('term').addEventListener('keydown',e=>{if(e.key==='Enter')run().catch(fail)});
 $('prev').onclick=()=>{state.offset=Math.max(0,state.offset-state.limit);loadDrill().catch(fail)};
 $('next').onclick=()=>{state.offset+=state.limit;loadDrill().catch(fail)};
