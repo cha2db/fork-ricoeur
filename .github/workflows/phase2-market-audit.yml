@@ -27,7 +27,7 @@ jobs:
       - name: Audit upstream source metadata without installing libraries
         run: |
           mkdir -p _dev/results
-          python -u _dev/phase2_repo_audit.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R05.json --output _dev/results/phase2-repo-audit.json > _dev/results/phase2-repo-audit.log 2>&1 || {
+          python -u _dev/phase2_repo_audit.py --inventory _dev/PHASE2_MARKET_UNIVERSE_R10.json --output _dev/results/phase2-repo-audit.json > _dev/results/phase2-repo-audit.log 2>&1 || {
             tail -n 100 _dev/results/phase2-repo-audit.log
             exit 1
           }
