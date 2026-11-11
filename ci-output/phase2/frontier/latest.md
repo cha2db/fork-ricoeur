@@ -1,8 +1,8 @@
 # Cha2db — Fronteira de pesquisa R15
 
-Gerado (UTC): 2026-11-11T03:19:14.094861+00:00
+Gerado (UTC): 2026-11-11T03:23:05.342116+00:00
 
-**226 candidatos únicos** — 143 baseline previamente triados, 64 do primeiro levantamento de fronteira e 19 novos não duplicados.
+**226 candidatos únicos** — 143 baseline previamente triados e 83 novas opções ainda sem testes funcionais.
 
 **Apenas prioridade de testes, não ranking de qualidade e NÃO homologação.** O ranking R13 dos 143 permanece separado.
 

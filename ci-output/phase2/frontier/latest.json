@@ -1,7 +1,7 @@
 {
   "revision": "R15",
   "status": "PASS",
-  "generated_utc": "2026-11-11T03:19:14.094861+00:00",
+  "generated_utc": "2026-11-11T03:23:05.342116+00:00",
   "total_universe": 226,
   "vetted_baseline_unchanged": 143,
   "new_research_candidates": 83,
@@ -27,7 +27,7 @@
     "upstream_unavailable": 0,
     "archived": 0,
     "planned_head_to_heads": 17,
-    "all_83_have_disposition": true
+    "all_frontier_disposed": true
   },
   "frontier": [
     {
@@ -1888,7 +1888,7 @@
     "browser": "C010 MiniSearch/C011 FlexSearch previously tested in Node only"
   },
   "limitations": [
-    "This new 83-candidate frontier has not been functionally tested.",
+    "These newly discovered frontier candidates have not been functionally tested.",
     "The R13 ranking of previously tested 143 remains independently valid.",
     "Vendor-specific source/README descriptions do not establish feature correctness.",
     "GitHub license SPDX is not a legal compliance opinion, and weights/editions may differ.",
