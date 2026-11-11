@@ -20,7 +20,7 @@
         "fixture-cha2db-v1-m000080-0000",
         "fixture-cha2db-v1-m000090-0000"
       ],
-      "latency_ms": 0.117
+      "latency_ms": 0.141
     },
     {
       "query": "contrato declarativo",
@@ -38,7 +38,7 @@
         "fixture-cha2db-v1-m000081-0000",
         "fixture-cha2db-v1-m000091-0000"
       ],
-      "latency_ms": 0.042
+      "latency_ms": 0.049
     },
     {
       "query": "busca cruzada",
@@ -56,7 +56,7 @@
         "fixture-cha2db-v1-m000082-0000",
         "fixture-cha2db-v1-m000092-0000"
       ],
-      "latency_ms": 0.034
+      "latency_ms": 0.035
     },
     {
       "query": "pipeline Jenkins",
@@ -74,7 +74,7 @@
         "fixture-cha2db-v1-m000083-0000",
         "fixture-cha2db-v1-m000093-0000"
       ],
-      "latency_ms": 0.028
+      "latency_ms": 0.032
     },
     {
       "query": "índice B-tree",
@@ -92,7 +92,7 @@
         "fixture-cha2db-v1-m000084-0000",
         "fixture-cha2db-v1-m000094-0000"
       ],
-      "latency_ms": 0.033
+      "latency_ms": 0.04
     },
     {
       "query": "conexão SSH",
@@ -110,7 +110,7 @@
         "fixture-cha2db-v1-m000085-0000",
         "fixture-cha2db-v1-m000095-0000"
       ],
-      "latency_ms": 0.031
+      "latency_ms": 0.036
     },
     {
       "query": "Android Studio",
@@ -128,7 +128,7 @@
         "fixture-cha2db-v1-m000086-0000",
         "fixture-cha2db-v1-m000096-0000"
       ],
-      "latency_ms": 0.027
+      "latency_ms": 0.032
     },
     {
       "query": "menor privilégio",
@@ -146,7 +146,7 @@
         "fixture-cha2db-v1-m000087-0000",
         "fixture-cha2db-v1-m000097-0000"
       ],
-      "latency_ms": 0.027
+      "latency_ms": 0.032
     },
     {
       "query": "avaliação formativa",
@@ -164,7 +164,7 @@
         "fixture-cha2db-v1-m000088-0000",
         "fixture-cha2db-v1-m000098-0000"
       ],
-      "latency_ms": 0.027
+      "latency_ms": 0.032
     },
     {
       "query": "API REST",
@@ -182,16 +182,16 @@
         "fixture-cha2db-v1-m000089-0000",
         "fixture-cha2db-v1-m000099-0000"
       ],
-      "latency_ms": 0.025
+      "latency_ms": 0.029
     }
   ],
   "synthetic": true,
   "human_gold": false,
-  "build_seconds": 0.012,
+  "build_seconds": 0.011,
   "engine": "tantivy",
   "package": "0.27.0",
   "mean_p10": 1.0,
-  "median_latency_ms": 0.029,
+  "median_latency_ms": 0.034,
   "verdict": "FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE",
   "limitations": [
     "Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.",
@@ -199,11 +199,11 @@
     "Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.",
     "No candidate integrated into production core; no MCP or GUI tests performed here."
   ],
-  "run_id": "42931105620",
-  "commit": "a3c73fb368fd60ca6a87389ed2e81feb04031d0d",
+  "run_id": "42931527630",
+  "commit": "f587368f035d81798a8e81607200d9182693378e",
   "logs": {
-    "phase2-tantivy.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"tantivy\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.012,\n  \"engine\": \"tantivy\",\n  \"package\": \"0.27.0\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 0.029,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
-    "phase2-tantivy-install.log": "Collecting tantivy<1,>=0.24\n  Downloading tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.8 kB)\nDownloading tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.2 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 19.6 MB/s  0:00:00\nInstalling collected packages: tantivy\nSuccessfully installed tantivy-0.27.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
+    "phase2-tantivy.log": "{\n  \"status\": \"PASS\",\n  \"candidate\": \"tantivy\",\n  \"input_snapshot\": \"_dev/results/prior-base.sqlite\",\n  \"comparison\": \"same 1000 representative messages from existing synthetic 40k SQLite fixture\",\n  \"synthetic\": true,\n  \"human_gold\": false,\n  \"build_seconds\": 0.011,\n  \"engine\": \"tantivy\",\n  \"package\": \"0.27.0\",\n  \"mean_p10\": 1.0,\n  \"median_latency_ms\": 0.034,\n  \"verdict\": \"FUNCTIONAL_ONLY_NOT_COMPARABLE_SCORE_SCALE\",\n  \"limitations\": [\n    \"Synthetic repetitive fixture labels generated from document IDs, NOT human judgements.\",\n    \"One representative message per conversation, not a full-text 40k-message ranking index.\",\n    \"Ranking semantics and tokenization differ; compare quality, storage and portability before adoption.\",\n    \"No candidate integrated into production core; no MCP or GUI tests performed here.\"\n  ]\n}\n",
+    "phase2-tantivy-install.log": "Collecting tantivy<1,>=0.24\n  Downloading tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.8 kB)\nDownloading tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.2 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 95.1 MB/s  0:00:00\nInstalling collected packages: tantivy\nSuccessfully installed tantivy-0.27.0\n\n[notice] A new release of pip is available: 26.2.2 -> 26.3\n[notice] To update, run: pip install --upgrade pip\n",
     "phase2-tantivy-base.log": "{\n  \"status\": \"PASS\",\n  \"source\": \"_dev/corpus.py existing deterministic corpus\",\n  \"synthetic\": true,\n  \"actual_sqlite_file\": \"_dev/results/prior-base.sqlite\",\n  \"bytes\": 30535680,\n  \"logical_sha256\": \"f47d08ac38de1e2260b8ebe833803a32b10481fd8ee5dca667bd037fe9061eb6\",\n  \"counts\": {\n    \"conversations\": 1000,\n    \"messages\": 40000\n  }\n}\n"
   }
 }
