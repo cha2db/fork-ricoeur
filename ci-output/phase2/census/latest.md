@@ -1,6 +1,6 @@
 # Cha2db Phase 2 — 143-candidate census
 
-Revision R10 · 2026-11-11T00:21:13.603940+00:00
+Revision R10 · 2026-11-11T00:22:26.712745+00:00
 
 **Triaged:** 143/143. **Actually functionally PASS:** 18/143. **Phase 2 CLOSED:** No.
 
