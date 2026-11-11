@@ -29,5 +29,7 @@ jobs:
         run: python -m compileall -q src/ricoeur _dev/tests/phase2
       - name: P0 - strict read-only + bounded context window
         run: python _dev/tests/phase2/test_fix001_readonly_retrieval.py
+      - name: P0 - provider and message source identity
+        run: python _dev/tests/phase2/test_fix002_source_identity.py
       - name: Existing message retrieval contract
         run: python _dev/teste6.py
