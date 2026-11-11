@@ -2,6 +2,17 @@ name: Cha2db headless search gates
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/ricoeur/**'
+      - 'pyproject.toml'
+      - '_dev/busca.sh'
+      - '_dev/benchmark.py'
+      - '_dev/corpus.py'
+      - '_dev/teste6.py'
+      - '_dev/teste7.py'
+      - '_dev/autoscale.py'
+      - '_dev/scale.py'
+      - '.github/workflows/search-core.yml'
   pull_request:
   workflow_dispatch:
     inputs:
