@@ -17,3 +17,7 @@ Scripts de cada rodada nesta pasta, resultados em **uma única** `_dev/results/u
 | 014 | `bash _dev/tests/ux/teste14.sh` | Série temporal por termo, normalização por mil, drill-down, nuvem, SKOS demonstrativo |
 
 As evidências UX-014 não inferem aprendizagem ou estrutura cerebral; documentam apenas conteúdo de mensagens e o tesauro explícito. A execução de GUI ECharts/wordcloud em navegador real continua pendente de teste manual posterior ao merge.
+
+| 015 | `bash _dev/tests/ux/teste15.sh` | Painel central com navegação fixa, 8 categorias, 46 créditos, logos opt-in, portas CLI/HTTP e DB intacto |
+
+O navegador local abre `/` (painel), `/chats` (leitor/grafo), `/knowledge` (observatório). Nenhum teste humano no tablet deve ser solicitado antes do merge feito pelo par.
