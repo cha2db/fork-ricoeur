@@ -15,9 +15,11 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ricoeur.retrieval import get_message_context, search_messages
 from knowledge_port import load_lexicon, timeline, period_messages, tagcloud, concept_detail
 from dashboard_port import dashboard
+from product_lab.rank import generate as product_ranking
 
 VERSION = "ux.v2"
 
@@ -144,11 +146,13 @@ def graph(conn, query="", platform="", limit=30, syntax="literal"):
 def execute(db, action, *, lexicon=None, **kw):
     if action == "dashboard":
         return payload(dashboard())
+    if action == "product":
+        return payload(product_ranking())
     with closing(connect(db)) as conn:
         if action == "capabilities":
             return payload({"ports": ["capabilities", "conversations", "search",
                                       "transcript", "message", "graph", "timeline", "period",
-                                      "tagcloud", "concept", "dashboard", "serve"],
+                                      "tagcloud", "concept", "dashboard", "product", "serve"],
                             "search_core": "ricoeur.retrieval.search_messages",
                             "graph": "query_match_only", "storage": "read_only_ricoeur_sqlite"})
         if action == "conversations":
@@ -202,6 +206,7 @@ def execute(db, action, *, lexicon=None, **kw):
 def handler_factory(db, lexicon=None):
     page = Path(__file__).with_name("index.html").read_bytes()
     dashboard_page = Path(__file__).with_name("dashboard.html").read_bytes()
+    product_page = (Path(__file__).resolve().parents[1] / "product_lab/dashboard.html").read_bytes()
     knowledge_page = Path(__file__).with_name("knowledge.html").read_bytes()
     nav_js = Path(__file__).with_name("nav.js").read_bytes()
 
@@ -210,6 +215,8 @@ def handler_factory(db, lexicon=None):
             url = urlparse(self.path)
             if url.path == "/":
                 body, code, kind = dashboard_page, 200, "text/html; charset=utf-8"
+            elif url.path == "/product":
+                body, code, kind = product_page, 200, "text/html; charset=utf-8"
             elif url.path == "/chats":
                 body, code, kind = page, 200, "text/html; charset=utf-8"
             elif url.path == "/nav.js":
@@ -256,6 +263,7 @@ def main():
     sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("capabilities")
     sub.add_parser("dashboard")
+    sub.add_parser("product")
     for action in ("conversations", "search", "graph"):
         p = sub.add_parser(action)
         p.add_argument("--query", default="")
