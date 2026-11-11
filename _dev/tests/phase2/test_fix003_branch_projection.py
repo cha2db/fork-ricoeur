@@ -70,6 +70,15 @@ with tempfile.TemporaryDirectory() as td:
              ["content"]["parts"]==["newhiddenword"],"raw node updated on source update")
         gate(search_messages(conn,'"hiddenword"')["branch_count"]==0,
              "stale text removed from index")
+        history=conn.execute(
+            "SELECT message_json FROM chatgpt_node_versions WHERE conv_id='c1' AND node_id='b'"
+        ).fetchall()
+        gate(len(history)==2,"two immutable versions of updated node")
+        gate({json.loads(r[0])["content"]["parts"][0] for r in history}==
+             {"hiddenword","newhiddenword"},"old node content still recoverable")
+        gate(conn.execute("SELECT COUNT(*) FROM chatgpt_selection_versions WHERE conv_id='c1'").fetchone()[0]==2,
+             "both selected-leaf decisions preserved with source hash")
+
         with get_read_connection(home) as ro:
             hits=search_branch_messages(ro,'"chosenword"')
             gate(hits["count"]==1,"read-only branch search")
@@ -127,5 +136,7 @@ with tempfile.TemporaryDirectory() as td:
     gate(hits["count"]==1,"legacy tree backfilled into alternate search")
     gate(migrated.execute("SELECT count(*) FROM chatgpt_nodes").fetchone()[0]==4,
          "legacy raw nodes preserved")
+    gate(migrated.execute("SELECT count(*) FROM chatgpt_node_versions").fetchone()[0]==4,
+         "v2 raw node history backfilled without destructive overwrite")
     migrated.close()
 print(f"PASS PHASE2 FIX-003: {passed} gates; branch FTS5, ancestry, reimport, dry-run, v2 migration")
