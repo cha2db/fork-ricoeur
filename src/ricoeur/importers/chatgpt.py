@@ -21,6 +21,8 @@ from .base import (
     insert_conversation,
     insert_message,
     make_message_id,
+    resolve_conversation_id,
+    resolve_message_id,
     update_conversation_counts,
 )
 
@@ -183,7 +185,8 @@ def _import_one(
     since: Optional[str],
     dry_run: bool,
 ) -> None:
-    conv_id = conv.get("id", conv.get("conversation_id", ""))
+    native_conv_id = conv.get("id", conv.get("conversation_id", ""))
+    conv_id = resolve_conversation_id(conn, "chatgpt", native_conv_id)
     title = conv.get("title", "Untitled")
     create_time = conv.get("create_time")
     update_time = conv.get("update_time")
@@ -236,7 +239,8 @@ def _import_one(
     # Keep the selected path searchable, including empty messages.
     messages = _walk_messages(conv)
     for i, msg in enumerate(messages):
-        msg_id = msg.get("id") or make_message_id(conv_id, i)
+        native_msg_id = msg.get("id") or make_message_id(conv_id, i)
+        msg_id = resolve_message_id(conn, "chatgpt", conv_id, native_msg_id)
         role = msg.get("role", "unknown")
         content = _extract_content(msg)
         timestamp = _ts_to_iso(msg.get("create_time")) if msg.get("create_time") else created_at
