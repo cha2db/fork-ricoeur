@@ -1,37 +1,39 @@
 {
   "status": "PASS",
   "revision": "R10",
-  "generated_utc": "2026-11-11T00:06:30.738556+00:00",
+  "generated_utc": "2026-11-11T00:15:55.815766+00:00",
   "meaning": "143 audited and triaged, NOT 143 functionally tested",
   "summary": {
     "inventory_candidates": 143,
     "entries_with_disposition": 143,
     "repositories_in_inventory": 123,
     "audited_unique_github": 123,
-    "real_functional_pass_candidates": 17,
-    "functional_pending_or_blocked": 126,
+    "real_functional_pass_candidates": 18,
+    "functional_pending_or_blocked": 125,
     "dispositions": {
       "KEEP_EXISTING_BASELINE": 1,
-      "TESTED_COMPONENT_CANDIDATE": 16,
+      "TESTED_COMPONENT_CANDIDATE": 17,
       "COMPARATIVE_TEST_PENDING": 62,
       "REFERENCE_OR_DEFER_NONCORE": 14,
       "EXTERNAL_ADAPTER_ONLY": 12,
       "HOLD_TECHNICAL_LIMIT": 2,
-      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 26,
+      "HIGH_PRIORITY_CONTRACT_TEST_PENDING": 24,
       "LICENSE_HOLD_NO_EMBED": 8,
-      "EXCLUDE_ARCHIVED_ACTIVE_CORE": 2
+      "EXCLUDE_ARCHIVED_ACTIVE_CORE": 2,
+      "REJECT_FAILED_MANDATORY_CONTRACT": 1
     },
     "test_evidence_levels": {
-      "FUNCTIONAL_PASS": 17,
-      "NO_TEST": 124,
-      "FUNCTIONAL_BLOCKED": 2
+      "FUNCTIONAL_PASS": 18,
+      "NO_TEST": 122,
+      "FUNCTIONAL_BLOCKED": 2,
+      "FUNCTIONAL_FAIL": 1
     },
     "readme_checks": {
       "NOT_GITHUB": 20,
       "READ": 123
     },
     "repo_source_access_blocks": [],
-    "remaining_p0_contract_gate": 26,
+    "remaining_p0_contract_gate": 24,
     "all_candidates_accounted_for": true
   },
   "candidates": [
@@ -48,6 +50,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -79,6 +82,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/trigram-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -110,6 +114,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/tantivy-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -149,6 +154,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/bm25s-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -200,6 +206,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -307,6 +314,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/duckdb-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -338,6 +346,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/orama-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -381,6 +390,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/minisearch-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -428,6 +438,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/flexsearch-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -805,7 +816,7 @@
         "status": "FOUND",
         "license_spdx": "AGPL-3.0",
         "archived": false,
-        "pushed_at": "2026-11-11T00:05:01Z"
+        "pushed_at": "2026-11-11T00:15:08Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -1033,6 +1044,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/vector-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1072,6 +1084,7 @@
         "status": "UNAVAILABLE_ON_STOCK_RUNNER",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/vec1-probe-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1103,6 +1116,7 @@
         "status": "BLOCKED",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/sqlite-vector-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1134,6 +1148,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/usearch-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1292,6 +1307,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/lancedb-latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1299,7 +1315,7 @@
         "status": "FOUND",
         "license_spdx": "Apache-2.0",
         "archived": false,
-        "pushed_at": "2026-11-11T00:03:46Z"
+        "pushed_at": "2026-11-11T00:15:27Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
@@ -1691,6 +1707,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/semantic/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -1942,6 +1959,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/semantic/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -2128,6 +2146,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -2167,6 +2186,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/prior-art/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -2206,6 +2226,7 @@
         "status": "PASS",
         "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/semantic/latest.json",
         "scope": "synthetic/candidate-specific; no production integration",
+        "failed_checks": [],
         "scope_verified": true
       },
       "upstream": {
@@ -3136,7 +3157,7 @@
         "status": "FOUND",
         "license_spdx": "NOASSERTION",
         "archived": false,
-        "pushed_at": "2026-11-11T00:05:24Z"
+        "pushed_at": "2026-11-11T00:15:45Z"
       },
       "license_gate": "LEGAL_REVIEW",
       "readme_evidence": {
@@ -3691,7 +3712,7 @@
         "status": "FOUND",
         "license_spdx": "Apache-2.0",
         "archived": false,
-        "pushed_at": "2026-11-10T18:44:52Z"
+        "pushed_at": "2026-11-11T00:07:53Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
@@ -3909,10 +3930,18 @@
       "source_url": "https://github.com/seolbbb/reweave",
       "original_classification": "CRITICAL",
       "priority": "P0",
-      "disposition": "HIGH_PRIORITY_CONTRACT_TEST_PENDING",
+      "disposition": "REJECT_FAILED_MANDATORY_CONTRACT",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_FAIL",
+        "status": "FAIL",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/reweave-latest.json",
+        "scope": "actual public Python API",
+        "failed_checks": [
+          "expected_five_messages",
+          "marker_retrieved",
+          "branch_siblings_preserved"
+        ],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "seolbbb/reweave",
@@ -4737,10 +4766,14 @@
       "source_url": "https://github.com/queelius/ctk",
       "original_classification": "CRITICAL",
       "priority": "P0",
-      "disposition": "HIGH_PRIORITY_CONTRACT_TEST_PENDING",
+      "disposition": "TESTED_COMPONENT_CANDIDATE",
       "functional_test": {
-        "level": "NO_TEST",
-        "status": "NOT_TESTED"
+        "level": "FUNCTIONAL_PASS",
+        "status": "PASS",
+        "evidence": "https://github.com/cha2db/fork-ricoeur/blob/ci-results/ci-output/phase2/ctk-store-latest.json",
+        "scope": "SQLite persistence, stable branch IDs, repeated save (not raw-byte fidelity)",
+        "failed_checks": [],
+        "scope_verified": true
       },
       "upstream": {
         "repository": "queelius/ctk",
@@ -4774,8 +4807,8 @@
         "source": "https://github.com/queelius/ctk#readme",
         "scope": "README keyword heuristic only; no functionality asserted"
       },
-      "remaining_gate": "requires comparative test or scope/eligibility review",
-      "test_pending": 1,
+      "remaining_gate": "no production integration authorized; review license and contract",
+      "test_pending": 0,
       "differentiation_claim": "NOT_DEMONSTRATED"
     },
     {
@@ -5311,7 +5344,7 @@
         "status": "FOUND",
         "license_spdx": "MIT",
         "archived": false,
-        "pushed_at": "2026-11-10T23:51:23Z"
+        "pushed_at": "2026-11-11T00:15:28Z"
       },
       "license_gate": "PACKAGE_MODEL_EDITION_REVIEW",
       "readme_evidence": {
