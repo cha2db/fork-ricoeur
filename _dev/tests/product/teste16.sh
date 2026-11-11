@@ -7,6 +7,10 @@ PYTHON=python
 set +e
 "$PYTHON" -u _dev/tests/product/teste16.py 2>&1 | tee _dev/results/product/teste16.log
 status=${PIPESTATUS[0]}
+if [[ "$status" -eq 0 ]]; then
+  "$PYTHON" -u _dev/tests/product/test_portfolio_ui.py 2>&1 | tee -a _dev/results/product/teste16.log
+  status=${PIPESTATUS[0]}
+fi
 set -e
 if [[ "$status" -eq 0 ]]; then
  "$PYTHON" product_lab/rank.py --format json --output _dev/results/product/ranking16.json
