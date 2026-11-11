@@ -27,3 +27,5 @@ jobs:
         run: python -m compileall -q product_lab _dev/tests/product
       - name: PRODUCT-016: real Phase2 and UX duplicate audit + rankings
         run: bash _dev/tests/product/teste16.sh
+      - name: PRODUCT-017 native SQLite read-only health doctor
+        run: bash _dev/tests/product/teste17.sh
