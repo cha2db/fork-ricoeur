@@ -1,0 +1,77 @@
+name: Cha2db Phase2 continuous candidate ranking and confrontation schedule
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_ranking.py'
+      - '_dev/publish_phase2_ranking.sh'
+      - '.github/workflows/phase2-ranking.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_run:
+    workflows:
+      - 'Cha2db Phase 2 - 143 evidence and disposition gates'
+      - 'Cha2db Phase2 CTK branch-preservation importer gate'
+      - 'Cha2db Phase2 Reweave actual import and repair competitor gate'
+      - 'Cha2db Phase2 Chat Chronicle branch fidelity gate'
+      - 'Cha2db Phase2 optional ANN graph and metrics gates'
+      - 'Cha2db Phase-2 browser-ready lexical engines'
+      - 'Cha2db Phase-2 embedded product comparative gates'
+      - 'Cha2db Phase-2 JS SQL product comparison'
+      - 'Cha2db Phase-2 LanceDB hybrid gate'
+    types: [completed]
+permissions:
+  contents: write
+concurrency:
+  group: cha2db-phase2-ranking-main
+  cancel-in-progress: false
+jobs:
+  ranking:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.head_branch == 'main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile ranking and evidence reader
+        run: python -m py_compile _dev/phase2_ranking.py _dev/phase2_143_ledger.py
+      - name: Fetch evidence only, do not rerun 123 upstream audits
+        run: |
+          git fetch origin ci-results:refs/remotes/origin/ci-results
+          mkdir -p _dev/results
+          git show origin/ci-results:ci-output/phase2/census/latest.json > _dev/results/phase2-ranking-census.json
+      - name: Produce per-port ordered list and head-to-head gates
+        run: |
+          python -u _dev/phase2_ranking.py --census _dev/results/phase2-ranking-census.json --output _dev/results/phase2-ranking.json > _dev/results/phase2-ranking.log
+          python - <<'PY'
+          import json
+          r=json.load(open('_dev/results/phase2-ranking.json'))
+          assert r['status']=='PASS'
+          assert r['summary']['entries_ranked']==143
+          assert r['summary']['ports']>=7
+          assert r['summary']['published_confrontations']>=10
+          unique=[c['id'] for p in r['ports'].values() for c in p['entries']]
+          assert len(unique)==143 and len(set(unique))==143
+          assert r['ports']['ingest_tree']['best_verified']=='C118'
+          assert r['ports']['lexical_core']['best_verified']=='C001'
+          assert r['ports']['relevance_evaluation']['best_verified']=='C090'
+          assert r['scope'].startswith('back-end research')
+          print('RANKING_CONTRACT_PASS',len(unique),'ports',len(r['ports']))
+          PY
+          cat _dev/results/phase2-ranking.log
+      - name: Retain raw evidence and reproducible decision
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-ranking-${{ github.run_id }}
+          path: _dev/results/phase2-ranking*
+          retention-days: 30
+      - name: Publish reviewed ranking snapshots
+        if: success()
+        run: bash _dev/publish_phase2_ranking.sh
