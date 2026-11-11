@@ -21,6 +21,8 @@ from .base import (
     insert_conversation,
     insert_message,
     make_message_id,
+    resolve_conversation_id,
+    resolve_message_id,
     render_thinking,
     render_tool_block,
     update_conversation_counts,
@@ -93,7 +95,8 @@ def _import_one(
     since: Optional[str],
     dry_run: bool,
 ) -> None:
-    conv_id = conv.get("uuid", conv.get("id", ""))
+    native_conv_id = conv.get("uuid", conv.get("id", ""))
+    conv_id = resolve_conversation_id(conn, "claude", native_conv_id)
     title = conv.get("name", conv.get("title", "Untitled"))
     created_at = conv.get("created_at")
     updated_at = conv.get("updated_at")
@@ -137,7 +140,8 @@ def _import_one(
     # Claude exports have a flat "chat_messages" array
     messages = conv.get("chat_messages", conv.get("messages", []))
     for i, msg in enumerate(messages):
-        msg_id = msg.get("uuid", msg.get("id")) or make_message_id(conv_id, i)
+        native_msg_id = msg.get("uuid", msg.get("id")) or make_message_id(conv_id, i)
+        msg_id = resolve_message_id(conn, "claude", conv_id, native_msg_id)
         role = msg.get("sender", msg.get("role", "unknown"))
         # Normalize Claude's "human"/"assistant" roles
         if role == "human":
