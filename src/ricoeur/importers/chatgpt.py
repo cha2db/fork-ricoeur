@@ -7,6 +7,7 @@ The export contains a conversations.json with a tree structure of messages.
 from __future__ import annotations
 
 import json
+import hashlib
 import io
 import sqlite3
 import zipfile
@@ -40,41 +41,84 @@ def import_chatgpt(
 ) -> ImportStats:
     """Import conversations from a ChatGPT export."""
     stats = ImportStats()
-    # Progress is based on uncompressed JSON bytes, so no costly pre-scan.
     task = progress.add_task("Importing ChatGPT...", total=100) if progress else None
-
-    # Stream individual conversations: never materialize the entire export.
-    # Commit at bounded intervals so long imports do not accumulate one huge
-    # transaction. Reimport remains idempotent through existing IDs.
-    for conv_raw, fraction in _iter_conversations_with_progress(path):
-        stats.parsed += 1
-        # The batch strategy retains resumability while each individual
-        # conversation remains atomic even if the 26th is malformed.
-        if dry_run:
-            _import_one(conn, conv_raw, stats, update=update, since=since,
-                        dry_run=True)
-        else:
-            conn.execute("SAVEPOINT chatgpt_import_one")
-            try:
-                _import_one(conn, conv_raw, stats, update=update,
-                            since=since, dry_run=False)
-                conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
-            except BaseException:
-                conn.execute("ROLLBACK TO SAVEPOINT chatgpt_import_one")
-                conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
-                raise
-        if not dry_run and stats.parsed % 25 == 0:
-            conn.commit()
-        if progress and task is not None:
-            progress.update(task, completed=min(99.9, fraction * 100),
-                            description=f"ChatGPT: {stats.parsed:,} conversations · {fraction * 100:.1f}%")
+    job_id = None
 
     if not dry_run:
-        update_conversation_counts(conn)
+        # Read the raw source once in streaming chunks. Never put chat content,
+        # user file paths or raw IDs in the operational receipt.
+        digest = hashlib.sha256()
+        with path.open("rb") as source:
+            for chunk in iter(lambda: source.read(1024 * 1024), b""):
+                digest.update(chunk)
+        sha = digest.hexdigest()
+        conn.execute(
+            """UPDATE import_jobs SET status='INTERRUPTED',
+                      finished_at=?,error_class='process_interrupted'
+               WHERE source_sha256=? AND provider='chatgpt'
+                     AND status='RUNNING'""",
+            (datetime.now(timezone.utc).isoformat(), sha),
+        )
+        job_id = conn.execute(
+            """INSERT INTO import_jobs(
+                source_sha256,source_bytes,provider,status,started_at)
+               VALUES(?,?,'chatgpt','RUNNING',?)""",
+            (sha, path.stat().st_size, datetime.now(timezone.utc).isoformat()),
+        ).lastrowid
         conn.commit()
-    if progress and task is not None:
-        progress.update(task, completed=100, description=f"ChatGPT: {stats.parsed:,} conversations · 100%")
 
+    def checkpoint(state, error=None):
+        if job_id is None:
+            return
+        conn.execute(
+            """UPDATE import_jobs SET status=?,parsed=?,imported=?,skipped=?,
+                      messages=?,error_class=?,finished_at=?
+               WHERE id=?""",
+            (state,stats.parsed,stats.new,stats.skipped,stats.messages,error,
+             datetime.now(timezone.utc).isoformat()
+             if state != "RUNNING" else None,job_id),
+        )
+
+    try:
+        # Each conversation is atomic. Large archives retain 25-chat batch
+        # checkpoints, but a failed import has an explicit PARTIAL receipt.
+        for conv_raw, fraction in _iter_conversations_with_progress(path):
+            stats.parsed += 1
+            if dry_run:
+                _import_one(conn, conv_raw, stats, update=update,
+                            since=since, dry_run=True)
+            else:
+                conn.execute("SAVEPOINT chatgpt_import_one")
+                try:
+                    _import_one(conn, conv_raw, stats, update=update,
+                                since=since, dry_run=False)
+                    conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+                except BaseException:
+                    conn.execute("ROLLBACK TO SAVEPOINT chatgpt_import_one")
+                    conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+                    raise
+                if stats.parsed % 25 == 0:
+                    checkpoint("RUNNING")
+                    conn.commit()
+            if progress and task is not None:
+                progress.update(task, completed=min(99.9, fraction * 100),
+                                description=f"ChatGPT: {stats.parsed:,} conversations · {fraction * 100:.1f}%")
+
+        if not dry_run:
+            update_conversation_counts(conn)
+            checkpoint("COMPLETE")
+            conn.commit()
+    except BaseException as exc:
+        if not dry_run:
+            conn.rollback()
+            checkpoint("PARTIAL" if stats.parsed > 0 else "FAILED",
+                       type(exc).__name__)
+            conn.commit()
+        raise
+
+    if progress and task is not None:
+        progress.update(task, completed=100,
+                        description=f"ChatGPT: {stats.parsed:,} conversations · 100%")
     return stats
 
 
