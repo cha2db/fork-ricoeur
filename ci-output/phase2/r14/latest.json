@@ -1,7 +1,7 @@
 {
   "revision": "R14",
   "status": "PASS",
-  "generated_utc": "2026-11-11T01:03:29.792194+00:00",
+  "generated_utc": "2026-11-11T01:04:54.979527+00:00",
   "base_inventory": "R10",
   "base_rank": "R13",
   "old_count": 143,
@@ -9,14 +9,14 @@
   "total_count": 207,
   "scope": "Phase2 market survey and architecture ranking; UX branch untouched",
   "source_counts": {
-    "SOURCE_FOUND": 61,
-    "EXTERNAL_REFERENCE": 3
+    "SOURCE_FOUND": 62,
+    "EXTERNAL_REFERENCE": 2
   },
   "priorities": {
-    "P0": 16,
+    "P0": 17,
     "P1": 23,
     "P2": 20,
-    "P3": 5
+    "P3": 4
   },
   "unverified_sources": [],
   "functional_pass_existing": 22,
@@ -2163,7 +2163,7 @@
         "archived": false,
         "fork": false,
         "created_at": "2018-09-23T18:30:14Z",
-        "pushed_at": "2026-11-11T00:55:57Z",
+        "pushed_at": "2026-11-11T01:04:51Z",
         "size_kb": 4525,
         "stars": 4920,
         "license": "Apache-2.0",
@@ -2299,23 +2299,38 @@
     },
     {
       "id": "C206",
-      "name": "Kosha design",
-      "url": "https://getkosha.dev/",
-      "category": "vendor_reference",
-      "storage_mechanism": "S3_search_decoupled",
-      "search_or_connection_approach": "Startup S3+NVMe, benchmark declarativo",
-      "priority": "P3",
-      "comparative_gate": "Já existe repositório Kosha; evitar ID duplicado",
+      "name": "Infino",
+      "url": "https://github.com/infino-ai/infino",
+      "category": "hybrid_engine",
+      "storage_mechanism": "append_only_Parquet_BM25_vector_embedded",
+      "search_or_connection_approach": "BM25 + vetor/RRF em arquivos Parquet com snapshot imutável e SQL; sem servidor",
+      "priority": "P0",
+      "comparative_gate": "Confrontar LanceDB/FTS5 em corpus idêntico, indexação incremental, snapshots, S3/local e licença",
       "source_level": "RESEARCH_DISCOVERY_REVIEW_NEEDED",
       "functional_status": "NOT_TESTED",
       "status": "NEW_F2_CANDIDATE",
       "license": "VERIFY_SOURCE_AND_DEPENDENCIES",
       "owner": "PHASE2",
       "source_metadata": {
-        "status": "EXTERNAL_REFERENCE",
-        "source": "https://getkosha.dev/",
-        "license": "NOT_VERIFIED",
-        "claim_scope": "vendor documentation, not locally executable"
+        "status": "SOURCE_FOUND",
+        "repository": "infino-ai/infino",
+        "source": "https://github.com/infino-ai/infino",
+        "archived": false,
+        "fork": false,
+        "created_at": "2026-05-19T10:00:40Z",
+        "pushed_at": "2026-11-10T19:46:05Z",
+        "size_kb": 59438,
+        "stars": 152,
+        "license": "Apache-2.0",
+        "default_branch": "main",
+        "description": "Embedded retrieval library built on Parquet. Fast, efficient, and scalable.",
+        "source_claim": "GitHub REST metadata: no functional testing",
+        "readme_keyword_matches": [
+          "search",
+          "portable"
+        ],
+        "readme_status": "READ",
+        "readme_source": "https://github.com/infino-ai/infino#readme"
       },
       "functional_evidence": null,
       "comparative_gate_result": "NOT_EXECUTED"
@@ -3207,6 +3222,26 @@
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
+          "id": "C206",
+          "name": "Infino",
+          "port": "lexical_core",
+          "source_url": "https://github.com/infino-ai/infino",
+          "source_status": "SOURCE_FOUND",
+          "functional_status": "NOT_TESTED",
+          "functional_level": "NO_TEST",
+          "functional_evidence": null,
+          "eligibility": "UNTESTED_CANDIDATE",
+          "original_priority": "P0",
+          "search_form": "BM25 + vetor/RRF em arquivos Parquet com snapshot imutável e SQL; sem servidor",
+          "storage_mechanism": "append_only_Parquet_BM25_vector_embedded",
+          "risks": [],
+          "license_spdx": "Apache-2.0",
+          "test_gate": "Confrontar LanceDB/FTS5 em corpus idêntico, indexação incremental, snapshots, S3/local e licença",
+          "rank_evidence": "PRIOR_ART_ONLY",
+          "not_integrated_in_core": true,
+          "rank_in_port": 7
+        },
+        {
           "id": "C103",
           "name": "XERJ",
           "family": "lexical-embedded",
@@ -3224,7 +3259,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 7,
+          "rank_in_port": 8,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3245,7 +3280,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 8,
+          "rank_in_port": 9,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3266,7 +3301,7 @@
           "test_gate": "Contra Tantivy e FTS5, incluindo portabilidade Go",
           "rank_evidence": "PRIOR_ART_ONLY",
           "not_integrated_in_core": true,
-          "rank_in_port": 9
+          "rank_in_port": 10
         },
         {
           "id": "C164",
@@ -3286,7 +3321,7 @@
           "test_gate": "Contra FTS5/Tantivy no mesmo corpus",
           "rank_evidence": "PRIOR_ART_ONLY",
           "not_integrated_in_core": true,
-          "rank_in_port": 10
+          "rank_in_port": 11
         },
         {
           "id": "C166",
@@ -3306,7 +3341,7 @@
           "test_gate": "Contra LanceDB em busca híbrida real",
           "rank_evidence": "PRIOR_ART_ONLY",
           "not_integrated_in_core": true,
-          "rank_in_port": 11
+          "rank_in_port": 12
         },
         {
           "id": "C165",
@@ -3326,7 +3361,7 @@
           "test_gate": "Pesquisar offline em cliente sem memória",
           "rank_evidence": "PRIOR_ART_ONLY",
           "not_integrated_in_core": true,
-          "rank_in_port": 12
+          "rank_in_port": 13
         },
         {
           "id": "C102",
@@ -3346,7 +3381,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 13,
+          "rank_in_port": 14,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3367,7 +3402,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 14,
+          "rank_in_port": 15,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3388,7 +3423,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 15,
+          "rank_in_port": 16,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3409,7 +3444,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 16,
+          "rank_in_port": 17,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3430,7 +3465,7 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 17,
+          "rank_in_port": 18,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         },
         {
@@ -3451,13 +3486,13 @@
           "test_scope": "NOT_TESTED",
           "metrics": null,
           "risk": "not tested on human-labeled real chats, Termux or production pipeline",
-          "rank_in_port": 18,
+          "rank_in_port": 19,
           "rank_basis": "contract readiness, CI result, local-first fit, license gate; NOT raw speed"
         }
       ],
-      "candidate_count": 18,
+      "candidate_count": 19,
       "best_verified": "C001",
-      "next_unverified": "C103"
+      "next_unverified": "C206"
     },
     "browser_index": {
       "title": "Busca JS local para clientes e Edge",
@@ -6140,32 +6175,9 @@
           "rank_evidence": "PRIOR_ART_ONLY",
           "not_integrated_in_core": true,
           "rank_in_port": 16
-        },
-        {
-          "id": "C206",
-          "name": "Kosha design",
-          "port": "search_service",
-          "source_url": "https://getkosha.dev/",
-          "source_status": "EXTERNAL_REFERENCE",
-          "functional_status": "NOT_TESTED",
-          "functional_level": "NO_TEST",
-          "functional_evidence": null,
-          "eligibility": "SOURCE_OR_LICENSE_REVIEW",
-          "original_priority": "P3",
-          "search_form": "Startup S3+NVMe, benchmark declarativo",
-          "storage_mechanism": "S3_search_decoupled",
-          "risks": [
-            "UNVERIFIED_SOURCE",
-            "LICENSE_NOT_CLEARED"
-          ],
-          "license_spdx": "NOT_VERIFIED",
-          "test_gate": "Já existe repositório Kosha; evitar ID duplicado",
-          "rank_evidence": "PRIOR_ART_ONLY",
-          "not_integrated_in_core": true,
-          "rank_in_port": 17
         }
       ],
-      "candidate_count": 17,
+      "candidate_count": 16,
       "best_verified": null,
       "next_unverified": "C016"
     },

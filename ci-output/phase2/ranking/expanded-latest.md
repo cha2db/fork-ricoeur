@@ -1,7 +1,7 @@
 # Cha2db — Ranking ampliado da Fase 2 R14
 
 **207 candidatos**: 143 já triados e 64 novos da varredura.
-**Fonte encontrada no GitHub:** 61 novos; fontes sem verificação: 0.
+**Fonte encontrada no GitHub:** 62 novos; fontes sem verificação: 0.
 **PASS funcional dos novos: 1.** A maioria permanece descoberta/auditada, sem homologação.
 
 ## Ranking e filas por porta
@@ -48,7 +48,7 @@
 | 4 | C127 | Sift CLI (Go) | NOT_TESTED | LEGACY | Confronto do contrato existente |
 | 5 | C117 | IronBridge | NOT_TESTED | LEGACY | Confronto do contrato existente |
 
-### Busca textual embutida no núcleo (18)
+### Busca textual embutida no núcleo (19)
 
 | Pos. | ID | Produto | Status funcional | Status da origem | Próximo gate |
 |---:|---|---|---|---|---|
@@ -58,18 +58,19 @@
 | 4 | C005 | rank-bm25 | PASS | LEGACY | Confronto do contrato existente |
 | 5 | C002 | SQLite FTS5 trigram | PASS | LEGACY | Confronto do contrato existente |
 | 6 | C008 | DuckDB FTS | PASS | LEGACY | Confronto do contrato existente |
-| 7 | C103 | XERJ | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 8 | C013 | Sonic | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 9 | C163 | Bleve | NOT_TESTED | SOURCE_FOUND | Contra Tantivy e FTS5, incluindo portabilidade Go |
-| 10 | C164 | Searchlite | NOT_TESTED | SOURCE_FOUND | Contra FTS5/Tantivy no mesmo corpus |
-| 11 | C166 | Infinity | NOT_TESTED | SOURCE_FOUND | Contra LanceDB em busca híbrida real |
-| 12 | C165 | Tinysearch | NOT_TESTED | SOURCE_FOUND | Pesquisar offline em cliente sem memória |
-| 13 | C102 | Summa 2 / SpaceFrontiers | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 14 | C006 | Whoosh | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 15 | C007 | Xapian | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 16 | C012 | Lucene | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 17 | C109 | Summa original (archived) | NOT_TESTED | LEGACY | Confronto do contrato existente |
-| 18 | C110 | Bichon email archive | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 7 | C206 | Infino | NOT_TESTED | SOURCE_FOUND | Confrontar LanceDB/FTS5 em corpus idêntico, indexação incremental, snapshots, S3/local e licença |
+| 8 | C103 | XERJ | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 9 | C013 | Sonic | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 10 | C163 | Bleve | NOT_TESTED | SOURCE_FOUND | Contra Tantivy e FTS5, incluindo portabilidade Go |
+| 11 | C164 | Searchlite | NOT_TESTED | SOURCE_FOUND | Contra FTS5/Tantivy no mesmo corpus |
+| 12 | C166 | Infinity | NOT_TESTED | SOURCE_FOUND | Contra LanceDB em busca híbrida real |
+| 13 | C165 | Tinysearch | NOT_TESTED | SOURCE_FOUND | Pesquisar offline em cliente sem memória |
+| 14 | C102 | Summa 2 / SpaceFrontiers | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 15 | C006 | Whoosh | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 16 | C007 | Xapian | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 17 | C012 | Lucene | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 18 | C109 | Summa original (archived) | NOT_TESTED | LEGACY | Confronto do contrato existente |
+| 19 | C110 | Bichon email archive | NOT_TESTED | LEGACY | Confronto do contrato existente |
 
 ### Busca JS local para clientes e Edge (4)
 
@@ -209,7 +210,7 @@
 | 8 | C099 | Apache Tika | NOT_TESTED | LEGACY | Confronto do contrato existente |
 | 9 | C100 | Docling | NOT_TESTED | LEGACY | Confronto do contrato existente |
 
-### Servidores e adapters remotos de busca (17)
+### Servidores e adapters remotos de busca (16)
 
 | Pos. | ID | Produto | Status funcional | Status da origem | Próximo gate |
 |---:|---|---|---|---|---|
@@ -229,7 +230,6 @@
 | 14 | C018 | Manticore Search | NOT_TESTED | LEGACY | Confronto do contrato existente |
 | 15 | C021 | ParadeDB | NOT_TESTED | LEGACY | Confronto do contrato existente |
 | 16 | C205 | Turbopuffer | NOT_TESTED | EXTERNAL_REFERENCE | Comparar custos e arquitetura, não embutível |
-| 17 | C206 | Kosha design | NOT_TESTED | EXTERNAL_REFERENCE | Já existe repositório Kosha; evitar ID duplicado |
 
 ### Referências comerciais e tecnológicas (6)
 
