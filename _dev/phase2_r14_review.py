@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor,as_completed
 from collections import Counter,defaultdict
 from datetime import datetime,timezone
 from pathlib import Path
-import json,os,re,time,urllib.request,urllib.error
+import json,os,re,time,urllib.request,urllib.error,subprocess
 
 URL_RE=re.compile(r"^https://github\.com/([^/]+)/([^/?#]+)",re.I)
 PORTS={
@@ -118,6 +118,23 @@ def risk_and_rank(row,source):
  else:phase="COMPARISON_CANDIDATE"
  return risks,phase
 
+def current_test(code):
+ paths={"C155":"ci-output/phase2/r14/pglite-latest.json"}
+ if code not in paths:return None
+ try:
+  result=subprocess.run(["git","show","origin/ci-results:"+paths[code]],
+     capture_output=True,text=True,check=False,timeout=12)
+  if result.returncode:return None
+  evidence=json.loads(result.stdout)
+  checks=evidence.get("tests",{})
+  if evidence.get("status")!="PASS" or len(checks)<5 or not all(checks.values()):
+   return None
+  if not evidence.get("input_hash"):return None
+  return {"status":"PASS","scope":"PGlite Node WASM filesystem source+branch gate; not browser",
+    "report":"https://github.com/cha2db/fork-ricoeur/blob/ci-results/"+paths[code],
+    "checks":checks,"input_hash":evidence["input_hash"]}
+ except (OSError,ValueError,subprocess.TimeoutExpired):return None
+
 def merge(existing, new, base, legacy_rank):
  existing_ids={x["id"] for pool in existing.values() for x in pool["entries"]}
  new_ids={x["id"] for x in new}
@@ -140,14 +157,18 @@ def merge(existing, new, base, legacy_rank):
   if row["name"]=="Personal AI Memory":port="ingest_tree"
   if row["name"]=="Deep Lake":port="vector_index"
   ranks,decision=risk_and_rank(row,row["source_metadata"])
+  passed=row.get("functional_status")=="PASS"
+  if passed:decision="PASS_CANDIDATE"
   item={"id":row["id"],"name":row["name"],"port":port,
    "source_url":row["url"],"source_status":row["source_metadata"]["status"],
-   "functional_status":"NOT_TESTED","functional_level":"NO_TEST",
-   "eligibility":"UNTESTED_CANDIDATE" if decision=="NEXT_CONTRACT_TEST" else decision,
+   "functional_status":"PASS" if passed else "NOT_TESTED",
+   "functional_level":"FUNCTIONAL_PASS" if passed else "NO_TEST",
+   "functional_evidence":row.get("functional_evidence"),
+   "eligibility":"PASS_CANDIDATE" if passed else ("UNTESTED_CANDIDATE" if decision=="NEXT_CONTRACT_TEST" else decision),
    "original_priority":row["priority"],"search_form":row["search_or_connection_approach"],
    "storage_mechanism":row["storage_mechanism"],
    "risks":ranks,"license_spdx":row["source_metadata"].get("license"),
-   "test_gate":row["comparative_gate"],"rank_evidence":"PRIOR_ART_ONLY",
+   "test_gate":row["comparative_gate"],"rank_evidence":"GITHUB_ACTIONS_SYNTHETIC_PASS" if passed else "PRIOR_ART_ONLY",
    "not_integrated_in_core":True}
   bynew[item["id"]]=item;ports[port]["entries"].append(item)
  def key(x):
@@ -198,8 +219,10 @@ def main():
  for cand in ext["candidates"]:
   row=dict(cand)
   row["source_metadata"]=sources[row["id"]]
-  row["functional_status"]="NOT_TESTED"
-  row["comparative_gate_result"]="NOT_EXECUTED"
+  proof=current_test(row["id"])
+  row["functional_status"]="PASS" if proof else "NOT_TESTED"
+  row["functional_evidence"]=proof
+  row["comparative_gate_result"]="EXECUTED_SYNTHETIC_PASS" if proof else "NOT_EXECUTED"
   extended.append(row)
  ports=merge(legacy["ports"],extended,base,legacy)
  source_counts=Counter(x["source_metadata"]["status"] for x in extended)
@@ -214,7 +237,8 @@ def main():
   "source_counts":dict(source_counts),"priorities":dict(priorities),
   "unverified_sources":incomplete,
   "functional_pass_existing":legacy["summary"]["functional_pass"],
-  "functional_pass_new":0,"functional_test_new":"NONE_RUN_IN_THIS_SURVEY",
+  "functional_pass_new":sum(x["functional_status"]=="PASS" for x in extended),
+  "functional_test_new":"ONLY_EXPLICIT_GITHUB_ACTIONS_PROOFS",
   "new_candidates":extended,"ports":ports,
   "existing_confrontations":legacy["next_confrontations"],
   "expanded_confrontation_queue":[
@@ -251,7 +275,7 @@ def main():
   "",
   f"**{report['total_count']} candidatos**: 143 já triados e {report['new_count']} novos da varredura.",
   f"**Fonte encontrada no GitHub:** {source_counts.get('SOURCE_FOUND',0)} novos; fontes sem verificação: {len(incomplete)}.",
-  "**PASS funcional dos novos: 0.** Esta rodada é pesquisa e auditoria, não homologação.",
+  f"**PASS funcional dos novos: {report['functional_pass_new']}.** A maioria permanece descoberta/auditada, sem homologação.",
   "",
   "## Ranking e filas por porta",
   "",
