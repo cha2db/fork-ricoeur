@@ -111,6 +111,21 @@ def timeline(conn, term, grain="month", platform="", expand=False, lexicon=None)
            f"COUNT(DISTINCT m.conv_id) AS matching_conversations "
            + _base() + " WHERE " + where + " GROUP BY period ORDER BY period")
     points = [dict(row) for row in conn.execute(sql, [expression, *extra])]
+    # An imported corpus may grow sharply over time. A raw hit histogram can
+    # overstate changing interest if the total number of messages also grows.
+    # Normalized rates use the SAME platform/date policy, not just FTS hits.
+    denominator_where = " WHERE c.platform = ?" if platform else ""
+    denominator_sql = (
+        f"SELECT {bucket} AS period, COUNT(*) AS all_messages "
+        "FROM messages m JOIN conversations c ON c.id = m.conv_id"
+        + denominator_where + " GROUP BY period")
+    denominator = {row["period"]: row["all_messages"]
+                   for row in conn.execute(denominator_sql, [platform] if platform else [])}
+    for point in points:
+        amount = denominator.get(point["period"], 0)
+        point["all_messages"] = amount
+        point["rate_per_1000_messages"] = (round(point["matching_messages"] * 1000 / amount, 2)
+                                            if amount else None)
     return {"query": term, "terms": terms, "concept_id": concept_id,
             "expanded": bool(expand and concept_id), "grain": grain, "platform": platform,
             "unit": "messages_containing_query", "date_policy": "message_timestamp_else_conversation_created_at",
