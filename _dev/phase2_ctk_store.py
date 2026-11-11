@@ -28,6 +28,12 @@ def run():
             fts=[x for x in table_names if "fts" in x.lower()]
         finally:conn.close()
         branch=reloaded[0].message_map if reloaded[0] else {}
+        from ctk.exporters.json import JSONExporter
+        from ctk.importers.ctk import CTKImporter
+        native_export=JSONExporter().export_data(reloaded,format_style="ctk")
+        native_reimport=CTKImporter().import_data(native_export)
+        exported=json.loads(native_export)
+        natives=[tree.message_map for tree in native_reimport]
         checks={
            "two_conversations_after_reload":len(reloaded)==2 and all(reloaded),
            "five_messages_after_disk_roundtrip":len(ids2)==2 and sum(map(len,ids2))==5,
@@ -37,7 +43,14 @@ def run():
                  branch.get("m3") is not None and branch["m2"].parent_id==branch["m3"].parent_id=="m1",
            "branch_paths_survive":first_paths>=2 and len(reloaded[0].get_all_paths())>=2,
            "content_source_survives":MARKER in branch["m2"].content.get_text() if "m2" in branch else False,
-           "provider_preserved":all(t.metadata.format=="openai" and t.metadata.source=="ChatGPT" for t in reloaded if t)
+           "provider_preserved":all(t.metadata.format=="openai" and t.metadata.source=="ChatGPT" for t in reloaded if t),
+           "native_export_is_tree_envelope":exported.get("format")=="ctk" and
+               len(exported.get("conversations",[]))==2,
+           "native_json_import_roundtrip":len(native_reimport)==2 and
+               all(set(a)==set(b) for a,b in zip(ids2,natives)) and
+               natives[0]["m2"].parent_id==natives[0]["m3"].parent_id=="m1",
+           "native_export_retains_both_siblings":len(exported["conversations"][0]["messages"])==3
+               and MARKER in natives[0]["m2"].content.get_text(),
         }
         return {"candidate":"CTK SQLite","status":"PASS" if all(checks.values()) else "FAIL",
             "checks":checks,"message_counts":[len(ids) for ids in ids2],
@@ -52,7 +65,7 @@ def main():
         "error":{"type":type(e).__name__,"message":str(e),"traceback":traceback.format_exc(limit=6)}}
     r["fixture"]="Same 2-conversation, 5-message ChatGPT branch fixture as Reweave"
     r["limitations"]=["Repeated save overwrites existing messages; source raw-byte preservation untested.",
-        "No export roundtrip or MCP in this gate.",
+        "Native CTK JSON roundtrip covered, but OpenAI re-export and MCP are not covered.",
         "No production integration or human semantic-quality claim."]
     out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(r,ensure_ascii=False,indent=2),encoding="utf-8")
