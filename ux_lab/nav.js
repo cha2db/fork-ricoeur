@@ -1,9 +1,10 @@
-/* Shared fixed navigation across the 3 read-only laboratory interfaces.
+/* Shared fixed navigation across the product and UX read-only interfaces.
    No CDN, no network IO, no cookies or tracking. */
 (() => {
   "use strict";
   const items = [
-    ["▦", "Painel", "/"],
+    ["▦", "Painel UX", "/"],
+    ["▤", "Mapa do produto", "/product"],
     ["⌕", "Conversas / busca", "/chats"],
     ["◎", "Grafo", "/#graph"],
     ["▥", "Linha do tempo", "/knowledge"],
