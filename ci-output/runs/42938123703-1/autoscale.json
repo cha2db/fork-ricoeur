@@ -1,0 +1,766 @@
+{
+  "status": "PASS",
+  "environment": {
+    "sqlite": "3.46.1",
+    "python": "3.13.18"
+  },
+  "stages": [
+    {
+      "messages": 40000,
+      "conversations": 1000,
+      "import_seconds": 1.373,
+      "stage_seconds": 1.499,
+      "db_bytes": 10649600,
+      "checks": {
+        "count": true,
+        "fts_no_temp_sort": true,
+        "parity_SSH": true,
+        "parity_PostgreSQL": true,
+        "parity_Jenkins": true,
+        "parity_AUoK": true,
+        "parity_MCP": true,
+        "parity_Android": true,
+        "parity_seguranca": true,
+        "parity_REST": true,
+        "parity_marcadorunico2026": true,
+        "parity_termoausente999": true,
+        "rare_term_once": true,
+        "missing_term_zero": true,
+        "search_escape": true,
+        "update_index": true,
+        "old_term_removed": true,
+        "delete_index": true
+      },
+      "queries": [
+        {
+          "query": "SSH",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.091,
+            "min_ms": 0.07,
+            "max_ms": 0.161
+          },
+          "literal": {
+            "median_ms": 0.147,
+            "min_ms": 0.145,
+            "max_ms": 0.196
+          }
+        },
+        {
+          "query": "PostgreSQL",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.083,
+            "min_ms": 0.067,
+            "max_ms": 0.097
+          },
+          "literal": {
+            "median_ms": 0.125,
+            "min_ms": 0.12,
+            "max_ms": 0.151
+          }
+        },
+        {
+          "query": "Jenkins",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.071,
+            "min_ms": 0.068,
+            "max_ms": 0.114
+          },
+          "literal": {
+            "median_ms": 0.122,
+            "min_ms": 0.118,
+            "max_ms": 0.149
+          }
+        },
+        {
+          "query": "AUoK",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.069,
+            "min_ms": 0.067,
+            "max_ms": 0.093
+          },
+          "literal": {
+            "median_ms": 0.156,
+            "min_ms": 0.143,
+            "max_ms": 0.171
+          }
+        },
+        {
+          "query": "MCP",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.069,
+            "min_ms": 0.066,
+            "max_ms": 0.099
+          },
+          "literal": {
+            "median_ms": 0.133,
+            "min_ms": 0.129,
+            "max_ms": 0.163
+          }
+        },
+        {
+          "query": "Android",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.08,
+            "min_ms": 0.068,
+            "max_ms": 0.093
+          },
+          "literal": {
+            "median_ms": 0.149,
+            "min_ms": 0.146,
+            "max_ms": 0.181
+          }
+        },
+        {
+          "query": "seguranca",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.07,
+            "min_ms": 0.066,
+            "max_ms": 0.094
+          },
+          "literal": {
+            "median_ms": 0.196,
+            "min_ms": 0.182,
+            "max_ms": 0.211
+          }
+        },
+        {
+          "query": "REST",
+          "fts_matches": 5000,
+          "literal_matches": 5000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.066,
+            "min_ms": 0.065,
+            "max_ms": 0.09
+          },
+          "literal": {
+            "median_ms": 0.149,
+            "min_ms": 0.148,
+            "max_ms": 0.184
+          }
+        },
+        {
+          "query": "marcadorunico2026",
+          "fts_matches": 1,
+          "literal_matches": 1,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.014,
+            "min_ms": 0.012,
+            "max_ms": 0.032
+          },
+          "literal": {
+            "median_ms": 5.061,
+            "min_ms": 5.042,
+            "max_ms": 5.127
+          }
+        },
+        {
+          "query": "termoausente999",
+          "fts_matches": 0,
+          "literal_matches": 0,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.013,
+            "min_ms": 0.011,
+            "max_ms": 0.028
+          },
+          "literal": {
+            "median_ms": 5.468,
+            "min_ms": 5.346,
+            "max_ms": 5.507
+          }
+        }
+      ]
+    },
+    {
+      "messages": 100000,
+      "conversations": 2500,
+      "import_seconds": 2.403,
+      "stage_seconds": 2.708,
+      "db_bytes": 26755072,
+      "checks": {
+        "count": true,
+        "fts_no_temp_sort": true,
+        "parity_SSH": true,
+        "parity_PostgreSQL": true,
+        "parity_Jenkins": true,
+        "parity_AUoK": true,
+        "parity_MCP": true,
+        "parity_Android": true,
+        "parity_seguranca": true,
+        "parity_REST": true,
+        "parity_marcadorunico2026": true,
+        "parity_termoausente999": true,
+        "rare_term_once": true,
+        "missing_term_zero": true,
+        "search_escape": true,
+        "update_index": true,
+        "old_term_removed": true,
+        "delete_index": true
+      },
+      "queries": [
+        {
+          "query": "SSH",
+          "fts_matches": 12520,
+          "literal_matches": 12520,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.084,
+            "min_ms": 0.076,
+            "max_ms": 0.116
+          },
+          "literal": {
+            "median_ms": 0.168,
+            "min_ms": 0.15,
+            "max_ms": 0.189
+          }
+        },
+        {
+          "query": "PostgreSQL",
+          "fts_matches": 12520,
+          "literal_matches": 12520,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.081,
+            "min_ms": 0.077,
+            "max_ms": 0.141
+          },
+          "literal": {
+            "median_ms": 0.128,
+            "min_ms": 0.122,
+            "max_ms": 0.185
+          }
+        },
+        {
+          "query": "Jenkins",
+          "fts_matches": 12520,
+          "literal_matches": 12520,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.093,
+            "min_ms": 0.082,
+            "max_ms": 0.125
+          },
+          "literal": {
+            "median_ms": 0.126,
+            "min_ms": 0.117,
+            "max_ms": 0.15
+          }
+        },
+        {
+          "query": "AUoK",
+          "fts_matches": 12520,
+          "literal_matches": 12520,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.081,
+            "min_ms": 0.077,
+            "max_ms": 0.134
+          },
+          "literal": {
+            "median_ms": 0.144,
+            "min_ms": 0.14,
+            "max_ms": 0.177
+          }
+        },
+        {
+          "query": "MCP",
+          "fts_matches": 12480,
+          "literal_matches": 12480,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.079,
+            "min_ms": 0.076,
+            "max_ms": 0.127
+          },
+          "literal": {
+            "median_ms": 0.136,
+            "min_ms": 0.132,
+            "max_ms": 0.192
+          }
+        },
+        {
+          "query": "Android",
+          "fts_matches": 12480,
+          "literal_matches": 12480,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.078,
+            "min_ms": 0.075,
+            "max_ms": 0.118
+          },
+          "literal": {
+            "median_ms": 0.154,
+            "min_ms": 0.149,
+            "max_ms": 0.199
+          }
+        },
+        {
+          "query": "seguranca",
+          "fts_matches": 12480,
+          "literal_matches": 12480,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.08,
+            "min_ms": 0.076,
+            "max_ms": 0.123
+          },
+          "literal": {
+            "median_ms": 0.18,
+            "min_ms": 0.178,
+            "max_ms": 0.212
+          }
+        },
+        {
+          "query": "REST",
+          "fts_matches": 12480,
+          "literal_matches": 12480,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.077,
+            "min_ms": 0.074,
+            "max_ms": 0.116
+          },
+          "literal": {
+            "median_ms": 0.174,
+            "min_ms": 0.148,
+            "max_ms": 0.182
+          }
+        },
+        {
+          "query": "marcadorunico2026",
+          "fts_matches": 1,
+          "literal_matches": 1,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.023,
+            "min_ms": 0.02,
+            "max_ms": 0.064
+          },
+          "literal": {
+            "median_ms": 12.713,
+            "min_ms": 12.605,
+            "max_ms": 12.748
+          }
+        },
+        {
+          "query": "termoausente999",
+          "fts_matches": 0,
+          "literal_matches": 0,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.023,
+            "min_ms": 0.02,
+            "max_ms": 0.057
+          },
+          "literal": {
+            "median_ms": 13.558,
+            "min_ms": 13.479,
+            "max_ms": 13.605
+          }
+        }
+      ]
+    },
+    {
+      "messages": 400000,
+      "conversations": 10000,
+      "import_seconds": 12.31,
+      "stage_seconds": 13.536,
+      "db_bytes": 107089920,
+      "checks": {
+        "count": true,
+        "fts_no_temp_sort": true,
+        "parity_SSH": true,
+        "parity_PostgreSQL": true,
+        "parity_Jenkins": true,
+        "parity_AUoK": true,
+        "parity_MCP": true,
+        "parity_Android": true,
+        "parity_seguranca": true,
+        "parity_REST": true,
+        "parity_marcadorunico2026": true,
+        "parity_termoausente999": true,
+        "rare_term_once": true,
+        "missing_term_zero": true,
+        "search_escape": true,
+        "update_index": true,
+        "old_term_removed": true,
+        "delete_index": true
+      },
+      "queries": [
+        {
+          "query": "SSH",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.104,
+            "min_ms": 0.082,
+            "max_ms": 0.15
+          },
+          "literal": {
+            "median_ms": 0.151,
+            "min_ms": 0.145,
+            "max_ms": 0.212
+          }
+        },
+        {
+          "query": "PostgreSQL",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.084,
+            "min_ms": 0.079,
+            "max_ms": 0.183
+          },
+          "literal": {
+            "median_ms": 0.131,
+            "min_ms": 0.119,
+            "max_ms": 0.184
+          }
+        },
+        {
+          "query": "Jenkins",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.093,
+            "min_ms": 0.081,
+            "max_ms": 0.179
+          },
+          "literal": {
+            "median_ms": 0.119,
+            "min_ms": 0.115,
+            "max_ms": 0.188
+          }
+        },
+        {
+          "query": "AUoK",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.084,
+            "min_ms": 0.079,
+            "max_ms": 0.171
+          },
+          "literal": {
+            "median_ms": 0.156,
+            "min_ms": 0.144,
+            "max_ms": 0.212
+          }
+        },
+        {
+          "query": "MCP",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.086,
+            "min_ms": 0.08,
+            "max_ms": 0.176
+          },
+          "literal": {
+            "median_ms": 0.15,
+            "min_ms": 0.135,
+            "max_ms": 0.206
+          }
+        },
+        {
+          "query": "Android",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.085,
+            "min_ms": 0.079,
+            "max_ms": 0.184
+          },
+          "literal": {
+            "median_ms": 0.152,
+            "min_ms": 0.147,
+            "max_ms": 0.217
+          }
+        },
+        {
+          "query": "seguranca",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.091,
+            "min_ms": 0.086,
+            "max_ms": 0.179
+          },
+          "literal": {
+            "median_ms": 0.196,
+            "min_ms": 0.18,
+            "max_ms": 0.248
+          }
+        },
+        {
+          "query": "REST",
+          "fts_matches": 50000,
+          "literal_matches": 50000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.083,
+            "min_ms": 0.078,
+            "max_ms": 0.171
+          },
+          "literal": {
+            "median_ms": 0.159,
+            "min_ms": 0.147,
+            "max_ms": 0.233
+          }
+        },
+        {
+          "query": "marcadorunico2026",
+          "fts_matches": 1,
+          "literal_matches": 1,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.025,
+            "min_ms": 0.022,
+            "max_ms": 0.089
+          },
+          "literal": {
+            "median_ms": 51.92,
+            "min_ms": 51.884,
+            "max_ms": 51.977
+          }
+        },
+        {
+          "query": "termoausente999",
+          "fts_matches": 0,
+          "literal_matches": 0,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.023,
+            "min_ms": 0.02,
+            "max_ms": 0.071
+          },
+          "literal": {
+            "median_ms": 56.593,
+            "min_ms": 56.448,
+            "max_ms": 56.778
+          }
+        }
+      ]
+    },
+    {
+      "messages": 1000000,
+      "conversations": 25000,
+      "import_seconds": 25.333,
+      "stage_seconds": 28.409,
+      "db_bytes": 268419072,
+      "checks": {
+        "count": true,
+        "fts_no_temp_sort": true,
+        "parity_SSH": true,
+        "parity_PostgreSQL": true,
+        "parity_Jenkins": true,
+        "parity_AUoK": true,
+        "parity_MCP": true,
+        "parity_Android": true,
+        "parity_seguranca": true,
+        "parity_REST": true,
+        "parity_marcadorunico2026": true,
+        "parity_termoausente999": true,
+        "rare_term_once": true,
+        "missing_term_zero": true,
+        "search_escape": true,
+        "update_index": true,
+        "old_term_removed": true,
+        "delete_index": true
+      },
+      "queries": [
+        {
+          "query": "SSH",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.098,
+            "min_ms": 0.077,
+            "max_ms": 0.147
+          },
+          "literal": {
+            "median_ms": 0.152,
+            "min_ms": 0.146,
+            "max_ms": 0.222
+          }
+        },
+        {
+          "query": "PostgreSQL",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.094,
+            "min_ms": 0.078,
+            "max_ms": 0.173
+          },
+          "literal": {
+            "median_ms": 0.126,
+            "min_ms": 0.122,
+            "max_ms": 0.198
+          }
+        },
+        {
+          "query": "Jenkins",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.081,
+            "min_ms": 0.076,
+            "max_ms": 0.177
+          },
+          "literal": {
+            "median_ms": 0.153,
+            "min_ms": 0.122,
+            "max_ms": 0.182
+          }
+        },
+        {
+          "query": "AUoK",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.088,
+            "min_ms": 0.082,
+            "max_ms": 0.169
+          },
+          "literal": {
+            "median_ms": 0.148,
+            "min_ms": 0.142,
+            "max_ms": 0.211
+          }
+        },
+        {
+          "query": "MCP",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.078,
+            "min_ms": 0.074,
+            "max_ms": 0.164
+          },
+          "literal": {
+            "median_ms": 0.137,
+            "min_ms": 0.137,
+            "max_ms": 0.211
+          }
+        },
+        {
+          "query": "Android",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.079,
+            "min_ms": 0.075,
+            "max_ms": 0.171
+          },
+          "literal": {
+            "median_ms": 0.17,
+            "min_ms": 0.155,
+            "max_ms": 0.223
+          }
+        },
+        {
+          "query": "seguranca",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.087,
+            "min_ms": 0.079,
+            "max_ms": 0.166
+          },
+          "literal": {
+            "median_ms": 0.187,
+            "min_ms": 0.178,
+            "max_ms": 0.278
+          }
+        },
+        {
+          "query": "REST",
+          "fts_matches": 125000,
+          "literal_matches": 125000,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.079,
+            "min_ms": 0.075,
+            "max_ms": 0.171
+          },
+          "literal": {
+            "median_ms": 0.163,
+            "min_ms": 0.155,
+            "max_ms": 0.223
+          }
+        },
+        {
+          "query": "marcadorunico2026",
+          "fts_matches": 1,
+          "literal_matches": 1,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.024,
+            "min_ms": 0.019,
+            "max_ms": 0.093
+          },
+          "literal": {
+            "median_ms": 131.897,
+            "min_ms": 131.283,
+            "max_ms": 132.145
+          }
+        },
+        {
+          "query": "termoausente999",
+          "fts_matches": 0,
+          "literal_matches": 0,
+          "same_first_100": true,
+          "fts": {
+            "median_ms": 0.021,
+            "min_ms": 0.017,
+            "max_ms": 0.083
+          },
+          "literal": {
+            "median_ms": 142.613,
+            "min_ms": 142.524,
+            "max_ms": 143.785
+          }
+        }
+      ]
+    }
+  ],
+  "verdict": "all_checks_passed"
+}
