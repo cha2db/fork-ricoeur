@@ -1,0 +1,35 @@
+{
+  "status": "FAIL",
+  "candidate": "Reweave",
+  "mode": "actual public Python API",
+  "first_import_seconds": 0.004,
+  "second_import_seconds": 0.0019,
+  "initial": {
+    "conversations": 2,
+    "messages": 4
+  },
+  "second": {
+    "conversations": 2,
+    "messages": 4
+  },
+  "tests": {
+    "two_conversations": true,
+    "expected_five_messages": false,
+    "idempotent_second_import": true,
+    "marker_retrieved": false,
+    "cross_chat_fts": true,
+    "message_provenance": true,
+    "branch_siblings_preserved": false,
+    "stable_ids_and_content": true
+  },
+  "first_message_id": "a616d35bda99788d:0",
+  "search_hits": 0,
+  "conversation_source": "chatgpt",
+  "source": "generated ChatGPT conversation export with branching and two conversations",
+  "limits": [
+    "Functional proof is only for Reweave's current API and synthetic ChatGPT format.",
+    "Claude/ZIP inputs, ACL, source byte preservation and semantic relevance not verified.",
+    "No LLM was required or called, full Reweave UI was not executed.",
+    "Vendor code ran in isolated read-only CI; candidate not integrated into Cha2db."
+  ]
+}
