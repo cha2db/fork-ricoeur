@@ -55,6 +55,7 @@ TEST_MAP = {
     "C058":("ci-output/prior-art/latest.json","graph"),
     "C059":("ci-output/semantic/latest.json","components.bertopic"),
     "C101":("ci-output/phase2/reweave-latest.json",None),
+    "C112":("ci-output/phase2/chronicle-latest.json",None),
     "C118":("ci-output/phase2/ctk-store-latest.json",None),
     # All references are SOURCE CI outputs; no inferred performance numbers.
 }
