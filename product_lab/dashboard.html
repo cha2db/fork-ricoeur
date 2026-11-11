@@ -89,18 +89,23 @@ function draw(){
     const evidence=mk("small","Base existente: "+f.existing_evidence,card);
     const gate=mk("div",null,card,"gate");mk("strong","Próxima prova de valor",gate);mk("p",f.gate,gate);
     mk("small",f.candidate_count+" candidatos · "+f.new_to_inventories+" novas URLs nestes inventários · "+f.previously_catalogued+" já vistos",card);
-    const list=mk("ol",null,card);
-    f.candidates.forEach((c,idx)=>{
-      const li=mk("li",null,list,idx>=3?"more":"");
-      const a=mk("a",c.name,li);a.href=c.url;a.rel="noopener noreferrer";a.target="_blank";a.referrerPolicy="no-referrer";
-      mk("code",c.priority_preliminary+"/100",li);
-      mk("span"," · "+c.subport+" · "+(c.prior_surveys.length?"Já visto: "+c.prior_surveys.join(", "):"Novo neste catálogo"),li);
-      const info=mk("details",null,li);
-      mk("summary","Contrato e próximo teste",info);
-      mk("p",c.approach,info);mk("p",c.next_gate,info);
-      mk("small","Fonte: "+c.source_level+" · Ainda não homologado · Licença a verificar por componente",info);
-    });
-    if(f.candidates.length>3){
+    const lists=mk("div",null,card);
+    for(const group of f.comparison_groups){
+      const title=mk("div",group.subport+" · "+group.candidate_count+" alternativa(s)",lists,"muted");
+      title.style.fontSize="12px";title.style.marginTop="10px";
+      const list=mk("ol",null,lists);
+      group.candidates.forEach((c,idx)=>{
+        const li=mk("li",null,list,idx>=1?"more":"");
+        const a=mk("a",c.name,li);a.href=c.url;a.rel="noopener noreferrer";a.target="_blank";a.referrerPolicy="no-referrer";
+        mk("code",c.priority_preliminary+"/100",li);
+        mk("span"," · "+(c.prior_surveys.length?"Já visto: "+c.prior_surveys.join(", "):"Novo neste catálogo"),li);
+        const info=mk("details",null,li);
+        mk("summary","Contrato e próximo teste",info);
+        mk("p",c.approach,info);mk("p",c.next_gate,info);
+        mk("small","Fonte: "+c.source_level+" · Ainda não homologado · Licença a verificar por componente",info);
+      });
+    }
+    if(f.comparison_groups.some(g=>g.candidate_count>1)){
       const button=mk("button","Exibir todos os "+f.candidate_count+" candidatos",card,"openall");
       button.type="button";button.setAttribute("aria-expanded","false");
       button.onclick=()=>{
