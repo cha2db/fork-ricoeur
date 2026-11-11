@@ -11,6 +11,7 @@ on:
   workflow_run:
     workflows:
       - 'Cha2db Phase2 R14 PGlite WASM Postgres source/branch gate'
+      - 'Cha2db Phase2 R14 Portable Memory interoperable bundle gate'
     types: [completed]
   schedule:
     - cron: '31 4 * * 1,4'
