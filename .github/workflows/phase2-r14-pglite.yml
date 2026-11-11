@@ -1,0 +1,68 @@
+name: Cha2db Phase2 R14 PGlite WASM Postgres source/branch gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_r14_pglite/**'
+      - '_dev/publish_phase2_r14_pglite.sh'
+      - '.github/workflows/phase2-r14-pglite.yml'
+  workflow_dispatch:
+concurrency:
+  group: cha2db-phase2-r14-pglite-main
+  cancel-in-progress: false
+jobs:
+  test-pglite-without-repo-write-token:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install only embedded PostgreSQL WASM candidate
+        run: |
+          mkdir -p _dev/results
+          python -m pip install -e .
+          npm install --prefix _dev/phase2_r14_pglite --no-audit --no-fund '@electric-sql/pglite' > _dev/results/phase2-r14-pglite-install.log 2>&1 || {
+            tail -n 80 _dev/results/phase2-r14-pglite-install.log; exit 1
+          }
+      - name: Materialize identical 40k synthetic SQLite chat source
+        run: |
+          python -u _dev/build_prior_base.py --conversations 1000 --messages 40 --output _dev/results/prior-base.sqlite > _dev/results/phase2-r14-pglite-base.log 2>&1
+          python _dev/phase2_export.py --db-path _dev/results/prior-base.sqlite --output _dev/results/phase2-r14-input.json
+      - name: Execute PGlite FTS, branch, reimport and disk reopen gate
+        run: |
+          node _dev/phase2_r14_pglite/runner.mjs _dev/results/phase2-r14-input.json _dev/results/phase2-r14-pglite.json > _dev/results/phase2-r14-pglite.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-r14-pglite.log; exit 1
+          }
+          cat _dev/results/phase2-r14-pglite.json
+      - name: Save data, logs and errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-r14-pglite-evidence
+          path: _dev/results/
+          retention-days: 30
+  publish-report-from-trusted-job:
+    needs: test-pglite-without-repo-write-token
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2-r14-pglite-evidence
+          path: _dev/results/
+      - name: Publish only result and log, not candidate code
+        if: always()
+        run: bash _dev/publish_phase2_r14_pglite.sh
