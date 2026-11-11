@@ -59,18 +59,23 @@ def evaluate(repo):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--inventory",default="_dev/PHASE2_MARKET_UNIVERSE_R15.json")
-    p.add_argument("--expansion",default="_dev/PHASE2_MARKET_EXPANSION_R14.json")
+    p.add_argument("--expansion",default=None,
+                   help="Legacy R10+R14 separate mode; omit for canonical R15+ inventories")
     p.add_argument("--output",default="_dev/results/phase2-discovery.json")
     p.add_argument("--max-results",type=int,default=40)
     args=p.parse_args()
     if not 1<=args.max_results<=100:p.error("max results must be 1..100")
     inventory=json.loads(Path(args.inventory).read_text())
-    expansion=json.loads(Path(args.expansion).read_text())
-    if expansion.get("previous_candidates")!=len(inventory["candidates"]):
-        raise ValueError("Expansion and base inventory are inconsistent")
-    all_entries=inventory["candidates"]+expansion["candidates"]
-    if len(all_entries)!=expansion["total_candidates"]:
-        raise ValueError("Expanded inventory count mismatch")
+    all_entries=list(inventory["candidates"])
+    if args.expansion:
+        expansion=json.loads(Path(args.expansion).read_text())
+        if expansion.get("previous_candidates")!=len(all_entries):
+            raise ValueError("Expansion and base inventory are inconsistent")
+        all_entries+=expansion["candidates"]
+        if len(all_entries)!=expansion["total_candidates"]:
+            raise ValueError("Expanded inventory count mismatch")
+    elif inventory.get("total")!=len(all_entries):
+        raise ValueError("Canonical inventory count mismatch")
     known={}
     pattern=re.compile(r"^https://github\.com/([^/]+)/([^/?#]+)")
     for item in all_entries:
