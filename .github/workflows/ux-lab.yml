@@ -6,11 +6,13 @@ on:
     paths:
       - 'ux_lab/**'
       - '_dev/tests/ux/**'
+      - 'docs/ux/**'
       - '.github/workflows/ux-lab.yml'
   pull_request:
     paths:
       - 'ux_lab/**'
       - '_dev/tests/ux/**'
+      - 'docs/ux/**'
       - '.github/workflows/ux-lab.yml'
   workflow_dispatch:
 jobs:
