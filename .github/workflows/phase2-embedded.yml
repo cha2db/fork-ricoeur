@@ -5,7 +5,6 @@ on:
     paths:
       - '_dev/phase2_embedded.py'
       - '_dev/build_prior_base.py'
-      - '_dev/publish_phase2.sh'
       - '.github/workflows/phase2-embedded.yml'
   workflow_dispatch:
 permissions:
