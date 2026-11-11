@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "timestamp_utc": "2026-11-10T23:10:36.960782+00:00",
-  "inventory_candidate_count": 100,
-  "github_unique_count": 83,
-  "audited_count": 83,
+  "timestamp_utc": "2026-11-11T00:01:13.062039+00:00",
+  "inventory_candidate_count": 143,
+  "github_unique_count": 123,
+  "audited_count": 123,
   "counts": {
-    "FOUND": 83
+    "FOUND": 123
   },
   "archived_repositories": [
     "kuzudb/kuzu",
@@ -13,11 +13,27 @@
   ],
   "requires_license_review": [
     {
+      "repository": "1ch1n/mychatarchive",
+      "spdx": "NOASSERTION"
+    },
+    {
+      "repository": "Aevorine/Synorive",
+      "spdx": "AGPL-3.0"
+    },
+    {
       "repository": "FalkorDB/FalkorDB",
       "spdx": "NOASSERTION"
     },
     {
+      "repository": "SpaceFrontiers/summa",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
       "repository": "ai-khoj/khoj",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "basicmachines-co/basic-memory",
       "spdx": "AGPL-3.0"
     },
     {
@@ -25,8 +41,20 @@
       "spdx": "NOASSERTION"
     },
     {
+      "repository": "gebeer/conversation-search",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
+      "repository": "hrishikeshs/sift",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
       "repository": "igraph/python-igraph",
       "spdx": "GPL-2.0"
+    },
+    {
+      "repository": "izihawa/summa",
+      "spdx": "UNIDENTIFIED"
     },
     {
       "repository": "manticoresoftware/manticoresearch",
@@ -45,12 +73,20 @@
       "spdx": "NOASSERTION"
     },
     {
+      "repository": "mertdeveci5/gora",
+      "spdx": "UNIDENTIFIED"
+    },
+    {
       "repository": "naver/splade",
       "spdx": "NOASSERTION"
     },
     {
       "repository": "neo4j/neo4j",
       "spdx": "GPL-3.0"
+    },
+    {
+      "repository": "nervosys/IronBridge",
+      "spdx": "AGPL-3.0"
     },
     {
       "repository": "networkx/networkx",
@@ -69,6 +105,10 @@
       "spdx": "NOASSERTION"
     },
     {
+      "repository": "oramasearch/oramacore",
+      "spdx": "AGPL-3.0"
+    },
+    {
       "repository": "paradedb/paradedb",
       "spdx": "AGPL-3.0"
     },
@@ -78,6 +118,10 @@
     },
     {
       "repository": "reorproject/reor",
+      "spdx": "AGPL-3.0"
+    },
+    {
+      "repository": "rustmailer/bichon",
       "spdx": "AGPL-3.0"
     },
     {
@@ -98,6 +142,48 @@
     }
   ],
   "repositories": [
+    {
+      "repository": "1939869736luosi/codex-sessions-manager",
+      "status": "FOUND",
+      "full_name": "1939869736luosi/codex-sessions-manager",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-08-02T12:32:58Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://www.npmjs.com/package/codex-sessions-manager"
+    },
+    {
+      "repository": "1ch1n/mychatarchive",
+      "status": "FOUND",
+      "full_name": "1ch1n/mychatarchive",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-08-05T03:51:51Z",
+      "default_branch": "main",
+      "license_spdx": "NOASSERTION",
+      "license_review": true,
+      "homepage": "https://mychatarchive.com"
+    },
+    {
+      "repository": "Aevorine/Synorive",
+      "status": "FOUND",
+      "full_name": "Aevorine/Synorive",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-09-12T15:47:21Z",
+      "default_branch": "main",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": "https://github.com/Aevorine/Synorive/releases/latest"
+    },
     {
       "repository": "AmenRa/ranx",
       "status": "FOUND",
@@ -125,6 +211,48 @@
       "license_spdx": "Apache-2.0",
       "license_review": false,
       "homepage": "https://arcadedb.com"
+    },
+    {
+      "repository": "AwesomeDog/soma",
+      "status": "FOUND",
+      "full_name": "AwesomeDog/soma",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-07T07:55:08Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://awesomedog.github.io/soma/"
+    },
+    {
+      "repository": "CynepMyx/deja",
+      "status": "FOUND",
+      "full_name": "CynepMyx/deja",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T23:51:23Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
+      "repository": "Dicoangelo/ucw",
+      "status": "FOUND",
+      "full_name": "Dicoangelo/ucw",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-06-20T22:39:34Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
     },
     {
       "repository": "FalkorDB/FalkorDB",
@@ -169,6 +297,34 @@
       "homepage": "https://labelstud.io"
     },
     {
+      "repository": "Laumss/loominary",
+      "status": "FOUND",
+      "full_name": "Laumss/loominary",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-31T10:16:42Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://laumss.github.io/loominary/welcome"
+    },
+    {
+      "repository": "Lyellr88/marm-memory",
+      "status": "FOUND",
+      "full_name": "Lyellr88/marm-memory",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-29T01:25:48Z",
+      "default_branch": "MARM-main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://lyellr88.github.io/marm-memory"
+    },
+    {
       "repository": "MaartenGr/BERTopic",
       "status": "FOUND",
       "full_name": "MaartenGr/BERTopic",
@@ -204,11 +360,25 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T21:55:52Z",
+      "pushed_at": "2026-11-10T23:35:32Z",
       "default_branch": "master",
       "license_spdx": "MIT",
       "license_review": false,
       "homepage": "https://anythingllm.com"
+    },
+    {
+      "repository": "Nwflower/dsh-chat-import",
+      "status": "FOUND",
+      "full_name": "Nwflower/dsh-chat-import",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T06:36:36Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://www.npmjs.com/package/dsh-chat-import"
     },
     {
       "repository": "OSU-NLP-Group/HippoRAG",
@@ -223,6 +393,20 @@
       "license_spdx": "MIT",
       "license_review": false,
       "homepage": "https://arxiv.org/abs/2405.14831"
+    },
+    {
+      "repository": "Open-Self/Open-Self",
+      "status": "FOUND",
+      "full_name": "Open-Self/Open-Self",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T13:26:03Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://github.com/Open-Self/Open-Self"
     },
     {
       "repository": "PrithivirajDamodaran/FlashRank",
@@ -251,6 +435,62 @@
       "license_spdx": "BSD-3-Clause",
       "license_review": false,
       "homepage": "https://rdflib.readthedocs.org"
+    },
+    {
+      "repository": "Sinity/polylogue",
+      "status": "FOUND",
+      "full_name": "Sinity/polylogue",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T23:03:25Z",
+      "default_branch": "master",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://sinity.github.io/polylogue/"
+    },
+    {
+      "repository": "SpaceFrontiers/summa",
+      "status": "FOUND",
+      "full_name": "SpaceFrontiers/summa",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T12:49:45Z",
+      "default_branch": "main",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": "https://spacefrontiers.github.io/summa/"
+    },
+    {
+      "repository": "Trapezohe/Anamnesis",
+      "status": "FOUND",
+      "full_name": "Trapezohe/Anamnesis",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T14:20:35Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://ghast.trapezohe.ai/"
+    },
+    {
+      "repository": "TzurV/mcp-chat-chronicle",
+      "status": "FOUND",
+      "full_name": "TzurV/mcp-chat-chronicle",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-08-24T08:15:25Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
     },
     {
       "repository": "UKPLab/sentence-transformers",
@@ -351,6 +591,20 @@
       "homepage": ""
     },
     {
+      "repository": "basicmachines-co/basic-memory",
+      "status": "FOUND",
+      "full_name": "basicmachines-co/basic-memory",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T20:38:38Z",
+      "default_branch": "main",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": "https://basicmemory.com"
+    },
+    {
       "repository": "beir-cellar/beir",
       "status": "FOUND",
       "full_name": "beir-cellar/beir",
@@ -365,6 +619,34 @@
       "homepage": "http://beir.ai"
     },
     {
+      "repository": "byteowlz/hstry",
+      "status": "FOUND",
+      "full_name": "byteowlz/hstry",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-02T15:28:41Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
+      "repository": "campbellcharlie/momento",
+      "status": "FOUND",
+      "full_name": "campbellcharlie/momento",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-06T03:27:39Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
       "repository": "chroma-core/chroma",
       "status": "FOUND",
       "full_name": "chroma-core/chroma",
@@ -377,6 +659,20 @@
       "license_spdx": "Apache-2.0",
       "license_review": false,
       "homepage": "https://www.trychroma.com/"
+    },
+    {
+      "repository": "davidjbeveridge/chat-history-index-mcp",
+      "status": "FOUND",
+      "full_name": "davidjbeveridge/chat-history-index-mcp",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-09-13T19:18:03Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://github.com/davidjbeveridge/chat-history-index-mcp#readme"
     },
     {
       "repository": "ddangelov/Top2Vec",
@@ -435,6 +731,20 @@
       "homepage": "https://docling-project.github.io/docling"
     },
     {
+      "repository": "doobidoo/mcp-memory-service",
+      "status": "FOUND",
+      "full_name": "doobidoo/mcp-memory-service",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T21:16:14Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": ""
+    },
+    {
       "repository": "dorianbrown/rank_bm25",
       "status": "FOUND",
       "full_name": "dorianbrown/rank_bm25",
@@ -456,7 +766,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T23:01:14Z",
+      "pushed_at": "2026-11-10T23:58:41Z",
       "default_branch": "main",
       "license_spdx": "NOASSERTION",
       "license_review": true,
@@ -519,6 +829,20 @@
       "homepage": "https://faiss.ai"
     },
     {
+      "repository": "gebeer/conversation-search",
+      "status": "FOUND",
+      "full_name": "gebeer/conversation-search",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-03-17T13:35:00Z",
+      "default_branch": "main",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": null
+    },
+    {
       "repository": "getzep/graphiti",
       "status": "FOUND",
       "full_name": "getzep/graphiti",
@@ -547,6 +871,20 @@
       "homepage": "https://llama.app"
     },
     {
+      "repository": "hrishikeshs/sift",
+      "status": "FOUND",
+      "full_name": "hrishikeshs/sift",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-15T09:32:36Z",
+      "default_branch": "master",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": "https://github.com/hrishikeshs/sift"
+    },
+    {
       "repository": "igraph/python-igraph",
       "status": "FOUND",
       "full_name": "igraph/python-igraph",
@@ -559,6 +897,48 @@
       "license_spdx": "GPL-2.0",
       "license_review": true,
       "homepage": "https://python.igraph.org"
+    },
+    {
+      "repository": "izihawa/summa",
+      "status": "FOUND",
+      "full_name": "SpaceFrontiers/summa",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T12:49:45Z",
+      "default_branch": "main",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": "https://spacefrontiers.github.io/summa/"
+    },
+    {
+      "repository": "kasparovabi/sift",
+      "status": "FOUND",
+      "full_name": "kasparovabi/sift",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-09-11T18:12:20Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
+      "repository": "kuroko1t/claude-vault",
+      "status": "FOUND",
+      "full_name": "kuroko1t/claude-vault",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-08-31T02:49:17Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
     },
     {
       "repository": "kuzudb/kuzu",
@@ -582,7 +962,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T23:08:02Z",
+      "pushed_at": "2026-11-10T23:56:11Z",
       "default_branch": "main",
       "license_spdx": "Apache-2.0",
       "license_review": false,
@@ -715,6 +1095,20 @@
       "homepage": "https://memgraph.com"
     },
     {
+      "repository": "mertdeveci5/gora",
+      "status": "FOUND",
+      "full_name": "mertdeveci5/gora",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-06-19T16:03:38Z",
+      "default_branch": "master",
+      "license_spdx": "UNIDENTIFIED",
+      "license_review": true,
+      "homepage": null
+    },
+    {
       "repository": "microsoft/graphrag",
       "status": "FOUND",
       "full_name": "microsoft/graphrag",
@@ -757,6 +1151,20 @@
       "homepage": "https://milvus.io"
     },
     {
+      "repository": "mlshv/OwnYourChat",
+      "status": "FOUND",
+      "full_name": "mlshv/OwnYourChat",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-02-01T18:12:49Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
       "repository": "moj-analytical-services/splink",
       "status": "FOUND",
       "full_name": "moj-analytical-services/splink",
@@ -797,6 +1205,20 @@
       "license_spdx": "GPL-3.0",
       "license_review": true,
       "homepage": "http://neo4j.com"
+    },
+    {
+      "repository": "nervosys/IronBridge",
+      "status": "FOUND",
+      "full_name": "nervosys/IronBridge",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T06:26:52Z",
+      "default_branch": "master",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": ""
     },
     {
       "repository": "networkx/networkx",
@@ -862,7 +1284,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T23:06:04Z",
+      "pushed_at": "2026-11-10T23:52:16Z",
       "default_branch": "main",
       "license_spdx": "NOASSERTION",
       "license_review": true,
@@ -911,6 +1333,20 @@
       "homepage": "https://docs.orama.com/docs/orama-js"
     },
     {
+      "repository": "oramasearch/oramacore",
+      "status": "FOUND",
+      "full_name": "oramasearch/oramacore",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-04T00:13:03Z",
+      "default_branch": "develop",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": "https://docs.orama.com/docs/cloud"
+    },
+    {
       "repository": "paradedb/paradedb",
       "status": "FOUND",
       "full_name": "paradedb/paradedb",
@@ -918,7 +1354,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T22:56:10Z",
+      "pushed_at": "2026-11-11T00:00:52Z",
       "default_branch": "main",
       "license_spdx": "AGPL-3.0",
       "license_review": true,
@@ -967,6 +1403,20 @@
       "homepage": "https://qdrant.tech"
     },
     {
+      "repository": "queelius/ctk",
+      "status": "FOUND",
+      "full_name": "queelius/ctk",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-25T07:18:28Z",
+      "default_branch": "master",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://queelius.github.io/ctk/"
+    },
+    {
       "repository": "quickwit-oss/quickwit",
       "status": "FOUND",
       "full_name": "quickwit-oss/quickwit",
@@ -1009,6 +1459,20 @@
       "homepage": "https://rapidfuzz.github.io/RapidFuzz/"
     },
     {
+      "repository": "reactor-team/semantic",
+      "status": "FOUND",
+      "full_name": "reactor-team/semantic",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-07T03:53:07Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": null
+    },
+    {
       "repository": "reorproject/reor",
       "status": "FOUND",
       "full_name": "reorproject/reor",
@@ -1037,6 +1501,34 @@
       "homepage": "https://developers.llamaindex.ai"
     },
     {
+      "repository": "rustmailer/bichon",
+      "status": "FOUND",
+      "full_name": "rustmailer/bichon",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T11:26:37Z",
+      "default_branch": "main",
+      "license_spdx": "AGPL-3.0",
+      "license_review": true,
+      "homepage": "https://bichon.rustmailer.com"
+    },
+    {
+      "repository": "s-kolbusz/ai-memory-explorer",
+      "status": "FOUND",
+      "full_name": "s-kolbusz/ai-memory-explorer",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-06-23T21:23:10Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
       "repository": "scikit-learn-contrib/hdbscan",
       "status": "FOUND",
       "full_name": "scikit-learn-contrib/hdbscan",
@@ -1051,6 +1543,34 @@
       "homepage": "http://hdbscan.readthedocs.io/en/latest/"
     },
     {
+      "repository": "semantica-agi/semantica",
+      "status": "FOUND",
+      "full_name": "semantica-agi/semantica",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-09T09:12:46Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://getsemantica.ai"
+    },
+    {
+      "repository": "seolbbb/reweave",
+      "status": "FOUND",
+      "full_name": "seolbbb/reweave",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-09-11T01:56:52Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
       "repository": "spotify/annoy",
       "status": "FOUND",
       "full_name": "spotify/annoy",
@@ -1063,6 +1583,20 @@
       "license_spdx": "Apache-2.0",
       "license_review": false,
       "homepage": ""
+    },
+    {
+      "repository": "squirtymcgirt/chatparser",
+      "status": "FOUND",
+      "full_name": "squirtymcgirt/chatparser",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-04-27T22:31:48Z",
+      "default_branch": "master",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
     },
     {
       "repository": "stanford-futuredata/ColBERT",
@@ -1107,6 +1641,34 @@
       "homepage": "https://www.cognee.ai"
     },
     {
+      "repository": "trace-cortex/cortex-app",
+      "status": "FOUND",
+      "full_name": "trace-cortex/cortex-app",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-07T01:50:15Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": null
+    },
+    {
+      "repository": "turnlog/turnlog",
+      "status": "FOUND",
+      "full_name": "turnlog/turnlog",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-07T15:58:46Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "turnlog.dev"
+    },
+    {
       "repository": "typesense/typesense",
       "status": "FOUND",
       "full_name": "typesense/typesense",
@@ -1147,6 +1709,20 @@
       "license_spdx": "Apache-2.0",
       "license_review": false,
       "homepage": "https://urchade.github.io/GLiNER"
+    },
+    {
+      "repository": "utensils/claudex",
+      "status": "FOUND",
+      "full_name": "utensils/claudex",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-10-21T17:58:18Z",
+      "default_branch": "main",
+      "license_spdx": "MIT",
+      "license_review": false,
+      "homepage": "https://utensils.io/claudex/"
     },
     {
       "repository": "valeriansaliou/sonic",
@@ -1198,7 +1774,7 @@
       "disabled": false,
       "private": false,
       "fork": false,
-      "pushed_at": "2026-11-10T22:29:42Z",
+      "pushed_at": "2026-11-10T23:19:55Z",
       "default_branch": "master",
       "license_spdx": "Apache-2.0",
       "license_review": false,
@@ -1233,6 +1809,20 @@
       "homepage": "https://weaviate.io/developers/weaviate/"
     },
     {
+      "repository": "xerj-org/xerj",
+      "status": "FOUND",
+      "full_name": "xerj-org/xerj",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T22:31:26Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://xerj.org"
+    },
+    {
       "repository": "xhluca/bm25s",
       "status": "FOUND",
       "full_name": "xhluca/bm25s",
@@ -1245,6 +1835,20 @@
       "license_spdx": "MIT",
       "license_review": false,
       "homepage": "https://bm25s.github.io"
+    },
+    {
+      "repository": "yvgude/lean-ctx",
+      "status": "FOUND",
+      "full_name": "yvgude/lean-ctx",
+      "archived": false,
+      "disabled": false,
+      "private": false,
+      "fork": false,
+      "pushed_at": "2026-11-10T23:44:17Z",
+      "default_branch": "main",
+      "license_spdx": "Apache-2.0",
+      "license_review": false,
+      "homepage": "https://leanctx.com"
     },
     {
       "repository": "zincsearch/zincsearch",
@@ -1344,7 +1948,47 @@
     "C097": "moj-analytical-services/splink",
     "C098": "dedupeio/dedupe",
     "C099": "apache/tika",
-    "C100": "docling-project/docling"
+    "C100": "docling-project/docling",
+    "C101": "seolbbb/reweave",
+    "C102": "SpaceFrontiers/summa",
+    "C103": "xerj-org/xerj",
+    "C104": "oramasearch/oramacore",
+    "C105": "Aevorine/Synorive",
+    "C106": "reactor-team/semantic",
+    "C107": "AwesomeDog/soma",
+    "C109": "izihawa/summa",
+    "C110": "rustmailer/bichon",
+    "C111": "1ch1n/mychatarchive",
+    "C112": "TzurV/mcp-chat-chronicle",
+    "C113": "davidjbeveridge/chat-history-index-mcp",
+    "C114": "Open-Self/Open-Self",
+    "C115": "Sinity/polylogue",
+    "C116": "byteowlz/hstry",
+    "C117": "nervosys/IronBridge",
+    "C118": "queelius/ctk",
+    "C119": "Trapezohe/Anamnesis",
+    "C120": "mlshv/OwnYourChat",
+    "C121": "mertdeveci5/gora",
+    "C122": "Dicoangelo/ucw",
+    "C123": "s-kolbusz/ai-memory-explorer",
+    "C126": "squirtymcgirt/chatparser",
+    "C127": "hrishikeshs/sift",
+    "C128": "utensils/claudex",
+    "C129": "gebeer/conversation-search",
+    "C130": "kasparovabi/sift",
+    "C131": "CynepMyx/deja",
+    "C132": "kuroko1t/claude-vault",
+    "C133": "campbellcharlie/momento",
+    "C134": "turnlog/turnlog",
+    "C135": "Laumss/loominary",
+    "C136": "basicmachines-co/basic-memory",
+    "C137": "doobidoo/mcp-memory-service",
+    "C138": "semantica-agi/semantica",
+    "C139": "Nwflower/dsh-chat-import",
+    "C140": "yvgude/lean-ctx",
+    "C141": "Lyellr88/marm-memory",
+    "C142": "trace-cortex/cortex-app",
+    "C143": "1939869736luosi/codex-sessions-manager"
   },
   "limits": [
     "Metadata only; a GitHub license identifier does not certify legal compatibility.",
