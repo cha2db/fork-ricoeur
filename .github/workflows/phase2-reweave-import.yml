@@ -1,0 +1,64 @@
+name: Cha2db Phase2 Reweave actual import and repair competitor gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_dev/phase2_import_candidate.py'
+      - '_dev/publish_phase2.sh'
+      - '.github/workflows/phase2-reweave-import.yml'
+  workflow_dispatch:
+concurrency:
+  group: cha2db-phase2-reweave-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  execute-untrusted-candidate:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Download public upstream with no write credentials
+        run: |
+          mkdir -p _dev/results
+          git clone --depth 1 https://github.com/seolbbb/reweave.git /tmp/reweave > _dev/results/phase2-reweave-install.log 2>&1
+          git -C /tmp/reweave rev-parse HEAD > _dev/results/reweave-upstream-commit.txt
+      - name: Install only import prerequisites (exclude UI, embeddings and LLMs)
+        run: |
+          python -m pip install --no-deps -e /tmp/reweave >> _dev/results/phase2-reweave-install.log 2>&1
+          python -m pip install 'pydantic>=2,<3' 'platformdirs>=4,<5' 'cryptography>=46,<52' 'httpx>=0.28,<1' >> _dev/results/phase2-reweave-install.log 2>&1
+      - name: Run real ChatGPT import, branches, search and reimport assertions
+        run: |
+          python -u _dev/phase2_import_candidate.py --candidate reweave --output _dev/results/phase2-reweave.json > _dev/results/phase2-reweave.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-reweave.log
+            exit 1
+          }
+          cat _dev/results/phase2-reweave.json
+      - name: Save reproducible candidate report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-reweave-evidence
+          path: _dev/results/
+          retention-days: 30
+  publish-only-trusted-code:
+    needs: execute-untrusted-candidate
+    if: always()
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2-reweave-evidence
+          path: _dev/results/
+      - name: Commit reports only, never upstream source code
+        if: always()
+        run: bash _dev/publish_phase2.sh reweave
