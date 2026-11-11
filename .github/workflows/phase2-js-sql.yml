@@ -7,7 +7,6 @@ on:
       - '_dev/phase2_export.py'
       - '_dev/phase2_duckdb.py'
       - '_dev/build_prior_base.py'
-      - '_dev/publish_phase2.sh'
       - '.github/workflows/phase2-js-sql.yml'
   workflow_dispatch:
 permissions:
