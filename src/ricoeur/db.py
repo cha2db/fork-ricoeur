@@ -137,6 +137,36 @@ def get_connection(home: Optional[Path] = None) -> sqlite3.Connection:
     return conn
 
 
+
+def get_read_connection(home: Optional[Path] = None) -> sqlite3.Connection:
+    """Open existing archive for *strictly read-only* adapters (MCP/GUI).
+
+    Never initializes, sets journal mode, or migrates.  Refuses an older
+    schema instead of silently rewriting a user's archive on a query.
+    SQLite mode=ro is the enforcement layer; query_only adds defense in depth.
+    """
+    path = db_path(home).resolve()
+    if not path.is_file():
+        raise FileNotFoundError("ricoeur database not found; initialize explicitly")
+    conn = sqlite3.connect(path.as_uri() + "?mode=ro", uri=True)
+    try:
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA query_only=ON")
+        version = schema_version(conn)
+        if version != SCHEMA_VERSION:
+            raise RuntimeError(
+                f"ricoeur schema version {version}; expected {SCHEMA_VERSION}. "
+                "Run an explicit verified migration/backup before read adapters."
+            )
+        required = ("conversations", "messages", "messages_fts")
+        if any(not _table_exists(conn, name) for name in required):
+            raise RuntimeError("ricoeur archive missing required search tables")
+        return conn
+    except BaseException:
+        conn.close()
+        raise
+
+
 def init_db(home: Optional[Path] = None) -> sqlite3.Connection:
     """Initialize the database with the schema."""
     conn = get_connection(home)
