@@ -12,7 +12,7 @@ Ricoeur `src/ricoeur/db.py` usa SQLite, `conversations.id TEXT`, `messages.id TE
 - **LLM Chat Vault** `https://github.com/shuruili77/llm-chat-vault`: SQLite+FTS5, mas grafo DAG e resolução de ramificações próprios; equivalência de esquema não demonstrada.
 - **ThreadShelf** `https://github.com/ChrystianSchutz/ThreadShelf`: LanceDB e pipeline de embeddings; diferencial forte de CLI+HTTP+MCP sobre mesmo índice, porém core diferente.
 
-**Conclusão:** sem autorização para trocar core; máxima reutilização do contrato Ricoeur e integração apenas de apresentação/adapters. Os 27 candidatos restantes têm análises com status explícito no manifesto `ux_lab/candidates.json`; não confundir stack semelhante com contrato idêntico.
+**Conclusão:** sem autorização para trocar core; máxima reutilização do contrato Ricoeur e integração apenas de apresentação/adapters. Os 46 candidatos restantes têm análises com status explícito no manifesto `ux_lab/candidates.json`; não confundir stack semelhante com contrato idêntico.
 
 ## 3. Ranking preliminar por família (peso core=40, GUI=30, adapter=20, licença=10)
 
@@ -35,7 +35,7 @@ Pontuações são avaliações provisórias por compatibilidade e não benchmark
 - `ux_lab/ux.py`: HTTP localhost e CLI JSON, banco somente leitura, busca delegada à `ricoeur.retrieval.search_messages`, lista, transcrição com ID e anterior/próxima, contexto por mensagem.
 - `ux_lab/index.html`: lista, filtro de plataforma, pesquisa literal/expressão FTS5, painel de mensagem, jump exato, grafo de evidência, SVG offline e visualizador experimental vis-network com carregamento externo **manual**.
 - `ux_lab/retrieval_port.py`: adapter independente para o contrato já existente.
-- `ux_lab/candidates.json`, `rank_candidates.py`: 27 candidatos e classificação reproduzível.
+- `ux_lab/candidates.json`, `rank_candidates.py`: 46 candidatos e classificação reproduzível.
 - Scripts `_dev/tests/ux/teste8.sh` até `teste12.sh`; relatórios na única categoria `_dev/results/ux/`.
 - `.github/workflows/ux-lab.yml`: gates sintéticos Python e HTTP.
 
@@ -55,3 +55,7 @@ Pontuações são avaliações provisórias por compatibilidade e não benchmark
 - SVG local não expõe dados a CDN. Opt-in vis-network carrega código de terceiro; testar com corpus sintético, nunca com conversas pessoais reais.
 
 Decisão técnica: entregar como **laboratório UX de read-only e ranking de adoção**, preservando completamente a evolução de importação/busca do par.
+
+## Adendo — UX-014
+
+Inventário expandido para **46** candidatos, agora incluindo taxonomias, cognição, tesauros, mapas conceituais, co-word, topic evolution e séries temporais. Ver documento `UX-014-COGNITIVE-KNOWLEDGE-MAPS-PRIOR-ART.md`. Implementada porta somente leitura `ux_lab/knowledge_port.py`, dashboard `/knowledge`, normalização por mil, drill-down e vocabulário opcional; testados sinteticamente pelo `teste14.sh`. Não há adoção de WordNet/ConceptNet ou inferência de cognição efetiva.
