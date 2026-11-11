@@ -89,12 +89,18 @@ with tempfile.TemporaryDirectory() as d:
                "Changing selected branch adds message but leaves historical main path and raw children unchanged")
 
         # Dry-run estimates 'new' without validating malformed mapping or existing IDs.
-        bad = conv(cid="malformed")
-        bad["mapping"]["root"] = None
+        bad = conv(cid="malformed", selected="a")
+        bad["mapping"]["a"]["message"]["content"] = 42  # invalid content shape
         src.write_text(json.dumps([bad]), encoding="utf-8")
         dry = import_chatgpt(con, src, dry_run=True)
-        record("DRYRUN-004", dry.new == 1 and dry.parsed == 1,
-               "Malformed conversation counted as new in dry_run without validation")
+        real_failed = False
+        try:
+            import_chatgpt(con, src)
+        except AttributeError:
+            real_failed = True
+        con.rollback()
+        record("DRYRUN-004", dry.new == 1 and dry.parsed == 1 and real_failed,
+               "dry_run accepted malformed content shape; real import failed")
     finally:
         con.close()
 
