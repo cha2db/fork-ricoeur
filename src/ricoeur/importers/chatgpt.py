@@ -20,11 +20,13 @@ from .base import (
     ImportStats,
     insert_conversation,
     insert_message,
+    delete_conversation_messages,
     make_message_id,
     resolve_conversation_id,
     resolve_message_id,
     update_conversation_counts,
 )
+from .branch_index import validate_snapshot, selected_nodes, sync_projection
 
 
 def import_chatgpt(
@@ -46,7 +48,21 @@ def import_chatgpt(
     # transaction. Reimport remains idempotent through existing IDs.
     for conv_raw, fraction in _iter_conversations_with_progress(path):
         stats.parsed += 1
-        _import_one(conn, conv_raw, stats, update=update, since=since, dry_run=dry_run)
+        # The batch strategy retains resumability while each individual
+        # conversation remains atomic even if the 26th is malformed.
+        if dry_run:
+            _import_one(conn, conv_raw, stats, update=update, since=since,
+                        dry_run=True)
+        else:
+            conn.execute("SAVEPOINT chatgpt_import_one")
+            try:
+                _import_one(conn, conv_raw, stats, update=update,
+                            since=since, dry_run=False)
+                conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+            except BaseException:
+                conn.execute("ROLLBACK TO SAVEPOINT chatgpt_import_one")
+                conn.execute("RELEASE SAVEPOINT chatgpt_import_one")
+                raise
         if not dry_run and stats.parsed % 25 == 0:
             conn.commit()
         if progress and task is not None:
@@ -198,11 +214,21 @@ def _import_one(
         stats.skipped += 1
         return
 
-    # Walk the message tree to find the default model
+    # The exact same structural/content validation is used for dry run
+    # and persist; no "would import" claim before checking the payload.
+    nodes, selected = validate_snapshot(conv)
     model = _extract_model(conv)
 
     if dry_run:
-        stats.new += 1
+        existing = conn.execute("SELECT 1 FROM conversations WHERE id=?",
+                                (conv_id,)).fetchone()
+        if existing and not update:
+            stats.skipped += 1
+        elif existing:
+            stats.updated += 1
+        else:
+            stats.new += 1
+        stats.messages += len(_walk_messages(conv))
         return
 
     inserted = insert_conversation(
@@ -222,6 +248,11 @@ def _import_one(
         stats.skipped += 1
         return
 
+    if update:
+        # An updated selected path must replace the prior selected projection
+        # instead of accumulating mutually exclusive responses in messages.
+        delete_conversation_messages(conn, conv_id)
+
     # Preserve the original tree, including non-selected branches and null roots.
     conn.execute("""CREATE TABLE IF NOT EXISTS chatgpt_nodes (
         conv_id TEXT NOT NULL, node_id TEXT NOT NULL, parent_id TEXT,
@@ -229,12 +260,28 @@ def _import_one(
         PRIMARY KEY (conv_id, node_id)
     )""")
     for node_id, node in (conv.get("mapping") or {}).items():
-        conn.execute("""INSERT OR IGNORE INTO chatgpt_nodes
-            (conv_id, node_id, parent_id, children_json, message_json)
-            VALUES (?, ?, ?, ?, ?)""",
-            (conv_id, node_id, node.get("parent"),
-             json.dumps(node.get("children", []), ensure_ascii=False),
-             json.dumps(node.get("message"), ensure_ascii=False)))
+        if update:
+            conn.execute("""INSERT INTO chatgpt_nodes
+                (conv_id, node_id, parent_id, children_json, message_json)
+                VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(conv_id,node_id) DO UPDATE SET
+                  parent_id=excluded.parent_id,
+                  children_json=excluded.children_json,
+                  message_json=excluded.message_json""",
+                (conv_id,node_id,node.get("parent"),
+                 json.dumps(node.get("children",[]),ensure_ascii=False),
+                 json.dumps(node.get("message"),ensure_ascii=False)))
+        else:
+            conn.execute("""INSERT OR IGNORE INTO chatgpt_nodes
+                (conv_id, node_id, parent_id, children_json, message_json)
+                VALUES (?, ?, ?, ?, ?)""",
+                (conv_id,node_id,node.get("parent"),
+                 json.dumps(node.get("children",[]),ensure_ascii=False),
+                 json.dumps(node.get("message"),ensure_ascii=False)))
+
+    # FTS5 sidecar contains *only* nonselected branches, never the default
+    # message path; raw chatgpt_nodes remains the original source structure.
+    sync_projection(conn, conv_id, conv, selected=selected)
 
     # Keep the selected path searchable, including empty messages.
     messages = _walk_messages(conv)
