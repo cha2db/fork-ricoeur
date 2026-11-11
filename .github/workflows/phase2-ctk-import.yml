@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '_dev/phase2_ctk_import.py'
+      - '_dev/phase2_ctk_store.py'
       - '_dev/phase2_import_candidate.py'
       - '.github/workflows/phase2-ctk-import.yml'
   workflow_dispatch:
@@ -39,6 +40,13 @@ jobs:
             exit 1
           }
           cat _dev/results/phase2-ctk.json
+      - name: Check actual CTK SQLite roundtrip and idempotent reimport
+        run: |
+          PYTHONPATH=_dev python -u _dev/phase2_ctk_store.py --output _dev/results/phase2-ctk-store.json > _dev/results/phase2-ctk-store.log 2>&1 || {
+            tail -n 100 _dev/results/phase2-ctk-store.log
+            exit 1
+          }
+          cat _dev/results/phase2-ctk-store.json
       - name: Capture every log
         if: always()
         uses: actions/upload-artifact@v4
@@ -61,4 +69,6 @@ jobs:
           path: _dev/results/
       - name: Archive validated report, no source code
         if: always()
-        run: bash _dev/publish_phase2.sh ctk
+        run: |
+          bash _dev/publish_phase2.sh ctk
+          bash _dev/publish_phase2.sh ctk-store
