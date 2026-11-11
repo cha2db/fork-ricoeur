@@ -8,6 +8,9 @@ from __future__ import annotations
 
 import sqlite3
 
+from .importers.branch_index import (
+    search_branch_messages, get_branch_context, parse_branch_ref)
+
 
 def _message(row):
     return {key: row[key] for key in ("id", "conv_id", "role", "content", "timestamp")}
@@ -99,13 +102,22 @@ def search_messages(conn: sqlite3.Connection, query: str, limit: int = 20,
             "after": neighbors["after"],
             "rank": match["rank"],
         })
-    return {"query": query, "count": len(hits), "hits": hits}
+    # Alternative ChatGPT branches have their *own* FTS5 rank distribution.
+    # Keep them separate; do not claim BM25 scores are comparable or turn
+    # mutually-exclusive replies into adjacent chronological messages.
+    branch = search_branch_messages(conn, query, limit, platform)
+    return {"query": query, "count": len(hits), "hits": hits,
+            "branch_count": branch["count"],
+            "branch_hits": branch["hits"],
+            "branch_index_status": branch["index_status"]}
 
 
 def get_message_context(conn: sqlite3.Connection, message_id: str,
                         context: int = 2) -> dict | None:
     if not 0 <= context <= 20:
         raise ValueError("context must be 0..20")
+    if parse_branch_ref(message_id) is not None:
+        return get_branch_context(conn, message_id, context=context)
     conv = conn.execute(
         """SELECT c.id,c.title,c.platform FROM messages m
            JOIN conversations c ON c.id=m.conv_id WHERE m.id=?""",
