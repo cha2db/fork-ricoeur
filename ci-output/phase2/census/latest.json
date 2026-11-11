@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED",
+  "reason": "143-candidate census failed before producing result",
+  "run_id": "42928548585",
+  "commit": "3bc961216d417cb1349f776f9b3eeb9d2bac3f99",
+  "log_tails": {}
+}
