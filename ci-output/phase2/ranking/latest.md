@@ -3,7 +3,7 @@
 Este ranking é de **prioridade de confronto por porta**, não uma classificação universal de qualidade.
 **A Fase 3 de UX pertence à sessão paralela; nenhuma alteração de UI é autorizada por esta matriz.**
 
-Atualizado (UTC): 2026-11-18T20:37:59.479505+00:00
+Atualizado (UTC): 2026-11-19T07:33:25.284237+00:00
 
 **143/143 candidatos classificados em 11 portas; 22 PASS, 2 FAIL e 2 bloqueios técnicos.**
 
