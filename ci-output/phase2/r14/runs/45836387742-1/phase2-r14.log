@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "new": 64,
+  "total": 207,
+  "source_counts": {
+    "SOURCE_FOUND": 62,
+    "EXTERNAL_REFERENCE": 2
+  },
+  "unverified": [],
+  "ports": {
+    "ingest_tree": 27,
+    "repair_merge": 5,
+    "lexical_core": 19,
+    "browser_index": 4,
+    "vector_index": 21,
+    "semantic_ranking": 13,
+    "topic_relations": 22,
+    "memory_temporal": 39,
+    "relevance_evaluation": 9,
+    "search_service": 16,
+    "external_reference": 6,
+    "versioned_storage": 8,
+    "storage_engine": 8,
+    "local_sync": 8,
+    "interoperability_formats": 2
+  }
+}
